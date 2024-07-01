@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'TestSöhne-Buch';
+    src: url('fonts/TestSöhne-Buch.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TestSöhne-BuchKursiv';
+    src: url('fonts/TestSöhne-BuchKursiv.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TestSöhne-Kräftig';
+    src: url('fonts/TestSöhne-Kräftig.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TestSöhneBreit-Buch';
+    src: url('fonts/TestSöhneBreit-Buch.otf') format('opentype');
+}
+
+body {
+    font-family: 'TestSöhne-Buch', Arial, sans-serif;
+    color: #34495e;
+    background-color: #fcfcfc;
+    margin: 20px;
+}
+
+/* Other styles */
