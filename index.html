@@ -374,7 +374,6 @@
     </div>
     <div class="separator"></div>
     <form id="registration-form" onsubmit="handleSubmit(event)">
-        <!-- Welcome Page -->
         <section id="welcome" class="fade-in">
             <div class="card">
                 <h2>Portico Dialogue for the Registration of Delegates and Delegations</h2>
@@ -392,13 +391,12 @@
             </div>
         </section>
 
-        <!-- Personal Data, Residency and Contact Information -->
         <section id="personal-data" class="hidden fade-in">
             <h2>Personal Data, Residency and Contact Information</h2>
             <div class="card">
-                <label class="question">Your <strong>preferred title</strong></label><span class="required-star">*</span>
+                <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
                 <select id="title" name="title" required>
-                    <option value="miss">Miss</option>
+                    <option value="">Select an option</option>
                     <option value="mrs">Mrs.</option>
                     <option value="ms">Ms.</option>
                     <option value="mr">Mr.</option>
@@ -409,7 +407,7 @@
                 </select>
             </div>
             <div class="card">
-                <label class="question">Your <strong>preferred pronouns</strong></label><span class="required-star">*</span>
+                <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="they-them" name="pronouns" value="they/them" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -432,57 +430,53 @@
                 </div>
             </div>
             <div class="card">
-                <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification</label><span class="required-star">*</span>
+                <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
                 <input type="text" id="first-name" name="first-name" required>
             </div>
             <div class="card">
-                <label class="question" for="last-name">Your <strong>last name(s)</strong> as it appears on legal identification</label><span class="required-star">*</span>
+                <label class="question" for="last-name">Your <strong>last name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Winston Leonard Churchill's last name would be "Churchill." Please include all applicable diacritics and accents.</em></p>
                 <input type="text" id="last-name" name="last-name" required>
             </div>
             <div class="card">
-                <label class="question" for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below</label>
+                <label class="question" for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below.</label>
                 <p class="question-description"><em>Note that diplomas will be issued to the recorded legal name. This name will, however, be used for communications from us to you, badges, and documents that are not legally binding.</em></p>
                 <input type="text" id="preferred-name" name="preferred-name">
             </div>
             <div class="card">
-                <label class="question" for="dob">Your <strong>date of birth</strong> (day, month, year)</label><span class="required-star">*</span>
+                <label class="question" for="dob">Your <strong>date of birth.</strong></label><span class="required-star">*</span>
                 <input type="date" id="dob" name="dob" required>
             </div>
             <div class="card">
-                <label class="question" for="institution">The <strong>educational institution</strong> you are affiliated with</label><span class="required-star">*</span>
+                <label class="question" for="institution">The <strong>educational institution</strong> (school or university) you are affiliated with.</label><span class="required-star">*</span>
                 <input type="text" id="institution" name="institution" required>
             </div>
             <div class="card">
-                <label class="question" for="phone">Your <strong>telephone number</strong> (include country code if not in Romania)</label><span class="required-star">*</span>
+                <label class="question" for="phone">Your <strong>telephone number.</strong></label>
+                <span class="required-star">*</span>
+                <p class="question-description"><em>If <u>not</u> located in Romania, please include a country code (beginning with +).</em></p>
                 <input type="tel" id="phone" name="phone" required>
             </div>
             <div class="card">
-                <label class="question" for="email">Your <strong>e-mail address</strong></label><span class="required-star">*</span>
-                <p class="question-description"><em>Please make sure you have spelled it correctly.</em></p>
+                <label class="question" for="email">Your <strong>e-mail address.</strong></label><span class="required-star">*</span>
+                <p class="question-description"><em>Please make sure that spelling is accurate.</em></p>
                 <input type="email" id="email" name="email" required oninput="validateEmail()">
                 <div class="error" id="email-error"></div>
             </div>
             <div class="card">
-                <label class="question" for="residence">Your <strong>city, state, province or region</strong> of residence</label><span class="required-star">*</span>
+                <label class="question" for="residence">Your <strong>city, state, province or region</strong> of residence.</label><span class="required-star">*</span>
                 <input type="text" id="residence" name="residence" required>
             </div>
             <div class="card">
-                <label class="question" for="country">Your <strong>country of residence</strong></label><span class="required-star">*</span>
+                <label class="question" for="country">Your <strong>country of residence.</strong></label><span class="required-star">*</span>
                 <select id="country" name="country" required>
                     <option value="">Select a country</option>
-                    <option value="Romania">Romania</option>
-                                    <option value="Afghanistan">Afghanistan</option>
-                <option value="Åland Islands">Åland Islands</option>
+                <option value="Romania">Romania</option>
                 <option value="Albania">Albania</option>
                 <option value="Algeria">Algeria</option>
-                <option value="American Samoa">American Samoa</option>
                 <option value="Andorra">Andorra</option>
                 <option value="Angola">Angola</option>
-                <option value="Anguilla">Anguilla</option>
-                <option value="Antarctica">Antarctica</option>
-                <option value="Antigua and Barbuda">Antigua and Barbuda</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Armenia">Armenia</option>
                 <option value="Aruba">Aruba</option>
@@ -502,33 +496,24 @@
                 <option value="Bolivia">Bolivia</option>
                 <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
                 <option value="Botswana">Botswana</option>
-                <option value="Bouvet Island">Bouvet Island</option>
                 <option value="Brazil">Brazil</option>
-                <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
                 <option value="Brunei Darussalam">Brunei Darussalam</option>
                 <option value="Bulgaria">Bulgaria</option>
                 <option value="Burkina Faso">Burkina Faso</option>
-                <option value="Burundi">Burundi</option>
                 <option value="Cambodia">Cambodia</option>
                 <option value="Cameroon">Cameroon</option>
                 <option value="Canada">Canada</option>
-                <option value="Cape Verde">Cape Verde</option>
-                <option value="Cayman Islands">Cayman Islands</option>
                 <option value="Central African Republic">Central African Republic</option>
                 <option value="Chad">Chad</option>
                 <option value="Chile">Chile</option>
                 <option value="China">China</option>
-                <option value="Christmas Island">Christmas Island</option>
-                <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
                 <option value="Colombia">Colombia</option>
                 <option value="Comoros">Comoros</option>
                 <option value="Congo">Congo</option>
                 <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
-                <option value="Cook Islands">Cook Islands</option>
                 <option value="Costa Rica">Costa Rica</option>
                 <option value="Cote D'ivoire">Cote D'ivoire</option>
                 <option value="Croatia">Croatia</option>
-                <option value="Cuba">Cuba</option>
                 <option value="Cyprus">Cyprus</option>
                 <option value="Czech Republic">Czech Republic</option>
                 <option value="Denmark">Denmark</option>
@@ -542,14 +527,11 @@
                 <option value="Eritrea">Eritrea</option>
                 <option value="Estonia">Estonia</option>
                 <option value="Ethiopia">Ethiopia</option>
-                <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
-                <option value="Faroe Islands">Faroe Islands</option>
                 <option value="Fiji">Fiji</option>
                 <option value="Finland">Finland</option>
                 <option value="France">France</option>
                 <option value="French Guiana">French Guiana</option>
                 <option value="French Polynesia">French Polynesia</option>
-                <option value="French Southern Territories">French Southern Territories</option>
                 <option value="Gabon">Gabon</option>
                 <option value="Gambia">Gambia</option>
                 <option value="Georgia">Georgia</option>
@@ -560,14 +542,11 @@
                 <option value="Greenland">Greenland</option>
                 <option value="Grenada">Grenada</option>
                 <option value="Guadeloupe">Guadeloupe</option>
-                <option value="Guam">Guam</option>
                 <option value="Guatemala">Guatemala</option>
-                <option value="Guernsey">Guernsey</option>
                 <option value="Guinea">Guinea</option>
                 <option value="Guinea-bissau">Guinea-bissau</option>
                 <option value="Guyana">Guyana</option>
                 <option value="Haiti">Haiti</option>
-                <option value="Heard Island and Mcdonald Islands">Heard Island and Mcdonald Islands</option>
                 <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
                 <option value="Honduras">Honduras</option>
                 <option value="Hong Kong">Hong Kong</option>
@@ -575,7 +554,6 @@
                 <option value="Iceland">Iceland</option>
                 <option value="India">India</option>
                 <option value="Indonesia">Indonesia</option>
-                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
                 <option value="Iraq">Iraq</option>
                 <option value="Ireland">Ireland</option>
                 <option value="Isle of Man">Isle of Man</option>
@@ -588,7 +566,6 @@
                 <option value="Kazakhstan">Kazakhstan</option>
                 <option value="Kenya">Kenya</option>
                 <option value="Kiribati">Kiribati</option>
-                <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
                 <option value="Korea, Republic of">Korea, Republic of</option>
                 <option value="Kuwait">Kuwait</option>
                 <option value="Kyrgyzstan">Kyrgyzstan</option>
@@ -602,20 +579,16 @@
                 <option value="Lithuania">Lithuania</option>
                 <option value="Luxembourg">Luxembourg</option>
                 <option value="Macao">Macao</option>
-                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
                 <option value="Madagascar">Madagascar</option>
                 <option value="Malawi">Malawi</option>
                 <option value="Malaysia">Malaysia</option>
                 <option value="Maldives">Maldives</option>
                 <option value="Mali">Mali</option>
                 <option value="Malta">Malta</option>
-                <option value="Marshall Islands">Marshall Islands</option>
                 <option value="Martinique">Martinique</option>
                 <option value="Mauritania">Mauritania</option>
                 <option value="Mauritius">Mauritius</option>
-                <option value="Mayotte">Mayotte</option>
                 <option value="Mexico">Mexico</option>
-                <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
                 <option value="Moldova, Republic of">Moldova, Republic of</option>
                 <option value="Monaco">Monaco</option>
                 <option value="Mongolia">Mongolia</option>
@@ -628,38 +601,31 @@
                 <option value="Nauru">Nauru</option>
                 <option value="Nepal">Nepal</option>
                 <option value="Netherlands">Netherlands</option>
-                <option value="Netherlands Antilles">Netherlands Antilles</option>
                 <option value="New Caledonia">New Caledonia</option>
                 <option value="New Zealand">New Zealand</option>
                 <option value="Nicaragua">Nicaragua</option>
                 <option value="Niger">Niger</option>
                 <option value="Nigeria">Nigeria</option>
-                <option value="Niue">Niue</option>
-                <option value="Norfolk Island">Norfolk Island</option>
-                <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                <option value="North Macedonia">North Macedonia</option>
                 <option value="Norway">Norway</option>
                 <option value="Oman">Oman</option>
                 <option value="Pakistan">Pakistan</option>
-                <option value="Palau">Palau</option>
                 <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
                 <option value="Panama">Panama</option>
                 <option value="Papua New Guinea">Papua New Guinea</option>
                 <option value="Paraguay">Paraguay</option>
                 <option value="Peru">Peru</option>
                 <option value="Philippines">Philippines</option>
-                <option value="Pitcairn">Pitcairn</option>
                 <option value="Poland">Poland</option>
                 <option value="Portugal">Portugal</option>
                 <option value="Puerto Rico">Puerto Rico</option>
                 <option value="Qatar">Qatar</option>
-                <option value="Reunion">Reunion</option>
                 <option value="Romania">Romania</option>
                 <option value="Russian Federation">Russian Federation</option>
                 <option value="Rwanda">Rwanda</option>
                 <option value="Saint Helena">Saint Helena</option>
                 <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
                 <option value="Saint Lucia">Saint Lucia</option>
-                <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
                 <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
                 <option value="Samoa">Samoa</option>
                 <option value="San Marino">San Marino</option>
@@ -675,12 +641,10 @@
                 <option value="Solomon Islands">Solomon Islands</option>
                 <option value="Somalia">Somalia</option>
                 <option value="South Africa">South Africa</option>
-                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
                 <option value="Spain">Spain</option>
                 <option value="Sri Lanka">Sri Lanka</option>
                 <option value="Sudan">Sudan</option>
                 <option value="Suriname">Suriname</option>
-                <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
                 <option value="Swaziland">Swaziland</option>
                 <option value="Sweden">Sweden</option>
                 <option value="Switzerland">Switzerland</option>
@@ -691,7 +655,6 @@
                 <option value="Thailand">Thailand</option>
                 <option value="Timor-leste">Timor-leste</option>
                 <option value="Togo">Togo</option>
-                <option value="Tokelau">Tokelau</option>
                 <option value="Tonga">Tonga</option>
                 <option value="Trinidad and Tobago">Trinidad and Tobago</option>
                 <option value="Tunisia">Tunisia</option>
@@ -709,18 +672,16 @@
                 <option value="Uzbekistan">Uzbekistan</option>
                 <option value="Vanuatu">Vanuatu</option>
                 <option value="Venezuela">Venezuela</option>
-                <option value="Viet Nam">Viet Nam</option>
+                <option value="Vietnam">Vietnam</option>
                 <option value="Virgin Islands, British">Virgin Islands, British</option>
                 <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
-                <option value="Wallis and Futuna">Wallis and Futuna</option>
-                <option value="Western Sahara">Western Sahara</option>
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
                 </select>
             </div>
             <div class="card">
-                <label class="question" for="diet">Your <strong>dietary requirements</strong></label><span class="required-star">*</span>
+                <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
                 <select id="diet" name="diet" required>
                     <option value="none">None</option>
                     <option value="vegetarian">Vegetarian</option>
@@ -732,7 +693,9 @@
                 </select>
             </div>
             <div class="card">
-                <label class="question">How did you <strong>find out</strong> about us? Check all that may apply</label><span class="required-star">*</span>
+                <label class="question">How did you <strong>find out</strong> about us?</label
+                ><p class="question-description"><em>Check all that may apply.</em></p>
+                <span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -801,9 +764,8 @@
             <div id="personal-data-warning" class="warning hidden">Please select an option.</div>
         </section>
 
-        <!-- Group Delegation Dialogue (Student-specific) -->
         <section id="student-group-delegation" class="hidden fade-in">
-            <h2>Group Delegation Dialogue (Student-specific)</h2>
+            <h2>Delegation-specific Dialogue for Students</h2>
             <div class="card">
                 <label class="question" for="student-group">Are you a <strong>student</strong> applying with a group/delegation?</label><span class="required-star">*</span>
                 <div class="radio-container">
@@ -826,9 +788,8 @@
             <div id="student-group-warning" class="warning hidden">Please select an option.</div>
         </section>
 
-        <!-- Group Delegation Dialogue (School-specific) -->
         <section id="school-group-delegation" class="hidden fade-in">
-            <h2>Group Delegation Dialogue (School-specific)</h2>
+            <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
             <div class="card">
                 <label class="question" for="school-rep">Are you a <strong>chaperone, school representative or guardian</strong> applying with a group/delegation?</label><span class="required-star">*</span>
                 <div class="radio-container">
@@ -851,7 +812,6 @@
             <div id="school-rep-warning" class="warning hidden">Please select an option.</div>
         </section>
 
-        <!-- Special Arrangements Inquiry -->
         <section id="special-arrangements" class="hidden fade-in">
             <h2>Special Arrangements Inquiry</h2>
             <div class="card">
@@ -876,7 +836,6 @@
             <div id="special-arrangements-warning" class="warning hidden">Please select an option.</div>
         </section>
 
-        <!-- Delegation-specific Dialogue for Chaperones, Guardians and School Reps -->
         <section id="chaperone-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
             <div class="card">
@@ -888,23 +847,23 @@
                 </ul>
             </div>
             <div class="card">
-                <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself</label><span class="required-star">*</span>
+                <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself.</label><span class="required-star">*</span>
                 <input type="number" id="delegation-number" name="delegation-number" min="1" max="10" required>
             </div>
             <div class="card">
-                <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation</label><span class="required-star">*</span>
+                <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
                 <input type="text" id="delegation-name" name="delegation-name" required>
             </div>
             <div class="card">
-                <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees</label><span class="required-star">*</span>
+                <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees.</label><span class="required-star">*</span>
                 <textarea id="delegation-experience" name="delegation-experience" required></textarea>
             </div>
             <div class="card">
-                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> EXCLUDING fee waivers, visa accommodations or learning differences</label><span class="required-star">*</span>
+                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
                 <textarea id="logistical-requests" name="logistical-requests" required></textarea>
             </div>
             <div class="card">
-                <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations or learning differences. This does not negatively impact your delegation’s odds of admission</label><span class="required-star">*</span>
+                <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="other-info-yes" name="other-info" value="yes" required>
@@ -925,12 +884,11 @@
             <div id="other-info-warning" class="warning hidden">Please select an option.</div>
         </section>
 
-        <!-- Delegation-specific Dialogue for Students and Team-members -->
         <section id="student-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Students and Team-members</h2>
             <div class="card">
                 <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself</em></p>
-                <p class="question-description"><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation</em></p>
+                <p class="question-description"><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation.</em></p>
                 <p class="question-description"><em>For further guidance, consult the following:</em></p>
                 <ul>
                     <li><a href="logistical-aid-link">Logistical aid</a></li>
@@ -938,15 +896,15 @@
                 </ul>
             </div>
             <div class="card">
-                <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable</label><span class="required-star">*</span>
+                <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable.</label><span class="required-star">*</span>
                 <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="10" required>
             </div>
             <div class="card">
-                <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation</label><span class="required-star">*</span>
+                <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
                 <input type="text" id="student-delegation-name" name="student-delegation-name" required>
             </div>
             <div class="card">
-                <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are not visible to your referee</label><span class="required-star">*</span>
+                <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are NOT visible to your referee.</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes" required>
@@ -967,14 +925,13 @@
             <div id="student-special-arrangements-warning" class="warning hidden">Please select an option.</div>
         </section>
 
-        <!-- Special Arrangements and Further Guidance -->
         <section id="special-guidance" class="hidden fade-in">
             <h2>Special Arrangements and Further Guidance</h2>
             <div class="card">
-                <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process</em></p>
+                <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process.</em></p>
             </div>
             <div class="card">
-                <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply</label><span class="required-star">*</span>
+                <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -1016,7 +973,6 @@
             </div>
         </section>
 
-        <!-- Your experience with MUNs -->
         <section id="mun-experience" class="hidden fade-in">
             <h2>Your experience with MUNs</h2>
             <div class="card">
@@ -1031,20 +987,22 @@
             </div>
             <div class="card">
                 <label class="question" for="mun-experience">Please outline your <strong>previous MUN experience</strong></label><span class="required-star">*</span>
-                <p class="subheading">We encourage you to outline your relevant experience in the following format:</p>
-                <p class="question-description">Conference (edition), Committee, Country represented, Award (if applicable).</p>
-                <p class="question-description">e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</p>
+                <p class="question-description">We encourage you to outline your relevant experience in the following format:</p>
+                <p class="question-description"><em>Conference (edition), Committee, Country represented, Award (if applicable).</em></p>
+                <p class="question-description"><em>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</em></p>
                 <p class="question-description">There is no character limit for this section. We do, however, encourage a certain degree of brevity.</p>
                 <textarea id="mun-experience" name="mun-experience" required></textarea>
             </div>
             <div class="card">
-                <label class="question" for="transformative-experience">Detail why you feel being a delegate at FDR would be a <strong>transformative experience</strong> (maximum 700 characters)</label><span class="required-star">*</span>
+            <label class="question" for="contributions">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
+            <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
+                </label><span class="required-star">*</span>
                 <textarea id="transformative-experience" name="transformative-experience" maxlength="700" required oninput="updateCharCount('transformative-experience', 'char-count-1')"></textarea>
                 <div class="char-count" id="char-count-1">0/700</div>
             </div>
             <div class="card">
                 <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
-                <p class="subheading">For the following questions, it may be helpful to consult the following:</p>
+                <p class="subheading"><em>For the following questions, it may be helpful to consult the following:</em></p>
                 <ul>
                     <li><a href="country-matrices-link">Country matrices</a></li>
                     <li><a href="committee-overview-link">Committee overview</a></li>
@@ -1060,13 +1018,14 @@
                 <input type="text" id="third-choice" name="third-choice" required>
             </div>
             <div class="card">
-                <label class="question" for="choice-explanation">Please explain why your <strong>country and committee choices</strong> speak to you (maximum 1500 characters)</label><span class="required-star">*</span>
-                <textarea id="choice-explanation" name="choice-explanation" maxlength="1500" required oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
-                <div class="char-count" id="char-count-2">0/1500</div>
+                <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label><span class="required-star">*</span>
+                <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
+                <textarea id="choice-explanation" name="choice-explanation" maxlength="1250" required oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
+                <div class="char-count" id="char-count-2">0/1250</div>
             </div>
             <div class="card">
                 <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
-                <p class="question-description">This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</p>
+                <p class="question-description"><em>This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</em></p>
                 <textarea id="favorite-period" name="favorite-period" required></textarea>
             </div>
             <div class="navigation-buttons">
@@ -1075,7 +1034,6 @@
             </div>
         </section>
 
-        <!-- One last thing; The Ts and Cs of your application -->
         <section id="terms-conditions" class="hidden fade-in">
             <h2>Finishing up; The Ts and Cs of your application</h2>
             <div class="card">
@@ -1122,7 +1080,7 @@
             </div>
             <div class="card">
                 <label class="question" for="training-modules">I would like to <strong>sign up for online Training Modules</strong></label><span class="required-star">*</span>
-                <p class="subheading">Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</p>
+                <p class="subheading"><em>Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</em></p>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required>
@@ -1152,14 +1110,13 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.0.2</p>
+        <p>Version 7.1.0</p>
         <p>At FDRMUN, our mission is to inspire and empower high school students from a variety of backgrounds. We achieve this through promoting diplomatic discourse, facilitating cultural exchanges, and fostering personal development</p>
-        <a href="https://fdrmun.org" style="color: black;">fdrmun.org</a>
+        <a href="https://fdrmun.org" style="color: black;">FDRMUN Website</a>
         <br>
         <a href="mailto:applications@fdrmun.org?subject=Portico applications dialogue PfD issue" style="color: black;">Help</a>
     </footer>
     <script>
-        // Function to show next section with animation
         function showNextSection(nextSection) {
             const currentSection = document.querySelector('section:not(.hidden)');
             const nextSectionElement = document.getElementById(nextSection);
@@ -1170,7 +1127,6 @@
             window.scrollTo(0, 0);
         }
 
-        // Function to show previous section with animation
         function showPreviousSection(prevSection) {
             const currentSection = document.querySelector('section:not(.hidden)');
             const prevSectionElement = document.getElementById(prevSection);
@@ -1181,7 +1137,6 @@
             window.scrollTo(0, 0);
         }
 
-        // Handle student group delegation logic
         function handleStudentGroupNext() {
             const studentGroup = document.querySelector('input[name="student-group"]:checked');
             if (studentGroup) {
@@ -1195,7 +1150,6 @@
             }
         }
 
-        // Handle school representative delegation logic
         function handleSchoolRepNext() {
             const schoolRep = document.querySelector('input[name="school-rep"]:checked');
             if (schoolRep) {
@@ -1208,8 +1162,6 @@
                 document.getElementById('school-rep-warning').classList.remove('hidden');
             }
         }
-
-        // Handle special arrangements logic
         function handleSpecialArrangementsNext() {
             const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
             if (specialArrangements) {
@@ -1222,8 +1174,6 @@
                 document.getElementById('special-arrangements-warning').classList.remove('hidden');
             }
         }
-
-        // Handle other info logic for chaperones
         function handleOtherInfoNext() {
             const otherInfo = document.querySelector('input[name="other-info"]:checked');
             if (otherInfo) {
@@ -1236,8 +1186,6 @@
                 document.getElementById('other-info-warning').classList.remove('hidden');
             }
         }
-
-        // Handle student special arrangements logic
         function handleStudentSpecialArrangementsNext() {
             const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
             if (studentSpecialArrangements) {
@@ -1250,8 +1198,6 @@
                 document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
             }
         }
-
-        // Validate email format
         function validateEmail() {
             const email = document.getElementById('email').value;
             const emailError = document.getElementById('email-error');
@@ -1264,15 +1210,11 @@
                 document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
             }
         }
-
-        // Update character count
         function updateCharCount(textareaId, charCountId) {
             const textarea = document.getElementById(textareaId);
             const charCount = document.getElementById(charCountId);
             charCount.textContent = `${textarea.value.replace(/\s/g, '').length}/${textarea.maxLength}`;
         }
-
-        // Handle form submission
         function handleSubmit(event) {
             const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
             let isValid = true;
@@ -1302,8 +1244,6 @@
                 alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
             }
         }
-
-        // Make textareas expand as more text is written
         document.querySelectorAll('textarea').forEach(textarea => {
             textarea.addEventListener('input', () => {
                 textarea.style.height = 'auto';
