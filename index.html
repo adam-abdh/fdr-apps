@@ -5,23 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FDRMUN Delegate and Delegation Registration Form</title>
     <style>
+        @font-face {
+            font-family: 'TestSohneBreit';
+            src: url('path/to/TestSöhneBreit-Buch.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'SohneKraftig';
+            src: url('path/to/TestSöhne-Kräftig.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'SohneBuchItalic';
+            src: url('path/to/TestSöhne-BuchKursiv.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'SohneBuch';
+            src: url('path/to/TestSöhne-Buch.otf') format('opentype');
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'SohneBuch', Arial, sans-serif;
             color: #34495e;
             background-color: #fcfcfc;
             margin: 20px;
+        }
+        h2 {
+            font-family: 'TestSohneBreit';
+            color: #004080;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+        .question {
+            font-family: 'SohneKraftig';
+            color: #004080;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .subheading, .question-description {
+            font-family: 'SohneBuchItalic';
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+        label, input, select, textarea, button {
+            font-family: 'SohneBuch', Arial, sans-serif;
         }
         form {
             max-width: 800px;
             margin: auto;
             position: relative;
             padding: 10px;
-        }
-        h2 {
-            color: #004080;
-            font-size: 2em;
-            margin-bottom: 30px;
-            padding-left: 10px;
         }
         label {
             font-weight: normal;
@@ -35,7 +66,6 @@
             display: block;
             margin: 15px 0;
             width: 100%;
-            font-family: Arial, sans-serif;
             color: #004080;
             padding: 12px;
             box-sizing: border-box;
@@ -295,8 +325,6 @@
         }
     </style>
 </head>
-
-</head>
 <body>
     <div class="image-section">
         <img src="https://i.ibb.co/vw87Lbd/logo-variation-dept-recdgsvs.png" alt="FDRMUN Logo" style="width: 350px; height: auto;">
@@ -325,7 +353,7 @@
         <section id="personal-data" class="hidden fade-in">
             <h2>Personal Data, Residency and Contact Information</h2>
             <div class="card">
-                <label for="title">Your <strong>preferred title</strong></label><span class="required-star">*</span>
+                <label class="question">Your <strong>preferred title</strong></label><span class="required-star">*</span>
                 <select id="title" name="title" required>
                     <option value="miss">Miss</option>
                     <option value="mrs">Mrs.</option>
@@ -338,7 +366,7 @@
                 </select>
             </div>
             <div class="card">
-                <label>Your <strong>preferred pronouns</strong></label><span class="required-star">*</span>
+                <label class="question">Your <strong>preferred pronouns</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="they-them" name="pronouns" value="they/them" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -361,44 +389,44 @@
                 </div>
             </div>
             <div class="card">
-                <label for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification</label><span class="required-star">*</span>
-                <p><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
+                <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification</label><span class="required-star">*</span>
+                <p class="question-description"><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
                 <input type="text" id="first-name" name="first-name" required>
             </div>
             <div class="card">
-                <label for="last-name">Your <strong>last name(s)</strong> as it appears on legal identification</label><span class="required-star">*</span>
-                <p><em>Winston Leonard Churchill's last name would be "Churchill." Please include all applicable diacritics and accents.</em></p>
+                <label class="question" for="last-name">Your <strong>last name(s)</strong> as it appears on legal identification</label><span class="required-star">*</span>
+                <p class="question-description"><em>Winston Leonard Churchill's last name would be "Churchill." Please include all applicable diacritics and accents.</em></p>
                 <input type="text" id="last-name" name="last-name" required>
             </div>
             <div class="card">
-                <label for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below</label>
-                <p><em>Note that diplomas will be issued to the recorded legal name. This name will, however, be used for communications from us to you, badges, and documents that are not legally binding.</em></p>
+                <label class="question" for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below</label>
+                <p class="question-description"><em>Note that diplomas will be issued to the recorded legal name. This name will, however, be used for communications from us to you, badges, and documents that are not legally binding.</em></p>
                 <input type="text" id="preferred-name" name="preferred-name">
             </div>
             <div class="card">
-                <label for="dob">Your <strong>date of birth</strong> (day, month, year)</label><span class="required-star">*</span>
+                <label class="question" for="dob">Your <strong>date of birth</strong> (day, month, year)</label><span class="required-star">*</span>
                 <input type="date" id="dob" name="dob" required>
             </div>
             <div class="card">
-                <label for="institution">The <strong>educational institution</strong> you are affiliated with</label><span class="required-star">*</span>
+                <label class="question" for="institution">The <strong>educational institution</strong> you are affiliated with</label><span class="required-star">*</span>
                 <input type="text" id="institution" name="institution" required>
             </div>
             <div class="card">
-                <label for="phone">Your <strong>telephone number</strong> (include country code if not in Romania)</label><span class="required-star">*</span>
+                <label class="question" for="phone">Your <strong>telephone number</strong> (include country code if not in Romania)</label><span class="required-star">*</span>
                 <input type="tel" id="phone" name="phone" required>
             </div>
             <div class="card">
-                <label for="email">Your <strong>e-mail address</strong></label><span class="required-star">*</span>
-                <p><em>Please make sure you have spelled it correctly.</em></p>
+                <label class="question" for="email">Your <strong>e-mail address</strong></label><span class="required-star">*</span>
+                <p class="question-description"><em>Please make sure you have spelled it correctly.</em></p>
                 <input type="email" id="email" name="email" required oninput="validateEmail()">
                 <div class="error" id="email-error"></div>
             </div>
             <div class="card">
-                <label for="residence">Your <strong>city, state, province or region</strong> of residence</label><span class="required-star">*</span>
+                <label class="question" for="residence">Your <strong>city, state, province or region</strong> of residence</label><span class="required-star">*</span>
                 <input type="text" id="residence" name="residence" required>
             </div>
             <div class="card">
-                <label for="country">Your <strong>country of residence</strong></label><span class="required-star">*</span>
+                <label class="question" for="country">Your <strong>country of residence</strong></label><span class="required-star">*</span>
                 <select id="country" name="country" required>
                     <option value="">Select a country</option>
                     <option value="Romania">Romania</option>
@@ -649,7 +677,7 @@
                 </select>
             </div>
             <div class="card">
-                <label for="diet">Your <strong>dietary requirements</strong></label><span class="required-star">*</span>
+                <label class="question" for="diet">Your <strong>dietary requirements</strong></label><span class="required-star">*</span>
                 <select id="diet" name="diet" required>
                     <option value="none">None</option>
                     <option value="vegetarian">Vegetarian</option>
@@ -661,7 +689,7 @@
                 </select>
             </div>
             <div class="card">
-                <label for="how-find">How did you <strong>find out</strong> about us? Check all that may apply</label><span class="required-star">*</span>
+                <label class="question">How did you <strong>find out</strong> about us? Check all that may apply</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -734,7 +762,7 @@
         <section id="student-group-delegation" class="hidden fade-in">
             <h2>Group Delegation Dialogue (Student-specific)</h2>
             <div class="card">
-                <label for="student-group">Are you a <strong>student</strong> applying with a group/delegation?</label><span class="required-star">*</span>
+                <label class="question" for="student-group">Are you a <strong>student</strong> applying with a group/delegation?</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="student-group-yes" name="student-group" value="yes" required>
@@ -759,7 +787,7 @@
         <section id="school-group-delegation" class="hidden fade-in">
             <h2>Group Delegation Dialogue (School-specific)</h2>
             <div class="card">
-                <label for="school-rep">Are you a <strong>chaperone, school representative or guardian</strong> applying with a group/delegation?</label><span class="required-star">*</span>
+                <label class="question" for="school-rep">Are you a <strong>chaperone, school representative or guardian</strong> applying with a group/delegation?</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="school-rep-yes" name="school-rep" value="yes" required>
@@ -784,7 +812,7 @@
         <section id="special-arrangements" class="hidden fade-in">
             <h2>Special Arrangements Inquiry</h2>
             <div class="card">
-                <label for="special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your odds of admission.</label><span class="required-star">*</span>
+                <label class="question" for="special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your odds of admission.</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes" required>
@@ -809,31 +837,31 @@
         <section id="chaperone-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
             <div class="card">
-                <p><em>In this section, you will be asked to provide details about the members of your delegation. Due to EU data protection laws, it's mandatory for each delegate to fill out their own application form. You will receive an fdrID via mail upon submission of the form. The fdrID received by the chaperone becomes a crucial piece in this process. You must provide this fdrID to your students, who will then include it in their individual applications. This step is necessary to authenticate their membership in the specific delegation and link their applications to your registration.</em></p>
-                <p><em>For further guidance, consult the following:</em></p>
+                <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. Due to EU data protection laws, it's mandatory for each delegate to fill out their own application form. You will receive an fdrID via mail upon submission of the form. The fdrID received by the chaperone becomes a crucial piece in this process. You must provide this fdrID to your students, who will then include it in their individual applications. This step is necessary to authenticate their membership in the specific delegation and link their applications to your registration.</em></p>
+                <p class="question-description"><em>For further guidance, consult the following:</em></p>
                 <ul>
                     <li><a href="logistical-aid-link">Logistical aid</a></li>
                     <li><a href="guide-to-applying-link">Guide to applying</a></li>
                 </ul>
             </div>
             <div class="card">
-                <label for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself</label><span class="required-star">*</span>
+                <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself</label><span class="required-star">*</span>
                 <input type="number" id="delegation-number" name="delegation-number" min="1" max="10" required>
             </div>
             <div class="card">
-                <label for="delegation-name">What is the <strong>name</strong> of your delegation</label><span class="required-star">*</span>
+                <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation</label><span class="required-star">*</span>
                 <input type="text" id="delegation-name" name="delegation-name" required>
             </div>
             <div class="card">
-                <label for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees</label><span class="required-star">*</span>
+                <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees</label><span class="required-star">*</span>
                 <textarea id="delegation-experience" name="delegation-experience" required></textarea>
             </div>
             <div class="card">
-                <label for="logistical-requests">Do you have any specific <strong>logistical requests</strong> EXCLUDING fee waivers, visa accommodations or learning differences</label><span class="required-star">*</span>
+                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> EXCLUDING fee waivers, visa accommodations or learning differences</label><span class="required-star">*</span>
                 <textarea id="logistical-requests" name="logistical-requests" required></textarea>
             </div>
             <div class="card">
-                <label for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations or learning differences. This does not negatively impact your delegation’s odds of admission</label><span class="required-star">*</span>
+                <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations or learning differences. This does not negatively impact your delegation’s odds of admission</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="other-info-yes" name="other-info" value="yes" required>
@@ -858,24 +886,24 @@
         <section id="student-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Students and Team-members</h2>
             <div class="card">
-                <p><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself</em></p>
-                <p><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation</em></p>
-                <p><em>For further guidance, consult the following:</em></p>
+                <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself</em></p>
+                <p class="question-description"><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation</em></p>
+                <p class="question-description"><em>For further guidance, consult the following:</em></p>
                 <ul>
                     <li><a href="logistical-aid-link">Logistical aid</a></li>
                     <li><a href="guide-to-applying-link">Guide to applying</a></li>
                 </ul>
             </div>
             <div class="card">
-                <label for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable</label><span class="required-star">*</span>
+                <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable</label><span class="required-star">*</span>
                 <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="10" required>
             </div>
             <div class="card">
-                <label for="student-delegation-name">What is the <strong>name</strong> of your delegation</label><span class="required-star">*</span>
+                <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation</label><span class="required-star">*</span>
                 <input type="text" id="student-delegation-name" name="student-delegation-name" required>
             </div>
             <div class="card">
-                <label for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are not visible to your referee</label><span class="required-star">*</span>
+                <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are not visible to your referee</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes" required>
@@ -900,10 +928,10 @@
         <section id="special-guidance" class="hidden fade-in">
             <h2>Special Arrangements and Further Guidance</h2>
             <div class="card">
-                <p><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process</em></p>
+                <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process</em></p>
             </div>
             <div class="card">
-                <label for="special-circumstances">Circumstances to be considered. Check all that may apply</label><span class="required-star">*</span>
+                <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -936,7 +964,7 @@
                 </div>
             </div>
             <div class="card">
-                <label for="additional-circumstances">If any, specify additional, relevant circumstances impacting your attendance at FDR</label><span class="required-star">*</span>
+                <label class="question" for="additional-circumstances">If any, specify additional, relevant circumstances impacting your attendance at FDR</label><span class="required-star">*</span>
                 <textarea id="additional-circumstances" name="additional-circumstances" required></textarea>
             </div>
             <div class="navigation-buttons">
@@ -959,20 +987,20 @@
                 </ul>
             </div>
             <div class="card">
-                <label for="mun-experience">Please outline your <strong>previous MUN experience</strong></label><span class="required-star">*</span>
+                <label class="question" for="mun-experience">Please outline your <strong>previous MUN experience</strong></label><span class="required-star">*</span>
                 <p class="subheading">We encourage you to outline your relevant experience in the following format:</p>
-                <p>Conference (edition), Committee, Country represented, Award (if applicable).</p>
-                <p>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</p>
-                <p>There is no character limit for this section. We do, however, encourage a certain degree of brevity.</p>
+                <p class="question-description">Conference (edition), Committee, Country represented, Award (if applicable).</p>
+                <p class="question-description">e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</p>
+                <p class="question-description">There is no character limit for this section. We do, however, encourage a certain degree of brevity.</p>
                 <textarea id="mun-experience" name="mun-experience" required></textarea>
             </div>
             <div class="card">
-                <label for="transformative-experience">Detail why you feel being a delegate at FDR would be a <strong>transformative experience</strong> (maximum 700 characters)</label><span class="required-star">*</span>
+                <label class="question" for="transformative-experience">Detail why you feel being a delegate at FDR would be a <strong>transformative experience</strong> (maximum 700 characters)</label><span class="required-star">*</span>
                 <textarea id="transformative-experience" name="transformative-experience" maxlength="700" required oninput="updateCharCount('transformative-experience', 'char-count-1')"></textarea>
                 <div class="char-count" id="char-count-1">0/700</div>
             </div>
             <div class="card">
-                <label for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
+                <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
                 <p class="subheading">For the following questions, it may be helpful to consult the following:</p>
                 <ul>
                     <li><a href="country-matrices-link">Country matrices</a></li>
@@ -981,21 +1009,21 @@
                 <input type="text" id="first-choice" name="first-choice" required>
             </div>
             <div class="card">
-                <label for="second-choice">What is your <strong>second country and committee choice</strong></label><span class="required-star">*</span>
+                <label class="question" for="second-choice">What is your <strong>second country and committee choice</strong></label><span class="required-star">*</span>
                 <input type="text" id="second-choice" name="second-choice" required>
             </div>
             <div class="card">
-                <label for="third-choice">What is your <strong>third country and committee choice</strong></label><span class="required-star">*</span>
+                <label class="question" for="third-choice">What is your <strong>third country and committee choice</strong></label><span class="required-star">*</span>
                 <input type="text" id="third-choice" name="third-choice" required>
             </div>
             <div class="card">
-                <label for="choice-explanation">Please explain why your <strong>country and committee choices</strong> speak to you (maximum 1500 characters)</label><span class="required-star">*</span>
+                <label class="question" for="choice-explanation">Please explain why your <strong>country and committee choices</strong> speak to you (maximum 1500 characters)</label><span class="required-star">*</span>
                 <textarea id="choice-explanation" name="choice-explanation" maxlength="1500" required oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
                 <div class="char-count" id="char-count-2">0/1500</div>
             </div>
             <div class="card">
-                <label for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
-                <p>This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</p>
+                <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
+                <p class="question-description">This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</p>
                 <textarea id="favorite-period" name="favorite-period" required></textarea>
             </div>
             <div class="navigation-buttons">
@@ -1018,7 +1046,7 @@
                 </ul>
             </div>
             <div class="card">
-                <label for="accuracy-certification">I certify that the <strong>information I have provided is accurate</strong></label><span class="required-star">*</span>
+                <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -1026,7 +1054,7 @@
                 </div>
             </div>
             <div class="card">
-                <label for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent</label><span class="required-star">*</span>
+                <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -1034,7 +1062,7 @@
                 </div>
             </div>
             <div class="card">
-                <label for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned</label><span class="required-star">*</span>
+                <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -1042,7 +1070,7 @@
                 </div>
             </div>
             <div class="card">
-                <label for="age-certification">I am <strong>not of or under the age of 12</strong></label><span class="required-star">*</span>
+                <label class="question" for="age-certification">I am <strong>not of or under the age of 12</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="age-certification" name="age-certification" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -1050,7 +1078,7 @@
                 </div>
             </div>
             <div class="card">
-                <label for="training-modules">I would like to <strong>sign up for online Training Modules</strong></label><span class="required-star">*</span>
+                <label class="question" for="training-modules">I would like to <strong>sign up for online Training Modules</strong></label><span class="required-star">*</span>
                 <p class="subheading">Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</p>
                 <div class="radio-container">
                     <div class="radio-button">
@@ -1066,11 +1094,11 @@
                 </div>
             </div>
             <div class="card">
-                <label for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it here</label>
+                <label class="question" for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it here</label>
                 <input type="text" id="referral-code" name="referral-code" placeholder="Code starting with FDRxx...">
             </div>
             <div class="card">
-                <label for="additional-info">Is there anything else that you'd like us to know</label>
+                <label class="question" for="additional-info">Is there anything else that you'd like us to know</label>
                 <textarea id="additional-info" name="additional-info"></textarea>
             </div>
             <div class="navigation-buttons">
