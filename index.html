@@ -5,371 +5,370 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FDRMUN Delegate and Delegation Registration Form</title>
     <style>
-    @font-face {
-        font-family: 'TestSöhne-Buch';
-        src: url('fonts/TestSöhne-Buch.otf') format('opentype');
-    }
-
-    @font-face {
-        font-family: 'TestSöhne-BuchKursiv';
-        src: url('fonts/TestSöhne-BuchKursiv.otf') format('opentype');
-    }
-
-    @font-face {
-        font-family: 'TestSöhne-Kräftig';
-        src: url('fonts/TestSöhne-Kräftig.otf') format('opentype');
-    }
-
-    @font-face {
-        font-family: 'TestSöhneBreit-Buch';
-        src: url('fonts/TestSöhneBreit-Buch.otf') format('opentype');
-    }
-
-    body {
-        font-family: 'TestSöhne-Buch', Arial, sans-serif;
-        color: #34495e;
-        background-color: #fcfcfc;
-        margin: 20px;
-    }
-
-    h2 {
-        font-family: 'TestSöhneBreit-Buch';
-        color: #004080;
-        font-size: 2em;
-        margin-bottom: 30px;
-        padding-left: 10px;
-    }
-
-    .question {
-        font-family: 'TestSöhne-Kräftig';
-        color: #004080;
-        font-size: 1.5em;
-        margin-bottom: 20px;
-    }
-
-    .subheading, .question-description {
-        font-family: 'TestSöhne-BuchKursiv';
-        font-size: 1em;
-        margin-bottom: 15px;
-    }
-
-    label, input, select, textarea, button {
-        font-family: 'TestSöhne-Buch', Arial, sans-serif;
-    }
-
-    form {
-        max-width: 800px;
-        margin: auto;
-        position: relative;
-        padding: 10px;
-    }
-
-    label {
-        font-weight: normal;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    label strong {
-        font-weight: bold;
-    }
-
-    input, select, textarea {
-        display: block;
-        margin: 15px 0;
-        width: 100%;
-        color: #004080;
-        padding: 12px;
-        box-sizing: border-box;
-        border-radius: 10px;
-        border: 1px solid lightgrey;
-        outline: none;
-        transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    input:hover, select:hover, textarea:hover {
-        border: 1px solid lightgrey;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    }
-
-    input:focus, select:focus, textarea:focus {
-        border: 1px solid grey;
-    }
-
-    button {
-        padding: 10px 20px;
-        background-color: #004080;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        border-radius: 20px;
-        margin-top: 10px;
-        transition: all 0.2s ease;
-        font-size: 1em;
-    }
-
-    button:hover {
-        transform: scale(0.95);
-    }
-
-    button:focus {
-        outline: none;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    .image-section {
-        text-align: center;
-        margin: 20px 0;
-    }
-
-    .image-section img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .separator {
-        height: 1px;
-        background: #f5f5f5;
-        margin: 20px 0;
-    }
-
-    .char-count {
-        font-size: 0.9em;
-        color: #888;
-    }
-
-    .checkbox-container {
-        display: flex;
-        align-items: center;
-        margin: 12px 0;
-        cursor: pointer;
-        font-size: 16px;
-        user-select: none;
-        position: relative;
-        padding-left: 35px;
-    }
-
-    .checkbox-container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-
-    .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 20px;
-        width: 20px;
-        background-color: #eee;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-    }
-
-    .checkbox-container input:checked ~ .checkmark {
-        background-color: #004080;
-    }
-
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-        left: 7px;
-        top: 2.4px;
-        width: 3px;
-        height: 3px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        transform: rotate(45deg);
-    }
-
-    .checkbox-container input:checked ~ .checkmark:after {
-        display: block;
-        animation: checkAnim 0.2s forwards;
-    }
-
-    @keyframes checkAnim {
-        0% {
-            height: 0;
+        @font-face {
+            font-family: 'TestSöhne-Buch';
+            src: url('fonts/TestSöhne-Buch.otf') format('opentype');
         }
-        100% {
-            height: 10px;
+
+        @font-face {
+            font-family: 'TestSöhne-BuchKursiv';
+            src: url('fonts/TestSöhne-BuchKursiv.otf') format('opentype');
         }
-    }
 
-    .radio-container {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .radio-button {
-        display: flex;
-        align-items: center;
-        margin: 7px 0;
-        cursor: pointer;
-        position: relative;
-        padding-left: 40px; /* Increased padding to create space */
-    }
-
-    .radio-button input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-    .radio {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        height: 20px; /* Shrunk the circle size */
-        width: 20px; /* Shrunk the circle size */
-        border-radius: 50%;
-        background-color: #fff;
-        border: 2px solid #ccc;
-        transition: all 0.3s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .radio:before {
-        content: '';
-        width: 12px; /* Size of the inner circle */
-        height: 12px; /* Size of the inner circle */
-        border-radius: 50%;
-        background-color: #004080; /* Lighter circle color */
-        transform: scale(0); /* Start with the circle scaled down */
-        transition: all 0.3s ease-in-out;
-    }
-
-    .radio-button input[type="radio"]:checked + .radio {
-        border-color: #004080;
-    }
-
-    .radio-button input[type="radio"]:checked + .radio:before {
-        transform: scale(1); /* Scale up the inner circle */
-    }
-
-    .radio-button span {
-        margin-left: 10px;
-        text-align: center;
-    }
-
-    .error {
-        color: red;
-        font-size: 0.9em;
-        margin-top: 5px;
-    }
-
-    .error-message {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 0.9em;
-        color: red;
-        padding: 10px 0;
-    }
-
-    .error-icon {
-        font-size: 1.2em;
-    }
-
-    .card {
-        width: 100%;
-        height: auto;
-        background: white;
-        border-radius: 17px;
-        border: 1px solid #f5f5f5;
-        box-shadow: 7px 7px 7px rgba(206, 206, 206, 0.3), -5px -5px -5px rgba(242, 242, 242, 0.3);
-        padding: 15px;
-        margin-bottom: 10px;
-        position: relative;
-        z-index: 0;
-    }
-
-    textarea {
-        resize: none;
-    }
-
-    footer {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 0.9em;
-        color: #888;
-    }
-
-    hr {
-        border: 1px solid #f5f5f5;
-        margin: 20px 0;
-    }
-
-    .required-star {
-        color: #d9534f;
-        font-size: 1.2em;
-        position: absolute;
-        top: 13px;
-        right: 13px;
-    }
-
-    .navigation-buttons {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .yes-no-container {
-        display: flex;
-        justify-content: flex-start;
-        gap: 20px;
-    }
-
-    .card:first-child {
-        margin-top: 0;
-    }
-
-    .fade-in {
-        animation: flyUp 0.5s ease;
-    }
-
-    @keyframes flyUp {
-        from {
-            transform: translateY(50px);
-            opacity: 0;
+        @font-face {
+            font-family: 'TestSöhne-Kräftig';
+            src: url('fonts/TestSöhne-Kräftig.otf') format('opentype');
         }
-        to {
-            transform: translateY(0);
-            opacity: 1;
+
+        @font-face {
+            font-family: 'TestSöhneBreit-Buch';
+            src: url('fonts/TestSöhneBreit-Buch.otf') format('opentype');
         }
-    }
 
-    .warning {
-        color: red;
-        font-size: 0.9em;
-        margin-top: 10px;
-    }
-
-    @media (max-width: 600px) {
         body {
-            margin: 10px;
+            font-family: 'TestSöhne-Buch', Arial, sans-serif;
+            color: #34495e;
+            background-color: #fcfcfc;
+            margin: 20px;
         }
+
+        h2 {
+            font-family: 'TestSöhneBreit-Buch';
+            color: #004080;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-left: 10px;
+        }
+
+        .question {
+            font-family: 'TestSöhne-Kräftig';
+            color: #004080;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .subheading, .question-description {
+            font-family: 'TestSöhne-BuchKursiv';
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        label, input, select, textarea, button {
+            font-family: 'TestSöhne-Buch', Arial, sans-serif;
+        }
+
         form {
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+            padding: 10px;
+        }
+
+        label {
+            font-weight: normal;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        label strong {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            display: block;
+            margin: 15px 0;
             width: 100%;
-            margin: 0;
+            color: #004080;
+            padding: 12px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1px solid lightgrey;
+            outline: none;
+            transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .card {
-            padding: 15px;
+
+        input:hover, select:hover, textarea:hover {
+            border: 1px solid lightgrey;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
         }
+
+        input:focus, select:focus, textarea:focus {
+            border: 1px solid grey;
+        }
+
         button {
-            padding: 8px 16px;
+            padding: 10px 20px;
+            background-color: #004080;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 10px;
+            transition: all 0.2s ease;
+            font-size: 1em;
         }
-    }
-</style>
-    <link rel="stylesheet" href="styles.css">
+
+        button:hover {
+            transform: scale(0.95);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .separator {
+            height: 1px;
+            background: #f5f5f5;
+            margin: 20px 0;
+        }
+
+        .char-count {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            cursor: pointer;
+            font-size: 16px;
+            user-select: none;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: #004080;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 7px;
+            top: 2.4px;
+            width: 3px;
+            height: 3px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+            animation: checkAnim 0.2s forwards;
+        }
+
+        @keyframes checkAnim {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 10px;
+            }
+        }
+
+        .radio-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .radio-button {
+            display: flex;
+            align-items: center;
+            margin: 7px 0;
+            cursor: pointer;
+            position: relative;
+            padding-left: 40px; /* Increased padding to create space */
+        }
+
+        .radio-button input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 20px; /* Shrunk the circle size */
+            width: 20px; /* Shrunk the circle size */
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radio:before {
+            content: '';
+            width: 12px; /* Size of the inner circle */
+            height: 12px; /* Size of the inner circle */
+            border-radius: 50%;
+            background-color: #004080; /* Lighter circle color */
+            transform: scale(0); /* Start with the circle scaled down */
+            transition: all 0.3s ease-in-out;
+        }
+
+        .radio-button input[type="radio"]:checked + .radio {
+            border-color: #004080;
+        }
+
+        .radio-button input[type="radio"]:checked + .radio:before {
+            transform: scale(1); /* Scale up the inner circle */
+        }
+
+        .radio-button span {
+            margin-left: 10px;
+            text-align: center;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+            color: red;
+            padding: 10px 0;
+        }
+
+        .error-icon {
+            font-size: 1.2em;
+        }
+
+        .card {
+            width: 100%;
+            height: auto;
+            background: white;
+            border-radius: 17px;
+            border: 1px solid #f5f5f5;
+            box-shadow: 7px 7px 7px rgba(206, 206, 206, 0.3), -5px -5px -5px rgba(242, 242, 242, 0.3);
+            padding: 15px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 0;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        hr {
+            border: 1px solid #f5f5f5;
+            margin: 20px 0;
+        }
+
+        .required-star {
+            color: #d9534f;
+            font-size: 1.2em;
+            position: absolute;
+            top: 13px;
+            right: 13px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .yes-no-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        .card:first-child {
+            margin-top: 0;
+        }
+
+        .fade-in {
+            animation: flyUp 0.5s ease;
+        }
+
+        @keyframes flyUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .warning {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+            form {
+                width: 100%;
+                margin: 0;
+            }
+            .card {
+                padding: 15px;
+            }
+            button {
+                padding: 8px 16px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="image-section">
