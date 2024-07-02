@@ -7,373 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@325;612&family=Syne:wght@604&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Figtree', sans-serif;
-            font-weight: 325;
-            letter-spacing: -0.031em;
-            line-height: 1.34;
-            font-size: 1em;
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            font-family: 'Syne', sans-serif;
-            font-weight: 604;
-            color: #004080;
-            letter-spacing: -0.05em;
-            font-size: 2em;
-            margin-bottom: 30px;
-            
-        }
-
-        .question {
-            font-family: 'Figtree', sans-serif;
-            font-weight: 612;
-            letter-spacing: -0.02em;
-            line-height: 1.02;
-            color: #004080;
-            font-size: 1.15em;
-            margin-bottom: 20px;
-        }
-
-        .subheading, .question-description {
-            font-family: 'Figtree', sans-serif;
-            font-weight: 325;
-            letter-spacing: -0.031em;
-            line-height: 1.01;
-            font-size: 1em;
-            margin-bottom: 15px;
-            color: #949494;
-        }
-
-        label, input, select, textarea, button {
-            font-family: 'Figtree', sans-serif;
-            font-weight: 325;
-            letter-spacing: -0.02em;
-            line-height: 1.01;
-        }
-
-        form {
-            max-width: 800px;
-            margin: auto;
-            position: relative;
-            padding: 10px;
-        }
-
-        label {
-            font-weight: normal;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        label strong {
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            display: block;
-            margin: 15px 0;
-            width: 100%;
-            color: #004080;
-            padding: 12px;
-            box-sizing: border-box;
-            border-radius: 10px;
-            border: 1px solid lightgrey;
-            outline: none;
-            transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        input:hover, select:hover, textarea:hover {
-            border: 1px solid lightgrey;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border: 1px solid grey;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #004080;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            border-radius: 20px;
-            margin-top: 10px;
-            transition: all 0.2s ease;
-            font-size: 1em;
-        }
-
-        button:hover {
-            transform: scale(0.95);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-        }
-
-        button:focus {
-            outline: none;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .image-section {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .image-section img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .separator {
-            height: 1px;
-            background: #f5f5f5;
-            margin: 20px 0;
-        }
-
-        .char-count {
-            font-size: 0.9em;
-            color: #888;
-        }
-
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin: 12px 0;
-            cursor: pointer;
-            font-size: 16px;
-            user-select: none;
-            position: relative;
-            padding-left: 35px;
-        }
-
-        .checkbox-container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px;
-            width: 20px;
-            background-color: #eee;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .checkbox-container input:checked ~ .checkmark {
-            background-color: #004080;
-        }
-
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-            left: 7px;
-            top: 2.4px;
-            width: 3px;
-            height: 3px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-        }
-
-        .checkbox-container input:checked ~ .checkmark:after {
-            display: block;
-            animation: checkAnim 0.2s forwards;
-        }
-
-        @keyframes checkAnim {
-            0% {
-                height: 0;
-            }
-            100% {
-                height: 10px;
-            }
-        }
-
-        .radio-container {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .radio-button {
-            display: flex;
-            align-items: center;
-            margin: 7px 0;
-            cursor: pointer;
-            position: relative;
-            padding-left: 40px; /* Increased padding to create space */
-        }
-
-        .radio-button input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .radio {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            height: 20px; /* Shrunk the circle size */
-            width: 20px; /* Shrunk the circle size */
-            border-radius: 50%;
-            background-color: #fff;
-            border: 2px solid #ccc;
-            transition: all 0.3s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .radio:before {
-            content: '';
-            width: 12px; /* Size of the inner circle */
-            height: 12px; /* Size of the inner circle */
-            border-radius: 50%;
-            background-color: #004080; /* Lighter circle color */
-            transform: scale(0); /* Start with the circle scaled down */
-            transition: all 0.3s ease-in-out;
-        }
-
-        .radio-button input[type="radio"]:checked + .radio {
-            border-color: #004080;
-        }
-
-        .radio-button input[type="radio"]:checked + .radio:before {
-            transform: scale(1); /* Scale up the inner circle */
-        }
-
-        .radio-button span {
-            margin-left: 10px;
-            text-align: center;
-        }
-
-        .error {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        .error-message {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.9em;
-            color: red;
-            padding: 10px 0;
-        }
-
-        .error-icon {
-            font-size: 1.2em;
-        }
-
-        .card {
-            width: 100%;
-            height: auto;
-            background: white;
-            border-radius: 17px;
-            border: 1.5px solid #f5f5f5;
-            box-shadow: -1px 0px 37px 0px rgba(206,206,206,0.17);
-            padding: 20px;
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 0;
-        }
-
-        textarea {
-            resize: none;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.9em;
-            color: #888;
-        }
-
-        hr {
-            border: 1px solid #f5f5f5;
-            margin: 20px 0;
-        }
-
-        .required-star {
-            color: #d9534f;
-            font-size: 1.2em;
-            position: absolute;
-            top: 13px;
-            right: 13px;
-        }
-
-        .navigation-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .yes-no-container {
-            display: flex;
-            justify-content: flex-start;
-            gap: 20px;
-        }
-
-        .card:first-child {
-            margin-top: 0;
-        }
-
-        .fade-in {
-            animation: flyUp 0.5s ease;
-        }
-
-        @keyframes flyUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .warning {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                margin: 10px;
-            }
-            form {
-                width: 100%;
-                margin: 0;
-            }
-            .card {
-                padding: 15px;
-            }
-            button {
-                padding: 8px 16px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="image-section">
         <img src="https://i.ibb.co/vw87Lbd/logo-variation-dept-recdgsvs.png" alt="FDRMUN Logo" style="width: 350px; height: auto;">
     </div>
     <div class="separator"></div>
-    <form id="registration-form" onsubmit="handleSubmit(event)">
+    <form id="registration-form">
         <section id="welcome" class="fade-in">
             <div class="card">
                 <h2>Portico Dialogue for the Registration of Delegates and Delegations</h2>
@@ -387,7 +28,7 @@
                     <li><a href="privacy-link">Privacy</a></li>
                 </ul>
                 <p>Before accessing external resources, please make sure that you are completing this form on a browser that supports opening links in different tabs. If you close this tab, you risk losing your progress. In order to save your progress, we recommend completing this form on a word processor such as Google Docs, and then pasting responses in.</p>
-                <button type="button" onclick="showNextSection('personal-data')">Let's Go →</button>
+                <button type="button" onclick="showSection('personal-data')">Let's Go →</button>
             </div>
         </section>
 
@@ -395,7 +36,7 @@
             <h2>Personal Data, Residency and Contact Information</h2>
             <div class="card">
                 <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
-                <select id="title" name="title" required>
+                <select id="title" name="title" required aria-required="true">
                     <option value="">Select an option</option>
                     <option value="mrs">Mrs.</option>
                     <option value="ms">Ms.</option>
@@ -409,22 +50,22 @@
             <div class="card">
                 <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="they-them" name="pronouns" value="they/them" required class="custom-checkbox">
+                    <input type="checkbox" id="they-them" name="pronouns" value="they/them" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="they-them">they/them/theirs</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="he-him" name="pronouns" value="he/him" required class="custom-checkbox">
+                    <input type="checkbox" id="he-him" name="pronouns" value="he/him" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="he-him">he/him/his</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="she-her" name="pronouns" value="she/her" required class="custom-checkbox">
+                    <input type="checkbox" id="she-her" name="pronouns" value="she/her" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="she-her">she/her/hers</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="other-pronouns" name="pronouns" value="other" required class="custom-checkbox">
+                    <input type="checkbox" id="other-pronouns" name="pronouns" value="other" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="other-pronouns">Other</label>
                 </div>
@@ -432,12 +73,12 @@
             <div class="card">
                 <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
-                <input type="text" id="first-name" name="first-name" required>
+                <input type="text" id="first-name" name="first-name" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="last-name">Your <strong>last name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Winston Leonard Churchill's last name would be "Churchill." Please include all applicable diacritics and accents.</em></p>
-                <input type="text" id="last-name" name="last-name" required>
+                <input type="text" id="last-name" name="last-name" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below.</label>
@@ -446,31 +87,31 @@
             </div>
             <div class="card">
                 <label class="question" for="dob">Your <strong>date of birth.</strong></label><span class="required-star">*</span>
-                <input type="date" id="dob" name="dob" required>
+                <input type="date" id="dob" name="dob" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="institution">The <strong>educational institution</strong> (school or university) you are affiliated with.</label><span class="required-star">*</span>
-                <input type="text" id="institution" name="institution" required>
+                <input type="text" id="institution" name="institution" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="phone">Your <strong>telephone number.</strong></label>
                 <span class="required-star">*</span>
                 <p class="question-description"><em>If <u>not</u> located in Romania, please include a country code (beginning with +).</em></p>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="email">Your <strong>e-mail address.</strong></label><span class="required-star">*</span>
                 <p class="question-description"><em>Please make sure that spelling is accurate.</em></p>
-                <input type="email" id="email" name="email" required oninput="validateEmail()">
+                <input type="email" id="email" name="email" required aria-required="true" oninput="validateEmail()">
                 <div class="error" id="email-error"></div>
             </div>
             <div class="card">
                 <label class="question" for="residence">Your <strong>city, state, province or region</strong> of residence.</label><span class="required-star">*</span>
-                <input type="text" id="residence" name="residence" required>
+                <input type="text" id="residence" name="residence" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="country">Your <strong>country of residence.</strong></label><span class="required-star">*</span>
-                <select id="country" name="country" required>
+                <select id="country" name="country" required aria-required="true">
                     <option value="">Select a country</option>
                 <option value="Romania">Romania</option>
                 <option value="Albania">Albania</option>
@@ -682,7 +323,7 @@
             </div>
             <div class="card">
                 <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
-                <select id="diet" name="diet" required>
+                <select id="diet" name="diet" required aria-required="true">
                     <option value="none">None</option>
                     <option value="vegetarian">Vegetarian</option>
                     <option value="vegan">Vegan</option>
@@ -693,73 +334,22 @@
                 </select>
             </div>
             <div class="card">
-                <label class="question">How did you <strong>find out</strong> about us?</label
-                ><p class="question-description"><em>Check all that may apply.</em></p>
-                <span class="required-star">*</span>
+                <label class="question">How did you <strong>find out</strong> about us?</label><p class="question-description"><em>Check all that may apply.</em></p><span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox">
+                    <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="google">Google/FDRMUN website</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="instagram" name="how-find" value="instagram" required class="custom-checkbox">
+                    <input type="checkbox" id="instagram" name="how-find" value="instagram" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="instagram">FDRMUN Instagram</label>
                 </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="email-find" name="how-find" value="email" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="email-find">FDRMUN E-mail</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="social-media" name="how-find" value="social-media" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="social-media">Other FDRMUN social network(s)</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="school" name="how-find" value="school" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="school">International School of Bucharest</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="mun-sources" name="how-find" value="mun-sources" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="mun-sources">MUN-related sources (such as myMUN or mun.news.ro)</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="friend" name="how-find" value="friend" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="friend">Friend or family member</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="brochure" name="how-find" value="brochure" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="brochure">Brochure, poster or flyer</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="television" name="how-find" value="television" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="television">Television</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="media" name="how-find" value="media" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="media">Media outlet or article</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="consulting" name="how-find" value="consulting" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="consulting">Consulting services</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="other-find" name="how-find" value="other" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="other-find">Other</label>
-                </div>
+                <!-- Add other options as needed -->
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('welcome')">← Previous</button>
-                <button type="button" onclick="showNextSection('student-group-delegation')">Next →</button>
+                <button type="button" onclick="showSection('welcome')">← Previous</button>
+                <button type="button" onclick="showSection('student-group-delegation')">Next →</button>
             </div>
             <div id="personal-data-warning" class="warning hidden">Please select an option.</div>
         </section>
@@ -770,19 +360,19 @@
                 <label class="question" for="student-group">Are you a <strong>student</strong> applying with a group/delegation?</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
-                        <input type="radio" id="student-group-yes" name="student-group" value="yes" required>
+                        <input type="radio" id="student-group-yes" name="student-group" value="yes" required aria-required="true">
                         <span class="radio"></span>
                         <label for="student-group-yes">Yes</label>
                     </div>
                     <div class="radio-button">
-                        <input type="radio" id="student-group-no" name="student-group" value="no" required>
+                        <input type="radio" id="student-group-no" name="student-group" value="no" required aria-required="true">
                         <span class="radio"></span>
                         <label for="student-group-no">No</label>
                     </div>
                 </div>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('personal-data')">← Previous</button>
+                <button type="button" onclick="showSection('personal-data')">← Previous</button>
                 <button type="button" onclick="handleStudentGroupNext()">Next →</button>
             </div>
             <div id="student-group-warning" class="warning hidden">Please select an option.</div>
@@ -794,19 +384,19 @@
                 <label class="question" for="school-rep">Are you a <strong>chaperone, school representative or guardian</strong> applying with a group/delegation?</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
-                        <input type="radio" id="school-rep-yes" name="school-rep" value="yes" required>
+                        <input type="radio" id="school-rep-yes" name="school-rep" value="yes" required aria-required="true">
                         <span class="radio"></span>
                         <label for="school-rep-yes">Yes</label>
                     </div>
                     <div class="radio-button">
-                        <input type="radio" id="school-rep-no" name="school-rep" value="no" required>
+                        <input type="radio" id="school-rep-no" name="school-rep" value="no" required aria-required="true">
                         <span class="radio"></span>
                         <label for="school-rep-no">No</label>
                     </div>
                 </div>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('student-group-delegation')">← Previous</button>
+                <button type="button" onclick="showSection('student-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleSchoolRepNext()">Next →</button>
             </div>
             <div id="school-rep-warning" class="warning hidden">Please select an option.</div>
@@ -818,19 +408,19 @@
                 <label class="question" for="special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your odds of admission.</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
-                        <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes" required>
+                        <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes" required aria-required="true">
                         <span class="radio"></span>
                         <label for="special-arrangements-yes">Yes</label>
                     </div>
                     <div class="radio-button">
-                        <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no" required>
+                        <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no" required aria-required="true">
                         <span class="radio"></span>
                         <label for="special-arrangements-no">No</label>
                     </div>
                 </div>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('school-group-delegation')">← Previous</button>
+                <button type="button" onclick="showSection('school-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleSpecialArrangementsNext()">Next →</button>
             </div>
             <div id="special-arrangements-warning" class="warning hidden">Please select an option.</div>
@@ -848,37 +438,37 @@
             </div>
             <div class="card">
                 <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself.</label><span class="required-star">*</span>
-                <input type="number" id="delegation-number" name="delegation-number" min="1" max="10" required>
+                <input type="number" id="delegation-number" name="delegation-number" min="1" max="10" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
-                <input type="text" id="delegation-name" name="delegation-name" required>
+                <input type="text" id="delegation-name" name="delegation-name" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees.</label><span class="required-star">*</span>
-                <textarea id="delegation-experience" name="delegation-experience" required></textarea>
+                <textarea id="delegation-experience" name="delegation-experience" required aria-required="true"></textarea>
             </div>
             <div class="card">
-                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
-                <textarea id="logistical-requests" name="logistical-requests" required></textarea>
+                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong>? This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
+                <textarea id="logistical-requests" name="logistical-requests" required aria-required="true"></textarea>
             </div>
             <div class="card">
                 <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
-                        <input type="radio" id="other-info-yes" name="other-info" value="yes" required>
+                        <input type="radio" id="other-info-yes" name="other-info" value="yes" required aria-required="true">
                         <span class="radio"></span>
                         <label for="other-info-yes">Yes</label>
                     </div>
                     <div class="radio-button">
-                        <input type="radio" id="other-info-no" name="other-info" value="no" required>
+                        <input type="radio" id="other-info-no" name="other-info" value="no" required aria-required="true">
                         <span class="radio"></span>
                         <label for="other-info-no">No</label>
                     </div>
                 </div>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('school-group-delegation')">← Previous</button>
+                <button type="button" onclick="showSection('school-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleOtherInfoNext()">Next →</button>
             </div>
             <div id="other-info-warning" class="warning hidden">Please select an option.</div>
@@ -887,7 +477,7 @@
         <section id="student-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Students and Team-members</h2>
             <div class="card">
-                <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself</em></p>
+                <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself.</em></p>
                 <p class="question-description"><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation.</em></p>
                 <p class="question-description"><em>For further guidance, consult the following:</em></p>
                 <ul>
@@ -897,29 +487,29 @@
             </div>
             <div class="card">
                 <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable.</label><span class="required-star">*</span>
-                <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="10" required>
+                <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="10" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
-                <input type="text" id="student-delegation-name" name="student-delegation-name" required>
+                <input type="text" id="student-delegation-name" name="student-delegation-name" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are NOT visible to your referee.</label><span class="required-star">*</span>
                 <div class="radio-container">
                     <div class="radio-button">
-                        <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes" required>
+                        <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes" required aria-required="true">
                         <span class="radio"></span>
                         <label for="student-special-arrangements-yes">Yes</label>
                     </div>
                     <div class="radio-button">
-                        <input type="radio" id="student-special-arrangements-no" name="student-special-arrangements" value="no" required>
+                        <input type="radio" id="student-special-arrangements-no" name="student-special-arrangements" value="no" required aria-required="true">
                         <span class="radio"></span>
                         <label for="student-special-arrangements-no">No</label>
                     </div>
                 </div>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('student-group-delegation')">← Previous</button>
+                <button type="button" onclick="showSection('student-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleStudentSpecialArrangementsNext()">Next →</button>
             </div>
             <div id="student-special-arrangements-warning" class="warning hidden">Please select an option.</div>
@@ -933,43 +523,43 @@
             <div class="card">
                 <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" required class="custom-checkbox">
+                    <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="transportation-guidance">I need transportation guidance</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" required class="custom-checkbox">
+                    <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="travel-guidance">I need travel guidance</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" required class="custom-checkbox">
+                    <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="accommodation-guidance">I need accommodation guidance</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" required class="custom-checkbox">
+                    <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="visa-invitation">I need a visa invitation</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" required class="custom-checkbox">
+                    <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="financial-aid">I intend to apply for financial aid</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" required class="custom-checkbox">
+                    <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="prayer-room">I need a prayer room</label>
                 </div>
             </div>
             <div class="card">
                 <label class="question" for="additional-circumstances">If any, specify additional, relevant circumstances impacting your attendance at FDR</label><span class="required-star">*</span>
-                <textarea id="additional-circumstances" name="additional-circumstances" required></textarea>
+                <textarea id="additional-circumstances" name="additional-circumstances" required aria-required="true"></textarea>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('special-arrangements')">← Previous</button>
-                <button type="button" onclick="showNextSection('mun-experience')">Next →</button>
+                <button type="button" onclick="showSection('special-arrangements')">← Previous</button>
+                <button type="button" onclick="showSection('mun-experience')">Next →</button>
             </div>
         </section>
 
@@ -991,13 +581,13 @@
                 <p class="question-description"><em>Conference (edition), Committee, Country represented, Award (if applicable).</em></p>
                 <p class="question-description"><em>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</em></p>
                 <p class="question-description">There is no character limit for this section. We do, however, encourage a certain degree of brevity.</p>
-                <textarea id="mun-experience" name="mun-experience" required></textarea>
+                <textarea id="mun-experience" name="mun-experience" required aria-required="true"></textarea>
             </div>
             <div class="card">
-            <label class="question" for="contributions">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
-            <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
-                </label><span class="required-star">*</span>
-                <textarea id="transformative-experience" name="transformative-experience" maxlength="700" required oninput="updateCharCount('transformative-experience', 'char-count-1')"></textarea>
+                <label class="question" for="contributions">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
+                <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
+                <span class="required-star">*</span>
+                <textarea id="transformative-experience" name="transformative-experience" maxlength="700" required aria-required="true" oninput="updateCharCount('transformative-experience', 'char-count-1')"></textarea>
                 <div class="char-count" id="char-count-1">0/700</div>
             </div>
             <div class="card">
@@ -1007,30 +597,30 @@
                     <li><a href="country-matrices-link">Country matrices</a></li>
                     <li><a href="committee-overview-link">Committee overview</a></li>
                 </ul>
-                <input type="text" id="first-choice" name="first-choice" required>
+                <input type="text" id="first-choice" name="first-choice" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="second-choice">What is your <strong>second country and committee choice</strong></label><span class="required-star">*</span>
-                <input type="text" id="second-choice" name="second-choice" required>
+                <input type="text" id="second-choice" name="second-choice" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="third-choice">What is your <strong>third country and committee choice</strong></label><span class="required-star">*</span>
-                <input type="text" id="third-choice" name="third-choice" required>
+                <input type="text" id="third-choice" name="third-choice" required aria-required="true">
             </div>
             <div class="card">
                 <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
-                <textarea id="choice-explanation" name="choice-explanation" maxlength="1250" required oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
+                <textarea id="choice-explanation" name="choice-explanation" maxlength="1250" required aria-required="true" oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
                 <div class="char-count" id="char-count-2">0/1250</div>
             </div>
             <div class="card">
                 <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
                 <p class="question-description"><em>This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</em></p>
-                <textarea id="favorite-period" name="favorite-period" required></textarea>
+                <textarea id="favorite-period" name="favorite-period" required aria-required="true"></textarea>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('special-guidance')">← Previous</button>
-                <button type="button" onclick="showNextSection('terms-conditions')">Next →</button>
+                <button type="button" onclick="showSection('special-guidance')">← Previous</button>
+                <button type="button" onclick="showSection('terms-conditions')">Next →</button>
             </div>
         </section>
 
@@ -1049,7 +639,7 @@
             <div class="card">
                 <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
+                    <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="accuracy-certification"></label>
                 </div>
@@ -1057,7 +647,7 @@
             <div class="card">
                 <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent</label><span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
+                    <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="suspension-agreement"></label>
                 </div>
@@ -1065,7 +655,7 @@
             <div class="card">
                 <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned</label><span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
+                    <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="code-of-conduct-agreement"></label>
                 </div>
@@ -1073,7 +663,7 @@
             <div class="card">
                 <label class="question" for="age-certification">I am <strong>not of or under the age of 12</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="age-certification" name="age-certification" required class="custom-checkbox">
+                    <input type="checkbox" id="age-certification" name="age-certification" required class="custom-checkbox" aria-required="true">
                     <span class="checkmark"></span>
                     <label for="age-certification"></label>
                 </div>
@@ -1083,12 +673,12 @@
                 <p class="subheading"><em>Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</em></p>
                 <div class="radio-container">
                     <div class="radio-button">
-                        <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required>
+                        <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required aria-required="true">
                         <span class="radio"></span>
                         <label for="training-modules-yes">Yes</label>
                     </div>
                     <div class="radio-button">
-                        <input type="radio" id="training-modules-no" name="training-modules" value="no" required>
+                        <input type="radio" id="training-modules-no" name="training-modules" value="no" required aria-required="true">
                         <span class="radio"></span>
                         <label for="training-modules-no">No</label>
                     </div>
@@ -1103,153 +693,19 @@
                 <textarea id="additional-info" name="additional-info"></textarea>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection('mun-experience')">← Previous</button>
+                <button type="button" onclick="showSection('mun-experience')">← Previous</button>
                 <button type="submit">Submit →</button>
             </div>
         </section>
     </form>
     <footer>
         <hr>
-        <p>Version 7.1.0</p>
+        <p>Version 7.1.1</p>
         <p>At FDRMUN, our mission is to inspire and empower high school students from a variety of backgrounds. We achieve this through promoting diplomatic discourse, facilitating cultural exchanges, and fostering personal development</p>
         <a href="https://fdrmun.org" style="color: black;">FDRMUN Website</a>
         <br>
         <a href="mailto:applications@fdrmun.org?subject=Portico applications dialogue PfD issue" style="color: black;">Help</a>
     </footer>
-    <script>
-        function showNextSection(nextSection) {
-            const currentSection = document.querySelector('section:not(.hidden)');
-            const nextSectionElement = document.getElementById(nextSection);
-
-            currentSection.classList.add('hidden');
-            nextSectionElement.classList.remove('hidden');
-            nextSectionElement.classList.add('fade-in');
-            window.scrollTo(0, 0);
-        }
-
-        function showPreviousSection(prevSection) {
-            const currentSection = document.querySelector('section:not(.hidden)');
-            const prevSectionElement = document.getElementById(prevSection);
-
-            currentSection.classList.add('hidden');
-            prevSectionElement.classList.remove('hidden');
-            prevSectionElement.classList.add('fade-in');
-            window.scrollTo(0, 0);
-        }
-
-        function handleStudentGroupNext() {
-            const studentGroup = document.querySelector('input[name="student-group"]:checked');
-            if (studentGroup) {
-                if (studentGroup.value === 'yes') {
-                    showNextSection('student-delegation');
-                } else {
-                    showNextSection('school-group-delegation');
-                }
-            } else {
-                document.getElementById('student-group-warning').classList.remove('hidden');
-            }
-        }
-
-        function handleSchoolRepNext() {
-            const schoolRep = document.querySelector('input[name="school-rep"]:checked');
-            if (schoolRep) {
-                if (schoolRep.value === 'yes') {
-                    showNextSection('chaperone-delegation');
-                } else {
-                    showNextSection('special-arrangements');
-                }
-            } else {
-                document.getElementById('school-rep-warning').classList.remove('hidden');
-            }
-        }
-        function handleSpecialArrangementsNext() {
-            const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-            if (specialArrangements) {
-                if (specialArrangements.value === 'yes') {
-                    showNextSection('special-guidance');
-                } else {
-                    showNextSection('mun-experience');
-                }
-            } else {
-                document.getElementById('special-arrangements-warning').classList.remove('hidden');
-            }
-        }
-        function handleOtherInfoNext() {
-            const otherInfo = document.querySelector('input[name="other-info"]:checked');
-            if (otherInfo) {
-                if (otherInfo.value === 'yes') {
-                    showNextSection('special-guidance');
-                } else {
-                    showNextSection('terms-conditions');
-                }
-            } else {
-                document.getElementById('other-info-warning').classList.remove('hidden');
-            }
-        }
-        function handleStudentSpecialArrangementsNext() {
-            const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-            if (studentSpecialArrangements) {
-                if (studentSpecialArrangements.value === 'yes') {
-                    showNextSection('special-guidance');
-                } else {
-                    showNextSection('mun-experience');
-                }
-            } else {
-                document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
-            }
-        }
-        function validateEmail() {
-            const email = document.getElementById('email').value;
-            const emailError = document.getElementById('email-error');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                emailError.textContent = 'Please enter a valid email address. ⚠️';
-                document.getElementById('email').parentElement.style.border = '1px solid red';
-            } else {
-                emailError.textContent = '';
-                document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
-            }
-        }
-        function updateCharCount(textareaId, charCountId) {
-            const textarea = document.getElementById(textareaId);
-            const charCount = document.getElementById(charCountId);
-            charCount.textContent = `${textarea.value.replace(/\s/g, '').length}/${textarea.maxLength}`;
-        }
-        function handleSubmit(event) {
-            const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
-            let isValid = true;
-
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.parentElement.style.border = '1px solid red';
-                    if (!field.parentElement.querySelector('.error-message')) {
-                        const errorMessage = document.createElement('div');
-                        errorMessage.className = 'error-message';
-                        errorMessage.innerHTML = '<span class="error-icon">⚠️</span> This field is required.';
-                        field.parentElement.appendChild(errorMessage);
-                    }
-                } else {
-                    field.parentElement.style.border = '1px solid lightgrey';
-                    const errorMessage = field.parentElement.querySelector('.error-message');
-                    if (errorMessage) {
-                        errorMessage.remove();
-                    }
-                }
-            });
-
-            if (!isValid) {
-                event.preventDefault();
-            } else {
-                alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
-            }
-        }
-        document.querySelectorAll('textarea').forEach(textarea => {
-            textarea.addEventListener('input', () => {
-                textarea.style.height = 'auto';
-                textarea.style.height = `${textarea.scrollHeight}px`;
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
