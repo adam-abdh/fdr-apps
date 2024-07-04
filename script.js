@@ -1,11 +1,13 @@
 function showNextSection(nextSection) {
     const currentSection = document.querySelector('section:not(.hidden)');
-    const nextSectionElement = document.getElementById(nextSection);
+    if (validateSection(currentSection.id)) {
+        const nextSectionElement = document.getElementById(nextSection);
 
-    currentSection.classList.add('hidden');
-    nextSectionElement.classList.remove('hidden');
-    nextSectionElement.classList.add('fade-in');
-    window.scrollTo(0, 0);
+        currentSection.classList.add('hidden');
+        nextSectionElement.classList.remove('hidden');
+        nextSectionElement.classList.add('fade-in');
+        window.scrollTo(0, 0);
+    }
 }
 
 function showPreviousSection(prevSection) {
@@ -27,7 +29,7 @@ function handleStudentGroupNext() {
             showNextSection('school-group-delegation');
         }
     } else {
-        showNextSection('school-group-delegation');
+        showWarning('student-group-warning', 'Please select an option for student group.');
     }
 }
 
@@ -40,7 +42,7 @@ function handleSchoolRepNext() {
             showNextSection('special-arrangements');
         }
     } else {
-        showNextSection('special-arrangements');
+        showWarning('school-rep-warning', 'Please select an option for school representative.');
     }
 }
 
@@ -53,7 +55,7 @@ function handleSpecialArrangementsNext() {
             showNextSection('mun-experience');
         }
     } else {
-        showNextSection('mun-experience');
+        showWarning('special-arrangements-warning', 'Please select an option for special arrangements.');
     }
 }
 
@@ -66,7 +68,7 @@ function handleOtherInfoNext() {
             showNextSection('terms-conditions');
         }
     } else {
-        showNextSection('terms-conditions');
+        showWarning('other-info-warning', 'Please select an option for other information.');
     }
 }
 
@@ -79,7 +81,16 @@ function handleStudentSpecialArrangementsNext() {
             showNextSection('mun-experience');
         }
     } else {
-        showNextSection('mun-experience');
+        showWarning('student-special-arrangements-warning', 'Please select an option for special arrangements.');
+    }
+}
+
+function handlePreviousButton(section) {
+    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+    if (specialArrangements && specialArrangements.value === 'yes') {
+        showPreviousSection('special-guidance');
+    } else {
+        showPreviousSection('special-arrangements');
     }
 }
 
@@ -99,11 +110,22 @@ function validateEmail() {
 function updateCharCount(textareaId, charCountId) {
     const textarea = document.getElementById(textareaId);
     const charCount = document.getElementById(charCountId);
-    charCount.textContent = `${textarea.value.replace(/\s/g, '').length}/${textarea.maxLength}`;
+    const textLength = textarea.value.replace(/\s/g, '').length;
+    charCount.textContent = `${textLength}/${textarea.maxLength}`;
+    if (textLength > textarea.maxLength) {
+        textarea.value = textarea.value.substring(0, textarea.maxLength);
+    }
 }
 
-function validateForm() {
-    const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+function showWarning(warningId, message) {
+    const warningElement = document.getElementById(warningId);
+    warningElement.innerHTML = `<span class="error-icon">⚠️</span> ${message}`;
+    warningElement.classList.remove('hidden');
+}
+
+function validateSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
     let isValid = true;
 
     requiredFields.forEach(field => {
@@ -128,22 +150,23 @@ function validateForm() {
     return isValid;
 }
 
+function validateForm() {
+    const sections = document.querySelectorAll('section');
+    let isValid = true;
+
+    sections.forEach(section => {
+        if (!validateSection(section.id)) {
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
 function handleSubmit(event) {
     event.preventDefault();
 
-    const isValid = validateForm();
-    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-    const studentGroup = document.querySelector('input[name="student-group"]:checked');
-    const schoolRep = document.querySelector('input[name="school-rep"]:checked');
-    const otherInfo = document.querySelector('input[name="other-info"]:checked');
-    const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-
-    if ((!specialArrangements || !studentGroup || !schoolRep || !otherInfo || !studentSpecialArrangements) && !isValid) {
-        alert('Please fill out all required fields.');
-        return;
-    }
-
-    if (isValid) {
+    if (validateForm()) {
         alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
         document.getElementById('registration-form').submit();
     } else {
@@ -155,8 +178,8 @@ document.getElementById('registration-form').addEventListener('submit', handleSu
 
 document.querySelectorAll('textarea').forEach(textarea => {
     textarea.addEventListener('input', () => {
+        updateCharCount(textarea.id, textarea.dataset.charCount);
         textarea.style.height = 'auto';
         textarea.style.height = `${textarea.scrollHeight}px`;
     });
 });
-
