@@ -15,6 +15,9 @@
     </div>
     <div class="separator"></div>
     <form id="registration-form" novalidate>
+        <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
         <section id="welcome" class="fade-in">
             <div class="card">
                 <h2>Portico Dialogue for the Registration of Delegates and Delegations</h2>
@@ -46,7 +49,6 @@
                     <option value="prof">Prof.</option>
                     <option value="other">Other</option>
                 </select>
-                <div id="title-warning" class="warning hidden">⚠️ Please select a title.</div>
             </div>
             <div class="card">
                 <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
@@ -69,20 +71,18 @@
                     <input type="checkbox" id="other-pronouns" name="pronouns" value="other" required class="custom-checkbox">
                     <span class="checkmark"></span>
                     <label for="other-pronouns">Other</label>
+                    <input type="text" id="other-pronouns-input" name="other-pronouns-input" class="hidden">
                 </div>
-                <div id="pronouns-warning" class="warning hidden">⚠️ Please select your preferred pronouns.</div>
             </div>
             <div class="card">
                 <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
                 <input type="text" id="first-name" name="first-name" required>
-                <div id="first-name-warning" class="warning hidden">⚠️ Please enter your first and middle name(s).</div>
             </div>
             <div class="card">
                 <label class="question" for="last-name">Your <strong>last name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Winston Leonard Churchill's last name would be "Churchill." Please include all applicable diacritics and accents.</em></p>
                 <input type="text" id="last-name" name="last-name" required>
-                <div id="last-name-warning" class="warning hidden">⚠️ Please enter your last name(s).</div>
             </div>
             <div class="card">
                 <label class="question" for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below.</label>
@@ -92,31 +92,26 @@
             <div class="card">
                 <label class="question" for="dob">Your <strong>date of birth.</strong></label><span class="required-star">*</span>
                 <input type="date" id="dob" name="dob" required>
-                <div id="dob-warning" class="warning hidden">⚠️ Please enter your date of birth.</div>
             </div>
             <div class="card">
                 <label class="question" for="institution">The <strong>educational institution</strong> (school or university) you are affiliated with.</label><span class="required-star">*</span>
                 <input type="text" id="institution" name="institution" required>
-                <div id="institution-warning" class="warning hidden">⚠️ Please enter your educational institution.</div>
             </div>
             <div class="card">
                 <label class="question" for="phone">Your <strong>telephone number.</strong></label>
                 <span class="required-star">*</span>
                 <p class="question-description"><em>If <u>not</u> located in Romania, please include a country code (beginning with +).</em></p>
                 <input type="tel" id="phone" name="phone" required>
-                <div id="phone-warning" class="warning hidden">⚠️ Please enter your telephone number.</div>
             </div>
             <div class="card">
                 <label class="question" for="email">Your <strong>e-mail address.</strong></label><span class="required-star">*</span>
                 <p class="question-description"><em>Please make sure that spelling is accurate.</em></p>
                 <input type="email" id="email" name="email" required oninput="validateEmail()">
                 <div class="error" id="email-error"></div>
-                <div id="email-warning" class="warning hidden">⚠️ Please enter a valid email address.</div>
             </div>
             <div class="card">
                 <label class="question" for="residence">Your <strong>city, state, province or region</strong> of residence.</label><span class="required-star">*</span>
                 <input type="text" id="residence" name="residence" required>
-                <div id="residence-warning" class="warning hidden">⚠️ Please enter your city, state, province or region of residence.</div>
             </div>
             <div class="card">
                 <label class="question" for="country">Your <strong>country of residence.</strong></label><span class="required-star">*</span>
@@ -328,8 +323,8 @@
                     <option value="Yemen">Yemen</option>
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
-                </select>
-                <div id="country-warning" class="warning hidden">⚠️ Please select your country of residence.</div>
+                    </select>
+                    </select>
             </div>
             <div class="card">
                 <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
@@ -342,7 +337,7 @@
                     <option value="gluten-free">Gluten-free</option>
                     <option value="other">Other...</option>
                 </select>
-                <div id="diet-warning" class="warning hidden">⚠️ Please select your dietary requirements.</div>
+                <input type="text" id="diet-other" name="diet-other" class="hidden">
             </div>
             <div class="card">
                 <label class="question">How did you <strong>find out</strong> about us?</label><p class="question-description"><em>Check all that may apply.</em></p>
@@ -407,12 +402,12 @@
                     <span class="checkmark"></span>
                     <label for="other-find">Other</label>
                 </div>
-                <div id="how-find-warning" class="warning hidden">⚠️ Please select how you found out about us.</div>
             </div>
-            <div class="navigation-buttons">
+                    <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('welcome')">← Previous</button>
                 <button type="button" onclick="showNextSection('student-group-delegation')">Next →</button>
             </div>
+            <div id="personal-data-warning" class="warning hidden">Please select an option.</div>
         </section>
 
         <section id="student-group-delegation" class="hidden fade-in">
@@ -431,12 +426,12 @@
                         <label for="student-group-no">No</label>
                     </div>
                 </div>
-                <div id="student-group-warning" class="warning hidden">⚠️ Please select if you are applying with a group/delegation.</div>
             </div>
             <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('personal-data')">← Previous</button>
                 <button type="button" onclick="handleStudentGroupNext()">Next →</button>
             </div>
+            <div id="student-group-warning" class="warning hidden">⚠️ Please select an option.</div>
         </section>
 
         <section id="school-group-delegation" class="hidden fade-in">
@@ -455,12 +450,12 @@
                         <label for="school-rep-no">No</label>
                     </div>
                 </div>
-                <div id="school-rep-warning" class="warning hidden">⚠️ Please select if you are a chaperone, school representative or guardian applying with a group/delegation.</div>
             </div>
             <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('student-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleSchoolRepNext()">Next →</button>
             </div>
+            <div id="school-rep-warning" class="warning hidden">⚠️ Please select an option.</div>
         </section>
 
         <section id="special-arrangements" class="hidden fade-in">
@@ -479,12 +474,12 @@
                         <label for="special-arrangements-no">No</label>
                     </div>
                 </div>
-                <div id="special-arrangements-warning" class="warning hidden">⚠️ Please select if you require any special arrangements.</div>
             </div>
             <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('school-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleSpecialArrangementsNext()">Next →</button>
             </div>
+            <div id="special-arrangements-warning" class="warning hidden">⚠️ Please select an option.</div>
         </section>
 
         <section id="chaperone-delegation" class="hidden fade-in">
@@ -500,22 +495,18 @@
             <div class="card">
                 <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself.</label><span class="required-star">*</span>
                 <input type="number" id="delegation-number" name="delegation-number" min="1" max="10" required>
-                <div id="delegation-number-warning" class="warning hidden">⚠️ Please specify the expected number of participants in your delegation.</div>
             </div>
             <div class="card">
                 <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
                 <input type="text" id="delegation-name" name="delegation-name" required>
-                <div id="delegation-name-warning" class="warning hidden">⚠️ Please enter the name of your delegation.</div>
             </div>
             <div class="card">
                 <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees.</label><span class="required-star">*</span>
                 <textarea id="delegation-experience" name="delegation-experience" required></textarea>
-                <div id="delegation-experience-warning" class="warning hidden">⚠️ Please enter the experience of the institution/team you're representing.</div>
             </div>
             <div class="card">
                 <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong>? This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
                 <textarea id="logistical-requests" name="logistical-requests" required></textarea>
-                <div id="logistical-requests-warning" class="warning hidden">⚠️ Please enter any specific logistical requests.</div>
             </div>
             <div class="card">
                 <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
@@ -531,12 +522,12 @@
                         <label for="other-info-no">No</label>
                     </div>
                 </div>
-                <div id="other-info-warning" class="warning hidden">⚠️ Please select if there is any other information you need to provide.</div>
             </div>
             <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('school-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleOtherInfoNext()">Next →</button>
             </div>
+            <div id="other-info-warning" class="warning hidden">⚠️ Please select an option.</div>
         </section>
 
         <section id="student-delegation" class="hidden fade-in">
@@ -553,12 +544,10 @@
             <div class="card">
                 <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable.</label><span class="required-star">*</span>
                 <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="10" required>
-                <div id="delegation-students-number-warning" class="warning hidden">⚠️ Please specify the expected number of participants in your delegation.</div>
             </div>
             <div class="card">
                 <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
                 <input type="text" id="student-delegation-name" name="student-delegation-name" required>
-                <div id="student-delegation-name-warning" class="warning hidden">⚠️ Please enter the name of your delegation.</div>
             </div>
             <div class="card">
                 <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are NOT visible to your referee.</label><span class="required-star">*</span>
@@ -574,12 +563,12 @@
                         <label for="student-special-arrangements-no">No</label>
                     </div>
                 </div>
-                <div id="student-special-arrangements-warning" class="warning hidden">⚠️ Please select if you require any special arrangements.</div>
             </div>
             <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('student-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleStudentSpecialArrangementsNext()">Next →</button>
             </div>
+            <div id="student-special-arrangements-warning" class="warning hidden">⚠️ Please select an option.</div>
         </section>
 
         <section id="special-guidance" class="hidden fade-in">
@@ -619,12 +608,10 @@
                     <span class="checkmark"></span>
                     <label for="prayer-room">I need a prayer room</label>
                 </div>
-                <div id="special-circumstances-warning" class="warning hidden">⚠️ Please select any special circumstances to be considered.</div>
             </div>
             <div class="card">
                 <label class="question" for="additional-circumstances">If any, specify additional, relevant circumstances impacting your attendance at FDR</label><span class="required-star">*</span>
                 <textarea id="additional-circumstances" name="additional-circumstances" required></textarea>
-                <div id="additional-circumstances-warning" class="warning hidden">⚠️ Please specify any additional circumstances.</div>
             </div>
             <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('special-arrangements')">← Previous</button>
@@ -651,7 +638,6 @@
                 <p class="question-description"><em>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</em></p>
                 <p class="question-description">There is no character limit for this section. We do, however, encourage a certain degree of brevity.</p>
                 <textarea id="mun-experience" name="mun-experience" required></textarea>
-                <div id="mun-experience-warning" class="warning hidden">⚠️ Please outline your previous MUN experience.</div>
             </div>
             <div class="card">
                 <label class="question" for="contributions">How do you plan to contribute to FDRMUN as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference as a whole?</label>
@@ -659,7 +645,6 @@
                 <span class="required-star">*</span>
                 <textarea id="contributions" name="contributions" maxlength="700" required oninput="updateCharCount('contributions', 'char-count-1')"></textarea>
                 <div class="char-count" id="char-count-1">0/700</div>
-                <div id="contributions-warning" class="warning hidden">⚠️ Please enter your contributions.</div>
             </div>
             <div class="card">
                 <label class="question" for="first-choice">What is your <strong>first country and committee choice?</strong></label><span class="required-star">*</span>
@@ -669,36 +654,32 @@
                     <li><a href="committee-overview-link">Committee overview</a></li>
                 </ul>
                 <input type="text" id="first-choice" name="first-choice" required>
-                <div id="first-choice-warning" class="warning hidden">⚠️ Please enter your first country and committee choice.</div>
             </div>
             <div class="card">
                 <label class="question" for="second-choice">What is your <strong>second country and committee choice?</strong></label><span class="required-star">*</span>
                 <input type="text" id="second-choice" name="second-choice" required>
-                <div id="second-choice-warning" class="warning hidden">⚠️ Please enter your second country and committee choice.</div>
             </div>
             <div class="card">
                 <label class="question" for="third-choice">What is your <strong>third country and committee choice?</strong></label><span class="required-star">*</span>
                 <input type="text" id="third-choice" name="third-choice" required>
-                <div id="third-choice-warning" class="warning hidden">⚠️ Please enter your third country and committee choice.</div>
             </div>
             <div class="card">
                 <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
                 <textarea id="choice-explanation" name="choice-explanation" maxlength="1250" required oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
                 <div class="char-count" id="char-count-2">0/1250</div>
-                <div id="choice-explanation-warning" class="warning hidden">⚠️ Please detail why your country and committee choices speak to you.</div>
             </div>
             <div class="card">
                 <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
                 <p class="question-description"><em>This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</em></p>
                 <textarea id="favorite-period" name="favorite-period" required></textarea>
-                <div id="favorite-period-warning" class="warning hidden">⚠️ Please enter your favorite period of time in terms of politics and why.</div>
             </div>
             <div class="navigation-buttons">
                 <button type="button" onclick="handlePreviousButton()">← Previous</button>
                 <button type="button" onclick="showNextSection('terms-conditions')">Next →</button>
             </div>
         </section>
+
         <section id="terms-conditions" class="hidden fade-in">
             <h2>Finishing up; The Ts and Cs of your application</h2>
             <div class="card">
@@ -771,12 +752,11 @@
                 <button type="button" onclick="showPreviousSection('mun-experience')">← Previous</button>
                 <button type="submit">Submit →</button>
             </div>
-            <div id="form-warning" class="warning hidden">⚠️ Please complete all required fields before submitting.</div>
         </section>
     </form>
     <footer>
         <div class="separator"></div>
-        <p><center>Version 7.6.0</center></p>
+        <p><center>Version 7.4.0</center></p>
         <br>
     <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="Portico for Delegates" style="width: 200px; height: auto;">
