@@ -1,126 +1,119 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('registration-form');
-    const sections = form.querySelectorAll('section');
-    const progressBar = document.createElement('div');
-    progressBar.id = 'progress-bar';
-    document.body.insertBefore(progressBar, document.querySelector('footer'));
+    const sections = document.querySelectorAll('section');
+    let currentSection = 0;
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        if (validateForm()) {
-            alert('Form submitted successfully!');
-        }
-    });
-
-    function showSection(index) {
-        sections.forEach((section, i) => {
-            section.classList.toggle('hidden', i !== index);
-        });
-        updateProgressBar(index);
+    function updateProgressBar() {
+        const progressBar = document.getElementById('progress-bar');
+        const progress = ((currentSection + 1) / sections.length) * 100;
+        progressBar.style.width = `${progress}%`;
     }
 
-    function validateForm() {
-        let isValid = true;
-        sections.forEach(section => {
-            if (!validateSection(section)) {
-                isValid = false;
-            }
-        });
-        return isValid;
+    function showSection(index) {
+        sections[currentSection].classList.add('hidden');
+        sections[index].classList.remove('hidden');
+        currentSection = index;
+        updateProgressBar();
+    }
+
+    function showNextSection(nextSectionId) {
+        const currentSectionElement = sections[currentSection];
+        const nextSectionElement = document.getElementById(nextSectionId);
+
+        if (!validateSection(currentSectionElement)) {
+            showWarning(currentSectionElement);
+            return;
+        }
+
+        showSection(Array.from(sections).indexOf(nextSectionElement));
+    }
+
+    function showPreviousSection(previousSectionId) {
+        const previousSectionElement = document.getElementById(previousSectionId);
+        showSection(Array.from(sections).indexOf(previousSectionElement));
     }
 
     function validateSection(section) {
-        let isValid = true;
-        section.querySelectorAll('[required]').forEach(input => {
-            if (!input.value.trim() || (input.type === 'checkbox' && !input.checked)) {
-                isValid = false;
-                showError(input);
-            } else {
-                hideError(input);
+        const requiredFields = section.querySelectorAll('[required]');
+        let valid = true;
+
+        requiredFields.forEach(field => {
+            if (!field.value || (field.type === 'checkbox' && !field.checked) || (field.type === 'radio' && !section.querySelector(`input[name="${field.name}"]:checked`))) {
+                valid = false;
             }
         });
 
-        section.querySelectorAll('.radio-button input[type="radio"]').forEach(input => {
-            const name = input.name;
-            const radios = section.querySelectorAll(`input[name="${name}"]`);
-            const isAnyChecked = Array.from(radios).some(radio => radio.checked);
-            if (!isAnyChecked) {
-                isValid = false;
-                radios.forEach(radio => showError(radio));
-            }
-        });
-
-        return isValid;
+        return valid;
     }
 
-    function showError(input) {
-        const warning = input.closest('.card').querySelector('.warning');
+    function showWarning(section) {
+        section.classList.add('warning');
+        const warning = section.querySelector('.warning');
         if (warning) {
             warning.classList.remove('hidden');
         }
-        const card = input.closest('.card');
-        if (card) {
-            card.classList.add('error');
-        }
     }
 
-    function hideError(input) {
-        const warning = input.closest('.card').querySelector('.warning');
-        if (warning) {
-            warning.classList.add('hidden');
+    document.getElementById('registration-form').addEventListener('submit', function (event) {
+        if (!validateSection(sections[currentSection])) {
+            event.preventDefault();
+            showWarning(sections[currentSection]);
         }
-        const card = input.closest('.card');
-        if (card) {
-            card.classList.remove('error');
-        }
-    }
+    });
 
-    function updateProgressBar(index) {
-        const progressPercentage = ((index + 1) / sections.length) * 100;
-        progressBar.style.width = progressPercentage + '%';
-        progressBar.textContent = Math.round(progressPercentage) + '%';
-    }
-
-    function handleNavigation(sectionId, direction) {
-        const currentIndex = getCurrentSectionIndex();
-        if (!validateSection(sections[currentIndex])) {
-            return;
-        }
-        const nextIndex = Array.from(sections).findIndex(section => section.id === sectionId);
-        if (direction === 'next' && nextIndex > currentIndex) {
-            showSection(nextIndex);
-        } else if (direction === 'prev' && nextIndex < currentIndex) {
-            showSection(nextIndex);
-        }
-    }
-
-    function getCurrentSectionIndex() {
-        return Array.from(sections).findIndex(section => !section.classList.contains('hidden'));
-    }
-
-    document.querySelectorAll('textarea[maxlength]').forEach(textarea => {
-        textarea.addEventListener('input', function () {
-            updateCharCount(textarea.id, textarea.nextElementSibling.id);
+    document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+        input.addEventListener('click', function () {
+            const checkmark = this.nextElementSibling;
+            if (checkmark && checkmark.classList.contains('checkmark')) {
+                checkmark.classList.toggle('checked');
+            }
         });
     });
 
-    function updateCharCount(textareaId, counterId) {
+    document.getElementById('diet').addEventListener('change', function () {
+        const otherInput = document.getElementById('diet-other');
+        if (this.value === 'other') {
+            otherInput.classList.remove('hidden');
+            otherInput.required = true;
+        } else {
+            otherInput.classList.add('hidden');
+            otherInput.required = false;
+        }
+    });
+
+    document.getElementById('other-pronouns').addEventListener('change', function () {
+        const otherInput = document.getElementById('other-pronouns-input');
+        if (this.checked) {
+            otherInput.classList.remove('hidden');
+            otherInput.required = true;
+        } else {
+            otherInput.classList.add('hidden');
+            otherInput.required = false;
+        }
+    });
+
+    window.showNextSection = showNextSection;
+    window.showPreviousSection = showPreviousSection;
+    window.validateEmail = function () {
+        const emailField = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailPattern.test(emailField.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailField.classList.add('warning');
+        } else {
+            emailError.textContent = '';
+            emailField.classList.remove('warning');
+        }
+    };
+
+    window.updateCharCount = function (textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
-        const counter = document.getElementById(counterId);
-        const maxLength = parseInt(textarea.getAttribute('maxlength'), 10);
+        const charCountElement = document.getElementById(charCountId);
+        const maxLength = textarea.maxLength;
         const currentLength = textarea.value.replace(/\s/g, '').length;
-        counter.textContent = `${currentLength}/${maxLength}`;
-    }
-
-    window.showNextSection = function (sectionId) {
-        handleNavigation(sectionId, 'next');
+        charCountElement.textContent = `${currentLength}/${maxLength}`;
     };
 
-    window.showPreviousSection = function (sectionId) {
-        handleNavigation(sectionId, 'prev');
-    };
-
-    showSection(0);
+    updateProgressBar();
 });
