@@ -1,13 +1,21 @@
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('textarea').forEach(textarea => {
+        textarea.addEventListener('input', () => {
+            updateCharCount(textarea.id, textarea.nextElementSibling.id);
+        });
+    });
+
+    document.getElementById('registration-form').addEventListener('submit', handleSubmit);
+});
+
 function showNextSection(nextSection) {
     const currentSection = document.querySelector('section:not(.hidden)');
-    if (validateSection(currentSection.id)) {
-        const nextSectionElement = document.getElementById(nextSection);
+    const nextSectionElement = document.getElementById(nextSection);
 
-        currentSection.classList.add('hidden');
-        nextSectionElement.classList.remove('hidden');
-        nextSectionElement.classList.add('fade-in');
-        window.scrollTo(0, 0);
-    }
+    currentSection.classList.add('hidden');
+    nextSectionElement.classList.remove('hidden');
+    nextSectionElement.classList.add('fade-in');
+    window.scrollTo(0, 0);
 }
 
 function showPreviousSection(prevSection) {
@@ -20,6 +28,15 @@ function showPreviousSection(prevSection) {
     window.scrollTo(0, 0);
 }
 
+function handlePreviousButton() {
+    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+    if (specialArrangements && specialArrangements.value === 'yes') {
+        showPreviousSection('special-guidance');
+    } else {
+        showPreviousSection('special-arrangements');
+    }
+}
+
 function handleStudentGroupNext() {
     const studentGroup = document.querySelector('input[name="student-group"]:checked');
     if (studentGroup) {
@@ -29,7 +46,7 @@ function handleStudentGroupNext() {
             showNextSection('school-group-delegation');
         }
     } else {
-        showWarning('student-group-warning', 'Please select an option for student group.');
+        displayWarning('student-group-warning');
     }
 }
 
@@ -42,7 +59,7 @@ function handleSchoolRepNext() {
             showNextSection('special-arrangements');
         }
     } else {
-        showWarning('school-rep-warning', 'Please select an option for school representative.');
+        displayWarning('school-rep-warning');
     }
 }
 
@@ -55,7 +72,7 @@ function handleSpecialArrangementsNext() {
             showNextSection('mun-experience');
         }
     } else {
-        showWarning('special-arrangements-warning', 'Please select an option for special arrangements.');
+        displayWarning('special-arrangements-warning');
     }
 }
 
@@ -68,7 +85,7 @@ function handleOtherInfoNext() {
             showNextSection('terms-conditions');
         }
     } else {
-        showWarning('other-info-warning', 'Please select an option for other information.');
+        displayWarning('other-info-warning');
     }
 }
 
@@ -81,16 +98,15 @@ function handleStudentSpecialArrangementsNext() {
             showNextSection('mun-experience');
         }
     } else {
-        showWarning('student-special-arrangements-warning', 'Please select an option for special arrangements.');
+        displayWarning('student-special-arrangements-warning');
     }
 }
 
-function handlePreviousButton(section) {
-    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-    if (specialArrangements && specialArrangements.value === 'yes') {
-        showPreviousSection('special-guidance');
-    } else {
-        showPreviousSection('special-arrangements');
+function displayWarning(warningId) {
+    const warningElement = document.getElementById(warningId);
+    if (warningElement) {
+        warningElement.classList.remove('hidden');
+        setTimeout(() => warningElement.classList.add('hidden'), 3000);
     }
 }
 
@@ -110,22 +126,17 @@ function validateEmail() {
 function updateCharCount(textareaId, charCountId) {
     const textarea = document.getElementById(textareaId);
     const charCount = document.getElementById(charCountId);
-    const textLength = textarea.value.replace(/\s/g, '').length;
-    charCount.textContent = `${textLength}/${textarea.maxLength}`;
-    if (textLength > textarea.maxLength) {
-        textarea.value = textarea.value.substring(0, textarea.maxLength);
+    const count = textarea.value.replace(/\s/g, '').length;
+    const maxLength = textarea.maxLength;
+
+    charCount.textContent = `${count}/${maxLength}`;
+    if (count > maxLength) {
+        textarea.value = textarea.value.substring(0, maxLength);
     }
 }
 
-function showWarning(warningId, message) {
-    const warningElement = document.getElementById(warningId);
-    warningElement.innerHTML = `<span class="error-icon">⚠️</span> ${message}`;
-    warningElement.classList.remove('hidden');
-}
-
-function validateSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
+function handleSubmit(event) {
+    const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
     let isValid = true;
 
     requiredFields.forEach(field => {
@@ -147,39 +158,9 @@ function validateSection(sectionId) {
         }
     });
 
-    return isValid;
-}
-
-function validateForm() {
-    const sections = document.querySelectorAll('section');
-    let isValid = true;
-
-    sections.forEach(section => {
-        if (!validateSection(section.id)) {
-            isValid = false;
-        }
-    });
-
-    return isValid;
-}
-
-function handleSubmit(event) {
-    event.preventDefault();
-
-    if (validateForm()) {
-        alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
-        document.getElementById('registration-form').submit();
+    if (!isValid) {
+        event.preventDefault();
     } else {
-        alert('Please fill out all required fields.');
+        alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
     }
 }
-
-document.getElementById('registration-form').addEventListener('submit', handleSubmit);
-
-document.querySelectorAll('textarea').forEach(textarea => {
-    textarea.addEventListener('input', () => {
-        updateCharCount(textarea.id, textarea.dataset.charCount);
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight}px`;
-    });
-});
