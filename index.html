@@ -14,10 +14,10 @@
         <img src="https://i.ibb.co/vw87Lbd/logo-variation-dept-recdgsvs.png" alt="FDRMUN Logo" style="width: 350px; height: auto;">
     </div>
     <div class="separator"></div>
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
     <form id="registration-form" novalidate>
-        <div id="progress-container">
-            <div id="progress-bar"></div>
-        </div>
         <section id="welcome" class="fade-in">
             <div class="card">
                 <h2>Portico Dialogue for the Registration of Delegates and Delegations</h2>
@@ -71,7 +71,7 @@
                     <input type="checkbox" id="other-pronouns" name="pronouns" value="other" required class="custom-checkbox">
                     <span class="checkmark"></span>
                     <label for="other-pronouns">Other</label>
-                    <input type="text" id="other-pronouns-input" name="other-pronouns-input" class="hidden">
+                    <input type="text" id="other-pronouns-text" class="hidden" placeholder="Please specify">
                 </div>
             </div>
             <div class="card">
@@ -337,7 +337,7 @@
                     <option value="gluten-free">Gluten-free</option>
                     <option value="other">Other...</option>
                 </select>
-                <input type="text" id="diet-other" name="diet-other" class="hidden">
+                <input type="text" id="other-diet-text" class="hidden" placeholder="Please specify">
             </div>
             <div class="card">
                 <label class="question">How did you <strong>find out</strong> about us?</label><p class="question-description"><em>Check all that may apply.</em></p>
@@ -403,11 +403,11 @@
                     <label for="other-find">Other</label>
                 </div>
             </div>
-                    <div class="navigation-buttons">
+            <div class="navigation-buttons">
                 <button type="button" onclick="showPreviousSection('welcome')">← Previous</button>
                 <button type="button" onclick="showNextSection('student-group-delegation')">Next →</button>
             </div>
-            <div id="personal-data-warning" class="warning hidden">Please select an option.</div>
+            <div id="personal-data-warning" class="warning hidden">Please fill out all required fields.</div>
         </section>
 
         <section id="student-group-delegation" class="hidden fade-in">
