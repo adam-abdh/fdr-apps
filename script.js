@@ -27,93 +27,100 @@ document.addEventListener('DOMContentLoaded', function () {
         showSection(Array.from(sections).indexOf(nextSectionElement));
     }
 
-    function showPreviousSection(previousSectionId) {
-        const previousSectionElement = document.getElementById(previousSectionId);
-        showSection(Array.from(sections).indexOf(previousSectionElement));
+    function showPreviousSection(prevSectionId) {
+        const prevSectionElement = document.getElementById(prevSectionId);
+        showSection(Array.from(sections).indexOf(prevSectionElement));
     }
 
     function validateSection(section) {
-        const requiredFields = section.querySelectorAll('[required]');
-        let valid = true;
-
-        requiredFields.forEach(field => {
-            if (!field.value || (field.type === 'checkbox' && !field.checked) || (field.type === 'radio' && !section.querySelector(`input[name="${field.name}"]:checked`))) {
-                valid = false;
+        const inputs = section.querySelectorAll('input, select, textarea');
+        for (let input of inputs) {
+            if (input.required && !input.value.trim()) {
+                return false;
             }
-        });
-
-        return valid;
+        }
+        return true;
     }
 
     function showWarning(section) {
-        section.classList.add('warning');
         const warning = section.querySelector('.warning');
         if (warning) {
             warning.classList.remove('hidden');
+            setTimeout(() => {
+                warning.classList.add('hidden');
+            }, 3000);
+        }
+    }
+
+    function updateCharCount(textareaId, counterId) {
+        const textarea = document.getElementById(textareaId);
+        const counter = document.getElementById(counterId);
+        const maxLength = textarea.maxLength;
+        const currentLength = textarea.value.length;
+        counter.textContent = `${currentLength}/${maxLength}`;
+    }
+
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailInput.classList.add('error');
+        } else {
+            emailError.textContent = '';
+            emailInput.classList.remove('error');
         }
     }
 
     document.getElementById('registration-form').addEventListener('submit', function (event) {
-        if (!validateSection(sections[currentSection])) {
+        const lastSection = sections[sections.length - 1];
+        if (!validateSection(lastSection)) {
+            showWarning(lastSection);
             event.preventDefault();
-            showWarning(sections[currentSection]);
         }
     });
 
     document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
-        input.addEventListener('click', function () {
-            const checkmark = this.nextElementSibling;
-            if (checkmark && checkmark.classList.contains('checkmark')) {
-                checkmark.classList.toggle('checked');
-            }
-        });
+        const container = input.closest('.checkbox-container, .radio-button');
+        if (container) {
+            container.addEventListener('click', () => {
+                input.checked = !input.checked;
+            });
+        }
     });
 
-    document.getElementById('diet').addEventListener('change', function () {
-        const otherInput = document.getElementById('diet-other');
-        if (this.value === 'other') {
-            otherInput.classList.remove('hidden');
-            otherInput.required = true;
-        } else {
-            otherInput.classList.add('hidden');
-            otherInput.required = false;
+    document.querySelectorAll('input[type="radio"]').forEach(input => {
+        const container = input.closest('.radio-button');
+        if (container) {
+            container.addEventListener('click', () => {
+                input.checked = true;
+            });
         }
     });
 
     document.getElementById('other-pronouns').addEventListener('change', function () {
-        const otherInput = document.getElementById('other-pronouns-input');
+        const otherPronounsText = document.getElementById('other-pronouns-text');
         if (this.checked) {
-            otherInput.classList.remove('hidden');
-            otherInput.required = true;
+            otherPronounsText.classList.remove('hidden');
+            otherPronounsText.required = true;
         } else {
-            otherInput.classList.add('hidden');
-            otherInput.required = false;
+            otherPronounsText.classList.add('hidden');
+            otherPronounsText.required = false;
         }
     });
 
-    window.showNextSection = showNextSection;
-    window.showPreviousSection = showPreviousSection;
-    window.validateEmail = function () {
-        const emailField = document.getElementById('email');
-        const emailError = document.getElementById('email-error');
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        if (!emailPattern.test(emailField.value)) {
-            emailError.textContent = 'Please enter a valid email address.';
-            emailField.classList.add('warning');
+    document.getElementById('diet').addEventListener('change', function () {
+        const otherDietText = document.getElementById('other-diet-text');
+        if (this.value === 'other') {
+            otherDietText.classList.remove('hidden');
+            otherDietText.required = true;
         } else {
-            emailError.textContent = '';
-            emailField.classList.remove('warning');
+            otherDietText.classList.add('hidden');
+            otherDietText.required = false;
         }
-    };
-
-    window.updateCharCount = function (textareaId, charCountId) {
-        const textarea = document.getElementById(textareaId);
-        const charCountElement = document.getElementById(charCountId);
-        const maxLength = textarea.maxLength;
-        const currentLength = textarea.value.replace(/\s/g, '').length;
-        charCountElement.textContent = `${currentLength}/${maxLength}`;
-    };
+    });
 
     updateProgressBar();
+    showSection(0);
 });
