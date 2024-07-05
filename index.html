@@ -7,17 +7,14 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Syne:wght@604&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@325;612&family=Syne:wght@604&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="image-section">
         <img src="https://i.ibb.co/vw87Lbd/logo-variation-dept-recdgsvs.png" alt="FDRMUN Logo" style="width: 350px; height: auto;">
     </div>
     <div class="separator"></div>
-    <div id="progress-container">
-        <div id="progress-bar"></div>
-    </div>
-    <form id="registration-form" novalidate>
+    <form id="registration-form" onsubmit="handleSubmit(event)">
         <section id="welcome" class="fade-in">
             <div class="card">
                 <h2>Portico Dialogue for the Registration of Delegates and Delegations</h2>
@@ -34,7 +31,6 @@
                 <button type="button" onclick="showNextSection('personal-data')">Let's Go →</button>
             </div>
         </section>
-
         <section id="personal-data" class="hidden fade-in">
             <h2>Personal Data, Residency and Contact Information</h2>
             <div class="card">
@@ -71,7 +67,6 @@
                     <input type="checkbox" id="other-pronouns" name="pronouns" value="other" required class="custom-checkbox">
                     <span class="checkmark"></span>
                     <label for="other-pronouns">Other</label>
-                    <input type="text" id="other-pronouns-text" class="hidden" placeholder="Please specify">
                 </div>
             </div>
             <div class="card">
@@ -323,8 +318,7 @@
                     <option value="Yemen">Yemen</option>
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
-                    </select>
-                    </select>
+                </select>
             </div>
             <div class="card">
                 <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
@@ -337,10 +331,10 @@
                     <option value="gluten-free">Gluten-free</option>
                     <option value="other">Other...</option>
                 </select>
-                <input type="text" id="other-diet-text" class="hidden" placeholder="Please specify">
             </div>
             <div class="card">
-                <label class="question">How did you <strong>find out</strong> about us?</label><p class="question-description"><em>Check all that may apply.</em></p>
+                <label class="question">How did you <strong>find out</strong> about us?</label
+                ><p class="question-description"><em>Check all that may apply.</em></p>
                 <span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox">
@@ -407,9 +401,8 @@
                 <button type="button" onclick="showPreviousSection('welcome')">← Previous</button>
                 <button type="button" onclick="showNextSection('student-group-delegation')">Next →</button>
             </div>
-            <div id="personal-data-warning" class="warning hidden">Please fill out all required fields.</div>
+            <div id="personal-data-warning" class="warning hidden">Please select an option.</div>
         </section>
-
         <section id="student-group-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Students</h2>
             <div class="card">
@@ -431,9 +424,8 @@
                 <button type="button" onclick="showPreviousSection('personal-data')">← Previous</button>
                 <button type="button" onclick="handleStudentGroupNext()">Next →</button>
             </div>
-            <div id="student-group-warning" class="warning hidden">⚠️ Please select an option.</div>
+            <div id="student-group-warning" class="warning hidden">Please select an option.</div>
         </section>
-
         <section id="school-group-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
             <div class="card">
@@ -455,9 +447,8 @@
                 <button type="button" onclick="showPreviousSection('student-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleSchoolRepNext()">Next →</button>
             </div>
-            <div id="school-rep-warning" class="warning hidden">⚠️ Please select an option.</div>
+            <div id="school-rep-warning" class="warning hidden">Please select an option.</div>
         </section>
-
         <section id="special-arrangements" class="hidden fade-in">
             <h2>Special Arrangements Inquiry</h2>
             <div class="card">
@@ -479,9 +470,8 @@
                 <button type="button" onclick="showPreviousSection('school-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleSpecialArrangementsNext()">Next →</button>
             </div>
-            <div id="special-arrangements-warning" class="warning hidden">⚠️ Please select an option.</div>
+            <div id="special-arrangements-warning" class="warning hidden">Please select an option.</div>
         </section>
-
         <section id="chaperone-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
             <div class="card">
@@ -505,7 +495,7 @@
                 <textarea id="delegation-experience" name="delegation-experience" required></textarea>
             </div>
             <div class="card">
-                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong>? This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
+                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
                 <textarea id="logistical-requests" name="logistical-requests" required></textarea>
             </div>
             <div class="card">
@@ -527,9 +517,8 @@
                 <button type="button" onclick="showPreviousSection('school-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleOtherInfoNext()">Next →</button>
             </div>
-            <div id="other-info-warning" class="warning hidden">⚠️ Please select an option.</div>
+            <div id="other-info-warning" class="warning hidden">Please select an option.</div>
         </section>
-
         <section id="student-delegation" class="hidden fade-in">
             <h2>Delegation-specific Dialogue for Students and Team-members</h2>
             <div class="card">
@@ -568,9 +557,8 @@
                 <button type="button" onclick="showPreviousSection('student-group-delegation')">← Previous</button>
                 <button type="button" onclick="handleStudentSpecialArrangementsNext()">Next →</button>
             </div>
-            <div id="student-special-arrangements-warning" class="warning hidden">⚠️ Please select an option.</div>
+            <div id="student-special-arrangements-warning" class="warning hidden">Please select an option.</div>
         </section>
-
         <section id="special-guidance" class="hidden fade-in">
             <h2>Special Arrangements and Further Guidance</h2>
             <div class="card">
@@ -618,7 +606,6 @@
                 <button type="button" onclick="showNextSection('mun-experience')">Next →</button>
             </div>
         </section>
-
         <section id="mun-experience" class="hidden fade-in">
             <h2>Your experience with MUNs</h2>
             <div class="card">
@@ -640,14 +627,14 @@
                 <textarea id="mun-experience" name="mun-experience" required></textarea>
             </div>
             <div class="card">
-                <label class="question" for="contributions">How do you plan to contribute to FDRMUN as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference as a whole?</label>
-                <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
-                <span class="required-star">*</span>
-                <textarea id="contributions" name="contributions" maxlength="700" required oninput="updateCharCount('contributions', 'char-count-1')"></textarea>
+            <label class="question" for="contributions">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
+            <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
+                </label><span class="required-star">*</span>
+                <textarea id="transformative-experience" name="transformative-experience" maxlength="700" required oninput="updateCharCount('transformative-experience', 'char-count-1')"></textarea>
                 <div class="char-count" id="char-count-1">0/700</div>
             </div>
             <div class="card">
-                <label class="question" for="first-choice">What is your <strong>first country and committee choice?</strong></label><span class="required-star">*</span>
+                <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
                 <p class="subheading"><em>For the following questions, it may be helpful to consult the following:</em></p>
                 <ul>
                     <li><a href="country-matrices-link">Country matrices</a></li>
@@ -656,11 +643,11 @@
                 <input type="text" id="first-choice" name="first-choice" required>
             </div>
             <div class="card">
-                <label class="question" for="second-choice">What is your <strong>second country and committee choice?</strong></label><span class="required-star">*</span>
+                <label class="question" for="second-choice">What is your <strong>second country and committee choice</strong></label><span class="required-star">*</span>
                 <input type="text" id="second-choice" name="second-choice" required>
             </div>
             <div class="card">
-                <label class="question" for="third-choice">What is your <strong>third country and committee choice?</strong></label><span class="required-star">*</span>
+                <label class="question" for="third-choice">What is your <strong>third country and committee choice</strong></label><span class="required-star">*</span>
                 <input type="text" id="third-choice" name="third-choice" required>
             </div>
             <div class="card">
@@ -675,11 +662,10 @@
                 <textarea id="favorite-period" name="favorite-period" required></textarea>
             </div>
             <div class="navigation-buttons">
-                <button type="button" onclick="handlePreviousButton()">← Previous</button>
+                <button type="button" onclick="showPreviousSection('special-guidance')">← Previous</button>
                 <button type="button" onclick="showNextSection('terms-conditions')">Next →</button>
             </div>
         </section>
-
         <section id="terms-conditions" class="hidden fade-in">
             <h2>Finishing up; The Ts and Cs of your application</h2>
             <div class="card">
@@ -693,7 +679,7 @@
                 </ul>
             </div>
             <div class="card">
-                <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate.</strong></label><span class="required-star">*</span>
+                <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -701,7 +687,7 @@
                 </div>
             </div>
             <div class="card">
-                <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent.</label><span class="required-star">*</span>
+                <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -709,7 +695,7 @@
                 </div>
             </div>
             <div class="card">
-                <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned.</label><span class="required-star">*</span>
+                <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -717,7 +703,7 @@
                 </div>
             </div>
             <div class="card">
-                <label class="question" for="age-certification">I am <strong>not of or under the age of 12.</strong></label><span class="required-star">*</span>
+                <label class="question" for="age-certification">I am <strong>not of or under the age of 12</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="age-certification" name="age-certification" required class="custom-checkbox">
                     <span class="checkmark"></span>
@@ -725,7 +711,7 @@
                 </div>
             </div>
             <div class="card">
-                <label class="question" for="training-modules">I would like to <strong>sign myself or members of my delegation up for online Training Modules.</strong></label><span class="required-star">*</span>
+                <label class="question" for="training-modules">I would like to <strong>sign up for online Training Modules</strong></label><span class="required-star">*</span>
                 <p class="subheading"><em>Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</em></p>
                 <div class="radio-container">
                     <div class="radio-button">
@@ -741,11 +727,11 @@
                 </div>
             </div>
             <div class="card">
-                <label class="question" for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it below.</label>
+                <label class="question" for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it here</label>
                 <input type="text" id="referral-code" name="referral-code" placeholder="Code starting with FDRxx...">
             </div>
             <div class="card">
-                <label class="question" for="additional-info">Is there anything else that you'd like us to know?</label>
+                <label class="question" for="additional-info">Is there anything else that you'd like us to know</label>
                 <textarea id="additional-info" name="additional-info"></textarea>
             </div>
             <div class="navigation-buttons">
@@ -755,13 +741,144 @@
         </section>
     </form>
     <footer>
-        <div class="separator"></div>
-        <p><center>Version 7.4.0</center></p>
+        <hr>
+        <p>INTERNAL Version 7.1.6</p>
+        <p>At FDRMUN, our mission is to inspire and empower high school students from a variety of backgrounds. We achieve this through promoting diplomatic discourse, facilitating cultural exchanges, and fostering personal development</p>
+        <a href="https://fdrmun.org" style="color: black;">FDRMUN Website</a>
         <br>
-    <div class="image-section">
-        <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="Portico for Delegates" style="width: 200px; height: auto;">
+        <a href="mailto:applications@fdrmun.org?subject=Portico applications dialogue PfD issue" style="color: black;">Help</a>
+            <div class="image-section">
+        <img src="https://ibb.co/VWpmrV6"><img src="https://i.ibb.co/WWptqnC/PfF.png" alt="Portico for Delegates" style="width: 100px; height: auto;">
     </div>
-</footer> 
-    <script src="script.js"></script>
+
+    </footer>
+    <script>
+        function showNextSection(nextSection) {
+            const currentSection = document.querySelector('section:not(.hidden)');
+            const nextSectionElement = document.getElementById(nextSection);
+            currentSection.classList.add('hidden');
+            nextSectionElement.classList.remove('hidden');
+            nextSectionElement.classList.add('fade-in');
+            window.scrollTo(0, 0);
+        }
+        function showPreviousSection(prevSection) {
+            const currentSection = document.querySelector('section:not(.hidden)');
+            const prevSectionElement = document.getElementById(prevSection);
+            currentSection.classList.add('hidden');
+            prevSectionElement.classList.remove('hidden');
+            prevSectionElement.classList.add('fade-in');
+            window.scrollTo(0, 0);
+        }
+        function handleStudentGroupNext() {
+            const studentGroup = document.querySelector('input[name="student-group"]:checked');
+            if (studentGroup) {
+                if (studentGroup.value === 'yes') {
+                    showNextSection('student-delegation');
+                } else {
+                    showNextSection('school-group-delegation');
+                }
+            } else {
+                document.getElementById('student-group-warning').classList.remove('hidden');
+            }
+        }
+        function handleSchoolRepNext() {
+            const schoolRep = document.querySelector('input[name="school-rep"]:checked');
+            if (schoolRep) {
+                if (schoolRep.value === 'yes') {
+                    showNextSection('chaperone-delegation');
+                } else {
+                    showNextSection('special-arrangements');
+                }
+            } else {
+                document.getElementById('school-rep-warning').classList.remove('hidden');
+            }
+        }
+        function handleSpecialArrangementsNext() {
+            const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+            if (specialArrangements) {
+                if (specialArrangements.value === 'yes') {
+                    showNextSection('special-guidance');
+                } else {
+                    showNextSection('mun-experience');
+                }
+            } else {
+                document.getElementById('special-arrangements-warning').classList.remove('hidden');
+            }
+        }
+        function handleOtherInfoNext() {
+            const otherInfo = document.querySelector('input[name="other-info"]:checked');
+            if (otherInfo) {
+                if (otherInfo.value === 'yes') {
+                    showNextSection('special-guidance');
+                } else {
+                    showNextSection('terms-conditions');
+                }
+            } else {
+                document.getElementById('other-info-warning').classList.remove('hidden');
+            }
+        }
+        function handleStudentSpecialArrangementsNext() {
+            const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+            if (studentSpecialArrangements) {
+                if (studentSpecialArrangements.value === 'yes') {
+                    showNextSection('special-guidance');
+                } else {
+                    showNextSection('mun-experience');
+                }
+            } else {
+                document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+            }
+        }
+        function validateEmail() {
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('email-error');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                emailError.textContent = 'Please enter a valid email address. ⚠️';
+                document.getElementById('email').parentElement.style.border = '1px solid red';
+            } else {
+                emailError.textContent = '';
+                document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
+            }
+        }
+        function updateCharCount(textareaId, charCountId) {
+            const textarea = document.getElementById(textareaId);
+            const charCount = document.getElementById(charCountId);
+            charCount.textContent = `${textarea.value.replace(/\s/g, '').length}/${textarea.maxLength}`;
+        }
+        function handleSubmit(event) {
+            const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.parentElement.style.border = '1px solid red';
+                    if (!field.parentElement.querySelector('.error-message')) {
+                        const errorMessage = document.createElement('div');
+                        errorMessage.className = 'error-message';
+                        errorMessage.innerHTML = '<span class="error-icon">⚠️</span> This field is required.';
+                        field.parentElement.appendChild(errorMessage);
+                    }
+                } else {
+                    field.parentElement.style.border = '1px solid lightgrey';
+                    const errorMessage = field.parentElement.querySelector('.error-message');
+                    if (errorMessage) {
+                        errorMessage.remove();
+                    }
+                }
+            });
+            if (!isValid) {
+                event.preventDefault();
+            } else {
+                alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
+            }
+        }
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.addEventListener('input', () => {
+                textarea.style.height = 'auto';
+                textarea.style.height = `${textarea.scrollHeight}px`;
+            });
+        });
+    </script>
 </body>
 </html>
