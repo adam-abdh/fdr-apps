@@ -122,11 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    document.getElementById('next-button1').addEventListener('click', () => showNextSection('section2'));
-    document.getElementById('prev-button1').addEventListener('click', () => showPreviousSection('section1'));
-    document.getElementById('next-button2').addEventListener('click', () => showNextSection('section3'));
-    document.getElementById('prev-button2').addEventListener('click', () => showPreviousSection('section2'));
-
     
     updateProgressBar();
     showSection(0);
