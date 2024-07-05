@@ -630,8 +630,7 @@
             <label class="question" for="contributions">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
             <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
                 </label><span class="required-star">*</span>
-                <textarea id="transformative-experience" name="transformative-experience" maxlength="700" required oninput="updateCharCount('transformative-experience', 'char-count-1')"></textarea>
-                <div class="char-count" id="char-count-1">0/700</div>
+                <textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" required oninput="updateCharCount('transformative-experience', 'char-count-1')"></textarea>
             </div>
             <div class="card">
                 <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
@@ -653,8 +652,7 @@
             <div class="card">
                 <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label><span class="required-star">*</span>
                 <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words. It may be useful to use a word-processor such as Google Docs for this question as to ensure you do not lose your progress if you refresh or leave this page.</em></p>
-                <textarea id="choice-explanation" name="choice-explanation" maxlength="1250" required oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
-                <div class="char-count" id="char-count-2">0/1250</div>
+               <textarea id="choice-explanation" name="choice-explanation" data-maxlength="1250" required oninput="updateCharCount('choice-explanation', 'char-count-2')"></textarea>
             </div>
             <div class="card">
                 <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
@@ -742,7 +740,7 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.2.0</p>
+        <p>Version 7.2.1</p>
         <br>
           <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
@@ -837,10 +835,12 @@
                 document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
             }
         }
-        function updateCharCount(textareaId, charCountId) {
-            const textarea = document.getElementById(textareaId);
-            const charCount = document.getElementById(charCountId);
-            charCount.textContent = `${textarea.value.replace(/\s/g, '').length}/${textarea.maxLength}`;
+       function updateCharCount(textareaId, charCountId) {
+    const textarea = document.getElementById(textareaId);
+    const charCount = document.getElementById(charCountId);
+    const currentLength = textarea.value.replace(/\s/g, '').length;
+    const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
+    charCount.textContent = `${currentLength}/${maxLength}`;
         }
         function handleSubmit(event) {
             const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
@@ -873,8 +873,24 @@
             textarea.addEventListener('input', () => {
                 textarea.style.height = 'auto';
                 textarea.style.height = `${textarea.scrollHeight}px`;
-            });
-        });
+            }
+        }
+        document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+    textarea.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const text = (e.originalEvent || e).clipboardData.getData('text/plain');
+        const maxLength = parseInt(this.getAttribute('data-maxlength'));
+        const currentLength = this.value.replace(/\s/g, '').length;
+        const pasteLength = text.replace(/\s/g, '').length;
+        if (currentLength + pasteLength <= maxLength) {
+            document.execCommand('insertText', false, text);
+        } else {
+            const allowedText = text.replace(/\s/g, '').slice(0, maxLength - currentLength);
+            document.execCommand('insertText', false, allowedText);
+        }
+        updateCharCount(this.id, this.id.replace('experience', 'char-count'));
+    });
+});
     </script>
 </body>
 </html>
