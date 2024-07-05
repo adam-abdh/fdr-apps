@@ -740,7 +740,7 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.2.3</p>
+        <p>Version 7.2.4</p>
         <br>
           <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
@@ -878,6 +878,23 @@
             textarea.addEventListener('input', () => {
                 textarea.style.height = 'auto';
                 textarea.style.height = `${textarea.scrollHeight}px`;
+            }
+                
+
+                document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+    textarea.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const text = (e.originalEvent || e).clipboardData.getData('text/plain');
+        const maxLength = parseInt(this.getAttribute('data-maxlength'));
+        const currentLength = this.value.replace(/\s/g, '').length;
+        const pasteLength = text.replace(/\s/g, '').length;
+        if (currentLength + pasteLength <= maxLength) {
+            document.execCommand('insertText', false, text);
+        } else {
+            const allowedText = text.replace(/\s/g, '').slice(0, maxLength - currentLength);
+            document.execCommand('insertText', false, allowedText);
+        }
+        updateCharCount(this.id, this.id.replace('experience', 'char-count'));
             });
         });
     </script>
