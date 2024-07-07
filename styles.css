@@ -196,11 +196,6 @@ button:focus {
     animation: checkAnim 0.2s forwards;
 }
 
-.checkbox-container input,
-.checkbox-container .checkmark {
-    pointer-events: none;
-}
-
 @keyframes checkAnim {
     0% {
         height: 0;
@@ -272,11 +267,7 @@ button:focus {
 .radio-button span {
     margin-left: 10px;
     text-align: center;
-}
 
-.radio-button input[type="radio"],
-.radio-button .radio {
-    pointer-events: none;
 }
 
 .error {
