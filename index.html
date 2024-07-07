@@ -932,7 +932,16 @@
             textarea.style.height = 'auto';
             textarea.style.height = `${textarea.scrollHeight}px`;
         });
+
+        document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
+    container.addEventListener('click', function() {
+        const input = this.querySelector('input');
+        input.checked = !input.checked;
+        // Trigger any necessary events or validation
+        input.dispatchEvent(new Event('change'));
     });
+});
+        
 </script>
 </body>
 </html>
