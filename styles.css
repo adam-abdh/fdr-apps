@@ -139,7 +139,8 @@ button:focus {
     color: #888;
 }
 
-.checkbox-container, .radio-container {
+/* Updated checkbox styles */
+.checkbox-container {
     display: flex;
     align-items: center;
     margin: 12px 0;
@@ -150,7 +151,7 @@ button:focus {
     padding-left: 35px;
 }
 
-.checkbox-container input, .radio-container input {
+.checkbox-container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -158,7 +159,7 @@ button:focus {
     width: 0;
 }
 
-.checkmark, .radio {
+.checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -167,6 +168,10 @@ button:focus {
     background-color: #eee;
     border-radius: 4px;
     transition: background-color 0.3s;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
 }
 
 .checkbox-container input:checked ~ .checkmark {
@@ -191,6 +196,11 @@ button:focus {
     animation: checkAnim 0.2s forwards;
 }
 
+.checkbox-container input,
+.checkbox-container .checkmark {
+    pointer-events: none;
+}
+
 @keyframes checkAnim {
     0% {
         height: 0;
@@ -200,7 +210,34 @@ button:focus {
     }
 }
 
+/* Updated radio button styles */
+.radio-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-button {
+    display: flex;
+    align-items: center;
+    margin: 7px 0;
+    cursor: pointer;
+    position: relative;
+    padding-left: 40px;
+}
+
+.radio-button input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
 .radio {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
     background-color: #fff;
     border: 2px solid #ccc;
@@ -220,16 +257,26 @@ button:focus {
     transition: all 0.3s ease-in-out;
 }
 
-.radio-container input[type="radio"]:checked ~ .radio {
+.radio-button:hover .radio {
+    border-color: #999;
+}
+
+.radio-button input[type="radio"]:checked + .radio {
     border-color: var(--main-color);
 }
 
-.radio-container input[type="radio"]:checked ~ .radio:before {
+.radio-button input[type="radio"]:checked + .radio:before {
     transform: scale(1);
 }
 
-.radio-container span {
+.radio-button span {
     margin-left: 10px;
+    text-align: center;
+}
+
+.radio-button input[type="radio"],
+.radio-button .radio {
+    pointer-events: none;
 }
 
 .error {
