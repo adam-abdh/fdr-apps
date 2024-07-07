@@ -742,7 +742,7 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.2.8</p>
+        <p>Version 7.2.11</p>
         <br>
           <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
@@ -934,13 +934,21 @@
         });
 
         document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
-    container.addEventListener('click', function() {
-        const input = this.querySelector('input');
-        input.checked = !input.checked;
-        // Trigger any necessary events or validation
-        input.dispatchEvent(new Event('change'));
+    const input = container.querySelector('input');
+    const label = container.querySelector('label');
+
+    container.addEventListener('click', function(event) {
+        if (event.target !== input) {
+            input.checked = !input.checked;
+            input.dispatchEvent(new Event('change'));
+        }
     });
-});
+
+    if (label) {
+        label.addEventListener('click', function(event) {
+            event.preventDefault();
+        });
+    }
 });
 </script>
 </body>
