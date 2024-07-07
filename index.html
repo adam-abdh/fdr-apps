@@ -740,165 +740,197 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.2.6</p>
+        <p>Version 7.2.7</p>
         <br>
           <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
     </div>  
     </footer>
-    <script>
-        function showNextSection(nextSection) {
-            const currentSection = document.querySelector('section:not(.hidden)');
-            const nextSectionElement = document.getElementById(nextSection);
-            currentSection.classList.add('hidden');
-            nextSectionElement.classList.remove('hidden');
-            nextSectionElement.classList.add('fade-in');
-            window.scrollTo(0, 0);
-        }
-        function showPreviousSection(prevSection) {
-            const currentSection = document.querySelector('section:not(.hidden)');
-            const prevSectionElement = document.getElementById(prevSection);
-            currentSection.classList.add('hidden');
-            prevSectionElement.classList.remove('hidden');
-            prevSectionElement.classList.add('fade-in');
-            window.scrollTo(0, 0);
-        }
-        function handleStudentGroupNext() {
-            const studentGroup = document.querySelector('input[name="student-group"]:checked');
-            if (studentGroup) {
-                if (studentGroup.value === 'yes') {
-                    showNextSection('student-delegation');
-                } else {
-                    showNextSection('school-group-delegation');
-                }
-            } else {
-                document.getElementById('student-group-warning').classList.remove('hidden');
-            }
-        }
-        function handleSchoolRepNext() {
-            const schoolRep = document.querySelector('input[name="school-rep"]:checked');
-            if (schoolRep) {
-                if (schoolRep.value === 'yes') {
-                    showNextSection('chaperone-delegation');
-                } else {
-                    showNextSection('special-arrangements');
-                }
-            } else {
-                document.getElementById('school-rep-warning').classList.remove('hidden');
-            }
-        }
-        function handleSpecialArrangementsNext() {
-            const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-            if (specialArrangements) {
-                if (specialArrangements.value === 'yes') {
-                    showNextSection('special-guidance');
-                } else {
-                    showNextSection('mun-experience');
-                }
-            } else {
-                document.getElementById('special-arrangements-warning').classList.remove('hidden');
-            }
-        }
-        function handleOtherInfoNext() {
-            const otherInfo = document.querySelector('input[name="other-info"]:checked');
-            if (otherInfo) {
-                if (otherInfo.value === 'yes') {
-                    showNextSection('special-guidance');
-                } else {
-                    showNextSection('terms-conditions');
-                }
-            } else {
-                document.getElementById('other-info-warning').classList.remove('hidden');
-            }
-        }
-        function handleStudentSpecialArrangementsNext() {
-            const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-            if (studentSpecialArrangements) {
-                if (studentSpecialArrangements.value === 'yes') {
-                    showNextSection('special-guidance');
-                } else {
-                    showNextSection('mun-experience');
-                }
-            } else {
-                document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
-            }
-        }
-        function validateEmail() {
-            const email = document.getElementById('email').value;
-            const emailError = document.getElementById('email-error');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                emailError.textContent = 'Please enter a valid email address. ⚠️';
-                document.getElementById('email').parentElement.style.border = '1px solid red';
-            } else {
-                emailError.textContent = '';
-                document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
-            }
-        }
-       function updateCharCount(textareaId, charCountId) {
-    const textarea = document.getElementById(textareaId);
-    const charCount = document.getElementById(charCountId);
-    const currentLength = textarea.value.replace(/\s/g, '').length;
-    const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
-    charCount.textContent = `${currentLength}/${maxLength}`;
-        }
-        function handleSubmit(event) {
-            const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
-            let isValid = true;
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.parentElement.style.border = '1px solid red';
-                    if (!field.parentElement.querySelector('.error-message')) {
-                        const errorMessage = document.createElement('div');
-                        errorMessage.className = 'error-message';
-                        errorMessage.innerHTML = '<span class="error-icon">⚠️</span> This field is required.';
-                        field.parentElement.appendChild(errorMessage);
-                    }
-                } else {
-                    field.parentElement.style.border = '1px solid lightgrey';
-                    const errorMessage = field.parentElement.querySelector('.error-message');
-                    if (errorMessage) {
-                        errorMessage.remove();
-                    }
-                }
-            });
-            if (!isValid) {
-                event.preventDefault();
-            } else {
-                alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
-            }
-        }
-           if (!isValid) {
-                event.preventDefault();
-            } else {
-                alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
-            }
-        document.querySelectorAll('textarea').forEach(textarea => {
-            textarea.addEventListener('input', () => {
-                textarea.style.height = 'auto';
-                textarea.style.height = `${textarea.scrollHeight}px`;
-            });
-                
+ <script>
+    function showNextSection(nextSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const nextSectionElement = document.getElementById(nextSection);
+        currentSection.classList.add('hidden');
+        nextSectionElement.classList.remove('hidden');
+        nextSectionElement.classList.add('fade-in');
+        window.scrollTo(0, 0);
+    }
 
-                document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
-    textarea.addEventListener('paste', function(e) {
-        e.preventDefault();
-        const text = (e.originalEvent || e).clipboardData.getData('text/plain');
-        const maxLength = parseInt(this.getAttribute('data-maxlength'));
-        const currentLength = this.value.replace(/\s/g, '').length;
-        const pasteLength = text.replace(/\s/g, '').length;
-        if (currentLength + pasteLength <= maxLength) {
-            document.execCommand('insertText', false, text);
+    function showPreviousSection(prevSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const prevSectionElement = document.getElementById(prevSection);
+        currentSection.classList.add('hidden');
+        prevSectionElement.classList.remove('hidden');
+        prevSectionElement.classList.add('fade-in');
+        window.scrollTo(0, 0);
+    }
+
+    function handleStudentGroupNext() {
+        const studentGroup = document.querySelector('input[name="student-group"]:checked');
+        if (studentGroup) {
+            if (studentGroup.value === 'yes') {
+                showNextSection('student-delegation');
+            } else {
+                showNextSection('school-group-delegation');
+            }
         } else {
-            const allowedText = text.replace(/\s/g, '').slice(0, maxLength - currentLength);
-            document.execCommand('insertText', false, allowedText);
+            document.getElementById('student-group-warning').classList.remove('hidden');
         }
-        updateCharCount(this.id, this.id.replace('experience', 'char-count'));
-            });
+    }
+
+    function handleSchoolRepNext() {
+        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
+        if (schoolRep) {
+            if (schoolRep.value === 'yes') {
+                showNextSection('chaperone-delegation');
+            } else {
+                showNextSection('special-arrangements');
+            }
+        } else {
+            document.getElementById('school-rep-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleSpecialArrangementsNext() {
+        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+        if (specialArrangements) {
+            if (specialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('special-arrangements-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleOtherInfoNext() {
+        const otherInfo = document.querySelector('input[name="other-info"]:checked');
+        if (otherInfo) {
+            if (otherInfo.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('terms-conditions');
+            }
+        } else {
+            document.getElementById('other-info-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleStudentSpecialArrangementsNext() {
+        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+        if (studentSpecialArrangements) {
+            if (studentSpecialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+        }
+    }
+
+    function validateEmail() {
+        const email = document.getElementById('email').value;
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            emailError.textContent = 'Please enter a valid email address. ⚠️';
+            document.getElementById('email').parentElement.style.border = '1px solid red';
+        } else {
+            emailError.textContent = '';
+            document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
+        }
+    }
+
+    function updateCharCount(textareaId, charCountId) {
+        const textarea = document.getElementById(textareaId);
+        const charCount = document.getElementById(charCountId);
+        const currentLength = textarea.value.replace(/\s/g, '').length;
+        const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
+        const remainingChars = maxLength - currentLength;
+        charCount.textContent = `${remainingChars} characters remaining (excluding spaces)`;
+    }
+
+    document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            const maxLength = parseInt(this.getAttribute('data-maxlength'));
+            const textWithoutSpaces = this.value.replace(/\s/g, '');
+            if (textWithoutSpaces.length > maxLength) {
+                let truncatedText = '';
+                let charCount = 0;
+                for (let i = 0; i < this.value.length; i++) {
+                    if (this.value[i] !== ' ') {
+                        if (charCount >= maxLength) break;
+                        charCount++;
+                    }
+                    truncatedText += this.value[i];
+                }
+                this.value = truncatedText;
+            }
+            updateCharCount(this.id, `char-count-${this.id}`);
+        });
+
+        textarea.addEventListener('paste', function(e) {
+            e.preventDefault();
+            const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
+            const maxLength = parseInt(this.getAttribute('data-maxlength'));
+            const currentTextWithoutSpaces = this.value.replace(/\s/g, '');
+            const pastedTextWithoutSpaces = pastedText.replace(/\s/g, '');
+            const remainingChars = maxLength - currentTextWithoutSpaces.length;
+            
+            let allowedText = '';
+            let charCount = 0;
+            for (let i = 0; i < pastedText.length; i++) {
+                if (pastedText[i] !== ' ') {
+                    if (charCount >= remainingChars) break;
+                    charCount++;
+                }
+                allowedText += pastedText[i];
+            }
+            
+            document.execCommand('insertText', false, allowedText);
+            updateCharCount(this.id, `char-count-${this.id}`);
+        });
+
+        // Initialize character count
+        updateCharCount(textarea.id, `char-count-${textarea.id}`);
+    });
+
+    function handleSubmit(event) {
+        const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.parentElement.style.border = '1px solid red';
+                if (!field.parentElement.querySelector('.error-message')) {
+                    const errorMessage = document.createElement('div');
+                    errorMessage.className = 'error-message';
+                    errorMessage.innerHTML = '<span class="error-icon">⚠️</span> This field is required.';
+                    field.parentElement.appendChild(errorMessage);
+                }
+            } else {
+                field.parentElement.style.border = '1px solid lightgrey';
+                const errorMessage = field.parentElement.querySelector('.error-message');
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
+            }
+        });
+        if (!isValid) {
+            event.preventDefault();
+        } else {
+            alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
+        }
+    }
+
+    document.querySelectorAll('textarea').forEach(textarea => {
+        textarea.addEventListener('input', () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = `${textarea.scrollHeight}px`;
         });
     });
-        
-    </script>
+</script>
 </body>
 </html>
