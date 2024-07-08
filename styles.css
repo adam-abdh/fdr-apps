@@ -1,3 +1,5 @@
+
+/* Add CSS variables for colors */
 :root {
     --main-color: #004080;
     --secondary-color: #949494;
@@ -15,11 +17,6 @@ body {
     line-height: 1.34;
     font-size: 1em;
     margin-bottom: 15px;
-    background: linear-gradient(356deg, #0079b9, #093764, #6a149f);
-    background-size: 600% 600%;
-    -webkit-animation: AnimationName 34s ease infinite;
-    -moz-animation: AnimationName 34s ease infinite;
-    animation: AnimationName 34s ease infinite;
 }
 
 h2 {
@@ -173,7 +170,7 @@ button:focus {
     background-color: #eee;
     border-radius: 4px;
     transition: background-color 0.3s;
-    z-index: 0;
+     z-index: 0;
 }
 
 .checkbox-container:hover input ~ .checkmark {
@@ -231,7 +228,7 @@ button:focus {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    z-index: 1;
+        z-index: 1;
 }
 
 .radio {
@@ -248,7 +245,8 @@ button:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 0;
+     z-index: 0;
+    
 }
 
 .radio:before {
@@ -276,6 +274,7 @@ button:focus {
 .radio-button span {
     margin-left: 10px;
     text-align: center;
+
 }
 
 .error {
@@ -300,12 +299,10 @@ button:focus {
 .card {
     width: 100%;
     height: auto;
-    background: rgba(242, 242, 242, 0.69);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
-    border: 1px solid rgba(242, 242, 242, 0.23);
+    background: white;
+    border-radius: 17px;
+    border: 1.5px solid #f5f5f5;
+    box-shadow: -1px 0px 37px 0px rgba(206,206,206,0.17);
     padding: 20px;
     margin-bottom: 25px;
     position: relative;
@@ -406,20 +403,4 @@ hr {
     button {
         padding: 8px 16px;
     }
-}
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@keyframes AnimationName {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
 }
