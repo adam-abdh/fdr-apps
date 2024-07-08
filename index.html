@@ -742,7 +742,7 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.3</p>
+        <p>Version 7.3.2</p>
         <br>
           <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
@@ -933,12 +933,17 @@
             textarea.style.height = `${textarea.scrollHeight}px`;
         });
 
-        document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
+       document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
     const input = container.querySelector('input');
-    container.addEventListener('click', function(event) {
-        if (event.target !== input) {
-            input.click();
-        }
+    const label = container.querySelector('label');
+    
+    input.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    label.addEventListener('click', (event) => {
+        event.preventDefault();
+        input.click();
     });
 });
         });
