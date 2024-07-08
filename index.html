@@ -31,7 +31,7 @@
                 <button type="button" onclick="showNextSection('personal-data')">Let's Go →</button>
             </div>
         </section>
-        <section id="personal-data" class="hidden fade-in visible-section">
+        <section id="personal-data" class="hidden fade-in">
             <h2>Personal Data, Residency and Contact Information</h2>
             <div class="card">
                 <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
@@ -50,23 +50,27 @@
                 <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="they-them" name="pronouns" value="they/them" required>
-                    <span class="checkmark"></span>
-                    <label for="they-them">they/them/theirs</label>
+                    <label for="they-them">
+                        <span class="checkmark"></span> they/them/theirs
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="he-him" name="pronouns" value="he/him" required>
-                    <span class="checkmark"></span>
-                    <label for="he-him">he/him/his</label>
+                    <label for="he-him">
+                        <span class="checkmark"></span> he/him/his
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="she-her" name="pronouns" value="she/her" required>
-                    <span class="checkmark"></span>
-                    <label for="she-her">she/her/hers</label>
+                    <label for="she-her">
+                        <span class="checkmark"></span> she/her/hers
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="other-pronouns" name="pronouns" value="other" required>
-                    <span class="checkmark"></span>
-                    <label for="other-pronouns">Other</label>
+                    <label for="other-pronouns">
+                        <span class="checkmark"></span> Other
+                    </label>
                 </div>
             </div>
             <div class="card">
@@ -333,68 +337,79 @@
                 </select>
             </div>
             <div class="card">
-                <label class="question">How did you <strong>find out</strong> about us?</label
-                ><p class="question-description"><em>Check all that may apply.</em></p>
+                <label class="question">How did you <strong>find out</strong> about us?</label><p class="question-description"><em>Check all that may apply.</em></p>
                 <span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="google">Google/FDRMUN website</label>
+                    <label for="google">
+                        <span class="checkmark"></span> Google/FDRMUN website
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="instagram" name="how-find" value="instagram" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="instagram">FDRMUN Instagram</label>
+                    <label for="instagram">
+                        <span class="checkmark"></span> FDRMUN Instagram
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="email-find" name="how-find" value="email" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="email-find">FDRMUN E-mail</label>
+                    <label for="email-find">
+                        <span class="checkmark"></span> FDRMUN E-mail
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="social-media" name="how-find" value="social-media" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="social-media">Other FDRMUN social network(s)</label>
+                    <label for="social-media">
+                        <span class="checkmark"></span> Other FDRMUN social network(s)
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="school" name="how-find" value="school" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="school">International School of Bucharest</label>
+                    <label for="school">
+                        <span class="checkmark"></span> International School of Bucharest
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="mun-sources" name="how-find" value="mun-sources" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="mun-sources">MUN-related sources (such as myMUN or mun.news.ro)</label>
+                    <label for="mun-sources">
+                        <span class="checkmark"></span> MUN-related sources (such as myMUN or mun.news.ro)
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="friend" name="how-find" value="friend" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="friend">Friend or family member</label>
+                    <label for="friend">
+                        <span class="checkmark"></span> Friend or family member
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="brochure" name="how-find" value="brochure" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="brochure">Brochure, poster or flyer</label>
+                    <label for="brochure">
+                        <span class="checkmark"></span> Brochure, poster or flyer
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="television" name="how-find" value="television" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="television">Television</label>
+                    <label for="television">
+                        <span class="checkmark"></span> Television
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="media" name="how-find" value="media" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="media">Media outlet or article</label>
+                    <label for="media">
+                        <span class="checkmark"></span> Media outlet or article
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="consulting" name="how-find" value="consulting" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="consulting">Consulting services</label>
+                    <label for="consulting">
+                        <span class="checkmark"></span> Consulting services
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="other-find" name="how-find" value="other" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="other-find">Other</label>
+                    <label for="other-find">
+                        <span class="checkmark"></span> Other
+                    </label>
                 </div>
             </div>
             <div class="navigation-buttons">
@@ -410,13 +425,15 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="student-group-yes" name="student-group" value="yes" required>
-                        <span class="radio"></span>
-                        <label for="student-group-yes">Yes</label>
+                        <label for="student-group-yes">
+                            <span class="radio"></span> Yes
+                        </label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="student-group-no" name="student-group" value="no" required>
-                        <span class="radio"></span>
-                        <label for="student-group-no">No</label>
+                        <label for="student-group-no">
+                            <span class="radio"></span> No
+                        </label>
                     </div>
                 </div>
             </div>
@@ -433,13 +450,15 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="school-rep-yes" name="school-rep" value="yes" required>
-                        <span class="radio"></span>
-                        <label for="school-rep-yes">Yes</label>
+                        <label for="school-rep-yes">
+                            <span class="radio"></span> Yes
+                        </label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="school-rep-no" name="school-rep" value="no" required>
-                        <span class="radio"></span>
-                        <label for="school-rep-no">No</label>
+                        <label for="school-rep-no">
+                            <span class="radio"></span> No
+                        </label>
                     </div>
                 </div>
             </div>
@@ -456,13 +475,15 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes" required>
-                        <span class="radio"></span>
-                        <label for="special-arrangements-yes">Yes</label>
+                        <label for="special-arrangements-yes">
+                            <span class="radio"></span> Yes
+                        </label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no" required>
-                        <span class="radio"></span>
-                        <label for="special-arrangements-no">No</label>
+                        <label for="special-arrangements-no">
+                            <span class="radio"></span> No
+                        </label>
                     </div>
                 </div>
             </div>
@@ -503,13 +524,15 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="other-info-yes" name="other-info" value="yes" required>
-                        <span class="radio"></span>
-                        <label for="other-info-yes">Yes</label>
+                        <label for="other-info-yes">
+                            <span class="radio"></span> Yes
+                        </label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="other-info-no" name="other-info" value="no" required>
-                        <span class="radio"></span>
-                        <label for="other-info-no">No</label>
+                        <label for="other-info-no">
+                            <span class="radio"></span> No
+                        </label>
                     </div>
                 </div>
             </div>
@@ -543,13 +566,15 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes" required>
-                        <span class="radio"></span>
-                        <label for="student-special-arrangements-yes">Yes</label>
+                        <label for="student-special-arrangements-yes">
+                            <span class="radio"></span> Yes
+                        </label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="student-special-arrangements-no" name="student-special-arrangements" value="no" required>
-                        <span class="radio"></span>
-                        <label for="student-special-arrangements-no">No</label>
+                        <label for="student-special-arrangements-no">
+                            <span class="radio"></span> No
+                        </label>
                     </div>
                 </div>
             </div>
@@ -568,33 +593,39 @@
                 <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="transportation-guidance">I need transportation guidance</label>
+                    <label for="transportation-guidance">
+                        <span class="checkmark"></span> I need transportation guidance
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="travel-guidance">I need travel guidance</label>
+                    <label for="travel-guidance">
+                        <span class="checkmark"></span> I need travel guidance
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="accommodation-guidance">I need accommodation guidance</label>
+                    <label for="accommodation-guidance">
+                        <span class="checkmark"></span> I need accommodation guidance
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="visa-invitation">I need a visa invitation</label>
+                    <label for="visa-invitation">
+                        <span class="checkmark"></span> I need a visa invitation
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="financial-aid">I intend to apply for financial aid</label>
+                    <label for="financial-aid">
+                        <span class="checkmark"></span> I intend to apply for financial aid
+                    </label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="prayer-room">I need a prayer room</label>
+                    <label for="prayer-room">
+                        <span class="checkmark"></span> I need a prayer room
+                    </label>
                 </div>
             </div>
             <div class="card">
@@ -627,12 +658,11 @@
                 <textarea id="mun-experience" name="mun-experience" required></textarea>
             </div>
            <div class="card">
-    <label class="question" for="transformative-experience">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
-    <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words.</em></p>
-    <textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" required></textarea>
-    <div id="char-count-transformative-experience" class="char-count"></div>
-</div>
-
+                <label class="question" for="transformative-experience">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
+                <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words.</em></p>
+                <textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" required></textarea>
+                <div id="char-count-transformative-experience" class="char-count"></div>
+            </div>
             <div class="card">
                 <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
                 <p class="subheading"><em>For the following questions, it may be helpful to consult the following:</em></p>
@@ -650,12 +680,12 @@
                 <label class="question" for="third-choice">What is your <strong>third country and committee choice</strong></label><span class="required-star">*</span>
                 <input type="text" id="third-choice" name="third-choice" required>
             </div>
-           <div class="card">
-    <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label>
-    <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words.</em></p>
-    <textarea id="choice-explanation" name="choice-explanation" data-maxlength="1250" required></textarea>
-    <div id="char-count-choice-explanation" class="char-count"></div>
-</div>
+            <div class="card">
+                <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label>
+                <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words.</em></p>
+                <textarea id="choice-explanation" name="choice-explanation" data-maxlength="1250" required></textarea>
+                <div id="char-count-choice-explanation" class="char-count"></div>
+            </div>
             <div class="card">
                 <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
                 <p class="question-description"><em>This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</em></p>
@@ -682,32 +712,36 @@
                 <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="accuracy-certification"></label>
+                    <label for="accuracy-certification">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
             <div class="card">
                 <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="suspension-agreement"></label>
+                    <label for="suspension-agreement">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
             <div class="card">
                 <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned</label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="code-of-conduct-agreement"></label>
+                    <label for="code-of-conduct-agreement">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
             <div class="card">
                 <label class="question" for="age-certification">I am <strong>not of or under the age of 12</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="age-certification" name="age-certification" required class="custom-checkbox">
-                    <span class="checkmark"></span>
-                    <label for="age-certification"></label>
+                    <label for="age-certification">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
             <div class="card">
@@ -716,13 +750,15 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required>
-                        <span class="radio"></span>
-                        <label for="training-modules-yes">Yes</label>
+                        <label for="training-modules-yes">
+                            <span class="radio"></span> Yes
+                        </label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="training-modules-no" name="training-modules" value="no" required>
-                        <span class="radio"></span>
-                        <label for="training-modules-no">No</label>
+                        <label for="training-modules-no">
+                            <span class="radio"></span> No
+                        </label>
                     </div>
                 </div>
             </div>
@@ -760,7 +796,6 @@
     window.scrollTo(0, 0);
 }
 
-
   function showPreviousSection(prevSection) {
     const currentSection = document.querySelector('section:not(.hidden)');
     const prevSectionElement = document.getElementById(prevSection);
@@ -771,7 +806,6 @@
     prevSectionElement.classList.add('fade-in');
     window.scrollTo(0, 0);
 }
-
 
     function handleStudentGroupNext() {
         const studentGroup = document.querySelector('input[name="student-group"]:checked');
@@ -943,16 +977,16 @@ function handleSubmit(event) {
             textarea.style.height = 'auto';
             textarea.style.height = `${textarea.scrollHeight}px`;
         });
-
-        document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
-    const input = container.querySelector('input');
-    container.addEventListener('click', function(event) {
-        if (event.target !== input) {
-            input.click();
-        }
     });
-});
+
+    document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
+        container.addEventListener('click', function(event) {
+            const input = container.querySelector('input');
+            if (event.target !== input) {
+                input.click();
+            }
         });
+    });
 </script>
 </body>
 </html>
