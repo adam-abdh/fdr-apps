@@ -15,7 +15,7 @@
     </div>
     <div class="separator"></div>
     <form id="registration-form" onsubmit="handleSubmit(event)">
-        <section id="welcome" class="fade-in">
+        <section id="welcome" class="fade-in visible-section">
             <div class="card">
                 <h2>Portico Dialogue for the Registration of Delegates and Delegations</h2>
                 <p>Welcome to the digital Delegate and Delegation Registration Form for FDRMUN 25!</p>
@@ -742,30 +742,34 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.3.3</p>
+        <p>Version 7.3.4</p>
         <br>
           <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
     </div>  
     </footer>
  <script>
-    function showNextSection(nextSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        const nextSectionElement = document.getElementById(nextSection);
-        currentSection.classList.add('hidden');
-        nextSectionElement.classList.remove('hidden');
-        nextSectionElement.classList.add('fade-in');
-        window.scrollTo(0, 0);
-    }
+   function showNextSection(nextSection) {
+    const currentSection = document.querySelector('section:not(.hidden)');
+    const nextSectionElement = document.getElementById(nextSection);
+    currentSection.classList.add('hidden');
+    currentSection.classList.remove('visible-section');
+    nextSectionElement.classList.remove('hidden');
+    nextSectionElement.classList.add('visible-section');
+    nextSectionElement.classList.add('fade-in');
+    window.scrollTo(0, 0);
+}
 
     function showPreviousSection(prevSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        const prevSectionElement = document.getElementById(prevSection);
-        currentSection.classList.add('hidden');
-        prevSectionElement.classList.remove('hidden');
-        prevSectionElement.classList.add('fade-in');
-        window.scrollTo(0, 0);
-    }
+    const currentSection = document.querySelector('section:not(.hidden)');
+    const prevSectionElement = document.getElementById(prevSection);
+    currentSection.classList.add('hidden');
+    currentSection.classList.remove('visible-section');
+    prevSectionElement.classList.remove('hidden');
+    prevSectionElement.classList.add('visible-section');
+    prevSectionElement.classList.add('fade-in');
+    window.scrollTo(0, 0);
+}
 
     function handleStudentGroupNext() {
         const studentGroup = document.querySelector('input[name="student-group"]:checked');
@@ -899,9 +903,12 @@
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
-    function handleSubmit(event) {
-        const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
-        let isValid = true;
+function handleSubmit(event) {
+    const visibleSections = document.querySelectorAll('section.visible-section');
+    let isValid = true;
+    
+    visibleSections.forEach(section => {
+        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
@@ -920,12 +927,14 @@
                 }
             }
         });
-        if (!isValid) {
-            event.preventDefault();
-        } else {
-            alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
-        }
+    });
+
+    if (!isValid) {
+        event.preventDefault();
+    } else {
+        alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
     }
+}
 
     document.querySelectorAll('textarea').forEach(textarea => {
         textarea.addEventListener('input', () => {
