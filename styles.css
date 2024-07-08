@@ -20,7 +20,7 @@ body {
 
 h2 {
     font-family: 'Syne', sans-serif;
-    font-weight: 600;
+    font-weight: 604;
     color: var(--main-color);
     letter-spacing: -0.05em;
     font-size: 2em;
@@ -157,7 +157,6 @@ button:focus {
     cursor: pointer;
     height: 0;
     width: 0;
-    z-index: 1;
 }
 
 .checkmark {
@@ -169,7 +168,6 @@ button:focus {
     background-color: #eee;
     border-radius: 4px;
     transition: background-color 0.3s;
-    z-index: 0;
 }
 
 .checkbox-container:hover input ~ .checkmark {
@@ -219,7 +217,7 @@ button:focus {
     margin: 7px 0;
     cursor: pointer;
     position: relative;
-    padding-left: 40px;
+    padding-left: 40px; 
     border-radius: 50%;
 }
 
@@ -227,7 +225,6 @@ button:focus {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    z-index: 1;
 }
 
 .radio {
@@ -244,7 +241,6 @@ button:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 0;
 }
 
 .radio:before {
