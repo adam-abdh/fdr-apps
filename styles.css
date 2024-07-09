@@ -17,6 +17,10 @@ body {
     font-size: 1em;
     margin-bottom: 15px;
     padding: 20px;
+    display: flex;
+    justify-content: center; /* Center the form within the body */
+    align-items: center; /* Center the form within the body */
+    height: 100vh; /* Ensure the body takes the full viewport height */
 }
 
 h2 {
@@ -62,7 +66,7 @@ form {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center the form elements within the form */
 }
 
 label {
