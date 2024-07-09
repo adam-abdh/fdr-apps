@@ -119,7 +119,6 @@ button {
     cursor: pointer;
     border-radius: 20px;
     margin-top: 10px;
-    outline: 1px rgba(0, 51, 112, 0)
     transition: all 0.2s ease;
     font-size: 1em;
 }
