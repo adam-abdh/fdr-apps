@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCharCount(textarea, charCountElement); // Recalculate after trimming
         }
 
-        // Disable textarea if the character limit is reached
-        textarea.disabled = currentLength >= maxLength;
+        // Ensure textarea is not disabled if there are characters to delete
+        textarea.disabled = false;
     }
 
     // Character count for textarea elements with data-maxlength attribute
