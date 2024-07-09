@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentLength = textarea.value.replace(/\s/g, '').length;
         const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
         const remainingChars = maxLength - currentLength;
-        charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining (excluding spaces)`;
+        charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining.`;
     }
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
