@@ -8,6 +8,407 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=Syne:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* Add CSS variables for colors */
+        :root {
+            --main-color: #004080;
+            --secondary-color: #949494;
+            --error-color: red;
+            --border-color: lightgrey;
+            --progress-bar-height: 10px;
+            --card-max-width: 600px;
+            --card-margin: 0 auto 20px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.031em;
+            line-height: 1.34;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 604;
+            color: var(--main-color);
+            letter-spacing: -0.05em;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.02;
+            color: var(--main-color);
+            font-size: 1.15em;
+            margin-bottom: 20px;
+        }
+
+        .subheading, .question-description {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.031em;
+            line-height: 1.01;
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        label, input, select, textarea, button {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.01;
+        }
+
+        form {
+            max-width: var(--card-max-width);
+            margin: auto;
+            position: relative;
+            padding: 10px;
+        }
+
+        label {
+            font-weight: normal;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        label strong {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            display: block;
+            margin: 15px 0;
+            width: 100%;
+            color: var(--main-color);
+            padding: 12px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            outline: none;
+            transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        input:hover, select:hover, textarea:hover {
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border: 1px solid grey;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: var(--main-color);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 10px;
+            transition: all 0.2s ease;
+            font-size: 1em;
+        }
+
+        button:hover {
+            transform: scale(0.95);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .separator {
+            height: 1px;
+            background: #f5f5f5;
+            margin: 20px 0;
+        }
+
+        .char-count {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* Updated checkbox styles */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            cursor: pointer;
+            font-size: 16px;
+            user-select: none;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: var(--main-color);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 7px;
+            top: 2.4px;
+            width: 3px;
+            height: 3px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+            animation: checkAnim 0.2s forwards;
+        }
+
+        @keyframes checkAnim {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 10px;
+            }
+        }
+
+        /* Updated radio button styles */
+        .radio-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .radio-button {
+            display: flex;
+            align-items: center;
+            margin: 7px 0;
+            cursor: pointer;
+            position: relative;
+            padding-left: 40px; 
+            border-radius: 50%;
+        }
+
+        .radio-button input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            transition: all 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radio:before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--main-color);
+            transform: scale(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .radio-button:hover .radio {
+            border-color: #999;
+        }
+
+        .radio-button input[type="radio"]:checked + .radio {
+            border-color: var(--main-color);
+        }
+
+        .radio-button input[type="radio"]:checked + .radio:before {
+            transform: scale(1);
+        }
+
+        .radio-button span {
+            margin-left: 10px;
+            text-align: center;
+        }
+
+        .error {
+            color: var(--error-color);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+            color: var(--error-color);
+            padding: 10px 0;
+        }
+
+        .error-icon {
+            font-size: 1.2em;
+        }
+
+        .card {
+            width: 100%;
+            height: auto;
+            background: white;
+            border-radius: 17px;
+            border: 1.5px solid #f5f5f5;
+            box-shadow: -1px 0px 37px 0px rgba(206,206,206,0.17);
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 0;
+            max-width: var(--card-max-width);
+            margin: var(--card-margin);
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        hr {
+            border: 1px solid #f5f5f5;
+            margin: 20px 0;
+        }
+
+        .required-star {
+            color: #d9534f;
+            font-size: 1.2em;
+            position: absolute;
+            top: 13px;
+            right: 13px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .yes-no-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        .card:first-child {
+            margin-top: 0;
+        }
+
+        .fade-in {
+            animation: flyUp 0.5s ease;
+        }
+
+        @keyframes flyUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .warning {
+            color: var(--error-color);
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        #progress-container {
+            width: 100%;
+            height: var(--progress-bar-height);
+            background-color: var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        #progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: var(--main-color);
+            transition: width 0.3s;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+            form {
+                width: 100%;
+                margin: 0;
+            }
+            .card {
+                padding: 15px;
+            }
+            button {
+                padding: 8px 16px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="image-section">
@@ -320,7 +721,7 @@
                         <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                 </div>
-                <div class="card">
+                            <div class="card">
                     <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
                     <select id="diet" name="diet" required>
                         <option value="none">None</option>
@@ -742,7 +1143,7 @@
         </form>
     <footer>
         <hr>
-        <p>Version 7.3.9</p>
+        <p>Version 7.3.11</p>
         <br>
         <div class="image-section">
             <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
@@ -818,149 +1219,46 @@
                 document.getElementById('other-info-warning').classList.remove('hidden');
             }
         }
-
-        function handleStudentSpecialArrangementsNext() {
-            const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-            if (studentSpecialArrangements) {
-                if (studentSpecialArrangements.value === 'yes') {
-                    showNextSection('special-guidance');
-                } else {
-                    showNextSection('mun-experience');
-                }
+    function handleStudentSpecialArrangementsNext() {
+        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+        if (studentSpecialArrangements) {
+            if (studentSpecialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
             } else {
-                document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+                showNextSection('mun-experience');
             }
+        } else {
+            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
         }
+    }
 
-        function validateEmail() {
-            const email = document.getElementById('email').value;
-            const emailError = document.getElementById('email-error');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                emailError.textContent = 'Please enter a valid email address. ⚠️';
-                document.getElementById('email').parentElement.style.border = '1px solid red';
-            } else {
-                emailError.textContent = '';
-                document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
-            }
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+        } else {
+            emailError.textContent = '';
         }
+    }
 
-        function updateCharCount(textareaId, charCountId) {
-            const textarea = document.getElementById(textareaId);
-            const charCount = document.getElementById(charCountId);
-            const currentLength = textarea.value.replace(/\s/g, '').length;
-            const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
-            const remainingChars = maxLength - currentLength;
-            charCount.textContent = `${remainingChars} characters remaining (excluding spaces)`;
-        }
+    function handleSubmit(event) {
+        event.preventDefault();
+        // Add your form submission logic here
+        alert('Form submitted successfully!');
+    }
 
-        document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
-            textarea.addEventListener('input', function() {
-                const maxLength = parseInt(this.getAttribute('data-maxlength'));
-                const textWithoutSpaces = this.value.replace(/\s/g, '');
-                if (textWithoutSpaces.length > maxLength) {
-                    let truncatedText = '';
-                    let charCount = 0;
-                    for (let i = 0; i < this.value.length; i++) {
-                        if (this.value[i] !== ' ') {
-                            if (charCount >= maxLength) break;
-                            charCount++;
-                        }
-                        truncatedText += this.value[i];
-                    }
-                    this.value = truncatedText;
-                }
-                updateCharCount(this.id, `char-count-${this.id}`);
-            });
-
-            textarea.addEventListener('paste', function(e) {
-                e.preventDefault();
-                const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
-                const maxLength = parseInt(this.getAttribute('data-maxlength'));
-                const currentTextWithoutSpaces = this.value.replace(/\s/g, '');
-                const pastedTextWithoutSpaces = pastedText.replace(/\s/g, '');
-                const remainingChars = maxLength - currentTextWithoutSpaces.length;
-                
-                let allowedText = '';
-                let charCount = 0;
-                for (let i = 0; i < pastedText.length; i++) {
-                    if (pastedText[i] !== ' ') {
-                        if (charCount >= remainingChars) break;
-                        charCount++;
-                    }
-                    allowedText += pastedText[i];
-                }
-                
-                document.execCommand('insertText', false, allowedText);
-                updateCharCount(this.id, `char-count-${this.id}`);
-            });
-
-            // Initialize character count
-            updateCharCount(textarea.id, `char-count-${textarea.id}`);
+    // Character count for textarea elements with data-maxlength attribute
+    document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+        const charCountElement = document.getElementById(`char-count-${textarea.id}`);
+        textarea.addEventListener('input', () => {
+            const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
+            const currentLength = textarea.value.length;
+            charCountElement.textContent = `${currentLength}/${maxLength}`;
         });
-
-        function handleSubmit(event) {
-            const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
-            let isValid = true;
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.parentElement.style.border = '1px solid red';
-                    if (!field.parentElement.querySelector('.error-message')) {
-                        const errorMessage = document.createElement('div');
-                        errorMessage.className = 'error-message';
-                        errorMessage.innerHTML = '<span class="error-icon">⚠️</span> This field is required.';
-                        field.parentElement.appendChild(errorMessage);
-                    }
-                } else {
-                    field.parentElement.style.border = '1px solid lightgrey';
-                    const errorMessage = field.parentElement.querySelector('.error-message');
-                    if (errorMessage) {
-                        errorMessage.remove();
-                    }
-                }
-            });
-            if (!isValid) {
-                event.preventDefault();
-            } else {
-                alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
-            }
-        }
-
-        document.querySelectorAll('textarea').forEach(textarea => {
-            textarea.addEventListener('input', () => {
-                textarea.style.height = 'auto';
-                textarea.style.height = `${textarea.scrollHeight}px`;
-            });
-        });
-
-        document.querySelectorAll('.checkbox-container').forEach(container => {
-            const input = container.querySelector('input[type="checkbox"]');
-            const label = container.querySelector('label');
-            
-            input.addEventListener('click', (event) => {
-                event.stopPropagation();
-            });
-
-            label.addEventListener('click', (event) => {
-                event.preventDefault();
-                input.click();
-            });
-        });
-
-        document.querySelectorAll('.radio-button').forEach(container => {
-            const input = container.querySelector('input[type="radio"]');
-            const label = container.querySelector('label');
-            
-            input.addEventListener('click', (event) => {
-                event.stopPropagation();
-            });
-
-            label.addEventListener('click', (event) => {
-                event.preventDefault();
-                input.click();
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
