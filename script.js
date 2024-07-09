@@ -8,6 +8,21 @@ document.addEventListener('DOMContentLoaded', function() {
         charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining.`;
     }
 
+    function autoResizeTextarea(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.auto-resize').forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            autoResizeTextarea(this);
+        });
+        // Initial resize
+        autoResizeTextarea(textarea);
+    });
+
+
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
             const maxLength = parseInt(this.getAttribute('data-maxlength'));
