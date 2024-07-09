@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
@@ -7,21 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const remainingChars = maxLength - currentLength;
         charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining.`;
     }
-
-    function autoResizeTextarea(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.auto-resize').forEach(textarea => {
-        textarea.addEventListener('input', function() {
-            autoResizeTextarea(this);
-        });
-        // Initial resize
-        autoResizeTextarea(textarea);
-    });
-
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
