@@ -31,7 +31,7 @@
                 <button type="button" onclick="showNextSection('personal-data')">Let's Go →</button>
             </div>
         </section>
-        <section id="personal-data" class="hidden fade-in visible-section">
+        <section id="personal-data" class="hidden fade-in">
             <h2>Personal Data, Residency and Contact Information</h2>
             <div class="card">
                 <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
@@ -632,6 +632,7 @@
     <textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" required></textarea>
     <div id="char-count-transformative-experience" class="char-count"></div>
 </div>
+
             <div class="card">
                 <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
                 <p class="subheading"><em>For the following questions, it may be helpful to consult the following:</em></p>
@@ -741,40 +742,33 @@
     </form>
     <footer>
         <hr>
-        <p>Version 7.3.5</p>
+        <p>Version 7.3.3</p>
         <br>
           <div class="image-section">
         <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
     </div>  
     </footer>
  <script>
-  function showNextSection(nextSection) {
-    const currentSection = document.querySelector('section:not(.hidden)');
-    const nextSectionElement = document.getElementById(nextSection);
-    currentSection.classList.add('hidden');
-    currentSection.classList.remove('visible-section');
-    nextSectionElement.classList.remove('hidden');
-    nextSectionElement.classList.add('visible-section');
-    nextSectionElement.classList.add('fade-in');
-    window.scrollTo(0, 0);
-}
+    function showNextSection(nextSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const nextSectionElement = document.getElementById(nextSection);
+        currentSection.classList.add('hidden');
+        nextSectionElement.classList.remove('hidden');
+        nextSectionElement.classList.add('fade-in');
+        window.scrollTo(0, 0);
+    }
 
+    function showPreviousSection(prevSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const prevSectionElement = document.getElementById(prevSection);
+        currentSection.classList.add('hidden');
+        prevSectionElement.classList.remove('hidden');
+        prevSectionElement.classList.add('fade-in');
+        window.scrollTo(0, 0);
+    }
 
-  function showPreviousSection(prevSection) {
-    const currentSection = document.querySelector('section:not(.hidden)');
-    const prevSectionElement = document.getElementById(prevSection);
-    currentSection.classList.add('hidden');
-    currentSection.classList.remove('visible-section');
-    prevSectionElement.classList.remove('hidden');
-    prevSectionElement.classList.add('visible-section');
-    prevSectionElement.classList.add('fade-in');
-    window.scrollTo(0, 0);
-}
-
-function handleStudentGroupNext() {
-        const studentGroup = document.querySelector('input[name="student-group"]:checked');    
-    @@ -899,9 +905,13 @@ <h2>Finishing up; The Ts and Cs of your application</h2>
-  
+    function handleStudentGroupNext() {
+        const studentGroup = document.querySelector('input[name="student-group"]:checked');
         if (studentGroup) {
             if (studentGroup.value === 'yes') {
                 showNextSection('student-delegation');
@@ -785,6 +779,7 @@ function handleStudentGroupNext() {
             document.getElementById('student-group-warning').classList.remove('hidden');
         }
     }
+
     function handleSchoolRepNext() {
         const schoolRep = document.querySelector('input[name="school-rep"]:checked');
         if (schoolRep) {
@@ -797,6 +792,7 @@ function handleStudentGroupNext() {
             document.getElementById('school-rep-warning').classList.remove('hidden');
         }
     }
+
     function handleSpecialArrangementsNext() {
         const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
         if (specialArrangements) {
@@ -809,6 +805,7 @@ function handleStudentGroupNext() {
             document.getElementById('special-arrangements-warning').classList.remove('hidden');
         }
     }
+
     function handleOtherInfoNext() {
         const otherInfo = document.querySelector('input[name="other-info"]:checked');
         if (otherInfo) {
@@ -821,6 +818,7 @@ function handleStudentGroupNext() {
             document.getElementById('other-info-warning').classList.remove('hidden');
         }
     }
+
     function handleStudentSpecialArrangementsNext() {
         const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
         if (studentSpecialArrangements) {
@@ -833,6 +831,7 @@ function handleStudentGroupNext() {
             document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
         }
     }
+
     function validateEmail() {
         const email = document.getElementById('email').value;
         const emailError = document.getElementById('email-error');
@@ -845,6 +844,7 @@ function handleStudentGroupNext() {
             document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
         }
     }
+
     function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
         const charCount = document.getElementById(charCountId);
@@ -853,6 +853,7 @@ function handleStudentGroupNext() {
         const remainingChars = maxLength - currentLength;
         charCount.textContent = `${remainingChars} characters remaining (excluding spaces)`;
     }
+
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
             const maxLength = parseInt(this.getAttribute('data-maxlength'));
@@ -871,6 +872,7 @@ function handleStudentGroupNext() {
             }
             updateCharCount(this.id, `char-count-${this.id}`);
         });
+
         textarea.addEventListener('paste', function(e) {
             e.preventDefault();
             const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
@@ -892,31 +894,17 @@ function handleStudentGroupNext() {
             document.execCommand('insertText', false, allowedText);
             updateCharCount(this.id, `char-count-${this.id}`);
         });
+
         // Initialize character count
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
-
-function handleSubmit(event) {
-    const visibleSections = document.querySelectorAll('section.visible-section');
-    let isValid = true;
-
-    visibleSections.forEach(section => {
-        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
+    function handleSubmit(event) {
+        const requiredFields = document.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -920,13 +930,14 @@ <h2>Finishing up; The Ts and Cs of your application</h2>
-  
                 field.parentElement.style.border = '1px solid red';
                 if (!field.parentElement.querySelector('.error-message')) {
                     const errorMessage = document.createElement('div');
@@ -932,25 +920,43 @@ function handleSubmit(event) {
                 }
             }
         });
-    });
-
-    if (!isValid) {
-        event.preventDefault();
-    } else {
-        alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
+        if (!isValid) {
+            event.preventDefault();
+        } else {
+            alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
+        }
     }
-}
+
     document.querySelectorAll('textarea').forEach(textarea => {
         textarea.addEventListener('input', () => {
-            textarea.style.height = 'auto';   
+            textarea.style.height = 'auto';
             textarea.style.height = `${textarea.scrollHeight}px`;
         });
-        document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
-    const input = container.querySelector('input');
-    container.addEventListener('click', function(event) {
-        if (event.target !== input) {
-            input.click();
-        }
+
+       document.querySelectorAll('.checkbox-container').forEach(container => {
+    const input = container.querySelector('input[type="checkbox"]');
+    const label = container.querySelector('label');
+    
+    input.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    label.addEventListener('click', (event) => {
+        event.preventDefault();
+        input.click();
+    });
+});
+        document.querySelectorAll('.radio-button').forEach(container => {
+    const input = container.querySelector('input[type="radio"]');
+    const label = container.querySelector('label');
+    
+    input.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    label.addEventListener('click', (event) => {
+        event.preventDefault();
+        input.click();
     });
 });
         });
