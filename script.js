@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize character count
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
-    // Function to show the next section
+
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
         const nextSectionElement = document.getElementById(nextSection);
@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo(0, 0);
     }
 
-    // Function to show the previous section
     function showPreviousSection(prevSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
         const prevSectionElement = document.getElementById(prevSection);
@@ -80,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo(0, 0);
     }
 
-    // Function to handle student group next button
     function handleStudentGroupNext() {
         const studentGroup = document.querySelector('input[name="student-group"]:checked');
         if (studentGroup) {
@@ -94,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to handle school rep next button
     function handleSchoolRepNext() {
         const schoolRep = document.querySelector('input[name="school-rep"]:checked');
         if (schoolRep) {
@@ -108,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to handle special arrangements next button
     function handleSpecialArrangementsNext() {
         const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
         if (specialArrangements) {
@@ -122,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to handle other info next button
     function handleOtherInfoNext() {
         const otherInfo = document.querySelector('input[name="other-info"]:checked');
         if (otherInfo) {
@@ -136,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to handle student special arrangements next button
     function handleStudentSpecialArrangementsNext() {
         const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
         if (studentSpecialArrangements) {
@@ -150,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to validate email
     function validateEmail() {
         const emailInput = document.getElementById('email');
         const emailError = document.getElementById('email-error');
@@ -162,14 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to handle form submission
     function handleSubmit(event) {
         event.preventDefault();
-        // Add your form submission logic here
         alert('Form submitted successfully!');
     }
 
-    // Ensure radio buttons and checkboxes are interactive
     document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
         const input = container.querySelector('input');
         const label = container.querySelector('label');
@@ -182,7 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add event listeners to buttons
     document.querySelectorAll('button[type="button"]').forEach(button => {
         button.addEventListener('click', function() {
             const action = this.getAttribute('onclick');
@@ -192,6 +181,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add event listener to form submission
     document.getElementById('registration-form').addEventListener('submit', handleSubmit);
 });
