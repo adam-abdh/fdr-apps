@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Disable textarea if the character limit is reached
         if (remainingChars <= 0) {
+            textarea.value = textarea.value.slice(0, maxLength); // Trim the value to the max length
             textarea.disabled = true;
         } else {
             textarea.disabled = false;
