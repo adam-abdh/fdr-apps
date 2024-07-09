@@ -168,7 +168,7 @@ button:focus {
     font-size: 16px;
     user-select: none;
     position: relative;
-    padding-left: 35px; /* Adjust this value to align the hitbox correctly */
+    padding-left: 20px; /* Adjust this value to align the hitbox correctly */
     justify-content: flex-start; /* Left-align the checkbox container */
 }
 
