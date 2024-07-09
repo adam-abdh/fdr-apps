@@ -1,5 +1,17 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+    function autoResizeTextarea(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+}
+
+    document.querySelectorAll('.auto-resize').forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            autoResizeTextarea(this);
+        });
+        autoResizeTextarea(textarea);
+    });
+
     function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
         const charCount = document.getElementById(charCountId);
