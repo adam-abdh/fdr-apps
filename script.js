@@ -160,15 +160,19 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Form submitted successfully!');
     }
 
-    document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
-        const input = container.querySelector('input');
-        const label = container.querySelector('label');
-        input.addEventListener('click', (event) => {
-            event.stopPropagation();
+   document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.checkbox-container input[type="checkbox"], .radio-container input[type="radio"]').forEach(input => {
+        input.addEventListener('click', function() {
+            // Your event handling code here
+            console.log('Checkbox or radio button clicked');
         });
-        label.addEventListener('click', (event) => {
-            event.preventDefault();
-            input.click();
+    });
+
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Form submitted successfully!');
+    });
+});
         });
     });
 
