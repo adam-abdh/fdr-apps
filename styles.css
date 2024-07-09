@@ -119,6 +119,7 @@ button {
     cursor: pointer;
     border-radius: 20px;
     margin-top: 10px;
+    outline: 1px rgba(0, 51, 112, 0)
     transition: all 0.2s ease;
     font-size: 1em;
 }
@@ -176,6 +177,7 @@ button:focus {
     position: absolute;
     opacity: 0;
     cursor: pointer;
+    left: -20px; /* Adjust this value to move the checkbox left */
     padding-left: 95px;
     padding-right: 35px;
     height: 0;
