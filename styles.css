@@ -178,7 +178,7 @@ button:focus {
     height: 20px; /* Set height */
     width: 20px;  /* Set width */
     left: 0;      /* Ensure it covers the checkmark */
-    top: 0;       /* Ensure it covers the checkmark */
+    top: 5;       /* Ensure it covers the checkmark */
 }
 
 .checkmark {
