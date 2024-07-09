@@ -1,10 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-        // Function to update character count excluding spaces
+    // Function to update character count excluding spaces
     function updateCharCount(textarea, charCountElement) {
         const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
         const currentLength = textarea.value.replace(/\s+/g, '').length;
         const remainingChars = maxLength - currentLength;
         charCountElement.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining`;
+
+        // Disable textarea if the character limit is reached
+        if (remainingChars <= 0) {
+            textarea.disabled = true;
+        } else {
+            textarea.disabled = false;
+        }
     }
 
     // Character count for textarea elements with data-maxlength attribute
@@ -16,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize the character count
         updateCharCount(textarea, charCountElement);
     });
+
     // Function to show the next section
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
@@ -119,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const emailInput = document.getElementById('email');
         const emailError = document.getElementById('email-error');
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
         if (!emailPattern.test(emailInput.value)) {
             emailError.textContent = 'Please enter a valid email address.';
         } else {
@@ -134,25 +141,13 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Form submitted successfully!');
     }
 
-    // Character count for textarea elements with data-maxlength attribute
-    document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
-        const charCountElement = document.getElementById(`char-count-${textarea.id}`);
-        textarea.addEventListener('input', () => {
-            const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
-            const currentLength = textarea.value.length;
-            charCountElement.textContent = `${currentLength}/${maxLength}`;
-        });
-    });
-
     // Ensure radio buttons and checkboxes are interactive
     document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
         const input = container.querySelector('input');
         const label = container.querySelector('label');
-
         input.addEventListener('click', (event) => {
             event.stopPropagation();
         });
-
         label.addEventListener('click', (event) => {
             event.preventDefault();
             input.click();
@@ -168,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
     // Add event listener to form submission
     document.getElementById('registration-form').addEventListener('submit', handleSubmit);
 });
