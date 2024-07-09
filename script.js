@@ -1,79 +1,157 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = document.querySelectorAll('section');
-    let currentSection = 0;
-
-    function updateProgressBar() {
-        const progressBar = document.getElementById('progress-bar');
-        const progress = ((currentSection + 1) / sections.length) * 100;
-        progressBar.style.width = `${progress}%`;
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to show the next section
+    function showNextSection(nextSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const nextSectionElement = document.getElementById(nextSection);
+        if (currentSection) {
+            currentSection.classList.add('hidden');
+        }
+        if (nextSectionElement) {
+            nextSectionElement.classList.remove('hidden');
+            nextSectionElement.classList.add('fade-in');
+        }
+        window.scrollTo(0, 0);
     }
 
-    function showSection(index) {
-        sections[currentSection].classList.add('hidden');
-        sections[index].classList.remove('hidden');
-        currentSection = index;
-        updateProgressBar();
+    // Function to show the previous section
+    function showPreviousSection(prevSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const prevSectionElement = document.getElementById(prevSection);
+        if (currentSection) {
+            currentSection.classList.add('hidden');
+        }
+        if (prevSectionElement) {
+            prevSectionElement.classList.remove('hidden');
+            prevSectionElement.classList.add('fade-in');
+        }
+        window.scrollTo(0, 0);
     }
 
-    updateProgressBar();
-    showSection(0);
-
-    document.getElementById('next-button1').addEventListener('click', () => showNextSection('section2'));
-    document.getElementById('prev-button1').addEventListener('click', () => showPreviousSection('section1'));
-    document.getElementById('next-button2').addEventListener('click', () => showNextSection('section3'));
-    document.getElementById('prev-button2').addEventListener('click', () => showPreviousSection('section2'));
-});
-
-function showNextSection(nextSectionId) {
-    const sections = document.querySelectorAll('section');
-    const currentSectionElement = sections[currentSection];
-    const nextSectionElement = document.getElementById(nextSectionId);
-
-    if (!validateSection(currentSectionElement)) {
-        showWarning(currentSectionElement);
-        return;
-    }
-
-    showSection(Array.from(sections).indexOf(nextSectionElement));
-}
-
-function showPreviousSection(prevSectionId) {
-    const sections = document.querySelectorAll('section');
-    const prevSectionElement = document.getElementById(prevSectionId);
-    showSection(Array.from(sections).indexOf(prevSectionElement));
-}
-
-function validateSection(section) {
-    const inputs = section.querySelectorAll('input, select, textarea');
-    for (let input of inputs) {
-        if (input.required && !input.value.trim()) {
-            return false;
+    // Function to handle student group next button
+    function handleStudentGroupNext() {
+        const studentGroup = document.querySelector('input[name="student-group"]:checked');
+        if (studentGroup) {
+            if (studentGroup.value === 'yes') {
+                showNextSection('student-delegation');
+            } else {
+                showNextSection('school-group-delegation');
+            }
+        } else {
+            document.getElementById('student-group-warning').classList.remove('hidden');
         }
     }
-    return true;
-}
 
-function showWarning(section) {
-    const warning = section.querySelector('.warning');
-    if (warning) {
-        warning.classList.remove('hidden');
-        setTimeout(() => {
-            warning.classList.add('hidden');
-        }, 3000);
+    // Function to handle school rep next button
+    function handleSchoolRepNext() {
+        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
+        if (schoolRep) {
+            if (schoolRep.value === 'yes') {
+                showNextSection('chaperone-delegation');
+            } else {
+                showNextSection('special-arrangements');
+            }
+        } else {
+            document.getElementById('school-rep-warning').classList.remove('hidden');
+        }
     }
-}
 
-function showSection(index) {
-    const sections = document.querySelectorAll('section');
-    sections[currentSection].classList.add('hidden');
-    sections[index].classList.remove('hidden');
-    currentSection = index;
-    updateProgressBar();
-}
+    // Function to handle special arrangements next button
+    function handleSpecialArrangementsNext() {
+        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+        if (specialArrangements) {
+            if (specialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('special-arrangements-warning').classList.remove('hidden');
+        }
+    }
 
-function updateProgressBar() {
-    const sections = document.querySelectorAll('section');
-    const progressBar = document.getElementById('progress-bar');
-    const progress = ((currentSection + 1) / sections.length) * 100;
-    progressBar.style.width = `${progress}%`;
-}
+    // Function to handle other info next button
+    function handleOtherInfoNext() {
+        const otherInfo = document.querySelector('input[name="other-info"]:checked');
+        if (otherInfo) {
+            if (otherInfo.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('terms-conditions');
+            }
+        } else {
+            document.getElementById('other-info-warning').classList.remove('hidden');
+        }
+    }
+
+    // Function to handle student special arrangements next button
+    function handleStudentSpecialArrangementsNext() {
+        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+        if (studentSpecialArrangements) {
+            if (studentSpecialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+        }
+    }
+
+    // Function to validate email
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+        } else {
+            emailError.textContent = '';
+        }
+    }
+
+    // Function to handle form submission
+    function handleSubmit(event) {
+        event.preventDefault();
+        // Add your form submission logic here
+        alert('Form submitted successfully!');
+    }
+
+    // Character count for textarea elements with data-maxlength attribute
+    document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+        const charCountElement = document.getElementById(`char-count-${textarea.id}`);
+        textarea.addEventListener('input', () => {
+            const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
+            const currentLength = textarea.value.length;
+            charCountElement.textContent = `${currentLength}/${maxLength}`;
+        });
+    });
+
+    // Ensure radio buttons and checkboxes are interactive
+    document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
+        const input = container.querySelector('input');
+        const label = container.querySelector('label');
+
+        input.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+
+        label.addEventListener('click', (event) => {
+            event.preventDefault();
+            input.click();
+        });
+    });
+
+    // Add event listeners to buttons
+    document.querySelectorAll('button[type="button"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.getAttribute('onclick');
+            if (action) {
+                eval(action);
+            }
+        });
+    });
+
+    // Add event listener to form submission
+    document.getElementById('registration-form').addEventListener('submit', handleSubmit);
+});
