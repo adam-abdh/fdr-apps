@@ -114,8 +114,6 @@ button {
     margin-top: 10px;
     transition: all 0.2s ease;
     font-size: 1em;
-    display: block;
-    margin: 15px auto; /* Center the button element */
 }
 
 button:hover {
@@ -145,6 +143,7 @@ button:focus {
     height: 1px;
     background: #f5f5f5;
     margin: 20px 0;
+    width: 100%; /* Ensure the separator is the length of the card */
 }
 
 .char-count {
@@ -337,6 +336,7 @@ footer {
 hr {
     border: 1px solid #f5f5f5;
     margin: 20px 0;
+    width: 100%; /* Ensure the divider is the length of the card */
 }
 
 .required-star {
@@ -350,6 +350,7 @@ hr {
 .navigation-buttons {
     display: flex;
     justify-content: space-between;
+    width: 100%; /* Ensure the buttons are at the left and rightmost limits of the card */
 }
 
 .yes-no-container {
