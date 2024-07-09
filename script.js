@@ -1,35 +1,57 @@
 document.addEventListener('DOMContentLoaded', function() {
-    function updateCharCount(textarea, charCountElement) {
-        const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
-        const currentLength = textarea.value.replace(/\s+/g, '').length;
+document.addEventListener('DOMContentLoaded', function() {
+    function updateCharCount(textareaId, charCountId) {
+        const textarea = document.getElementById(textareaId);
+        const charCount = document.getElementById(charCountId);
+        const currentLength = textarea.value.replace(/\s/g, '').length;
+        const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
         const remainingChars = maxLength - currentLength;
-        charCountElement.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining`;
-
-        // Trim the value to the max length if it exceeds
-        if (currentLength > maxLength) {
-            const trimmedValue = textarea.value.slice(0, maxLength);
-            textarea.value = trimmedValue;
-            updateCharCount(textarea, charCountElement); // Recalculate after trimming
-        }
-
-        // Do not disable typing; instead, just prevent exceeding the max length
-        if (currentLength >= maxLength) {
-            textarea.value = textarea.value.slice(0, maxLength);
-        }
+        charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining (excluding spaces)`;
     }
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
-        const charCountElement = document.getElementById(`char-count-${textarea.id}`);
-        textarea.addEventListener('input', () => {
-            updateCharCount(textarea, charCountElement);
+        textarea.addEventListener('input', function() {
+            const maxLength = parseInt(this.getAttribute('data-maxlength'));
+            const textWithoutSpaces = this.value.replace(/\s/g, '');
+            if (textWithoutSpaces.length > maxLength) {
+                let truncatedText = '';
+                let charCount = 0;
+                for (let i = 0; i < this.value.length; i++) {
+                    if (this.value[i] !== ' ') {
+                        if (charCount >= maxLength) break;
+                        charCount++;
+                    }
+                    truncatedText += this.value[i];
+                }
+                this.value = truncatedText;
+            }
+            updateCharCount(this.id, `char-count-${this.id}`);
         });
-        textarea.addEventListener('paste', () => {
-            setTimeout(() => {
-                updateCharCount(textarea, charCountElement);
-            }, 0);
+
+        textarea.addEventListener('paste', function(e) {
+            e.preventDefault();
+            const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
+            const maxLength = parseInt(this.getAttribute('data-maxlength'));
+            const currentTextWithoutSpaces = this.value.replace(/\s/g, '');
+            const pastedTextWithoutSpaces = pastedText.replace(/\s/g, '');
+            const remainingChars = maxLength - currentTextWithoutSpaces.length;
+            
+            let allowedText = '';
+            let charCount = 0;
+            for (let i = 0; i < pastedText.length; i++) {
+                if (pastedText[i] !== ' ') {
+                    if (charCount >= remainingChars) break;
+                    charCount++;
+                }
+                allowedText += pastedText[i];
+            }
+            
+            document.execCommand('insertText', false, allowedText);
+            updateCharCount(this.id, `char-count-${this.id}`);
         });
-        // Initialize the character count
-        updateCharCount(textarea, charCountElement);
+
+        // Initialize character count
+        updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
     // Function to show the next section
     function showNextSection(nextSection) {
