@@ -176,6 +176,7 @@ button:focus {
     position: absolute;
     opacity: 0;
     cursor: pointer;
+    padding-left: 95px;
     padding-right: 35px;
     height: 0;
     width: 0;
