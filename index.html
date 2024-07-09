@@ -31,7 +31,7 @@
                 <button type="button" onclick="showNextSection('personal-data')">Let's Go →</button>
             </div>
         </section>
-        <section id="personal-data" class="hidden fade-in">
+        <section id="personal-data" class="hidden fade-in visible-section">
             <h2>Personal Data, Residency and Contact Information</h2>
             <div class="card">
                 <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
@@ -50,27 +50,23 @@
                 <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
                 <div class="checkbox-container">
                     <input type="checkbox" id="they-them" name="pronouns" value="they/them" required>
-                    <label for="they-them">
-                        <span class="checkmark"></span> they/them/theirs
-                    </label>
+                    <span class="checkmark"></span>
+                    <label for="they-them">they/them/theirs</label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="he-him" name="pronouns" value="he/him" required>
-                    <label for="he-him">
-                        <span class="checkmark"></span> he/him/his
-                    </label>
+                    <span class="checkmark"></span>
+                    <label for="he-him">he/him/his</label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="she-her" name="pronouns" value="she/her" required>
-                    <label for="she-her">
-                        <span class="checkmark"></span> she/her/hers
-                    </label>
+                    <span class="checkmark"></span>
+                    <label for="she-her">she/her/hers</label>
                 </div>
                 <div class="checkbox-container">
                     <input type="checkbox" id="other-pronouns" name="pronouns" value="other" required>
-                    <label for="other-pronouns">
-                        <span class="checkmark"></span> Other
-                    </label>
+                    <span class="checkmark"></span>
+                    <label for="other-pronouns">Other</label>
                 </div>
             </div>
             <div class="card">
@@ -115,7 +111,6 @@
             <div class="card">
                 <label class="question" for="country">Your <strong>country of residence.</strong></label><span class="required-star">*</span>
                 <select id="country" name="country" required>
-                    <option value="">Select a country</option>
                     <option value="">Select a country</option>
                     <option value="Romania">Romania</option>
                     <option value="Albania">Albania</option>
@@ -338,79 +333,68 @@
                 </select>
             </div>
             <div class="card">
-                <label class="question">How did you <strong>find out</strong> about us?</label><p class="question-description"><em>Check all that may apply.</em></p>
+                <label class="question">How did you <strong>find out</strong> about us?</label
+                ><p class="question-description"><em>Check all that may apply.</em></p>
                 <span class="required-star">*</span>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="google" name="how-find" value="google" required>
-                    <label for="google">
-                        <span class="checkmark"></span> Google/FDRMUN website
-                    </label>
+                    <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="google">Google/FDRMUN website</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="instagram" name="how-find" value="instagram" required>
-                    <label for="instagram">
-                        <span class="checkmark"></span> FDRMUN Instagram
-                    </label>
+                    <input type="checkbox" id="instagram" name="how-find" value="instagram" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="instagram">FDRMUN Instagram</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="email-find" name="how-find" value="email" required>
-                    <label for="email-find">
-                        <span class="checkmark"></span> FDRMUN E-mail
-                    </label>
+                    <input type="checkbox" id="email-find" name="how-find" value="email" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="email-find">FDRMUN E-mail</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="social-media" name="how-find" value="social-media" required>
-                    <label for="social-media">
-                        <span class="checkmark"></span> Other FDRMUN social network(s)
-                    </label>
+                    <input type="checkbox" id="social-media" name="how-find" value="social-media" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="social-media">Other FDRMUN social network(s)</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="school" name="how-find" value="school" required>
-                    <label for="school">
-                        <span class="checkmark"></span> International School of Bucharest
-                    </label>
+                    <input type="checkbox" id="school" name="how-find" value="school" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="school">International School of Bucharest</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="mun-sources" name="how-find" value="mun-sources" required>
-                    <label for="mun-sources">
-                        <span class="checkmark"></span> MUN-related sources (such as myMUN or mun.news.ro)
-                    </label>
+                    <input type="checkbox" id="mun-sources" name="how-find" value="mun-sources" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="mun-sources">MUN-related sources (such as myMUN or mun.news.ro)</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="friend" name="how-find" value="friend" required>
-                    <label for="friend">
-                        <span class="checkmark"></span> Friend or family member
-                    </label>
+                    <input type="checkbox" id="friend" name="how-find" value="friend" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="friend">Friend or family member</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="brochure" name="how-find" value="brochure" required>
-                    <label for="brochure">
-                        <span class="checkmark"></span> Brochure, poster or flyer
-                    </label>
+                    <input type="checkbox" id="brochure" name="how-find" value="brochure" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="brochure">Brochure, poster or flyer</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="television" name="how-find" value="television" required>
-                    <label for="television">
-                        <span class="checkmark"></span> Television
-                    </label>
+                    <input type="checkbox" id="television" name="how-find" value="television" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="television">Television</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="media" name="how-find" value="media" required>
-                    <label for="media">
-                        <span class="checkmark"></span> Media outlet or article
-                    </label>
+                    <input type="checkbox" id="media" name="how-find" value="media" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="media">Media outlet or article</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="consulting" name="how-find" value="consulting" required>
-                    <label for="consulting">
-                        <span class="checkmark"></span> Consulting services
-                    </label>
+                    <input type="checkbox" id="consulting" name="how-find" value="consulting" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="consulting">Consulting services</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="other-find" name="how-find" value="other" required>
-                    <label for="other-find">
-                        <span class="checkmark"></span> Other
-                    </label>
+                    <input type="checkbox" id="other-find" name="how-find" value="other" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="other-find">Other</label>
                 </div>
             </div>
             <div class="navigation-buttons">
@@ -426,15 +410,13 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="student-group-yes" name="student-group" value="yes" required>
-                        <label for="student-group-yes">
-                            <span class="radio"></span> Yes
-                        </label>
+                        <span class="radio"></span>
+                        <label for="student-group-yes">Yes</label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="student-group-no" name="student-group" value="no" required>
-                        <label for="student-group-no">
-                            <span class="radio"></span> No
-                        </label>
+                        <span class="radio"></span>
+                        <label for="student-group-no">No</label>
                     </div>
                 </div>
             </div>
@@ -451,15 +433,13 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="school-rep-yes" name="school-rep" value="yes" required>
-                        <label for="school-rep-yes">
-                            <span class="radio"></span> Yes
-                        </label>
+                        <span class="radio"></span>
+                        <label for="school-rep-yes">Yes</label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="school-rep-no" name="school-rep" value="no" required>
-                        <label for="school-rep-no">
-                            <span class="radio"></span> No
-                        </label>
+                        <span class="radio"></span>
+                        <label for="school-rep-no">No</label>
                     </div>
                 </div>
             </div>
@@ -476,15 +456,13 @@
                 <div class="radio-container">
                     <div class="radio-button">
                         <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes" required>
-                        <label for="special-arrangements-yes">
-                            <span class="radio"></span> Yes
-                        </label>
+                        <span class="radio"></span>
+                        <label for="special-arrangements-yes">Yes</label>
                     </div>
                     <div class="radio-button">
                         <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no" required>
-                        <label for="special-arrangements-no">
-                            <span class="radio"></span> No
-                        </label>
+                        <span class="radio"></span>
+                        <label for="special-arrangements-no">No</label>
                     </div>
                 </div>
             </div>
@@ -494,206 +472,280 @@
             </div>
             <div id="special-arrangements-warning" class="warning hidden">Please select an option.</div>
         </section>
-    </section>
-    <section id="special-guidance" class="hidden fade-in">
-        <h2>Special Arrangements and Further Guidance</h2>
-        <div class="card">
-            <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process.</em></p>
-        </div>
-        <div class="card">
-            <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
-            <div class="checkbox-container">
-                <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" required class="custom-checkbox">
-                <label for="transportation-guidance">
-                    <span class="checkmark"></span> I need transportation guidance
-                </label>
+        <section id="chaperone-delegation" class="hidden fade-in">
+            <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
+            <div class="card">
+                <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. Due to EU data protection laws, it's mandatory for each delegate to fill out their own application form. You will receive an fdrID via mail upon submission of the form. The fdrID received by the chaperone becomes a crucial piece in this process. You must provide this fdrID to your students, who will then include it in their individual applications. This step is necessary to authenticate their membership in the specific delegation and link their applications to your registration.</em></p>
+                <p class="question-description"><em>For further guidance, consult the following:</em></p>
+                <ul>
+                    <li><a href="logistical-aid-link">Logistical aid</a></li>
+                    <li><a href="guide-to-applying-link">Guide to applying</a></li>
+                </ul>
             </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" required class="custom-checkbox">
-                <label for="travel-guidance">
-                    <span class="checkmark"></span> I need travel guidance
-                </label>
+            <div class="card">
+                <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself.</label><span class="required-star">*</span>
+                <input type="number" id="delegation-number" name="delegation-number" min="1" max="10" required>
             </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" required class="custom-checkbox">
-                <label for="accommodation-guidance">
-                    <span class="checkmark"></span> I need accommodation guidance
-                </label>
+            <div class="card">
+                <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
+                <input type="text" id="delegation-name" name="delegation-name" required>
             </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" required class="custom-checkbox">
-                <label for="visa-invitation">
-                    <span class="checkmark"></span> I need a visa invitation
-                </label>
+            <div class="card">
+                <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees.</label><span class="required-star">*</span>
+                <textarea id="delegation-experience" name="delegation-experience" required></textarea>
             </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" required class="custom-checkbox">
-                <label for="financial-aid">
-                    <span class="checkmark"></span> I intend to apply for financial aid
-                </label>
+            <div class="card">
+                <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
+                <textarea id="logistical-requests" name="logistical-requests" required></textarea>
             </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" required class="custom-checkbox">
-                <label for="prayer-room">
-                    <span class="checkmark"></span> I need a prayer room
-                </label>
-            </div>
-        </div>
-        <div class="card">
-            <label class="question" for="additional-circumstances">If any, specify additional, relevant circumstances impacting your attendance at FDR</label><span class="required-star">*</span>
-            <textarea id="additional-circumstances" name="additional-circumstances" required></textarea>
-        </div>
-        <div class="navigation-buttons">
-            <button type="button" onclick="showPreviousSection('special-arrangements')">← Previous</button>
-            <button type="button" onclick="showNextSection('mun-experience')">Next →</button>
-        </div>
-    </section>
-    <section id="mun-experience" class="hidden fade-in">
-        <h2>Your experience with MUNs</h2>
-        <div class="card">
-            <p class="subheading">We strongly recommend you use a word-processor such as Google Docs for character-limited stimulus questions to ensure you meet all requirements. Your answers should be clear and concise.</p>  
-            <p class="subheading">For this section, you may find it useful to access the following resource(s):</p>
-            <ul>
-                <li><a href="guide-to-applying-link">Guide to applying</a></li>
-                <li><a href="academic-honesty-link">Academic honesty</a></li>
-                <li><a href="committee-overview-link">Committee overview</a></li>
-                <li><a href="country-matrices-link">Country matrices</a></li>
-            </ul>
-        </div>
-        <div class="card">
-            <label class="question" for="mun-experience">Please outline your <strong>previous MUN experience</strong></label><span class="required-star">*</span>
-            <p class="question-description">We encourage you to outline your relevant experience in the following format:</p>
-            <p class="question-description"><em>Conference (edition), Committee, Country represented, Award (if applicable).</em></p>
-            <p class="question-description"><em>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</em></p>
-            <p class="question-description">There is no character limit for this section. We do, however, encourage a certain degree of brevity.</p>
-            <textarea id="mun-experience" name="mun-experience" required></textarea>
-        </div>
-       <div class="card">
-            <label class="question" for="transformative-experience">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
-            <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words.</em></p>
-            <textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" required></textarea>
-            <div id="char-count-transformative-experience" class="char-count"></div>
-        </div>
-        <div class="card">
-            <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
-            <p class="subheading"><em>For the following questions, it may be helpful to consult the following:</em></p>
-            <ul>
-                <li><a href="country-matrices-link">Country matrices</a></li>
-                <li><a href="committee-overview-link">Committee overview</a></li>
-            </ul>
-            <input type="text" id="first-choice" name="first-choice" required>
-        </div>
-        <div class="card">
-            <label class="question" for="second-choice">What is your <strong>second country and committee choice</strong></label><span class="required-star">*</span>
-            <input type="text" id="second-choice" name="second-choice" required>
-        </div>
-        <div class="card">
-            <label class="question" for="third-choice">What is your <strong>third country and committee choice</strong></label><span class="required-star">*</span>
-            <input type="text" id="third-choice" name="third-choice" required>
-        </div>
-        <div class="card">
-            <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label>
-            <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words.</em></p>
-            <textarea id="choice-explanation" name="choice-explanation" data-maxlength="1250" required></textarea>
-            <div id="char-count-choice-explanation" class="char-count"></div>
-        </div>
-        <div class="card">
-            <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
-            <p class="question-description"><em>This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</em></p>
-            <textarea id="favorite-period" name="favorite-period" required></textarea>
-        </div>
-        <div class="navigation-buttons">
-            <button type="button" onclick="showPreviousSection('special-guidance')">← Previous</button>
-            <button type="button" onclick="showNextSection('terms-conditions')">Next →</button>
-        </div>
-    </section>
-    <section id="terms-conditions" class="hidden fade-in">
-        <h2>Finishing up; The Ts and Cs of your application</h2>
-        <div class="card">
-            <p class="subheading">For this section, you may need to access the following resource(s):</p>
-            <ul>
-                <li><a href="privacy-link">Privacy</a></li>
-                <li><a href="code-of-conduct-link">Code of Conduct and Academic Honesty</a></li>
-                <li><a href="anti-harassment-policy-link">Anti-harassment Policy</a></li>
-                <li><a href="general-terms-link">General Terms and Conditions</a></li>
-                <li><a href="training-modules-link">Training Modules</a></li>
-            </ul>
-        </div>
-        <div class="card">
-            <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate</strong></label><span class="required-star">*</span>
-            <div class="checkbox-container">
-                <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
-                <label for="accuracy-certification">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-        </div>
-        <div class="card">
-            <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent</label><span class="required-star">*</span>
-            <div class="checkbox-container">
-                <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
-                <label for="suspension-agreement">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-        </div>
-        <div class="card">
-            <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned</label><span class="required-star">*</span>
-            <div class="checkbox-container">
-                <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
-                <label for="code-of-conduct-agreement">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-        </div>
-        <div class="card">
-            <label class="question" for="age-certification">I am <strong>not of or under the age of 12</strong></label><span class="required-star">*</span>
-            <div class="checkbox-container">
-                <input type="checkbox" id="age-certification" name="age-certification" required class="custom-checkbox">
-                <label for="age-certification">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-        </div>
-        <div class="card">
-            <label class="question" for="training-modules">I would like to <strong>sign up for online Training Modules</strong></label><span class="required-star">*</span>
-            <p class="subheading"><em>Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</em></p>
-            <div class="radio-container">
-                <div class="radio-button">
-                    <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required>
-                    <label for="training-modules-yes">
-                        <span class="radio"></span> Yes
-                    </label>
-                </div>
-                <div class="radio-button">
-                    <input type="radio" id="training-modules-no" name="training-modules" value="no" required>
-                    <label for="training-modules-no">
-                        <span class="radio"></span> No
-                    </label>
+            <div class="card">
+                <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
+                <div class="radio-container">
+                    <div class="radio-button">
+                        <input type="radio" id="other-info-yes" name="other-info" value="yes" required>
+                        <span class="radio"></span>
+                        <label for="other-info-yes">Yes</label>
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" id="other-info-no" name="other-info" value="no" required>
+                        <span class="radio"></span>
+                        <label for="other-info-no">No</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <label class="question" for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it here</label>
-            <input type="text" id="referral-code" name="referral-code" placeholder="Code starting with FDRxx...">
-        </div>
-        <div class="card">
-            <label class="question" for="additional-info">Is there anything else that you'd like us to know</label>
-            <textarea id="additional-info" name="additional-info"></textarea>
-        </div>
-        <div class="navigation-buttons">
-            <button type="button" onclick="showPreviousSection('mun-experience')">← Previous</button>
-            <button type="submit">Submit →</button>
-        </div>
-    </section>
-</form>
-<footer>
-    <hr>
-    <p>Version 7.3.7</p>
-    <br>
-        <div class="image-section">
-            <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
-        </div>  
+            <div class="navigation-buttons">
+                <button type="button" onclick="showPreviousSection('school-group-delegation')">← Previous</button>
+                <button type="button" onclick="handleOtherInfoNext()">Next →</button>
+            </div>
+            <div id="other-info-warning" class="warning hidden">Please select an option.</div>
+        </section>
+        <section id="student-delegation" class="hidden fade-in">
+            <h2>Delegation-specific Dialogue for Students and Team-members</h2>
+            <div class="card">
+                <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself</em></p>
+                <p class="question-description"><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation.</em></p>
+                <p class="question-description"><em>For further guidance, consult the following:</em></p>
+                <ul>
+                    <li><a href="logistical-aid-link">Logistical aid</a></li>
+                    <li><a href="guide-to-applying-link">Guide to applying</a></li>
+                </ul>
+            </div>
+            <div class="card">
+                <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable.</label><span class="required-star">*</span>
+                <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="10" required>
+            </div>
+            <div class="card">
+                <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
+                <input type="text" id="student-delegation-name" name="student-delegation-name" required>
+            </div>
+            <div class="card">
+                <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are NOT visible to your referee.</label><span class="required-star">*</span>
+                <div class="radio-container">
+                    <div class="radio-button">
+                        <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes" required>
+                        <span class="radio"></span>
+                        <label for="student-special-arrangements-yes">Yes</label>
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" id="student-special-arrangements-no" name="student-special-arrangements" value="no" required>
+                        <span class="radio"></span>
+                        <label for="student-special-arrangements-no">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-buttons">
+                <button type="button" onclick="showPreviousSection('student-group-delegation')">← Previous</button>
+                <button type="button" onclick="handleStudentSpecialArrangementsNext()">Next →</button>
+            </div>
+            <div id="student-special-arrangements-warning" class="warning hidden">Please select an option.</div>
+        </section>
+        <section id="special-guidance" class="hidden fade-in">
+            <h2>Special Arrangements and Further Guidance</h2>
+            <div class="card">
+                <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process.</em></p>
+            </div>
+            <div class="card">
+                <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="transportation-guidance">I need transportation guidance</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="travel-guidance">I need travel guidance</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="accommodation-guidance">I need accommodation guidance</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="visa-invitation">I need a visa invitation</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="financial-aid">I intend to apply for financial aid</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="prayer-room">I need a prayer room</label>
+                </div>
+            </div>
+            <div class="card">
+                <label class="question" for="additional-circumstances">If any, specify additional, relevant circumstances impacting your attendance at FDR</label><span class="required-star">*</span>
+                <textarea id="additional-circumstances" name="additional-circumstances" required></textarea>
+            </div>
+            <div class="navigation-buttons">
+                <button type="button" onclick="showPreviousSection('special-arrangements')">← Previous</button>
+                <button type="button" onclick="showNextSection('mun-experience')">Next →</button>
+            </div>
+        </section>
+        <section id="mun-experience" class="hidden fade-in">
+            <h2>Your experience with MUNs</h2>
+            <div class="card">
+                <p class="subheading">We strongly recommend you use a word-processor such as Google Docs for character-limited stimulus questions to ensure you meet all requirements. Your answers should be clear and concise.</p>  
+                <p class="subheading">For this section, you may find it useful to access the following resource(s):</p>
+                <ul>
+                    <li><a href="guide-to-applying-link">Guide to applying</a></li>
+                    <li><a href="academic-honesty-link">Academic honesty</a></li>
+                    <li><a href="committee-overview-link">Committee overview</a></li>
+                    <li><a href="country-matrices-link">Country matrices</a></li>
+                </ul>
+            </div>
+            <div class="card">
+                <label class="question" for="mun-experience">Please outline your <strong>previous MUN experience</strong></label><span class="required-star">*</span>
+                <p class="question-description">We encourage you to outline your relevant experience in the following format:</p>
+                <p class="question-description"><em>Conference (edition), Committee, Country represented, Award (if applicable).</em></p>
+                <p class="question-description"><em>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</em></p>
+                <p class="question-description">There is no character limit for this section. We do, however, encourage a certain degree of brevity.</p>
+                <textarea id="mun-experience" name="mun-experience" required></textarea>
+            </div>
+           <div class="card">
+    <label class="question" for="transformative-experience">How do you plan to contribute to FDRMUN conference as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference in general?</label>
+    <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150-200 words.</em></p>
+    <textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" required></textarea>
+    <div id="char-count-transformative-experience" class="char-count"></div>
+</div>
+            <div class="card">
+                <label class="question" for="first-choice">What is your <strong>first country and committee choice</strong></label><span class="required-star">*</span>
+                <p class="subheading"><em>For the following questions, it may be helpful to consult the following:</em></p>
+                <ul>
+                    <li><a href="country-matrices-link">Country matrices</a></li>
+                    <li><a href="committee-overview-link">Committee overview</a></li>
+                </ul>
+                <input type="text" id="first-choice" name="first-choice" required>
+            </div>
+            <div class="card">
+                <label class="question" for="second-choice">What is your <strong>second country and committee choice</strong></label><span class="required-star">*</span>
+                <input type="text" id="second-choice" name="second-choice" required>
+            </div>
+            <div class="card">
+                <label class="question" for="third-choice">What is your <strong>third country and committee choice</strong></label><span class="required-star">*</span>
+                <input type="text" id="third-choice" name="third-choice" required>
+            </div>
+           <div class="card">
+    <label class="question" for="choice-explanation">Please detail why your <strong>country and committee choices</strong> speak to you.</label>
+    <p class="question-description"><em>Maximum 1250 characters excluding spaces. This is around 250-300 words.</em></p>
+    <textarea id="choice-explanation" name="choice-explanation" data-maxlength="1250" required></textarea>
+    <div id="char-count-choice-explanation" class="char-count"></div>
+</div>
+            <div class="card">
+                <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label><span class="required-star">*</span>
+                <p class="question-description"><em>This response does not have a character limitation; while we do encourage some brevity, we would also like to see a response that defines you and your geopolitical interests.</em></p>
+                <textarea id="favorite-period" name="favorite-period" required></textarea>
+            </div>
+            <div class="navigation-buttons">
+                <button type="button" onclick="showPreviousSection('special-guidance')">← Previous</button>
+                <button type="button" onclick="showNextSection('terms-conditions')">Next →</button>
+            </div>
+        </section>
+        <section id="terms-conditions" class="hidden fade-in">
+            <h2>Finishing up; The Ts and Cs of your application</h2>
+            <div class="card">
+                <p class="subheading">For this section, you may need to access the following resource(s):</p>
+                <ul>
+                    <li><a href="privacy-link">Privacy</a></li>
+                    <li><a href="code-of-conduct-link">Code of Conduct and Academic Honesty</a></li>
+                    <li><a href="anti-harassment-policy-link">Anti-harassment Policy</a></li>
+                    <li><a href="general-terms-link">General Terms and Conditions</a></li>
+                    <li><a href="training-modules-link">Training Modules</a></li>
+                </ul>
+            </div>
+            <div class="card">
+                <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate</strong></label><span class="required-star">*</span>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="accuracy-certification"></label>
+                </div>
+            </div>
+            <div class="card">
+                <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent</label><span class="required-star">*</span>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="suspension-agreement"></label>
+                </div>
+            </div>
+            <div class="card">
+                <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned</label><span class="required-star">*</span>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="code-of-conduct-agreement"></label>
+                </div>
+            </div>
+            <div class="card">
+                <label class="question" for="age-certification">I am <strong>not of or under the age of 12</strong></label><span class="required-star">*</span>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="age-certification" name="age-certification" required class="custom-checkbox">
+                    <span class="checkmark"></span>
+                    <label for="age-certification"></label>
+                </div>
+            </div>
+            <div class="card">
+                <label class="question" for="training-modules">I would like to <strong>sign up for online Training Modules</strong></label><span class="required-star">*</span>
+                <p class="subheading"><em>Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</em></p>
+                <div class="radio-container">
+                    <div class="radio-button">
+                        <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required>
+                        <span class="radio"></span>
+                        <label for="training-modules-yes">Yes</label>
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" id="training-modules-no" name="training-modules" value="no" required>
+                        <span class="radio"></span>
+                        <label for="training-modules-no">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <label class="question" for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it here</label>
+                <input type="text" id="referral-code" name="referral-code" placeholder="Code starting with FDRxx...">
+            </div>
+            <div class="card">
+                <label class="question" for="additional-info">Is there anything else that you'd like us to know</label>
+                <textarea id="additional-info" name="additional-info"></textarea>
+            </div>
+            <div class="navigation-buttons">
+                <button type="button" onclick="showPreviousSection('mun-experience')">← Previous</button>
+                <button type="submit">Submit →</button>
+            </div>
+        </section>
+    </form>
+    <footer>
+        <hr>
+        <p>Version 7.3.5</p>
+        <br>
+          <div class="image-section">
+        <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD" style="width: 190px; height: auto;">
+    </div>  
     </footer>
  <script>
   function showNextSection(nextSection) {
@@ -707,6 +759,7 @@
     window.scrollTo(0, 0);
 }
 
+
   function showPreviousSection(prevSection) {
     const currentSection = document.querySelector('section:not(.hidden)');
     const prevSectionElement = document.getElementById(prevSection);
@@ -718,8 +771,10 @@
     window.scrollTo(0, 0);
 }
 
-    function handleStudentGroupNext() {
-        const studentGroup = document.querySelector('input[name="student-group"]:checked');
+function handleStudentGroupNext() {
+        const studentGroup = document.querySelector('input[name="student-group"]:checked');    
+    @@ -899,9 +905,13 @@ <h2>Finishing up; The Ts and Cs of your application</h2>
+  
         if (studentGroup) {
             if (studentGroup.value === 'yes') {
                 showNextSection('student-delegation');
@@ -730,7 +785,6 @@
             document.getElementById('student-group-warning').classList.remove('hidden');
         }
     }
-
     function handleSchoolRepNext() {
         const schoolRep = document.querySelector('input[name="school-rep"]:checked');
         if (schoolRep) {
@@ -743,7 +797,6 @@
             document.getElementById('school-rep-warning').classList.remove('hidden');
         }
     }
-
     function handleSpecialArrangementsNext() {
         const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
         if (specialArrangements) {
@@ -756,7 +809,6 @@
             document.getElementById('special-arrangements-warning').classList.remove('hidden');
         }
     }
-
     function handleOtherInfoNext() {
         const otherInfo = document.querySelector('input[name="other-info"]:checked');
         if (otherInfo) {
@@ -769,7 +821,6 @@
             document.getElementById('other-info-warning').classList.remove('hidden');
         }
     }
-
     function handleStudentSpecialArrangementsNext() {
         const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
         if (studentSpecialArrangements) {
@@ -782,7 +833,6 @@
             document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
         }
     }
-
     function validateEmail() {
         const email = document.getElementById('email').value;
         const emailError = document.getElementById('email-error');
@@ -795,7 +845,6 @@
             document.getElementById('email').parentElement.style.border = '1px solid lightgrey';
         }
     }
-
     function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
         const charCount = document.getElementById(charCountId);
@@ -804,7 +853,6 @@
         const remainingChars = maxLength - currentLength;
         charCount.textContent = `${remainingChars} characters remaining (excluding spaces)`;
     }
-
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
             const maxLength = parseInt(this.getAttribute('data-maxlength'));
@@ -823,7 +871,6 @@
             }
             updateCharCount(this.id, `char-count-${this.id}`);
         });
-
         textarea.addEventListener('paste', function(e) {
             e.preventDefault();
             const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
@@ -845,21 +892,31 @@
             document.execCommand('insertText', false, allowedText);
             updateCharCount(this.id, `char-count-${this.id}`);
         });
-
         // Initialize character count
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
-  
+
 function handleSubmit(event) {
     const visibleSections = document.querySelectorAll('section.visible-section');
     let isValid = true;
-    
+
     visibleSections.forEach(section => {
         const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
+
+    
+        
+          
+    
+
+        
+        Expand All
+    
+    @@ -920,13 +930,14 @@ <h2>Finishing up; The Ts and Cs of your application</h2>
+  
                 field.parentElement.style.border = '1px solid red';
                 if (!field.parentElement.querySelector('.error-message')) {
                     const errorMessage = document.createElement('div');
@@ -883,22 +940,20 @@ function handleSubmit(event) {
         alert('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd. If you don\'t see it within the next 24 hours, please check your spam folder.');
     }
 }
-
     document.querySelectorAll('textarea').forEach(textarea => {
         textarea.addEventListener('input', () => {
-            textarea.style.height = 'auto';
+            textarea.style.height = 'auto';   
             textarea.style.height = `${textarea.scrollHeight}px`;
         });
+        document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
+    const input = container.querySelector('input');
+    container.addEventListener('click', function(event) {
+        if (event.target !== input) {
+            input.click();
+        }
     });
-
-    document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
-        container.addEventListener('click', function(event) {
-            const input = container.querySelector('input');
-            if (event.target !== input) {
-                input.click();
-            }
+});
         });
-    });
 </script>
 </body>
 </html>
