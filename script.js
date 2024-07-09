@@ -133,6 +133,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add your form submission logic here
         alert('Form submitted successfully!');
     }
+
+    // Character count for textarea elements with data-maxlength attribute
+    document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+        const charCountElement = document.getElementById(`char-count-${textarea.id}`);
+        textarea.addEventListener('input', () => {
+            const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
+            const currentLength = textarea.value.length;
+            charCountElement.textContent = `${currentLength}/${maxLength}`;
+        });
+    });
+
     // Ensure radio buttons and checkboxes are interactive
     document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
         const input = container.querySelector('input');
