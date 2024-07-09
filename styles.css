@@ -294,6 +294,13 @@ button:focus {
     text-align: left;
 }
 
+.auto-resize {
+    min-height: 100px;
+    overflow-y: hidden;
+    resize: none;
+    transition: height 0.2s ease;
+}
+
 .error {
     color: var(--error-color);
     font-size: 0.9em;
