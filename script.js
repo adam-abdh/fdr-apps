@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+        // Function to update character count excluding spaces
+    function updateCharCount(textarea, charCountElement) {
+        const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
+        const currentLength = textarea.value.replace(/\s+/g, '').length;
+        const remainingChars = maxLength - currentLength;
+        charCountElement.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining`;
+    }
+
+    // Character count for textarea elements with data-maxlength attribute
+    document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+        const charCountElement = document.getElementById(`char-count-${textarea.id}`);
+        textarea.addEventListener('input', () => {
+            updateCharCount(textarea, charCountElement);
+        });
+        // Initialize the character count
+        updateCharCount(textarea, charCountElement);
+    });
     // Function to show the next section
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
@@ -116,17 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add your form submission logic here
         alert('Form submitted successfully!');
     }
-
-    // Character count for textarea elements with data-maxlength attribute
-    document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
-        const charCountElement = document.getElementById(`char-count-${textarea.id}`);
-        textarea.addEventListener('input', () => {
-            const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
-            const currentLength = textarea.value.length;
-            charCountElement.textContent = `${currentLength}/${maxLength}`;
-        });
-    });
-
     // Ensure radio buttons and checkboxes are interactive
     document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
         const input = container.querySelector('input');
