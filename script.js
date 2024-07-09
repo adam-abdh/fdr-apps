@@ -6,13 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const remainingChars = maxLength - currentLength;
         charCountElement.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining`;
 
-        // Disable textarea if the character limit is reached
-        if (remainingChars < 0) {
-            textarea.value = textarea.value.slice(0, maxLength); // Trim the value to the max length
-            textarea.disabled = true;
-        } else {
-            textarea.disabled = false;
+        // Trim the value to the max length if it exceeds
+        if (currentLength > maxLength) {
+            const trimmedValue = textarea.value.slice(0, maxLength);
+            textarea.value = trimmedValue;
+            updateCharCount(textarea, charCountElement); // Recalculate after trimming
         }
+
+        // Disable textarea if the character limit is reached
+        textarea.disabled = currentLength >= maxLength;
     }
 
     // Character count for textarea elements with data-maxlength attribute
