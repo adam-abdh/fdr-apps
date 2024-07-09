@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.addEventListener('input', () => {
             updateCharCount(textarea, charCountElement);
         });
+        textarea.addEventListener('paste', () => {
+            setTimeout(() => {
+                updateCharCount(textarea, charCountElement);
+            }, 0);
+        });
         // Initialize the character count
         updateCharCount(textarea, charCountElement);
     });
