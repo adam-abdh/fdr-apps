@@ -168,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
     // Add event listener to form submission
     document.getElementById('registration-form').addEventListener('submit', handleSubmit);
 });
