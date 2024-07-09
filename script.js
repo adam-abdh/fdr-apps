@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to update character count excluding spaces
     function updateCharCount(textarea, charCountElement) {
         const maxLength = parseInt(textarea.getAttribute('data-maxlength'), 10);
         const currentLength = textarea.value.replace(/\s+/g, '').length;
@@ -13,11 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCharCount(textarea, charCountElement); // Recalculate after trimming
         }
 
-        // Disable typing if the character limit is reached
-        textarea.readOnly = currentLength >= maxLength;
+        // Do not disable typing; instead, just prevent exceeding the max length
+        if (currentLength >= maxLength) {
+            textarea.value = textarea.value.slice(0, maxLength);
+        }
     }
 
-    // Character count for textarea elements with data-maxlength attribute
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         const charCountElement = document.getElementById(`char-count-${textarea.id}`);
         textarea.addEventListener('input', () => {
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize the character count
         updateCharCount(textarea, charCountElement);
     });
-
     // Function to show the next section
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
