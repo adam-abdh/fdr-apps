@@ -20,7 +20,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the form within the body */
-    text-align: center; /* Center the text content */
 }
 
 h2 {
@@ -30,6 +29,7 @@ h2 {
     letter-spacing: -0.05em;
     font-size: 2em;
     margin-bottom: 30px;
+    text-align: left; /* Left-align the heading text */
 }
 
 .question {
@@ -40,6 +40,7 @@ h2 {
     color: var(--main-color);
     font-size: 1.15em;
     margin-bottom: 20px;
+    text-align: left; /* Left-align the question text */
 }
 
 .subheading, .question-description {
@@ -50,6 +51,7 @@ h2 {
     font-size: 1em;
     margin-bottom: 15px;
     color: var(--secondary-color);
+    text-align: left; /* Left-align the subheading and question description text */
 }
 
 label, input, select, textarea, button {
@@ -73,6 +75,7 @@ label {
     font-weight: normal;
     margin-bottom: 5px;
     display: block;
+    text-align: left; /* Left-align the label text */
 }
 
 label strong {
@@ -147,6 +150,7 @@ button:focus {
 .char-count {
     font-size: 0.9em;
     color: #888;
+    text-align: left; /* Left-align the character count text */
 }
 
 /* Updated checkbox styles */
@@ -159,7 +163,7 @@ button:focus {
     user-select: none;
     position: relative;
     padding-left: 35px;
-    justify-content: center; /* Center the checkbox container */
+    justify-content: flex-start; /* Left-align the checkbox container */
 }
 
 .checkbox-container input {
@@ -220,7 +224,7 @@ button:focus {
 .radio-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the radio container */
+    align-items: flex-start; /* Left-align the radio container */
 }
 
 .radio-button {
@@ -231,7 +235,7 @@ button:focus {
     position: relative;
     padding-left: 40px; 
     border-radius: 50%;
-    justify-content: center; /* Center the radio button */
+    justify-content: flex-start; /* Left-align the radio button */
 }
 
 .radio-button input[type="radio"] {
@@ -280,13 +284,14 @@ button:focus {
 
 .radio-button span {
     margin-left: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .error {
     color: var(--error-color);
     font-size: 0.9em;
     margin-top: 5px;
+    text-align: left; /* Left-align the error text */
 }
 
 .error-message {
@@ -296,7 +301,7 @@ button:focus {
     font-size: 0.9em;
     color: var(--error-color);
     padding: 10px 0;
-    justify-content: center; /* Center the error message */
+    justify-content: flex-start; /* Left-align the error message */
 }
 
 .error-icon {
@@ -315,6 +320,7 @@ button:focus {
     box-shadow: -1px 0px 37px 0px rgba(206,206,206,0.17);
     position: relative;
     z-index: 0;
+    text-align: left; /* Left-align the card content */
 }
 
 textarea {
@@ -375,6 +381,7 @@ hr {
     color: var(--error-color);
     font-size: 0.9em;
     margin-top: 10px;
+    text-align: left; /* Left-align the warning text */
 }
 
 #progress-container {
