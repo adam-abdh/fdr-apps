@@ -158,7 +158,6 @@ button:focus {
     color: #888;
     text-align: left; /* Left-align the character count text */
 }
-
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -175,10 +174,10 @@ button:focus {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 20px; /* Set height */
-    width: 20px;  /* Set width */
-    left: 0;      /* Ensure it covers the checkmark */
-    top: 5;       /* Ensure it covers the checkmark */
+    height: 20px;
+    width: 20px;
+    left: 0;
+    top: 0;
 }
 
 .checkmark {
@@ -226,6 +225,16 @@ button:focus {
         height: 10px;
     }
 }
+
+/* Ensure the input is covering the checkbox area */
+.checkbox-container input {
+    top: 0;      /* Adjust as needed to align properly */
+    left: 0;     /* Adjust as needed to align properly */
+    width: 100%; /* Ensure it covers the container's width */
+    height: 100%;/* Ensure it covers the container's height */
+    z-index: 1;  /* Make sure it sits above other elements */
+}
+
 
 /* Updated radio button styles */
 .radio-container {
