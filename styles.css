@@ -159,7 +159,6 @@ button:focus {
     text-align: left; /* Left-align the character count text */
 }
 
-/* Checkbox styling */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -169,7 +168,21 @@ button:focus {
     user-select: none;
     position: relative;
     padding-left: 35px;
+    justify-content: flex-start; 
 }
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    left: 0;
+    top: 0;
+    z-index: 2; /* Ensure the input is above the checkmark */
+    margin: 0; /* Center the input within the container */
+}
+
 .checkmark {
     position: absolute;
     top: 0;
@@ -179,16 +192,8 @@ button:focus {
     background-color: #eee;
     border-radius: 4px;
     transition: background-color 0.3s;
+    z-index: 1; /* Ensure the checkmark is below the input */
 }
-
-.checkbox-container input {
-    top: 0;      /* Adjust as needed to align properly */
-    left: 0;     /* Adjust as needed to align properly */
-    width: 100%; /* Ensure it covers the container's width */
-    height: 100%;/* Ensure it covers the container's height */
-    z-index: 1;  /* Make sure it sits above other elements */
-}
-
 
 .checkbox-container:hover .checkmark {
     background-color: #ccc;
