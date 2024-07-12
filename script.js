@@ -12,18 +12,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function validateAge() {
-        const dobInput = document.getElementById('dob').value;
-        const dobDate = new Date(dobInput);
+        const dobInput = document.getElementById('dob');
+        const dobError = document.getElementById('dob-error');
+        const dobValue = dobInput.value;
+        const dobDate = new Date(dobValue);
         const today = new Date();
         const age = today.getFullYear() - dobDate.getFullYear();
         const monthDifference = today.getMonth() - dobDate.getMonth();
         const dayDifference = today.getDate() - dobDate.getDate();
 
-        if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
-            alert('You must be at least 12 years old to submit this form.');
-            document.getElementById('dob').value = ''; // Clear the input field
+        if (dobDate > today) {
+            dobError.textContent = 'Date of birth cannot be in the future.';
+            dobInput.classList.add('input-error');
             return false;
         }
+
+        if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
+            dobError.textContent = 'You must be at least 12 years old to submit this form.';
+            dobInput.classList.add('input-error');
+            return false;
+        }
+
+        dobError.textContent = '';
+        dobInput.classList.remove('input-error');
         return true;
     }
 
@@ -177,8 +188,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         if (!emailPattern.test(emailInput.value)) {
             emailError.textContent = 'Please enter a valid email address.';
+            emailInput.classList.add('input-error');
         } else {
             emailError.textContent = '';
+            emailInput.classList.remove('input-error');
         }
     }
 
