@@ -230,7 +230,6 @@ button:focus {
     }
 }
 
-/* Updated radio button styles */
 .radio-container {
     display: flex;
     flex-direction: column;
@@ -244,7 +243,6 @@ button:focus {
     cursor: pointer;
     position: relative;
     padding-left: 40px; /* Adjust this value to align the hitbox correctly */
-    border-radius: 50%;
     justify-content: flex-start; /* Left-align the radio button */
 }
 
@@ -252,6 +250,13 @@ button:focus {
     position: absolute;
     opacity: 0;
     cursor: pointer;
+    height: 20px;
+    width: 20px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2; /* Ensure the input is above the radio */
+    margin: 0; /* Center the input within the container */
 }
 
 .radio {
@@ -268,6 +273,7 @@ button:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1; /* Ensure the radio is below the input */
 }
 
 .radio:before {
