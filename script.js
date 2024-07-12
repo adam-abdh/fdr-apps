@@ -11,7 +11,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         autoResizeTextarea(textarea);
     });
+    
+function validateAge() {
+    const dobInput = document.getElementById('dob').value;
+    const dobDate = new Date(dobInput);
+    const today = new Date();
+    const age = today.getFullYear() - dobDate.getFullYear();
+    const monthDifference = today.getMonth() - dobDate.getMonth();
+    const dayDifference = today.getDate() - dobDate.getDate();
 
+    if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
+        alert('You must be at least 12 years old to submit this form.');
+        // Optionally, you can clear the input field or disable the submit button here
+        document.getElementById('dob').value = ''; // Clear the input field
+        return false;
+    }
+    return true;
+}
+    
     function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
         const charCount = document.getElementById(charCountId);
