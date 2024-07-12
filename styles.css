@@ -159,6 +159,7 @@ button:focus {
     text-align: left; /* Left-align the character count text */
 }
 
+/* Checkbox styling */
 .checkbox-container {
     display: flex;
     align-items: center;
@@ -168,7 +169,6 @@ button:focus {
     user-select: none;
     position: relative;
     padding-left: 35px;
-    justify-content: flex-start; 
 }
 
 .checkbox-container input {
