@@ -230,6 +230,7 @@ button:focus {
     }
 }
 
+/* Updated radio button styles */
 .radio-container {
     display: flex;
     flex-direction: column;
@@ -250,9 +251,9 @@ button:focus {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 20px;
-    width: 20px;
-    left: 0;
+    height: 24px; /* Increase height to ensure it covers the radio button */
+    width: 24px; /* Increase width to ensure it covers the radio button */
+    left: -2px; /* Adjust left position to ensure it covers the radio button */
     top: 50%;
     transform: translateY(-50%);
     z-index: 2; /* Ensure the input is above the radio */
