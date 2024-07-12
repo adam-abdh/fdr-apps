@@ -1,9 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     function autoResizeTextarea(textarea) {
-    textarea.style.height = 'auto';
-    textarea.style.height = textarea.scrollHeight + 'px';
-}
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
 
     document.querySelectorAll('.auto-resize').forEach(textarea => {
         textarea.addEventListener('input', function() {
@@ -11,24 +10,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         autoResizeTextarea(textarea);
     });
-    
-function validateAge() {
-    const dobInput = document.getElementById('dob').value;
-    const dobDate = new Date(dobInput);
-    const today = new Date();
-    const age = today.getFullYear() - dobDate.getFullYear();
-    const monthDifference = today.getMonth() - dobDate.getMonth();
-    const dayDifference = today.getDate() - dobDate.getDate();
 
-    if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
-        alert('You must be at least 12 years old to submit this form.');
-        // Optionally, you can clear the input field or disable the submit button here
-        document.getElementById('dob').value = ''; // Clear the input field
-        return false;
+    function validateAge() {
+        const dobInput = document.getElementById('dob').value;
+        const dobDate = new Date(dobInput);
+        const today = new Date();
+        const age = today.getFullYear() - dobDate.getFullYear();
+        const monthDifference = today.getMonth() - dobDate.getMonth();
+        const dayDifference = today.getDate() - dobDate.getDate();
+
+        if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
+            alert('You must be at least 12 years old to submit this form.');
+            document.getElementById('dob').value = ''; // Clear the input field
+            return false;
+        }
+        return true;
     }
-    return true;
-}
-    
+
     function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
         const charCount = document.getElementById(charCountId);
@@ -79,7 +77,6 @@ function validateAge() {
             updateCharCount(this.id, `char-count-${this.id}`);
         });
 
-        // Initialize character count
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
@@ -187,7 +184,9 @@ function validateAge() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        alert('Form submitted successfully!');
+        if (validateAge() && validateEmail()) {
+            alert('Form submitted successfully!');
+        }
     }
 
     document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
