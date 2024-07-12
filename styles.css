@@ -253,7 +253,7 @@ button:focus {
     cursor: pointer;
     height: 24px; /* Increase height to ensure it covers the radio button */
     width: 24px; /* Increase width to ensure it covers the radio button */
-    left: -2px; /* Adjust left position to ensure it covers the radio button */
+    left: 0px; /* Adjust left position to ensure it covers the radio button */
     top: 50%;
     transform: translateY(-50%);
     z-index: 2; /* Ensure the input is above the radio */
