@@ -185,59 +185,95 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function updateCountryOptions(prefix) {
-        const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
-        const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
-        const countrySelector = document.getElementById(`${prefix}-country-choice`);
-        const selectedCommittee = committeeSelector.value;
-
-        // Clear previous options
-        countrySelector.innerHTML = '<option value="">Select an option</option>';
-
-        // Show the country container and add the animation class
-        countryContainer.style.display = 'block';
-        countryContainer.classList.add('slide-in-blurred-top');
-        countryContainer.classList.add('fade-in');
-
-        // Populate country options based on the selected committee
-        let countries = [];
-        switch (selectedCommittee) {
-            case 'DISEC':
-                countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
-                break;
-            case 'SPECPOL':
-                countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
-                break;
-            case 'UNHRC':
-                countries = ["Bangladesh, People's Republic of", "Myanmar, Republic of the Union of", "China, People's Republic of", "Pakistan, Islamic Republic of", "French Republic", "Japan", "Germany, Federal Republic of", "Saudi Arabia, Kingdom of", "Malaysia, Federation of", "Thailand, Kingdom of", "Russian Federation", "Indonesia, Republic of", "Netherlands, Kingdom of the", "India, Republic of", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
-                break;
-            case 'EC':
-                countries = ["Belgium, Kingdom of", "Netherlands, Kingdom of the", "Denmark, Kingdom of", "Poland, Republic of", "Finland, Republic of", "Hungary, Hungary", "French Republic", "Romania", "Italian Republic", "Slovak Republic", "Portuguese Republic", "Hellenic Republic", "Norway, Kingdom of", "Germany, Federal Republic of", "Austria, Republic of", "Czech Republic", "Spain, Kingdom of", "Sweden, Kingdom of", "United Kingdom"];
-                break;
-            case 'Continuous Crisis':
-                countries = ["Argentine Republic", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Canada, Dominion of", "Chile, Republic of", "China, People's Republic of", "French Republic", "Germany, Federal Republic of", "India, Republic of", "Italian Republic", "Japan", "Russian Federation", "South Africa, Republic of", "Spain, Kingdom of", "United Kingdom", "United States of America", "Uruguay, Oriental Republic of"];
-                break;
-            case 'SC':
-                countries = ["China, People's Republic of", "Russian Federation", "French Republic", "Sierra Leone, Republic of", "Hellenic Republic", "Panama, Republic of", "Guyana, Co-operative Republic of", "Somalia, Federal Republic of", "Korea, Republic of", "United Kingdom", "Slovenia, Republic of", "Pakistan, Islamic Republic of", "Serbia, Republic of", "Kosovo, Republic of", "Algeria, People's Democratic Republic of", "Denmark, Kingdom of", "United States of America"];
-                break;
-            default:
-                countries = [];
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailError.classList.remove('hidden');
+            emailInput.classList.add('input-error');
+        } else {
+            emailError.textContent = '';
+            emailError.classList.add('hidden');
+            emailInput.classList.remove('input-error');
         }
+    }
 
-        countries.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country;
-            option.textContent = country;
-            countrySelector.appendChild(option);
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (validateAge() && validateEmail()) {
+            alert('Form submitted successfully!');
+        }
+    }
+
+    document.querySelectorAll('.checkbox-container, .radio-button').forEach(container => {
+        const input = container.querySelector('input');
+        const label = container.querySelector('label');
+        input.addEventListener('click', (event) => {
+            event.stopPropagation();
         });
+        label.addEventListener('click', (event) => {
+            event.preventDefault();
+            input.click();
+        });
+    });
 
-        // Animate other cards down
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            if (card !== countryContainer) {
-                card.style.transition = 'margin-top 0.5s ease';
-                card.style.marginTop = `${parseFloat(getComputedStyle(card).marginTop) + 200}px`; // Adjust the value as needed
+    document.querySelectorAll('button[type="button"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.getAttribute('onclick');
+            if (action) {
+                eval(action);
             }
         });
+    });
+
+    document.getElementById('registration-form').addEventListener('submit', handleSubmit);
+
+function updateCountryOptions(prefix) {
+    const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
+    const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
+    const countrySelector = document.getElementById(`${prefix}-country-choice`);
+    const selectedCommittee = committeeSelector.value;
+
+    // Clear previous options
+    countrySelector.innerHTML = '<option value="">Select an option</option>';
+
+    // Show the country container and add the animation class
+    countryContainer.style.display = 'block';
+    countryContainer.classList.add('slide-in-blurred-top');
+
+    // Populate country options based on the selected committee
+    let countries = [];
+    switch (selectedCommittee) {
+        case 'DISEC':
+            countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
+            break;
+        case 'SPECPOL':
+            countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
+            break;
+        case 'UNHRC':
+            countries = ["Bangladesh, People's Republic of", "Myanmar, Republic of the Union of", "China, People's Republic of", "Pakistan, Islamic Republic of", "French Republic", "Japan", "Germany, Federal Republic of", "Saudi Arabia, Kingdom of", "Malaysia, Federation of", "Thailand, Kingdom of", "Russian Federation", "Indonesia, Republic of", "Netherlands, Kingdom of the", "India, Republic of", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
+            break;
+        case 'EC':
+            countries = ["Belgium, Kingdom of", "Netherlands, Kingdom of the", "Denmark, Kingdom of", "Poland, Republic of", "Finland, Republic of", "Hungary, Hungary", "French Republic", "Romania", "Italian Republic", "Slovak Republic", "Portuguese Republic", "Hellenic Republic", "Norway, Kingdom of", "Germany, Federal Republic of", "Austria, Republic of", "Czech Republic", "Spain, Kingdom of", "Sweden, Kingdom of", "United Kingdom"];
+            break;
+        case 'Continuous Crisis':
+            countries = ["Argentine Republic", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Canada, Dominion of", "Chile, Republic of", "China, People's Republic of", "French Republic", "Germany, Federal Republic of", "India, Republic of", "Italian Republic", "Japan", "Russian Federation", "South Africa, Republic of", "Spain, Kingdom of", "United Kingdom", "United States of America", "Uruguay, Oriental Republic of"];
+            break;
+        case 'SC':
+            countries = ["China, People's Republic of", "Russian Federation", "French Republic", "Sierra Leone, Republic of", "Hellenic Republic", "Panama, Republic of", "Guyana, Co-operative Republic of", "Somalia, Federal Republic of", "Korea, Republic of", "United Kingdom", "Slovenia, Republic of", "Pakistan, Islamic Republic of", "Serbia, Republic of", "Kosovo, Republic of", "Algeria, People's Democratic Republic of", "Denmark, Kingdom of", "United States of America"];
+            break;
+        default:
+            countries = [];
     }
+
+    countries.forEach(country => {
+        const option = document.createElement('option');
+        option.value = country;
+        option.textContent = country;
+        countrySelector.appendChild(option);
+    });
+}
+
 });
