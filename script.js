@@ -23,17 +23,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (dobDate > today) {
             dobError.textContent = 'Date of birth cannot be in the future.';
+            dobError.classList.remove('hidden');
             dobInput.classList.add('input-error');
             return false;
         }
 
         if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
             dobError.textContent = 'You must be at least 12 years old to submit this form.';
+            dobError.classList.remove('hidden');
             dobInput.classList.add('input-error');
             return false;
         }
 
         dobError.textContent = '';
+        dobError.classList.add('hidden');
         dobInput.classList.remove('input-error');
         return true;
     }
@@ -188,9 +191,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         if (!emailPattern.test(emailInput.value)) {
             emailError.textContent = 'Please enter a valid email address.';
+            emailError.classList.remove('hidden');
             emailInput.classList.add('input-error');
         } else {
             emailError.textContent = '';
+            emailError.classList.add('hidden');
             emailInput.classList.remove('input-error');
         }
     }
