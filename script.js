@@ -71,12 +71,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         textarea.addEventListener('paste', function(e) {
             e.preventDefault();
-            const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
+            const pastedText = (e.clipboardData || window.clipboardData).getData('text/plain');
             const maxLength = parseInt(this.getAttribute('data-maxlength'));
             const currentTextWithoutSpaces = this.value.replace(/\s/g, '');
             const pastedTextWithoutSpaces = pastedText.replace(/\s/g, '');
             const remainingChars = maxLength - currentTextWithoutSpaces.length;
-            
+
             let allowedText = '';
             let charCount = 0;
             for (let i = 0; i < pastedText.length; i++) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 allowedText += pastedText[i];
             }
-            
+
             document.execCommand('insertText', false, allowedText);
             updateCharCount(this.id, `char-count-${this.id}`);
         });
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
                 break;
             case 'SPECPOL':
-                countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
+                countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
                 break;
             case 'UNHRC':
                 countries = ["Bangladesh, People's Republic of", "Myanmar, Republic of the Union of", "China, People's Republic of", "Pakistan, Islamic Republic of", "French Republic", "Japan", "Germany, Federal Republic of", "Saudi Arabia, Kingdom of", "Malaysia, Federation of", "Thailand, Kingdom of", "Russian Federation", "Indonesia, Republic of", "Netherlands, Kingdom of the", "India, Republic of", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
