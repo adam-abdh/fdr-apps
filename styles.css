@@ -4,7 +4,6 @@
     --secondary-color: #949494;
     --error-color: red;
     --border-color: lightgrey;
-    --progress-bar-height: 10px;
     --card-max-width: 600px;
     --card-margin: 0 auto 20px;
     --dark-grey: #292929;
@@ -412,37 +411,14 @@ hr {
     margin-top: 10px;
     text-align: left; /* Left-align the warning text */
 }
-
-#progress-container {
-    width: 100%;
-    height: var(--progress-bar-height);
-    background-color: var(--border-color);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    padding: 0 20px;
+/* Add the slide-in-blurred-top animation to a new class */
+.slide-in-blurred-top {
+    animation: slide-in-blurred-top 0.45s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
 
-#progress-bar {
-    height: 100%;
-    width: 0;
-    background-color: var(--main-color);
-    transition: width 0.3s;
-}
-
-@media (max-width: 600px) {
-    body {
-        margin: 10px;
-    }
-    form {
-        width: 100%;
-        margin: 0;
-    }
-    .card {
-        padding: 15px;
-    }
-    button {
-        padding: 8px 16px;
-    }
+/* Ensure the country cards are hidden by default */
+#first-country-choice-container,
+#second-country-choice-container,
+#third-country-choice-container {
+    display: none; /* Ensure the country cards are hidden by default */
 }
