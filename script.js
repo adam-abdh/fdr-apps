@@ -274,6 +274,16 @@ function updateCountryOptions(prefix) {
         option.textContent = country;
         countrySelector.appendChild(option);
     });
+
+    // Animate other cards down
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        if (card !== countryContainer) {
+            card.style.transition = 'margin-top 0.5s ease';
+            card.style.marginTop = `${parseFloat(getComputedStyle(card).marginTop) + 200}px`; // Adjust the value as needed
+        }
+    });
+}
 }
 
 });
