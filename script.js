@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function goBack() {
         if (historyStack.length > 1) {
-            historyStack.pop(); // Remove current section from history
+            historyStack.pop(); 
             const lastSectionId = historyStack[historyStack.length - 1];
             showSection(lastSectionId);
         }
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateHistory('welcome');
     showSection('welcome');
 
+    // Additional functions and event listeners
     function autoResizeTextarea(textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
@@ -139,97 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
-    function showNextSection(nextSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        const nextSectionElement = document.getElementById(nextSection);
-        if (currentSection) {
-            currentSection.classList.add('hidden');
-        }
-        if (nextSectionElement) {
-            nextSectionElement.classList.remove('hidden');
-            nextSectionElement.classList.add('fade-in');
-        }
-        window.scrollTo(0, 0);
-    }
-
-    function showPreviousSection(prevSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        const prevSectionElement = document.getElementById(prevSection);
-        if (currentSection) {
-            currentSection.classList.add('hidden');
-        }
-        if (prevSectionElement) {
-            prevSectionElement.classList.remove('hidden');
-            prevSectionElement.classList.add('fade-in');
-        }
-        window.scrollTo(0, 0);
-    }
-
-    function handleStudentGroupNext() {
-        const studentGroup = document.querySelector('input[name="student-group"]:checked');
-        if (studentGroup) {
-            if (studentGroup.value === 'yes') {
-                showNextSection('student-delegation');
-            } else {
-                showNextSection('school-group-delegation');
-            }
-        } else {
-            document.getElementById('student-group-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleSchoolRepNext() {
-        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
-        if (schoolRep) {
-            if (schoolRep.value === 'yes') {
-                showNextSection('chaperone-delegation');
-            } else {
-                showNextSection('special-arrangements');
-            }
-        } else {
-            document.getElementById('school-rep-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleSpecialArrangementsNext() {
-        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-        if (specialArrangements) {
-            if (specialArrangements.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('mun-experience');
-            }
-        } else {
-            document.getElementById('special-arrangements-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleOtherInfoNext() {
-        const otherInfo = document.querySelector('input[name="other-info"]:checked');
-        if (otherInfo) {
-            if (otherInfo.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('terms-conditions');
-            }
-        } else {
-            document.getElementById('other-info-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleStudentSpecialArrangementsNext() {
-        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-        if (studentSpecialArrangements) {
-            if (studentSpecialArrangements.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('mun-experience');
-            }
-        } else {
-            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
-        }
-    }
-
     function validateEmail() {
         const emailInput = document.getElementById('email');
         const emailError = document.getElementById('email-error');
@@ -289,22 +199,22 @@ document.addEventListener('DOMContentLoaded', function() {
         let countries = [];
         switch (selectedCommittee) {
             case 'DISEC':
-                countries = ["Select a country", "Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
+                countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
                 break;
             case 'SPECPOL':
-                countries = ["Select a country", "Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
+                countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
                 break;
             case 'UNHRC':
-                countries = ["Select a country", "Bangladesh, People's Republic of", "Myanmar, Republic of the Union of", "China, People's Republic of", "Pakistan, Islamic Republic of", "French Republic", "Japan", "Germany, Federal Republic of", "Saudi Arabia, Kingdom of", "Malaysia, Federation of", "Thailand, Kingdom of", "Russian Federation", "Indonesia, Republic of", "Netherlands, Kingdom of the", "India, Republic of", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
+                countries = ["Bangladesh, People's Republic of", "Myanmar, Republic of the Union of", "China, People's Republic of", "Pakistan, Islamic Republic of", "French Republic", "Japan", "Germany, Federal Republic of", "Saudi Arabia, Kingdom of", "Malaysia, Federation of", "Thailand, Kingdom of", "Russian Federation", "Indonesia, Republic of", "Netherlands, Kingdom of the", "India, Republic of", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
                 break;
             case 'EC':
-                countries = ["Select a country", "Belgium, Kingdom of", "Netherlands, Kingdom of the", "Denmark, Kingdom of", "Poland, Republic of", "Finland, Republic of", "Hungary, Hungary", "French Republic", "Romania", "Italian Republic", "Slovak Republic", "Portuguese Republic", "Hellenic Republic", "Norway, Kingdom of", "Germany, Federal Republic of", "Austria, Republic of", "Czech Republic", "Spain, Kingdom of", "Sweden, Kingdom of", "United Kingdom"];
+                countries = ["Belgium, Kingdom of", "Netherlands, Kingdom of the", "Denmark, Kingdom of", "Poland, Republic of", "Finland, Republic of", "Hungary, Hungary", "French Republic", "Romania", "Italian Republic", "Slovak Republic", "Portuguese Republic", "Hellenic Republic", "Norway, Kingdom of", "Germany, Federal Republic of", "Austria, Republic of", "Czech Republic", "Spain, Kingdom of", "Sweden, Kingdom of", "United Kingdom"];
                 break;
             case 'Continuous Crisis':
-                countries = ["Select a country", "Argentine Republic", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Canada, Dominion of", "Chile, Republic of", "China, People's Republic of", "French Republic", "Germany, Federal Republic of", "India, Republic of", "Italian Republic", "Japan", "Russian Federation", "South Africa, Republic of", "Spain, Kingdom of", "United Kingdom", "United States of America", "Uruguay, Oriental Republic of"];
+                countries = ["Argentine Republic", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Canada, Dominion of", "Chile, Republic of", "China, People's Republic of", "French Republic", "Germany, Federal Republic of", "India, Republic of", "Italian Republic", "Japan", "Russian Federation", "South Africa, Republic of", "Spain, Kingdom of", "United Kingdom", "United States of America", "Uruguay, Oriental Republic of"];
                 break;
             case 'SC':
-                countries = ["Select a country", "China, People's Republic of", "Russian Federation", "French Republic", "Sierra Leone, Republic of", "Hellenic Republic", "Panama, Republic of", "Guyana, Co-operative Republic of", "Somalia, Federal Republic of", "Korea, Republic of", "United Kingdom", "Slovenia, Republic of", "Pakistan, Islamic Republic of", "Serbia, Republic of", "Kosovo, Republic of", "Algeria, People's Democratic Republic of", "Denmark, Kingdom of", "United States of America"];
+                countries = ["China, People's Republic of", "Russian Federation", "French Republic", "Sierra Leone, Republic of", "Hellenic Republic", "Panama, Republic of", "Guyana, Co-operative Republic of", "Somalia, Federal Republic of", "Korea, Republic of", "United Kingdom", "Slovenia, Republic of", "Pakistan, Islamic Republic of", "Serbia, Republic of", "Kosovo, Republic of", "Algeria, People's Democratic Republic of", "Denmark, Kingdom of", "United States of America"];
                 break;
             default:
                 countries = [];
