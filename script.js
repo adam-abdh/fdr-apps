@@ -283,14 +283,14 @@ document.addEventListener('DOMContentLoaded', function() {
         animateCardsBelow(countryContainer);
     }
 
-    function animateCardsBelow(countryContainer) {
-        const cardsBelow = Array.from(document.querySelectorAll('.card-below')).filter(card => card.compareDocumentPosition(countryContainer) & Node.DOCUMENT_POSITION_FOLLOWING);
-        cardsBelow.forEach((card, index) => {
-            card.classList.add('stagger-down');
-            setTimeout(() => {
-                card.classList.remove('stagger-down');
-                card.classList.add('fade-in');
-            }, index * 70); 
-        });
+function animateCardsBelow(countryContainer) {
+    const cardsBelow = Array.from(document.querySelectorAll('.card-below')).filter(card => card.compareDocumentPosition(countryContainer) & Node.DOCUMENT_POSITION_FOLLOWING);
+    cardsBelow.forEach((card, index) => {
+        card.classList.add('stagger-down');
+        setTimeout(() => {
+            card.classList.remove('stagger-down');
+            card.classList.add('fade-in');
+        }, index * 100);
+    });
     }
 });
