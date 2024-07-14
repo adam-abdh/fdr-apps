@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.style.height = textarea.scrollHeight + 'px';
     }
 
+    document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
+    document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
+    document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
+    
     document.querySelectorAll('.auto-resize').forEach(textarea => {
         textarea.addEventListener('input', function() {
             autoResizeTextarea(this);
