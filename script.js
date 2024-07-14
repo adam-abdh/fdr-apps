@@ -55,6 +55,33 @@ document.addEventListener('DOMContentLoaded', function() {
         charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining.`;
     }
 
+    // Save form data to localStorage
+function saveFormData() {
+    const formData = new FormData(document.getElementById('registration-form'));
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+    localStorage.setItem('formData', JSON.stringify(data));
+}
+
+// Load form data from localStorage
+function loadFormData() {
+    const data = JSON.parse(localStorage.getItem('formData'));
+    if (data) {
+        for (const key in data) {
+            const input = document.querySelector(`#registration-form [name="${key}"]`);
+            if (input) {
+                input.value = data[key];
+            }
+        }
+    }
+}
+
+document.getElementById('registration-form').addEventListener('input', saveFormData);
+
+document.addEventListener('DOMContentLoaded', loadFormData);
+
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
             const maxLength = parseInt(this.getAttribute('data-maxlength'));
