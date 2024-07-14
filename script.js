@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
-    document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
+    document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
     document.getElementById('dob').addEventListener('change', validateAge);
     
     document.querySelectorAll('.auto-resize').forEach(textarea => {
@@ -251,9 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'DISEC':
                 countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
                 break;
-                case 'DISEC':
-                countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
-                break;
             case 'SPECPOL':
                 countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
                 break;
@@ -283,14 +280,14 @@ document.addEventListener('DOMContentLoaded', function() {
         animateCardsBelow(countryContainer);
     }
 
-function animateCardsBelow(countryContainer) {
-    const cardsBelow = Array.from(document.querySelectorAll('.card-below')).filter(card => card.compareDocumentPosition(countryContainer) & Node.DOCUMENT_POSITION_FOLLOWING);
-    cardsBelow.forEach((card, index) => {
-        card.classList.add('stagger-down');
-        setTimeout(() => {
-            card.classList.remove('stagger-down');
-            card.classList.add('fade-in');
-        }, index * 100);
-    });
+    function animateCardsBelow(countryContainer) {
+        const cardsBelow = Array.from(document.querySelectorAll('.card-below')).filter(card => card.compareDocumentPosition(countryContainer) & Node.DOCUMENT_POSITION_FOLLOWING);
+        cardsBelow.forEach((card, index) => {
+            card.classList.add('stagger-down');
+            setTimeout(() => {
+                card.classList.remove('stagger-down');
+                card.classList.add('fade-in');
+            }, index * 100);
+        });
     }
 });
