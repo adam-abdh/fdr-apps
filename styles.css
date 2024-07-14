@@ -411,14 +411,37 @@ hr {
     margin-top: 10px;
     text-align: left; /* Left-align the warning text */
 }
-/* Add the slide-in-blurred-top animation to a new class */
+/* Animation for sliding in country cards */
 .slide-in-blurred-top {
     animation: slide-in-blurred-top 0.45s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
 
-/* Ensure the country cards are hidden by default */
-#first-country-choice-container,
-#second-country-choice-container,
-#third-country-choice-container {
-    display: none; /* Ensure the country cards are hidden by default */
+@keyframes slide-in-blurred-top {
+    0% {
+        transform: translateY(-100px) scaleY(2.5) scaleX(0.2);
+        transform-origin: 50% 0%;
+        filter: blur(40px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scaleY(1) scaleX(1);
+        transform-origin: 50% 50%;
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for cards below the country selector */
+.card-below {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.card-below.stagger-down {
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.card-below.fade-in {
+    transform: translateY(0);
+    opacity: 1;
 }
