@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 card.classList.remove('stagger-down');
                 card.classList.add('fade-in');
-            }, index * 100); 
+            }, index * 150); 
         });
     }
 });
