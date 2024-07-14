@@ -332,8 +332,6 @@ button:focus {
     font-size: 1.2em;
 }
 
-/* Add these styles to your existing CSS */
-
 .card {
     width: 100%;
     max-width: var(--card-max-width);
@@ -347,39 +345,21 @@ button:focus {
     position: relative;
     z-index: 0;
     text-align: left;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .card:focus-within {
-    box-shadow: 0 0 20px rgba(102, 51, 153, 0.5), 0 0 40px rgba(51, 102, 153, 0.5);
-    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(102, 51, 153, 0.5), 0 0 30px rgba(255, 102, 153, 0.5);
 }
 
 .card:hover {
-    box-shadow: 0 0 20px rgba(102, 51, 153, 0.5), 0 0 40px rgba(51, 102, 153, 0.5);
-    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(102, 51, 153, 0.5), 0 0 30px rgba(255, 102, 153, 0.5);
 }
 
 .card.completed {
-    box-shadow: 0 0 20px rgba(102, 51, 153, 0.5), 0 0 40px rgba(51, 102, 153, 0.5);
-    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(102, 51, 153, 0.5), 0 0 30px rgba(255, 102, 153, 0.5);
 }
 
-@keyframes subtleMove {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.card.animated {
-    animation: subtleMove 2s infinite;
-}
 
 textarea {
     resize: none;
