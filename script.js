@@ -19,25 +19,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function goBack() {
         if (historyStack.length > 1) {
-            historyStack.pop(); 
+            historyStack.pop(); // Remove current section from history
             const lastSectionId = historyStack[historyStack.length - 1];
             showSection(lastSectionId);
         }
     }
 
-    document.querySelectorAll('button[onclick^="showNextSection"]').forEach(button => {
+    document.querySelectorAll('.next-section').forEach(button => {
         button.addEventListener('click', function() {
-            const nextSectionId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            const nextSectionId = this.getAttribute('data-next');
             updateHistory(nextSectionId);
             showSection(nextSectionId);
         });
     });
 
-    previousButton.addEventListener('click', goBack);
+    document.querySelectorAll('.previous-section').forEach(button => {
+        button.addEventListener('click', function() {
+            goBack();
+        });
+    });
 
     // Initialize the first section
     updateHistory('welcome');
     showSection('welcome');
+
+    // Define other functions here
+    function handleStudentGroupNext() {
+        const studentGroup = document.querySelector('input[name="student-group"]:checked');
+        if (studentGroup) {
+            if (studentGroup.value === 'yes') {
+                showNextSection('student-delegation');
+            } else {
+                showNextSection('school-group-delegation');
+            }
+        } else {
+            document.getElementById('student-group-warning').classList.remove('hidden');
+        }
+    }
 
     // Additional functions and event listeners
     function autoResizeTextarea(textarea) {
