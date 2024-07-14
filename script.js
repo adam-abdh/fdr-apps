@@ -1,4 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    const previousButton = document.querySelector('button[onclick^="showPreviousSection"]');
+    let historyStack = [];
+
+    function showSection(sectionId) {
+        sections.forEach(section => section.classList.add('hidden'));
+        const sectionToShow = document.getElementById(sectionId);
+        if (sectionToShow) {
+            sectionToShow.classList.remove('hidden');
+            sectionToShow.classList.add('fade-in');
+        }
+        window.scrollTo(0, 0);
+    }
+
+    function updateHistory(sectionId) {
+        historyStack.push(sectionId);
+    }
+
+    function goBack() {
+        if (historyStack.length > 1) {
+            historyStack.pop(); // Remove current section from history
+            const lastSectionId = historyStack[historyStack.length - 1];
+            showSection(lastSectionId);
+        }
+    }
+
+    document.querySelectorAll('button[onclick^="showNextSection"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const nextSectionId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            updateHistory(nextSectionId);
+            showSection(nextSectionId);
+        });
+    });
+
+    previousButton.addEventListener('click', goBack);
+
+    // Initialize the first section
+    updateHistory('welcome');
+    showSection('welcome');
+
     function autoResizeTextarea(textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
@@ -6,9 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
-    document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
+    document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
     document.getElementById('dob').addEventListener('change', validateAge);
-    
+
     document.querySelectorAll('.auto-resize').forEach(textarea => {
         textarea.addEventListener('input', function() {
             autoResizeTextarea(this);
@@ -249,9 +289,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let countries = [];
         switch (selectedCommittee) {
             case 'DISEC':
-                countries = ["Select a country", "Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
-                break;
-                case 'DISEC':
                 countries = ["Select a country", "Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
                 break;
             case 'SPECPOL':
