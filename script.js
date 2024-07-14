@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
     document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
     document.getElementById('dob').addEventListener('change', validateAge);
+    document.getElementById('email').addEventListener('change', validateEmail);
 
     document.querySelectorAll('.auto-resize').forEach(textarea => {
         textarea.addEventListener('input', function() {
@@ -68,14 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const dayDifference = today.getDate() - dobDate.getDate();
 
         if (dobDate > today) {
-            dobError.textContent = 'Date of birth cannot be in the future.';
+            dobError.textContent = 'Your date of birth cannot be in the future, silly!';
             dobError.classList.remove('hidden');
             dobInput.classList.add('input-error');
             return false;
         }
 
         if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
-            dobError.textContent = 'You must be at least 12 years old to submit this form.';
+            dobError.textContent = 'For GDPR compliance, you must be at least 13 years old to complete this form.';
             dobError.classList.remove('hidden');
             dobInput.classList.add('input-error');
             return false;
