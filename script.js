@@ -236,14 +236,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
 
-        // Clear previous options
         countrySelector.innerHTML = '<option value="">Select an option</option>';
 
-        // Show the country container and add the animation class
         countryContainer.style.display = 'block';
         countryContainer.classList.add('slide-in-blurred-top');
 
-        // Populate country options based on the selected committee
         let countries = [];
         switch (selectedCommittee) {
             case 'DISEC':
@@ -278,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
             countrySelector.appendChild(option);
         });
 
-        // Animate the cards below
         animateCardsBelow(countryContainer);
     }
 
@@ -289,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 card.classList.remove('stagger-down');
                 card.classList.add('fade-in');
-            }, index * 100); // Adjust the delay as needed
+            }, index * 100); 
         });
     }
 });
