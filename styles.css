@@ -422,17 +422,3 @@ hr {
 #third-country-choice-container {
     display: none; /* Ensure the country cards are hidden by default */
 }
-
-/* Fade-in animation */
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out both;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
