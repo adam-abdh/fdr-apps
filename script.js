@@ -1,63 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section');
-    const previousButton = document.querySelector('button[onclick^="showPreviousSection"]');
-    let historyStack = [];
-
-    function showSection(sectionId) {
-        sections.forEach(section => section.classList.add('hidden'));
-        const sectionToShow = document.getElementById(sectionId);
-        if (sectionToShow) {
-            sectionToShow.classList.remove('hidden');
-            sectionToShow.classList.add('fade-in');
-        }
-        window.scrollTo(0, 0);
-    }
-
-    function updateHistory(sectionId) {
-        historyStack.push(sectionId);
-    }
-
-    function goBack() {
-        if (historyStack.length > 1) {
-            historyStack.pop(); // Remove current section from history
-            const lastSectionId = historyStack[historyStack.length - 1];
-            showSection(lastSectionId);
-        }
-    }
-
-    document.querySelectorAll('.next-section').forEach(button => {
-        button.addEventListener('click', function() {
-            const nextSectionId = this.getAttribute('data-next');
-            updateHistory(nextSectionId);
-            showSection(nextSectionId);
-        });
-    });
-
-    document.querySelectorAll('.previous-section').forEach(button => {
-        button.addEventListener('click', function() {
-            goBack();
-        });
-    });
-
-    // Initialize the first section
-    updateHistory('welcome');
-    showSection('welcome');
-
-    // Define other functions here
-    function handleStudentGroupNext() {
-        const studentGroup = document.querySelector('input[name="student-group"]:checked');
-        if (studentGroup) {
-            if (studentGroup.value === 'yes') {
-                showNextSection('student-delegation');
-            } else {
-                showNextSection('school-group-delegation');
-            }
-        } else {
-            document.getElementById('student-group-warning').classList.remove('hidden');
-        }
-    }
-
-    // Additional functions and event listeners
     function autoResizeTextarea(textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
@@ -65,10 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
-    document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
+    document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
     document.getElementById('dob').addEventListener('change', validateAge);
-    document.getElementById('email').addEventListener('change', validateEmail);
-
+    
     document.querySelectorAll('.auto-resize').forEach(textarea => {
         textarea.addEventListener('input', function() {
             autoResizeTextarea(this);
@@ -93,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
 
-        if (age < 12 || (age === 12 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
-            dobError.textContent = 'For GDPR compliance, you must be at least 13 years old to complete this form.';
+        if (age < 13 || (age === 13 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
+            dobError.textContent = 'For GDPR reasons, you should be at least 13 years old to complete this form.';
             dobError.classList.remove('hidden');
             dobInput.classList.add('input-error');
             return false;
@@ -159,6 +99,97 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
+    function showNextSection(nextSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const nextSectionElement = document.getElementById(nextSection);
+        if (currentSection) {
+            currentSection.classList.add('hidden');
+        }
+        if (nextSectionElement) {
+            nextSectionElement.classList.remove('hidden');
+            nextSectionElement.classList.add('fade-in');
+        }
+        window.scrollTo(0, 0);
+    }
+
+    function showPreviousSection(prevSection) {
+        const currentSection = document.querySelector('section:not(.hidden)');
+        const prevSectionElement = document.getElementById(prevSection);
+        if (currentSection) {
+            currentSection.classList.add('hidden');
+        }
+        if (prevSectionElement) {
+            prevSectionElement.classList.remove('hidden');
+            prevSectionElement.classList.add('fade-in');
+        }
+        window.scrollTo(0, 0);
+    }
+
+    function handleStudentGroupNext() {
+        const studentGroup = document.querySelector('input[name="student-group"]:checked');
+        if (studentGroup) {
+            if (studentGroup.value === 'yes') {
+                showNextSection('student-delegation');
+            } else {
+                showNextSection('school-group-delegation');
+            }
+        } else {
+            document.getElementById('student-group-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleSchoolRepNext() {
+        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
+        if (schoolRep) {
+            if (schoolRep.value === 'yes') {
+                showNextSection('chaperone-delegation');
+            } else {
+                showNextSection('special-arrangements');
+            }
+        } else {
+            document.getElementById('school-rep-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleSpecialArrangementsNext() {
+        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+        if (specialArrangements) {
+            if (specialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('special-arrangements-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleOtherInfoNext() {
+        const otherInfo = document.querySelector('input[name="other-info"]:checked');
+        if (otherInfo) {
+            if (otherInfo.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('terms-conditions');
+            }
+        } else {
+            document.getElementById('other-info-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleStudentSpecialArrangementsNext() {
+        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+        if (studentSpecialArrangements) {
+            if (studentSpecialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+        }
+    }
+
     function validateEmail() {
         const emailInput = document.getElementById('email');
         const emailError = document.getElementById('email-error');
@@ -218,6 +249,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let countries = [];
         switch (selectedCommittee) {
             case 'DISEC':
+                countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
+                break;
+                case 'DISEC':
                 countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
                 break;
             case 'SPECPOL':
