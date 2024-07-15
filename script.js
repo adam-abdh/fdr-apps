@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
     document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
     document.getElementById('dob').addEventListener('change', validateAge);
+    document.getElementById('reviewButton').addEventListener('click', reviewForm);
     
     document.querySelectorAll('.auto-resize').forEach(textarea => {
         textarea.addEventListener('input', function() {
@@ -16,6 +17,72 @@ document.addEventListener('DOMContentLoaded', function() {
         autoResizeTextarea(textarea);
     });
 
+function reviewForm() {
+    const formData = new FormData(document.getElementById('registration-form'));
+    let reviewContent = '';
+    formData.forEach((value, key) => {
+        reviewContent += `<div class="form-field"><strong>${key}:</strong> ${value}</div>`;
+    });
+
+    const reviewWindow = window.open('', '_blank');
+    reviewWindow.document.write(`
+        <html>
+        <head>
+            <title>Review Form</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                }
+                h1 {
+                    text-align: center;
+                    color: #333;
+                }
+                .form-field {
+                    margin-bottom: 10px;
+                    border-bottom: 1px solid #ccc;
+                    padding-bottom: 5px;
+                }
+                strong {
+                    color: #555;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Review Your Form</h1>
+            <div id="reviewContent">${reviewContent}</div>
+            <button id="downloadPDF">Download PDF</button>
+            <button id="submitForm">Submit Form</button>
+        </body>
+        </html>
+    `);
+
+    reviewWindow.document.close(); // Ensure the document is fully loaded
+
+    reviewWindow.document.getElementById('downloadPDF').addEventListener('click', () => {
+        generatePDF(reviewWindow);
+    });
+
+    reviewWindow.document.getElementById('submitForm').addEventListener('click', () => {
+        submitForm();
+    });
+}
+
+function generatePDF(reviewWindow) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.fromHTML(reviewWindow.document.getElementById('reviewContent').innerHTML, 15, 15, {
+        width: 170,
+        lineHeight: 1.5
+    });
+    doc.save('form-review.pdf');
+}
+
+function submitForm() {
+    document.getElementById('registration-form').submit();
+}
+    
     function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
@@ -54,33 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const remainingChars = maxLength - currentLength;
         charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining.`;
     }
-
-    // Save form data to localStorage
-function saveFormData() {
-    const formData = new FormData(document.getElementById('registration-form'));
-    const data = {};
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-    localStorage.setItem('formData', JSON.stringify(data));
-}
-
-// Load form data from localStorage
-function loadFormData() {
-    const data = JSON.parse(localStorage.getItem('formData'));
-    if (data) {
-        for (const key in data) {
-            const input = document.querySelector(`#registration-form [name="${key}"]`);
-            if (input) {
-                input.value = data[key];
-            }
-        }
-    }
-}
-
-document.getElementById('registration-form').addEventListener('input', saveFormData);
-
-document.addEventListener('DOMContentLoaded', loadFormData);
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
