@@ -24,6 +24,35 @@ function reviewForm() {
         reviewContent += `<div class="form-field"><strong>${key}:</strong> ${value}</div>`;
     });
 
+// Save form data to localStorage
+function saveFormData() {
+    const formData = new FormData(document.getElementById('registration-form'));
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+    localStorage.setItem('formData', JSON.stringify(data));
+}
+
+// Load form data from localStorage
+function loadFormData() {
+    const data = JSON.parse(localStorage.getItem('formData'));
+    if (data) {
+        for (const key in data) {
+            const input = document.querySelector(`#registration-form [name="${key}"]`);
+            if (input) {
+                input.value = data[key];
+            }
+        }
+    }
+}
+
+// Save form data on input change
+document.getElementById('registration-form').addEventListener('input', saveFormData);
+
+// Load form data on page load
+document.addEventListener('DOMContentLoaded', loadFormData);
+    
     const reviewWindow = window.open('', '_blank');
     reviewWindow.document.write(`
         <html>
