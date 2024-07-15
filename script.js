@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (age < 13 || (age === 13 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
-            dobError.textContent = 'For GDPR reasons, you should be at least 13 years old to complete this form.';
+            dobError.textContent = 'To ensure compliance with the EU General Data Protection Regulation (GDPR), you should be at least 13 years old to complete this form.';
             dobError.classList.remove('hidden');
             dobInput.classList.add('input-error');
             return false;
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentLength = textarea.value.replace(/\s/g, '').length;
         const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
         const remainingChars = maxLength - currentLength;
-        charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} remaining.`;
+        charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} available.`;
     }
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
