@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const selectedCountries = {
+        'first': {},
+        'second': {},
+        'third': {}
+    };
+
     function autoResizeTextarea(textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
@@ -8,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
     document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
     document.getElementById('dob').addEventListener('change', validateAge);
+    document.getElementById('email').addEventListener('change', validateEmail);
     
     document.querySelectorAll('.auto-resize').forEach(textarea => {
         textarea.addEventListener('input', function() {
@@ -270,11 +277,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 countries = [];
         }
 
-        countries.forEach(country => {
+        // Filter out already selected countries
+        const availableCountries = countries.filter(country => !selectedCountries[prefix][country]);
+
+        availableCountries.forEach(country => {
             const option = document.createElement('option');
             option.value = country;
             option.textContent = country;
             countrySelector.appendChild(option);
+        });
+
+        countrySelector.addEventListener('change', function() {
+            const selectedCountry = this.value;
+            if (selectedCountry) {
+                selectedCountries[prefix][selectedCountry] = true;
+                updateCountryOptions(prefix); // Re-populate the dropdown to reflect the change
+            }
         });
 
         animateCardsBelow(countryContainer);
