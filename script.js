@@ -248,6 +248,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
 
+        // Store previously selected country to remove it from selection
+        const previousSelectedCountry = selectedCountries[prefix].selectedCountry;
+
         countrySelector.innerHTML = '<option value="">Select an option</option>';
 
         countryContainer.style.display = 'block';
@@ -278,12 +281,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Filter out already selected countries
-        const availableCountries = countries.filter(country => !selectedCountries[prefix][country]);
+        let availableCountries = countries.filter(country => !Object.values(selectedCountries).some(selected => selected[country]));
 
         availableCountries.forEach(country => {
             const option = document.createElement('option');
             option.value = country;
             option.textContent = country;
+            if (country === previousSelectedCountry) {
+                option.selected = true;
+            }
             countrySelector.appendChild(option);
         });
 
@@ -291,7 +297,11 @@ document.addEventListener('DOMContentLoaded', function() {
         countrySelector.addEventListener('change', function() {
             const selectedCountry = this.value;
             if (selectedCountry) {
+                if (previousSelectedCountry) {
+                    delete selectedCountries[prefix][previousSelectedCountry];
+                }
                 selectedCountries[prefix][selectedCountry] = true;
+                selectedCountries[prefix].selectedCountry = selectedCountry;
                 updateCountryOptions(prefix); // Re-populate the dropdown to reflect the change
             }
         });
