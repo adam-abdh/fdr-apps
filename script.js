@@ -287,6 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
             countrySelector.appendChild(option);
         });
 
+        // Add event listener for country selection
         countrySelector.addEventListener('change', function() {
             const selectedCountry = this.value;
             if (selectedCountry) {
