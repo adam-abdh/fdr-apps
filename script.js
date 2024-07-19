@@ -284,8 +284,12 @@ function updateCountryOptions(prefix) {
             countries = [];
     }
 
-    // Filter out already selected countries
-    let availableCountries = countries.filter(country => !Object.values(selectedCountries).some(selected => selected[country]));
+    // Filter out countries selected in OTHER dropdowns
+    let availableCountries = countries.filter(country => 
+        !Object.entries(selectedCountries).some(([key, value]) => 
+            key !== prefix && value[country]
+        )
+    );
 
     console.log(`Available countries for ${prefix}: `, availableCountries);
 
@@ -299,11 +303,27 @@ function updateCountryOptions(prefix) {
         countrySelector.appendChild(option);
     });
 
-    // If no country is selected, select the first available country
-    if (!countrySelector.value && availableCountries.length > 0) {
-        countrySelector.value = availableCountries[0];
-        selectedCountries[prefix][availableCountries[0]] = true;
-        selectedCountries[prefix].selectedCountry = availableCountries[0];
+    // If the currently selected country is not in the list, add it
+    if (currentlySelectedCountry && !availableCountries.includes(currentlySelectedCountry)) {
+        const option = document.createElement('option');
+        option.value = currentlySelectedCountry;
+        option.textContent = currentlySelectedCountry;
+        option.selected = true;
+        countrySelector.appendChild(option);
+    }
+
+    // If no country is selected, don't auto-select
+    if (!countrySelector.value) {
+        countrySelector.value = "";
+    }
+
+    // Update the selectedCountries object
+    if (selectedCountries[prefix].selectedCountry && selectedCountries[prefix].selectedCountry !== currentlySelectedCountry) {
+        delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
+    }
+    if (currentlySelectedCountry) {
+        selectedCountries[prefix][currentlySelectedCountry] = true;
+        selectedCountries[prefix].selectedCountry = currentlySelectedCountry;
     }
 
     // Add event listener for country selection
@@ -315,8 +335,11 @@ function updateCountryOptions(prefix) {
             }
             selectedCountries[prefix][selectedCountry] = true;
             selectedCountries[prefix].selectedCountry = selectedCountry;
-            updateCountryOptions(prefix); // Re-populate the dropdown to reflect the change
+        } else {
+            delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
+            selectedCountries[prefix].selectedCountry = null;
         }
+        updateCountryOptions(prefix); // Re-populate the dropdown to reflect the change
     });
 
     animateCardsBelow(countryContainer);
