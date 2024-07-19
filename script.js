@@ -252,8 +252,8 @@ function updateCountryOptions(prefix) {
 
     console.log(`Selected committee: ${selectedCommittee}`);
 
-    // Store previously selected country to remove it from selection
-    const previousSelectedCountry = selectedCountries[prefix].selectedCountry;
+    // Store currently selected country
+    const currentlySelectedCountry = countrySelector.value;
 
     countrySelector.innerHTML = '<option value="">Select an option</option>';
 
@@ -293,18 +293,25 @@ function updateCountryOptions(prefix) {
         const option = document.createElement('option');
         option.value = country;
         option.textContent = country;
-        if (country === previousSelectedCountry) {
+        if (country === currentlySelectedCountry) {
             option.selected = true;
         }
         countrySelector.appendChild(option);
     });
 
+    // If no country is selected, select the first available country
+    if (!countrySelector.value && availableCountries.length > 0) {
+        countrySelector.value = availableCountries[0];
+        selectedCountries[prefix][availableCountries[0]] = true;
+        selectedCountries[prefix].selectedCountry = availableCountries[0];
+    }
+
     // Add event listener for country selection
     countrySelector.addEventListener('change', function() {
         const selectedCountry = this.value;
         if (selectedCountry) {
-            if (previousSelectedCountry) {
-                delete selectedCountries[prefix][previousSelectedCountry];
+            if (selectedCountries[prefix].selectedCountry) {
+                delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
             }
             selectedCountries[prefix][selectedCountry] = true;
             selectedCountries[prefix].selectedCountry = selectedCountry;
