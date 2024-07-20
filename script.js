@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const pronounsOtherCheckbox = document.getElementById('pronouns-other');
     const pronounsOtherText = document.getElementById('pronouns-other-text');
     
-    findOutOtherCheckbox.addEventListener('change', function() {
-        findOutOtherText.style.display = this.checked ? 'block' : 'none';
+    pronounsOtherCheckbox.addEventListener('change', function() {
+        pronounsOtherText.style.display = this.checked ? 'block' : 'none';
     });
 
 
