@@ -97,6 +97,34 @@ document.addEventListener('DOMContentLoaded', function() {
         const remainingChars = maxLength - currentLength;
         charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} available.`;
     }
+    
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const formData = new FormData(this);
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  fetch('YOUR_WEB_APP_URL', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.result === 'success') {
+      alert('Form submitted successfully!');
+    } else {
+      alert('Form submission failed.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Form submission failed.');
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
