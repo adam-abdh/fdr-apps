@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+*/++++++++document.addEventListener('DOMContentLoaded', function() {
     const selectedCountries = {
         'first': {},
         'second': {},
@@ -154,7 +154,6 @@ let formPath = ['welcome'];
     } else if (studentSpecialArrangementsNo.checked) {
         toggleRequiredAttribute(studentSpecialArrangementsFields, false);
     }
-});
 
     function validateAge() {
         const dobInput = document.getElementById('dob');
