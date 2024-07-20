@@ -7,7 +7,7 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://script.google.com/macros/s/AKfycbwUK4_DYmo3rnaOQFFTYGjAKXLNctEsPzMKtHntjc40dVqCf5oXHJ_HtuSAB6p_IsyzLw/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbx56rJfZNwXvFOUOka1Vpa3mrJNNMgFiwpkQP-9EYXR8MRO4wlUB-PI3WF67yG7mZBo5A/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
