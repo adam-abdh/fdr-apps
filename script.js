@@ -497,20 +497,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleStudentSpecialArrangementsNext() {
-        const currentSection = document.getElementById('student-delegation');
-        if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
-        }
+function handleStudentSpecialArrangementsNext() {
+    const currentSection = document.getElementById('student-delegation');
+    if (!validateSection(currentSection.id)) {
+        return; // Stop execution if validation fails
+    }
 
-        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-        if (studentSpecialArrangements) {
-            if (studentSpecialArrangements.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('mun-experience');
-            }
+    const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+    if (studentSpecialArrangements) {
+        if (studentSpecialArrangements.value === 'yes') {
+            showNextSection('special-guidance');
         } else {
-            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+            showNextSection('mun-experience');
         }
-});
+    } else {
+        document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+    }
+} // Line 516
+});  
