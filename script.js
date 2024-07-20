@@ -23,47 +23,27 @@ document.addEventListener('DOMContentLoaded', function() {
         autoResizeTextarea(textarea);
     });
 
- function addEventListenerSafely(id, event, callback) {
-        const element = document.getElementById(id);
-        if (element) {
-            element.addEventListener(event, callback);
-        } else {
-            console.warn(`Element with id '${id}' not found`);
-        }
-    }
-
-    // For preferred title
-    addEventListenerSafely('preferred-title', 'change', function() {
-        const otherInput = document.getElementById('preferred-title-other');
-        if (otherInput) {
-            otherInput.style.display = this.value === 'other' ? 'block' : 'none';
-        }
-    });
-
-    // For dietary requirements
-    addEventListenerSafely('dietary-requirements', 'change', function() {
-        const otherInput = document.getElementById('dietary-requirements-other');
-        if (otherInput) {
-            otherInput.style.display = this.value === 'other' ? 'block' : 'none';
-        }
-    });
-
-    // For find out about us
-    addEventListenerSafely('find-out-other', 'change', function() {
-        const otherInput = document.getElementById('find-out-other-text');
-        if (otherInput) {
-            otherInput.style.display = this.checked ? 'block' : 'none';
-        }
-    });
-
-    // For preferred pronouns
-    addEventListenerSafely('pronouns-other', 'change', function() {
-        const otherInput = document.getElementById('pronouns-other-text');
-        if (otherInput) {
-            otherInput.style.display = this.checked ? 'block' : 'none';
-        }
-    });
+    // New event listeners for "Other" options
+    const preferredTitleSelect = document.getElementById('preferred-title');
+    const preferredTitleOther = document.getElementById('preferred-title-other');
     
+    preferredTitleSelect.addEventListener('change', function() {
+        preferredTitleOther.style.display = this.value === 'other' ? 'block' : 'none';
+    });
+
+    const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
+    const dietaryRequirementsOther = document.getElementById('dietary-requirements-other');
+    
+    dietaryRequirementsSelect.addEventListener('change', function() {
+        dietaryRequirementsOther.style.display = this.value === 'other' ? 'block' : 'none';
+    });
+
+    const findOutOtherCheckbox = document.getElementById('find-out-other');
+    const findOutOtherText = document.getElementById('find-out-other-text');
+    
+    findOutOtherCheckbox.addEventListener('change', function() {
+        findOutOtherText.style.display = this.checked ? 'block' : 'none';
+    });
 
     function validateAge() {
         const dobInput = document.getElementById('dob');
