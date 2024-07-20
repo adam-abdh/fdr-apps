@@ -488,7 +488,7 @@ function showNextSection(nextSection) {
         if (!countrySelector.value) {
             countrySelector.value = "";
         }
-
+ 
         // Update the selectedCountries object
         if (selectedCountries[prefix].selectedCountry && selectedCountries[prefix].selectedCountry !== currentlySelectedCountry) {
             delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
