@@ -42,7 +42,7 @@
             <section id="personal-data" class="hidden fade-in">
                 <h2>Getting to know you.</h2>
               <div class="card">
-    Your <strong>preferred title.</strong><span class="required-star">*</span>
+    <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
     <select id="preferred-title" name="preferred-title" required>
         <option value="">Select an option</option>
         <option value="Mrs.">Mrs.</option>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
+                    <label class="question" for="first-name"> <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
                     <p class="question-description"><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
                     <input type="text" id="first-name" name="first-name" required>
                 </div>
@@ -331,7 +331,7 @@
                     </select>
                 </div>
                             <div class="card">
-    Your <strong>dietary requirements.</strong><span class="required-star">*</span>
+     <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
     <select id="dietary-requirements" name="dietary-requirements" required>
         <option value="">Select an option</option>
         <option value="None">None</option>
@@ -345,56 +345,68 @@
     <input type="text" id="dietary-requirements-other" name="dietary-requirements-other" placeholder="Please specify" style="display: none;">
 </div>
               <div class="card">
-    How did you <strong>find out</strong> about us?
-    <p><em>Check all that may apply.</em></p>
+   <label class="question">How did you <strong>find out</strong> about us?</label
+                    ><p class="question-description"><em>Check all that may apply.</em></p>
     <span class="required-star">*</span>
 
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-google" name="find-out" value="Google/FDRMUN website">
+           <span class="checkmark"></span>
         <label for="find-out-google">Google/FDRMUN website</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-instagram" name="find-out" value="FDRMUN Instagram">
+           <span class="checkmark"></span>
         <label for="find-out-instagram">FDRMUN Instagram</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-email" name="find-out" value="FDRMUN E-mail">
+           <span class="checkmark"></span>
         <label for="find-out-email">FDRMUN E-mail</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-social" name="find-out" value="Other FDRMUN social network(s)">
+           <span class="checkmark"></span>
         <label for="find-out-social">Other FDRMUN social network(s)</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-isb" name="find-out" value="International School of Bucharest">
+           <span class="checkmark"></span>
         <label for="find-out-isb">International School of Bucharest</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-mun" name="find-out" value="MUN-related sources">
+           <span class="checkmark"></span>
         <label for="find-out-mun">MUN-related sources (such as myMUN or mun.news.ro)</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-friend" name="find-out" value="Friend or family member">
+           <span class="checkmark"></span>
         <label for="find-out-friend">Friend or family member</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-brochure" name="find-out" value="Brochure, poster or flyer">
+           <span class="checkmark"></span>
         <label for="find-out-brochure">Brochure, poster or flyer</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-tv" name="find-out" value="Television">
+           <span class="checkmark"></span>
         <label for="find-out-tv">Television</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-media" name="find-out" value="Media outlet or article">
+           <span class="checkmark"></span>
         <label for="find-out-media">Media outlet or article</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-consulting" name="find-out" value="Consulting services">
+           <span class="checkmark"></span>
         <label for="find-out-consulting">Consulting services</label>
     </div>
     <div class="checkbox-container">
         <input type="checkbox" id="find-out-other" name="find-out" value="Other">
+           <span class="checkmark"></span>
         <label for="find-out-other">Other</label>
     </div>
     <input type="text" id="find-out-other-text" name="find-out-other-text" placeholder="Please specify" style="display: none;">
@@ -770,7 +782,7 @@
         </form>
     <footer>
         <hr>
-        <p>Build 10.0.6</p>
+        <p>Build 10.0.7</p>
         <br>
         <div class="image-section">
             <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD Logo" style="width: 190px; height: auto;">
