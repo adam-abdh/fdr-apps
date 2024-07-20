@@ -257,13 +257,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        if (validateAge() && validateEmail()) {
-            alert('Form submitted successfully!');
-        }
-    }
-
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
         const nextSectionElement = document.getElementById(nextSection);
