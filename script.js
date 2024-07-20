@@ -54,7 +54,6 @@ let formPath = ['welcome'];
         pronounsOtherText.style.display = this.checked ? 'block' : 'none';
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
     const studentGroupYes = document.getElementById('student-group-yes');
     const studentGroupNo = document.getElementById('student-group-no');
     const delegationFields = document.querySelectorAll('#student-delegation input, #student-delegation select, #student-delegation textarea');
