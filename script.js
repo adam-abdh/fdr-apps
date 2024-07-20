@@ -44,13 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     findOutOtherCheckbox.addEventListener('change', function() {
         findOutOtherText.style.display = this.checked ? 'block' : 'none';
     });
-    
-      const pronounsOtherCheckbox = document.getElementById('pronouns-other');
-    const pronounsOtherText = document.getElementById('pronouns-other-text');
-    
-    pronounsOtherCheckbox.addEventListener('change', function() {
-        pronounsOtherText.style.display = this.checked ? 'block' : 'none';
-    });
 
     function validateAge() {
         const dobInput = document.getElementById('dob');
