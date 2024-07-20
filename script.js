@@ -89,35 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    document.getElementById('registration-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  
-  const formData = new FormData(this);
-  const data = {};
-  formData.forEach((value, key) => {
-    data[key] = value;
-  });
-
-  fetch('https://script.google.com/a/macros/isb.ro/s/AKfycbyBzM-Qgu8IrYvEWf_Xd1MVhZ-GGOhmeaYZJv4BRTFiOTMEuHornZInUL0k6daH6vte/exec', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.result === 'success') {
-      alert('Form submitted successfully!');
-    } else {
-      alert('Form submission failed.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Form submission failed.');
-  });
-
     function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
