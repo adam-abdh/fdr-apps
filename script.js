@@ -151,19 +151,37 @@ function showNextSection(nextSection) {
     window.scrollTo(0, 0);
 }
 
-    function showPreviousSection(prevSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        const prevSectionElement = document.getElementById(prevSection);
-        if (currentSection) {
-            currentSection.classList.add('hidden');
-        }
-        if (prevSectionElement) {
-            prevSectionElement.classList.remove('hidden');
-            prevSectionElement.classList.add('fade-in');
-        }
-        window.scrollTo(0, 0);
-    }
+ function showPreviousSection() {
+    console.log('showPreviousSection called');
 
+    if (formPath.length > 1) {
+        console.log('Form path length:', formPath.length);
+
+        const currentSection = document.querySelector('section:not(.hidden)');
+        console.log('Current section:', currentSection ? currentSection.id : 'None');
+
+        currentSection.classList.add('hidden');
+        currentSection.classList.remove('fade-in');
+
+        formPath.pop(); // Remove the current section from the path
+        console.log('Updated form path:', formPath);
+
+        const previousSectionId = formPath[formPath.length - 1]; // Get the previous section ID
+        console.log('Previous section ID:', previousSectionId);
+
+        const previousSection = document.getElementById(previousSectionId);
+        console.log('Previous section element:', previousSection);
+
+        if (previousSection) {
+            previousSection.classList.remove('hidden');
+            previousSection.classList.add('fade-in');
+        }
+
+        window.scrollTo(0, 0);
+    } else {
+        console.log('No previous section to navigate to');
+    }
+}
     function handleStudentGroupNext() {
         const currentSection = document.getElementById('student-group-delegation');
         if (!validateSection(currentSection.id)) {
