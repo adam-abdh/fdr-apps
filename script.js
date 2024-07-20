@@ -514,4 +514,3 @@ function handleStudentSpecialArrangementsNext() {
         document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
     }
 } // Line 516
-});  
