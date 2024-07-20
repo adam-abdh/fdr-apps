@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'third': {}
     };
 
+let formPath = ['welcome'];
+
     function autoResizeTextarea(textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
@@ -135,22 +137,19 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
-    function showNextSection(nextSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
-        }
-
-        const nextSectionElement = document.getElementById(nextSection);
-        if (currentSection) {
-            currentSection.classList.add('hidden');
-        }
-        if (nextSectionElement) {
-            nextSectionElement.classList.remove('hidden');
-            nextSectionElement.classList.add('fade-in');
-        }
-        window.scrollTo(0, 0);
+function showNextSection(nextSection) {
+    const currentSection = document.querySelector('section:not(.hidden)');
+    const nextSectionElement = document.getElementById(nextSection);
+    if (currentSection) {
+        currentSection.classList.add('hidden');
     }
+    if (nextSectionElement) {
+        nextSectionElement.classList.remove('hidden');
+        nextSectionElement.classList.add('fade-in');
+        formPath.push(nextSection);
+    }
+    window.scrollTo(0, 0);
+}
 
     function showPreviousSection(prevSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
@@ -201,23 +200,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleSpecialArrangementsNext() {
-        const currentSection = document.getElementById('special-arrangements');
-        if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
-        }
-
-        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-        if (specialArrangements) {
-            if (specialArrangements.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('mun-experience');
-            }
+ function handleSpecialArrangementsNext() {
+    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+    if (specialArrangements) {
+        if (specialArrangements.value === 'yes') {
+            showNextSection('special-guidance');
         } else {
-            document.getElementById('special-arrangements-warning').classList.remove('hidden');
+            showNextSection('mun-experience');
         }
+    } else {
+        document.getElementById('special-arrangements-warning').classList.remove('hidden');
     }
+}
 
     function handleOtherInfoNext() {
         const currentSection = document.getElementById('chaperone-delegation');
