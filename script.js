@@ -23,6 +23,28 @@ document.addEventListener('DOMContentLoaded', function() {
         autoResizeTextarea(textarea);
     });
 
+    // New event listeners for "Other" options
+    const preferredTitleSelect = document.getElementById('preferred-title');
+    const preferredTitleOther = document.getElementById('preferred-title-other');
+    
+    preferredTitleSelect.addEventListener('change', function() {
+        preferredTitleOther.style.display = this.value === 'other' ? 'block' : 'none';
+    });
+
+    const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
+    const dietaryRequirementsOther = document.getElementById('dietary-requirements-other');
+    
+    dietaryRequirementsSelect.addEventListener('change', function() {
+        dietaryRequirementsOther.style.display = this.value === 'other' ? 'block' : 'none';
+    });
+
+    const findOutOtherCheckbox = document.getElementById('find-out-other');
+    const findOutOtherText = document.getElementById('find-out-other-text');
+    
+    findOutOtherCheckbox.addEventListener('change', function() {
+        findOutOtherText.style.display = this.checked ? 'block' : 'none';
+    });
+
     function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
