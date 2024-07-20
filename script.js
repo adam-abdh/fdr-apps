@@ -125,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
   .catch(error => {
     console.error('Error:', error);
     alert('Form submission failed.');
+      });
+        });
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
@@ -512,5 +514,4 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
         }
     }
-});
 });
