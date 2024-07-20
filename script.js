@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
         pronounsOtherText.style.display = this.checked ? 'block' : 'none';
     });
 
-
     function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
@@ -138,6 +137,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
+
         const nextSectionElement = document.getElementById(nextSection);
         if (currentSection) {
             currentSection.classList.add('hidden');
@@ -163,6 +166,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleStudentGroupNext() {
+        const currentSection = document.getElementById('student-group-delegation');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
+
         const studentGroup = document.querySelector('input[name="student-group"]:checked');
         if (studentGroup) {
             if (studentGroup.value === 'yes') {
@@ -176,6 +184,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleSchoolRepNext() {
+        const currentSection = document.getElementById('school-group-delegation');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
+
         const schoolRep = document.querySelector('input[name="school-rep"]:checked');
         if (schoolRep) {
             if (schoolRep.value === 'yes') {
@@ -189,6 +202,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleSpecialArrangementsNext() {
+        const currentSection = document.getElementById('special-arrangements');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
+
         const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
         if (specialArrangements) {
             if (specialArrangements.value === 'yes') {
@@ -202,6 +220,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleOtherInfoNext() {
+        const currentSection = document.getElementById('chaperone-delegation');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
+
         const otherInfo = document.querySelector('input[name="other-info"]:checked');
         if (otherInfo) {
             if (otherInfo.value === 'yes') {
@@ -215,6 +238,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleStudentSpecialArrangementsNext() {
+        const currentSection = document.getElementById('student-delegation');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
+
         const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
         if (studentSpecialArrangements) {
             if (studentSpecialArrangements.value === 'yes') {
@@ -272,108 +300,108 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('registration-form').addEventListener('submit', handleSubmit);
 
-function updateCountryOptions(prefix) {
-    console.log(`updateCountryOptions called with prefix: ${prefix}`);
+    function updateCountryOptions(prefix) {
+        console.log(`updateCountryOptions called with prefix: ${prefix}`);
 
-    const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
-    const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
-    const countrySelector = document.getElementById(`${prefix}-country-choice`);
-    const selectedCommittee = committeeSelector.value;
+        const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
+        const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
+        const countrySelector = document.getElementById(`${prefix}-country-choice`);
+        const selectedCommittee = committeeSelector.value;
 
-    console.log(`Selected committee: ${selectedCommittee}`);
+        console.log(`Selected committee: ${selectedCommittee}`);
 
-    // Store currently selected country
-    const currentlySelectedCountry = countrySelector.value;
+        // Store currently selected country
+        const currentlySelectedCountry = countrySelector.value;
 
-    countrySelector.innerHTML = '<option value="">Select an option</option>';
+        countrySelector.innerHTML = '<option value="">Select an option</option>';
 
-    countryContainer.style.display = 'block';
-    countryContainer.classList.add('slide-in-blurred-top');
+        countryContainer.style.display = 'block';
+        countryContainer.classList.add('slide-in-blurred-top');
 
-    let countries = [];
-    switch (selectedCommittee) {
-        case 'DISEC':
-            countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
-            break;
-        case 'SPECPOL':
-            countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
-            break;
-        case 'UNHRC':
-            countries = ["Bangladesh, People's Republic of", "Myanmar, Republic of the Union of", "China, People's Republic of", "Pakistan, Islamic Republic of", "French Republic", "Japan", "Germany, Federal Republic of", "Saudi Arabia, Kingdom of", "Malaysia, Federation of", "Thailand, Kingdom of", "Russian Federation", "Indonesia, Republic of", "Netherlands, Kingdom of the", "India, Republic of", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
-            break;
-        case 'EC':
-            countries = ["Belgium, Kingdom of", "Netherlands, Kingdom of the", "Denmark, Kingdom of", "Poland, Republic of", "Finland, Republic of", "Hungary, Hungary", "French Republic", "Romania", "Italian Republic", "Slovak Republic", "Portuguese Republic", "Hellenic Republic", "Norway, Kingdom of", "Germany, Federal Republic of", "Austria, Republic of", "Czech Republic", "Spain, Kingdom of", "Sweden, Kingdom of", "United Kingdom"];
-            break;
-        case 'Continuous Crisis':
-            countries = ["Argentine Republic", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Canada, Dominion of", "Chile, Republic of", "China, People's Republic of", "French Republic", "Germany, Federal Republic of", "India, Republic of", "Italian Republic", "Japan", "Russian Federation", "South Africa, Republic of", "Spain, Kingdom of", "United Kingdom", "United States of America", "Uruguay, Oriental Republic of"];
-            break;
-        case 'SC':
-            countries = ["China, People's Republic of", "Russian Federation", "French Republic", "Sierra Leone, Republic of", "Hellenic Republic", "Panama, Republic of", "Guyana, Co-operative Republic of", "Somalia, Federal Republic of", "Korea, Republic of", "United Kingdom", "Slovenia, Republic of", "Pakistan, Islamic Republic of", "Serbia, Republic of", "Kosovo, Republic of", "Algeria, People's Democratic Republic of", "Denmark, Kingdom of", "United States of America"];
-            break;
-        default:
-            countries = [];
-    }
-
-    // Filter out countries selected in OTHER dropdowns
-    let availableCountries = countries.filter(country => 
-        !Object.entries(selectedCountries).some(([key, value]) => 
-            key !== prefix && value[country]
-        )
-    );
-
-    console.log(`Available countries for ${prefix}: `, availableCountries);
-
-    availableCountries.forEach(country => {
-        const option = document.createElement('option');
-        option.value = country;
-        option.textContent = country;
-        if (country === currentlySelectedCountry) {
-            option.selected = true;
+        let countries = [];
+        switch (selectedCommittee) {
+            case 'DISEC':
+                countries = ["Australia, Commonwealth of", "Japan", "Canada, Dominion of", "Mexico, United States", "China, People's Republic of", "India, Republic of", "Egypt, Arab Republic of", "Russian Federation", "Israel, State of", "Saudi Arabia, Kingdom of", "Nigeria, Federal Republic of", "Germany, Federal Republic of", "Korea, Republic of", "French Republic", "Argentine Republic", "Brazil, Federative Republic of", "South Africa, Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
+                break;
+            case 'SPECPOL':
+                countries = ["Belgium, Kingdom of", "Kenya, Republic of", "Canada, Dominion of", "Russian Federation", "China, People's Republic of", "India, Republic of", "Congo, Democratic Republic of the", "South Africa, Republic of", "Japan", "Türkiye, Republic of", "Rwanda, Republic of", "French Republic", "Nigeria, Federal Republic of", "Ethiopia, Federal Democratic Republic of", "Angola, Republic of", "Brazil, Federative Republic of", "Uganda, Republic of", "United Kingdom", "United States of America"];
+                break;
+            case 'UNHRC':
+                countries = ["Bangladesh, People's Republic of", "Myanmar, Republic of the Union of", "China, People's Republic of", "Pakistan, Islamic Republic of", "French Republic", "Japan", "Germany, Federal Republic of", "Saudi Arabia, Kingdom of", "Malaysia, Federation of", "Thailand, Kingdom of", "Russian Federation", "Indonesia, Republic of", "Netherlands, Kingdom of the", "India, Republic of", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Türkiye, Republic of", "United Kingdom", "United States of America"];
+                break;
+            case 'EC':
+                countries = ["Belgium, Kingdom of", "Netherlands, Kingdom of the", "Denmark, Kingdom of", "Poland, Republic of", "Finland, Republic of", "Hungary, Hungary", "French Republic", "Romania", "Italian Republic", "Slovak Republic", "Portuguese Republic", "Hellenic Republic", "Norway, Kingdom of", "Germany, Federal Republic of", "Austria, Republic of", "Czech Republic", "Spain, Kingdom of", "Sweden, Kingdom of", "United Kingdom"];
+                break;
+            case 'Continuous Crisis':
+                countries = ["Argentine Republic", "Australia, Commonwealth of", "Brazil, Federative Republic of", "Canada, Dominion of", "Chile, Republic of", "China, People's Republic of", "French Republic", "Germany, Federal Republic of", "India, Republic of", "Italian Republic", "Japan", "Russian Federation", "South Africa, Republic of", "Spain, Kingdom of", "United Kingdom", "United States of America", "Uruguay, Oriental Republic of"];
+                break;
+            case 'SC':
+                countries = ["China, People's Republic of", "Russian Federation", "French Republic", "Sierra Leone, Republic of", "Hellenic Republic", "Panama, Republic of", "Guyana, Co-operative Republic of", "Somalia, Federal Republic of", "Korea, Republic of", "United Kingdom", "Slovenia, Republic of", "Pakistan, Islamic Republic of", "Serbia, Republic of", "Kosovo, Republic of", "Algeria, People's Democratic Republic of", "Denmark, Kingdom of", "United States of America"];
+                break;
+            default:
+                countries = [];
         }
-        countrySelector.appendChild(option);
-    });
 
-    // If the currently selected country is not in the list, add it
-    if (currentlySelectedCountry && !availableCountries.includes(currentlySelectedCountry)) {
-        const option = document.createElement('option');
-        option.value = currentlySelectedCountry;
-        option.textContent = currentlySelectedCountry;
-        option.selected = true;
-        countrySelector.appendChild(option);
-    }
+        // Filter out countries selected in OTHER dropdowns
+        let availableCountries = countries.filter(country => 
+            !Object.entries(selectedCountries).some(([key, value]) => 
+                key !== prefix && value[country]
+            )
+        );
 
-    // If no country is selected, don't auto-select
-    if (!countrySelector.value) {
-        countrySelector.value = "";
-    }
+        console.log(`Available countries for ${prefix}: `, availableCountries);
 
-    // Update the selectedCountries object
-    if (selectedCountries[prefix].selectedCountry && selectedCountries[prefix].selectedCountry !== currentlySelectedCountry) {
-        delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
-    }
-    if (currentlySelectedCountry) {
-        selectedCountries[prefix][currentlySelectedCountry] = true;
-        selectedCountries[prefix].selectedCountry = currentlySelectedCountry;
-    }
-
-    // Add event listener for country selection
-    countrySelector.addEventListener('change', function() {
-        const selectedCountry = this.value;
-        if (selectedCountry) {
-            if (selectedCountries[prefix].selectedCountry) {
-                delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
+        availableCountries.forEach(country => {
+                        const option = document.createElement('option');
+            option.value = country;
+            option.textContent = country;
+            if (country === currentlySelectedCountry) {
+                option.selected = true;
             }
-            selectedCountries[prefix][selectedCountry] = true;
-            selectedCountries[prefix].selectedCountry = selectedCountry;
-        } else {
-            delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
-            selectedCountries[prefix].selectedCountry = null;
-        }
-        updateCountryOptions(prefix); // Re-populate the dropdown to reflect the change
-    });
+            countrySelector.appendChild(option);
+        });
 
-    animateCardsBelow(countryContainer);
-}
+        // If the currently selected country is not in the list, add it
+        if (currentlySelectedCountry && !availableCountries.includes(currentlySelectedCountry)) {
+            const option = document.createElement('option');
+            option.value = currentlySelectedCountry;
+            option.textContent = currentlySelectedCountry;
+            option.selected = true;
+            countrySelector.appendChild(option);
+        }
+
+        // If no country is selected, don't auto-select
+        if (!countrySelector.value) {
+            countrySelector.value = "";
+        }
+
+        // Update the selectedCountries object
+        if (selectedCountries[prefix].selectedCountry && selectedCountries[prefix].selectedCountry !== currentlySelectedCountry) {
+            delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
+        }
+        if (currentlySelectedCountry) {
+            selectedCountries[prefix][currentlySelectedCountry] = true;
+            selectedCountries[prefix].selectedCountry = currentlySelectedCountry;
+        }
+
+        // Add event listener for country selection
+        countrySelector.addEventListener('change', function() {
+            const selectedCountry = this.value;
+            if (selectedCountry) {
+                if (selectedCountries[prefix].selectedCountry) {
+                    delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
+                }
+                selectedCountries[prefix][selectedCountry] = true;
+                selectedCountries[prefix].selectedCountry = selectedCountry;
+            } else {
+                delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
+                selectedCountries[prefix].selectedCountry = null;
+            }
+            updateCountryOptions(prefix); // Re-populate the dropdown to reflect the change
+        });
+
+        animateCardsBelow(countryContainer);
+    }
 
     function animateCardsBelow(countryContainer) {
         const cardsBelow = Array.from(document.querySelectorAll('.card-below')).filter(card => card.compareDocumentPosition(countryContainer) & Node.DOCUMENT_POSITION_FOLLOWING);
@@ -384,5 +412,26 @@ function updateCountryOptions(prefix) {
                 card.classList.add('fade-in');
             }, index * 100);
         });
+    }
+
+    function validateSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+
+        requiredFields.forEach(field => {
+            if (!field.value) {
+                isValid = false;
+                field.classList.add('input-error');
+            } else {
+                field.classList.remove('input-error');
+            }
+        });
+
+        if (!isValid) {
+            alert('Please fill out all required fields before proceeding.');
+        }
+
+        return isValid;
     }
 });
