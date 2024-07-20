@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     data[key] = value;
   });
 
-  fetch('YOUR_WEB_APP_URL', {
+  fetch('https://script.google.com/macros/s/AKfycbwUK4_DYmo3rnaOQFFTYGjAKXLNctEsPzMKtHntjc40dVqCf5oXHJ_HtuSAB6p_IsyzLw/exec', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
