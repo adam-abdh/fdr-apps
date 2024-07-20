@@ -41,19 +41,20 @@
             </section>
             <section id="personal-data" class="hidden fade-in">
                 <h2>Getting to know you.</h2>
-                <div class="card">
-                    <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
-                    <select id="title" name="title" required>
-                        <option value="">Select an option</option>
-                        <option value="mrs">Mrs.</option>
-                        <option value="ms">Ms.</option>
-                        <option value="mr">Mr.</option>
-                        <option value="mx">Mx.</option>
-                        <option value="dr">Dr.</option>
-                        <option value="prof">Prof.</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
+              <div class="card">
+    Your <strong>preferred title.</strong><span class="required-star">*</span>
+    <select id="preferred-title" name="preferred-title" required>
+        <option value="">Select an option</option>
+        <option value="Mrs.">Mrs.</option>
+        <option value="Ms.">Ms.</option>
+        <option value="Mr.">Mr.</option>
+        <option value="Mx.">Mx.</option>
+        <option value="Dr.">Dr.</option>
+        <option value="Prof.">Prof.</option>
+        <option value="other">Other</option>
+    </select>
+    <input type="text" id="preferred-title-other" name="preferred-title-other" placeholder="Please specify" style="display: none;">
+</div>
                 <div class="card">
                     <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
                     <div class="checkbox-container">
@@ -330,82 +331,74 @@
                     </select>
                 </div>
                             <div class="card">
-                    <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
-                    <select id="diet" name="diet" required>
-                        <option value="none">None</option>
-                        <option value="vegetarian">Vegetarian</option>
-                        <option value="vegan">Vegan</option>
-                        <option value="kosher">Kosher</option>
-                        <option value="halal">Halal</option>
-                        <option value="gluten-free">Gluten-free</option>
-                        <option value="other">Other...</option>
-                    </select>
-                </div>
-                <div class="card">
-                    <label class="question">How did you <strong>find out</strong> about us?</label
-                    ><p class="question-description"><em>Check all that may apply.</em></p>
-                    <span class="required-star">*</span>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="google" name="how-find" value="google" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="google">Google/FDRMUN website</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="instagram" name="how-find" value="instagram" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="instagram">FDRMUN Instagram</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="email-find" name="how-find" value="email" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="email-find">FDRMUN E-mail</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="social-media" name="how-find" value="social-media" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="social-media">Other FDRMUN social network(s)</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="school" name="how-find" value="school" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="school">International School of Bucharest</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="mun-sources" name="how-find" value="mun-sources" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="mun-sources">MUN-related sources (such as myMUN or mun.news.ro)</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="friend" name="how-find" value="friend" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="friend">Friend or family member</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="brochure" name="how-find" value="brochure" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="brochure">Brochure, poster or flyer</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="television" name="how-find" value="television" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="television">Television</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="media" name="how-find" value="media" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="media">Media outlet or article</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="consulting" name="how-find" value="consulting" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="consulting">Consulting services</label>
-                    </div>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="other-find" name="how-find" value="other" required class="custom-checkbox">
-                        <span class="checkmark"></span>
-                        <label for="other-find">Other</label>
-                    </div>
-                </div>
+    Your <strong>dietary requirements.</strong><span class="required-star">*</span>
+    <select id="dietary-requirements" name="dietary-requirements" required>
+        <option value="">Select an option</option>
+        <option value="None">None</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Kosher">Kosher</option>
+        <option value="Halal">Halal</option>
+        <option value="Gluten-free">Gluten-free</option>
+        <option value="other">Other...</option>
+    </select>
+    <input type="text" id="dietary-requirements-other" name="dietary-requirements-other" placeholder="Please specify" style="display: none;">
+</div>
+              <div class="card">
+    How did you <strong>find out</strong> about us?
+    <p><em>Check all that may apply.</em></p>
+    <span class="required-star">*</span>
+
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-google" name="find-out" value="Google/FDRMUN website">
+        <label for="find-out-google">Google/FDRMUN website</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-instagram" name="find-out" value="FDRMUN Instagram">
+        <label for="find-out-instagram">FDRMUN Instagram</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-email" name="find-out" value="FDRMUN E-mail">
+        <label for="find-out-email">FDRMUN E-mail</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-social" name="find-out" value="Other FDRMUN social network(s)">
+        <label for="find-out-social">Other FDRMUN social network(s)</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-isb" name="find-out" value="International School of Bucharest">
+        <label for="find-out-isb">International School of Bucharest</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-mun" name="find-out" value="MUN-related sources">
+        <label for="find-out-mun">MUN-related sources (such as myMUN or mun.news.ro)</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-friend" name="find-out" value="Friend or family member">
+        <label for="find-out-friend">Friend or family member</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-brochure" name="find-out" value="Brochure, poster or flyer">
+        <label for="find-out-brochure">Brochure, poster or flyer</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-tv" name="find-out" value="Television">
+        <label for="find-out-tv">Television</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-media" name="find-out" value="Media outlet or article">
+        <label for="find-out-media">Media outlet or article</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-consulting" name="find-out" value="Consulting services">
+        <label for="find-out-consulting">Consulting services</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-other" name="find-out" value="Other">
+        <label for="find-out-other">Other</label>
+    </div>
+    <input type="text" id="find-out-other-text" name="find-out-other-text" placeholder="Please specify" style="display: none;">
+</div>
                 <div class="navigation-buttons">
                     <button type="button" onclick="showPreviousSection('welcome')">← Previous</button>
                     <button type="button" onclick="showNextSection('student-group-delegation')">Next →</button>
@@ -777,7 +770,7 @@
         </form>
     <footer>
         <hr>
-        <p>Build 10.0.5</p>
+        <p>Build 10.0.6</p>
         <br>
         <div class="image-section">
             <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD Logo" style="width: 190px; height: auto;">
