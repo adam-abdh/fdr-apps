@@ -1,4 +1,33 @@
+function handleSubmit(event) {
+    event.preventDefault();
+    if (validateAge() && validateEmail()) {
+        const formData = new FormData(event.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
 
+        fetch('https://script.google.com/macros/s/AKfycbwUK4_DYmo3rnaOQFFTYGjAKXLNctEsPzMKtHntjc40dVqCf5oXHJ_HtuSAB6p_IsyzLw/exec', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result === 'success') {
+                alert('Form submitted successfully!');
+            } else {
+                alert('Form submission failed.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Form submission failed.');
+        });
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const selectedCountries = {
@@ -98,37 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedCountries[prefix].selectedCountry = currentlySelectedCountry;
     }
      
-    function handleSubmit(event) {
-        event.preventDefault();
-        if (validateAge() && validateEmail()) {
-            const formData = new FormData(event.target);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            fetch('https://script.google.com/macros/s/AKfycbwUK4_DYmo3rnaOQFFTYGjAKXLNctEsPzMKtHntjc40dVqCf5oXHJ_HtuSAB6p_IsyzLw/exec', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === 'success') {
-                    alert('Form submitted successfully!');
-                } else {
-                    alert('Form submission failed.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Form submission failed.');
-            });
-        }
-    }
-
     // Add event listener for country selection
     countrySelector.addEventListener('change', function() {
         const selectedCountry = this.value;
