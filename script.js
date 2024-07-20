@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const selectedCountries = {
         'first': {},
@@ -97,36 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const remainingChars = maxLength - currentLength;
         charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} available.`;
     }
-    
-    document.getElementById('registration-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  
-  const formData = new FormData(this);
-  const data = {};
-  formData.forEach((value, key) => {
-    data[key] = value;
-  });
-
-  fetch('https://script.google.com/macros/s/AKfycbwUK4_DYmo3rnaOQFFTYGjAKXLNctEsPzMKtHntjc40dVqCf5oXHJ_HtuSAB6p_IsyzLw/exec', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.result === 'success') {
-      alert('Form submitted successfully!');
-    } else {
-      alert('Form submission failed.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Form submission failed.');
-  });
-});
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
@@ -497,19 +468,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-function handleStudentSpecialArrangementsNext() {
-    const currentSection = document.getElementById('student-delegation');
-    if (!validateSection(currentSection.id)) {
-        return; // Stop execution if validation fails
-    }
-
-    const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-    if (studentSpecialArrangements) {
-        if (studentSpecialArrangements.value === 'yes') {
-            showNextSection('special-guidance');
-        } else {
-            showNextSection('mun-experience');
+    function handleStudentSpecialArrangementsNext() {
+        const currentSection = document.getElementById('student-delegation');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
         }
-    } else {
-        document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+
+        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+        if (studentSpecialArrangements) {
+            if (studentSpecialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+        }
     }
+});
