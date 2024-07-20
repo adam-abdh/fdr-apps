@@ -54,6 +54,109 @@ let formPath = ['welcome'];
         pronounsOtherText.style.display = this.checked ? 'block' : 'none';
     });
 
+    document.addEventListener('DOMContentLoaded', function() {
+    const studentGroupYes = document.getElementById('student-group-yes');
+    const studentGroupNo = document.getElementById('student-group-no');
+    const delegationFields = document.querySelectorAll('#student-delegation input, #student-delegation select, #student-delegation textarea');
+
+    const schoolRepYes = document.getElementById('school-rep-yes');
+    const schoolRepNo = document.getElementById('school-rep-no');
+    const schoolRepFields = document.querySelectorAll('#school-group-delegation input, #school-group-delegation select, #school-group-delegation textarea');
+
+    const specialArrangementsYes = document.getElementById('special-arrangements-yes');
+    const specialArrangementsNo = document.getElementById('special-arrangements-no');
+    const specialArrangementsFields = document.querySelectorAll('#special-arrangements input, #special-arrangements select, #special-arrangements textarea');
+
+    const otherInfoYes = document.getElementById('other-info-yes');
+    const otherInfoNo = document.getElementById('other-info-no');
+    const otherInfoFields = document.querySelectorAll('#chaperone-delegation input, #chaperone-delegation select, #chaperone-delegation textarea');
+
+    const studentSpecialArrangementsYes = document.getElementById('student-special-arrangements-yes');
+    const studentSpecialArrangementsNo = document.getElementById('student-special-arrangements-no');
+    const studentSpecialArrangementsFields = document.querySelectorAll('#student-delegation input, #student-delegation select, #student-delegation textarea');
+
+    function toggleRequiredAttribute(fields, isRequired) {
+        fields.forEach(field => {
+            if (isRequired) {
+                field.setAttribute('required', 'required');
+            } else {
+                field.removeAttribute('required');
+            }
+        });
+    }
+
+    studentGroupYes.addEventListener('change', function() {
+        toggleRequiredAttribute(delegationFields, true);
+    });
+
+    studentGroupNo.addEventListener('change', function() {
+        toggleRequiredAttribute(delegationFields, false);
+    });
+
+    schoolRepYes.addEventListener('change', function() {
+        toggleRequiredAttribute(schoolRepFields, true);
+    });
+
+    schoolRepNo.addEventListener('change', function() {
+        toggleRequiredAttribute(schoolRepFields, false);
+    });
+
+    specialArrangementsYes.addEventListener('change', function() {
+        toggleRequiredAttribute(specialArrangementsFields, true);
+    });
+
+    specialArrangementsNo.addEventListener('change', function() {
+        toggleRequiredAttribute(specialArrangementsFields, false);
+    });
+
+    otherInfoYes.addEventListener('change', function() {
+        toggleRequiredAttribute(otherInfoFields, true);
+    });
+
+    otherInfoNo.addEventListener('change', function() {
+        toggleRequiredAttribute(otherInfoFields, false);
+    });
+
+    studentSpecialArrangementsYes.addEventListener('change', function() {
+        toggleRequiredAttribute(studentSpecialArrangementsFields, true);
+    });
+
+    studentSpecialArrangementsNo.addEventListener('change', function() {
+        toggleRequiredAttribute(studentSpecialArrangementsFields, false);
+    });
+
+    // Initialize based on initial state
+    if (studentGroupYes.checked) {
+        toggleRequiredAttribute(delegationFields, true);
+    } else if (studentGroupNo.checked) {
+        toggleRequiredAttribute(delegationFields, false);
+    }
+
+    if (schoolRepYes.checked) {
+        toggleRequiredAttribute(schoolRepFields, true);
+    } else if (schoolRepNo.checked) {
+        toggleRequiredAttribute(schoolRepFields, false);
+    }
+
+    if (specialArrangementsYes.checked) {
+        toggleRequiredAttribute(specialArrangementsFields, true);
+    } else if (specialArrangementsNo.checked) {
+        toggleRequiredAttribute(specialArrangementsFields, false);
+    }
+
+    if (otherInfoYes.checked) {
+        toggleRequiredAttribute(otherInfoFields, true);
+    } else if (otherInfoNo.checked) {
+        toggleRequiredAttribute(otherInfoFields, false);
+    }
+
+    if (studentSpecialArrangementsYes.checked) {
+        toggleRequiredAttribute(studentSpecialArrangementsFields, true);
+    } else if (studentSpecialArrangementsNo.checked) {
+        toggleRequiredAttribute(studentSpecialArrangementsFields, false);
+    }
+});
+
     function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
