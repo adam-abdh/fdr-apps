@@ -85,8 +85,17 @@ document.addEventListener('DOMContentLoaded', function() {
             countries = [];
     }
 
-    // Filter out countries selected in OTHER dropdowns
-    let availableCountries = countries.filter(country => 
+function toggleOtherOption(element, otherText) {
+    if (element.value === 'other' || element.checked) {
+        otherText.style.display = 'block';
+        otherText.classList.add('blur-in-top');
+    } else {
+        otherText.style.display = 'none';
+        otherText.classList.remove('blur-in-top');
+    }
+}
+     
+     let availableCountries = countries.filter(country => 
         !Object.entries(selectedCountries).some(([key, value]) => 
             key !== prefix && value[country]
         )
@@ -104,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         countrySelector.appendChild(option);
     });
 
-    // If the currently selected country is not in the list, add it
     if (currentlySelectedCountry && !availableCountries.includes(currentlySelectedCountry)) {
         const option = document.createElement('option');
         option.value = currentlySelectedCountry;
@@ -127,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedCountries[prefix].selectedCountry = currentlySelectedCountry;
     }
      
-    // Add event listener for country selection
     countrySelector.addEventListener('change', function() {
         const selectedCountry = this.value;
         if (selectedCountry) {
@@ -332,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
         autoResizeTextarea(textarea);
     });
 
-    function toggleOtherOption(element, otherText) {
+function toggleOtherOption(element, otherText) {
     if (element.value === 'other' || element.checked) {
         otherText.style.display = 'block';
         otherText.classList.add('blur-in-top');
@@ -341,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
         otherText.classList.remove('blur-in-top');
     }
 }
-
+    
 const preferredTitleSelect = document.getElementById('preferred-title');
 const preferredTitleOther = document.getElementById('preferred-title-other');
 preferredTitleSelect.addEventListener('change', function() {
@@ -365,7 +372,7 @@ const pronounsOtherText = document.getElementById('pronouns-other');
 pronounsOtherCheckbox.addEventListener('change', function() {
     toggleOtherOption(this, pronounsOtherText);
 });
-
+    
     const studentGroupYes = document.getElementById('student-group-yes');
     const studentGroupNo = document.getElementById('student-group-no');
     const delegationFields = document.querySelectorAll('#student-delegation input, #student-delegation select, #student-delegation textarea');
