@@ -88,10 +88,14 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleOtherOption(element, otherText) {
     if (element.value === 'other' || element.checked) {
         otherText.style.display = 'block';
+        otherText.classList.remove('blur-out-top');
         otherText.classList.add('blur-in-top');
     } else {
-        otherText.style.display = 'none';
         otherText.classList.remove('blur-in-top');
+        otherText.classList.add('blur-out-top');
+        setTimeout(() => {
+            otherText.style.display = 'none';
+        }, 500);
     }
 }
      
