@@ -378,6 +378,27 @@ hr {
     width: 100%; 
 }
 
+@keyframes blur-in-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scaleY(0.98);
+        filter: blur(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+        filter: blur(0);
+    }
+}
+
+.blur-in-top {
+    animation: blur-in-top 0.5s ease-out forwards;
+}
+
+#preferred-title-other, #dietary-requirements-other, #find-out-other-text, #pronouns-other {
+    display: none;
+}
+
 .yes-no-container {
     display: flex;
     justify-content: flex-start;
