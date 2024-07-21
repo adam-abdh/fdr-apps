@@ -332,33 +332,39 @@ document.addEventListener('DOMContentLoaded', function() {
         autoResizeTextarea(textarea);
     });
 
-    const preferredTitleSelect = document.getElementById('preferred-title');
-    const preferredTitleOther = document.getElementById('preferred-title-other');
-    
-    preferredTitleSelect.addEventListener('change', function() {
-        preferredTitleOther.style.display = this.value === 'other' ? 'block' : 'none';
-    });
+    function toggleOtherOption(element, otherText) {
+    if (element.value === 'other' || element.checked) {
+        otherText.style.display = 'block';
+        otherText.classList.add('blur-in-top');
+    } else {
+        otherText.style.display = 'none';
+        otherText.classList.remove('blur-in-top');
+    }
+}
 
-    const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
-    const dietaryRequirementsOther = document.getElementById('dietary-requirements-other');
-    
-    dietaryRequirementsSelect.addEventListener('change', function() {
-        dietaryRequirementsOther.style.display = this.value === 'other' ? 'block' : 'none';
-    });
+const preferredTitleSelect = document.getElementById('preferred-title');
+const preferredTitleOther = document.getElementById('preferred-title-other');
+preferredTitleSelect.addEventListener('change', function() {
+    toggleOtherOption(this, preferredTitleOther);
+});
 
-    const findOutOtherCheckbox = document.getElementById('find-out-other');
-    const findOutOtherText = document.getElementById('find-out-other-text');
-    
-    findOutOtherCheckbox.addEventListener('change', function() {
-        findOutOtherText.style.display = this.checked ? 'block' : 'none';
-    });
+const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
+const dietaryRequirementsOther = document.getElementById('dietary-requirements-other');
+dietaryRequirementsSelect.addEventListener('change', function() {
+    toggleOtherOption(this, dietaryRequirementsOther);
+});
 
-    const pronounsOtherCheckbox = document.getElementById('other-pronouns');
-    const pronounsOtherText = document.getElementById('pronouns-other');
-    
-    pronounsOtherCheckbox.addEventListener('change', function() {
-        pronounsOtherText.style.display = this.checked ? 'block' : 'none';
-    });
+const findOutOtherCheckbox = document.getElementById('find-out-other');
+const findOutOtherText = document.getElementById('find-out-other-text');
+findOutOtherCheckbox.addEventListener('change', function() {
+    toggleOtherOption(this, findOutOtherText);
+});
+
+const pronounsOtherCheckbox = document.getElementById('other-pronouns');
+const pronounsOtherText = document.getElementById('pronouns-other');
+pronounsOtherCheckbox.addEventListener('change', function() {
+    toggleOtherOption(this, pronounsOtherText);
+});
 
     const studentGroupYes = document.getElementById('student-group-yes');
     const studentGroupNo = document.getElementById('student-group-no');
