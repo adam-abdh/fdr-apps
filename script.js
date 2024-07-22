@@ -503,27 +503,12 @@ function handleSubmit(event) {
         }
 
         const formData = new FormData(formElement);
-        const data = {
-            Title: formData.get('preferred-title'),
-            Pronouns: formData.get('pronouns'),
-            "First Name": formData.get('first-name'),
-            "Last Name": formData.get('last-name'),
-            "Other Name": formData.get('other-name'),
-            Email: formData.get('email'),
-            "Date of Birth": formData.get('dob'),
-            Age: calculateAge(formData.get('dob')),
-            fdrID: generateFdrID(), // You'll need to implement this function
-            Institution: formData.get('institution'),
-            "Phone Number": formData.get('phone'),
-            "Group Name": formData.get('delegation-name'),
-            Region: formData.get('region'),
-            Country: formData.get('country'),
-            Source: formData.get('find-out'),
-            File: '', // If you're not handling file uploads
-            Timestamp: new Date().toISOString()
-        };
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
 
-        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/rows', {
+        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/basicinformation', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
