@@ -20,10 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
         const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
-
         console.log(`Selected committee: ${selectedCommittee}`);
-
-        // Store currently selected country
+        const formElement = document.getElementById('registration-form');
+        const formData = new FormData(formElement);
         const currentlySelectedCountry = countrySelector.value;
 
         countrySelector.innerHTML = '<option value="">Select an option</option>';
@@ -537,8 +536,6 @@ function validateAge() {
     const age = today.getFullYear() - dobDate.getFullYear();
     const monthDifference = today.getMonth() - dobDate.getMonth();
     const dayDifference = today.getDate() - dobDate.getDate();
-    const formData = new FormData(event.target);
-    const data = {};
 
     if (dobDate > today) {
         dobError.textContent = 'Your date of birth cannot be in the future, silly!';
