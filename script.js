@@ -462,6 +462,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
         }
     }
+});
 
 function toggleOtherOption(element, otherText) {
     if (element.value === 'other' || element.checked) {
@@ -502,25 +503,10 @@ function handleSubmit(event) {
         }
 
         const formData = new FormData(formElement);
-        const data = {
-            Title: formData.get('preferred-title'),
-            Pronouns: formData.get('pronouns'),
-            "First Name": formData.get('first-name'),
-            "Last Name": formData.get('last-name'),
-            "Other Name": formData.get('other-name'),
-            Email: formData.get('email'),
-            "Date of Birth": formData.get('dob'),
-            Age: calculateAge(formData.get('dob')),
-            fdrID: generateFdrID(), // Ensure this function is defined
-            Institution: formData.get('institution'),
-            "Phone Number": formData.get('phone'),
-            "Group Name": formData.get('delegation-name'),
-            Region: formData.get('region'),
-            Country: formData.get('country'),
-            Source: formData.get('find-out'),
-            File: '', // Handle file uploads if needed
-            Timestamp: new Date().toISOString()
-        };
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
 
         fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/rows', {
             method: 'POST',
@@ -539,12 +525,6 @@ function handleSubmit(event) {
             alert('Form submission failed.');
         });
     }
-}
-
-function calculateAge(birthday) {
-    const ageDifMs = Date.now() - new Date(birthday).getTime();
-    const ageDate = new Date(ageDifMs);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
 function validateAge() {
@@ -591,4 +571,5 @@ function validateEmail() {
         emailInput.classList.remove('input-error');
     }
 }
-});
+
+document.getElementById('registration-form').addEventListener('submit', handleSubmit);
