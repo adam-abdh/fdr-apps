@@ -26,26 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let countries = [];
         switch (selectedCommittee) {
-            case 'DISEC':
-                countries = ["Australia", "Japan", "Canada", "Mexico", "China", "India", "Egypt", "Russia", "Israel", "Saudi Arabia", "Nigeria", "Germany", "South Korea", "France", "Argentina", "Brazil", "South Africa", "Turkey", "United Kingdom", "United States"];
-                break;
-            case 'SPECPOL':
-                countries = ["Belgium", "Kenya", "Canada", "Russia", "China", "India", "Congo", "South Africa", "Japan", "Turkey", "Rwanda", "France", "Nigeria", "Ethiopia", "Angola", "Brazil", "Uganda", "United Kingdom", "United States"];
-                break;
-            case 'UNHRC':
-                countries = ["Bangladesh", "Myanmar", "China", "Pakistan", "France", "Japan", "Germany", "Saudi Arabia", "Malaysia", "Thailand", "Russia", "Indonesia", "Netherlands", "India", "Australia", "Brazil", "Turkey", "United Kingdom", "United States"];
-                break;
-            case 'EC':
-                countries = ["Belgium", "Netherlands", "Denmark", "Poland", "Finland", "Hungary", "France", "Romania", "Italy", "Slovakia", "Portugal", "Greece", "Norway", "Germany", "Austria", "Czech Republic", "Spain", "Sweden", "United Kingdom"];
-                break;
-            case 'Continuous Crisis':
-                countries = ["Argentina", "Australia", "Brazil", "Canada", "Chile", "China", "France", "Germany", "India", "Italy", "Japan", "Russia", "South Africa", "Spain", "United Kingdom", "United States", "Uruguay"];
-                break;
-            case 'SC':
-                countries = ["China", "Russia", "France", "Sierra Leone", "Greece", "Panama", "Guyana", "Somalia", "South Korea", "United Kingdom", "Slovenia", "Pakistan", "Serbia", "Kosovo", "Algeria", "Denmark", "United States"];
-                break;
-            default:
-                countries = [];
+            // Country lists
         }
 
         let availableCountries = countries.filter(country =>
@@ -165,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateCharCount(textarea.id, char-count-${textarea.id});
     });
-
     function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
