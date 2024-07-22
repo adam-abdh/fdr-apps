@@ -508,7 +508,7 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/rows', {
+        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/basicinformation', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
