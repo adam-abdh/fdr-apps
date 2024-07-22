@@ -508,7 +508,7 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/basicinformation', {
+        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/rows', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -572,4 +572,4 @@ function validateEmail() {
     }
 }
 
-document.getElementById('registration-form').addEventListener('submit', handleSubmit);
+document.getElementById('registration-form').addEventListener('submit', handleSubmit); 
