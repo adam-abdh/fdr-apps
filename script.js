@@ -497,6 +497,14 @@ document.getElementById('student-selector').addEventListener('change', function(
 function handleSubmit(event) {
     event.preventDefault();
     if (validateAge() && validateEmail()) {
+        const formElement = event.target;
+        if (!(formElement instanceof HTMLFormElement)) {
+            console.error('The event target is not a form element.');
+            return;
+        }
+
+        const formData = new FormData(formElement);
+        const data = {};
         formData.forEach((value, key) => {
             data[key] = value;
         });
