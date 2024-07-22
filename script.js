@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
         const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
+
         console.log(`Selected committee: ${selectedCommittee}`);
-        const formElement = document.getElementById('registration-form');
-        const formData = new FormData(formElement);
+
+        // Store currently selected country
         const currentlySelectedCountry = countrySelector.value;
 
         countrySelector.innerHTML = '<option value="">Select an option</option>';
@@ -496,14 +497,6 @@ document.getElementById('student-selector').addEventListener('change', function(
 function handleSubmit(event) {
     event.preventDefault();
     if (validateAge() && validateEmail()) {
-        const formElement = event.target;
-        if (!(formElement instanceof HTMLFormElement)) {
-            console.error('The event target is not a form element.');
-            return;
-        }
-
-        const formData = new FormData(formElement);
-        const data = {};
         formData.forEach((value, key) => {
             data[key] = value;
         });
@@ -536,6 +529,8 @@ function validateAge() {
     const age = today.getFullYear() - dobDate.getFullYear();
     const monthDifference = today.getMonth() - dobDate.getMonth();
     const dayDifference = today.getDate() - dobDate.getDate();
+    const formData = new FormData(event.target);
+    const data = {};
 
     if (dobDate > today) {
         dobError.textContent = 'Your date of birth cannot be in the future, silly!';
@@ -572,4 +567,4 @@ function validateEmail() {
     }
 }
 
-document.getElementById('registration-form').addEventListener('submit', handleSubmit); 
+document.getElementById('registration-form').addEventListener('submit', handleSubmit);
