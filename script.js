@@ -1,7 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const userTypeField = document.getElementById('user-type');
-    const studentFields = document.querySelectorAll('.student-field');
-
     function toggleStudentFieldsRequirement(isRequired) {
         studentFields.forEach(field => {
             if (isRequired) {
@@ -105,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'second': {},
         'third': {}
     };
-
     let formPath = ['welcome'];
 
     function autoResizeTextarea(textarea) {
@@ -116,6 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
  function updateCountryOptions(prefix) {
     console.log(`updateCountryOptions called with prefix: ${prefix}`);
 
+    const userTypeField = document.getElementById('user-type');
+    const studentFields = document.querySelectorAll('.student-field');
     const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
     const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
     const countrySelector = document.getElementById(`${prefix}-country-choice`);
