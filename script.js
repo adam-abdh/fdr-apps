@@ -396,24 +396,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleSchoolRepNext() {
-        const currentSection = document.getElementById('school-group-delegation');
-        if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
-        }
-
-        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
-        if (schoolRep) {
-            if (schoolRep.value === 'yes') {
-                showNextSection('chaperone-delegation');
-            } else {
-                showNextSection('special-arrangements');
-            }
-        } else {
-            document.getElementById('school-rep-warning').classList.remove('hidden');
-        }
+   function handleSchoolRepNext() {
+    const currentSection = document.getElementById('school-group-delegation');
+    if (!validateSection(currentSection.id)) {
+        return; // Stop execution if validation fails
     }
 
+    const schoolRep = document.querySelector('input[name="school-rep"]:checked');
+    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+
+    if (schoolRep) {
+        if (schoolRep.value === 'yes') {
+            if (specialArrangements && specialArrangements.value === 'yes') {
+                showNextSection('special-guidance'); // Direct to special arrangements if needed
+            } else {
+                showNextSection('chaperone-delegation'); // Otherwise, go to chaperone delegation details
+            }
+        } else {
+            if (specialArrangements && specialArrangements.value === 'yes') {
+                showNextSection('special-guidance'); // Direct to special arrangements if needed
+            } else {
+                showNextSection('mun-experience'); // Otherwise, go to MUN experience section
+            }
+        }
+    } else {
+        document.getElementById('school-rep-warning').classList.remove('hidden');
+    }
+}
     function handleSpecialArrangementsNext() {
         const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
         if (specialArrangements) {
