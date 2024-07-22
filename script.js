@@ -592,5 +592,3 @@ function validateEmail() {
         emailInput.classList.remove('input-error');
     }
 }
-
-document.getElementById('registration-form').addEventListener('submit', handleSubmit);
