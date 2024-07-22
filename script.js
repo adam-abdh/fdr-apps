@@ -1,32 +1,56 @@
-function handleSubmit(event) {
-    event.preventDefault();
-    if (validateAge() && validateEmail()) {
-        const formData = new FormData(event.target);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const userTypeField = document.getElementById('user-type');
+    const studentFields = document.querySelectorAll('.student-field');
 
-        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/rows', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ row: data })
-        })
-        .then(response => response.json())
-        .then(json => {
-            console.log(json);
-            alert('Form submitted successfully!');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Form submission failed.');
+    function toggleStudentFieldsRequirement(isRequired) {
+        studentFields.forEach(field => {
+            if (isRequired) {
+                field.setAttribute('required', 'required');
+            } else {
+                field.removeAttribute('required');
+            }
         });
     }
-}
 
-function validateAge() {
+    document.getElementById('chaperone-selector').addEventListener('change', function() {
+        userTypeField.value = 'chaperone';
+        toggleStudentFieldsRequirement(false);
+    });
+
+    document.getElementById('student-selector').addEventListener('change', function() {
+        userTypeField.value = 'student';
+        toggleStudentFieldsRequirement(true);
+    });
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (validateAge() && validateEmail()) {
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/rows', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ row: data })
+            })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                alert('Form submitted successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Form submission failed.');
+            });
+        }
+    }
+
+    function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
         const dobValue = dobInput.value;
@@ -56,7 +80,6 @@ function validateAge() {
         return true;
     }
 
-  
     function validateEmail() {
         const emailInput = document.getElementById('email');
         const emailError = document.getElementById('email-error');
@@ -71,6 +94,9 @@ function validateAge() {
             emailInput.classList.remove('input-error');
         }
     }
+
+    document.getElementById('registration-form').addEventListener('submit', handleSubmit);
+});
 
 
 document.addEventListener('DOMContentLoaded', function() {
