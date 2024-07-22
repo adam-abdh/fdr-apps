@@ -511,14 +511,14 @@ function handleSubmit(event) {
             Email: formData.get('email'),
             "Date of Birth": formData.get('dob'),
             Age: calculateAge(formData.get('dob')),
-            fdrID: generateFdrID(), // You'll need to implement this function
+            fdrID: generateFdrID(), // Ensure this function is defined
             Institution: formData.get('institution'),
             "Phone Number": formData.get('phone'),
             "Group Name": formData.get('delegation-name'),
             Region: formData.get('region'),
             Country: formData.get('country'),
             Source: formData.get('find-out'),
-            File: '', // If you're not handling file uploads
+            File: '', // Handle file uploads if needed
             Timestamp: new Date().toISOString()
         };
 
