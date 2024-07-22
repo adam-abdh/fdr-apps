@@ -542,6 +542,17 @@ function handleSubmit(event) {
     }
 }
 
+function calculateAge(birthday) {
+    const ageDifMs = Date.now() - new Date(birthday).getTime();
+    const ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+function generateFdrID() {
+    // Implement your logic to generate a unique fdrID
+    return 'FDR' + Math.random().toString(36).substr(2, 9).toUpperCase();
+}
+
 function validateAge() {
     const dobInput = document.getElementById('dob');
     const dobError = document.getElementById('dob-error');
