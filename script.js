@@ -90,10 +90,7 @@
             emailInput.classList.remove('input-error');
         }
     }
-
     document.getElementById('registration-form').addEventListener('submit', handleSubmit);
-});
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const selectedCountries = {
