@@ -7,18 +7,16 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://sheetdb.io/api/v1/https://sheetdb.io/api/v1/j35vutsi5jdki', {
+        fetch('https://script.google.com/macros/s/AKfycbx56rJfZNwXvFOUOka1Vpa3mrJNNMgFiwpkQP-9EYXR8MRO4wlUB-PI3WF67yG7mZBo5A/exec', {
             method: 'POST',
+            body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                data: [data]
-            })
+            }
         })
         .then(response => response.json())
         .then(data => {
-            if (data.created) {
+            if (data.result === 'success') {
                 alert('Form submitted successfully!');
             } else {
                 alert('Form submission failed.');
