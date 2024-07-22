@@ -462,7 +462,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
         }
     }
-});
 
 function toggleOtherOption(element, otherText) {
     if (element.value === 'other' || element.checked) {
