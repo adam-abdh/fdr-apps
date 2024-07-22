@@ -417,14 +417,6 @@ pronounsOtherCheckbox.addEventListener('change', function() {
         toggleRequiredAttribute(specialArrangementsFields, false);
     });
 
-    otherInfoYes.addEventListener('change', function() {
-        toggleRequiredAttribute(otherInfoFields, true);
-    });
-
-    otherInfoNo.addEventListener('change', function() {
-        toggleRequiredAttribute(otherInfoFields, false);
-    });
-
     studentSpecialArrangementsYes.addEventListener('change', function() {
         toggleRequiredAttribute(studentSpecialArrangementsFields, true);
     });
@@ -449,12 +441,6 @@ pronounsOtherCheckbox.addEventListener('change', function() {
         toggleRequiredAttribute(specialArrangementsFields, true);
     } else if (specialArrangementsNo.checked) {
         toggleRequiredAttribute(specialArrangementsFields, false);
-    }
-
-    if (otherInfoYes.checked) {
-        toggleRequiredAttribute(otherInfoFields, true);
-    } else if (otherInfoNo.checked) {
-        toggleRequiredAttribute(otherInfoFields, false);
     }
 
     if (studentSpecialArrangementsYes.checked) {
