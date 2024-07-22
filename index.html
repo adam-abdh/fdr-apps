@@ -504,6 +504,7 @@
                     </div>
                     <div class="card">
                         <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
+                        <p class="question-description"><em>This will be used to identify the student members of your delegation and issue separate requests. Usually, representatives opt for a school name or a country. Please make sure spelling is consistent between yourself and other delegation members.</em></p>
                         <input type="text" id="delegation-name" name="delegation-name">
                     </div>
                     <div class="card">
@@ -511,29 +512,13 @@
                         <textarea id="delegation-experience" name="delegation-experience"></textarea>
                     </div>
                     <div class="card">
-                        <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
+                        <label class="question" for="logistical-requests">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
                         <textarea id="logistical-requests" name="logistical-requests"></textarea>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
-                        <div class="radio-container">
-                            <div class="radio-button">
-                                <input type="radio" id="other-info-yes" name="other-info" value="yes">
-                                <span class="radio"></span>
-                                <label for="other-info-yes">Yes</label>
-                            </div>
-                            <div class="radio-button">
-                                <input type="radio" id="other-info-no" name="other-info" value="no">
-                                <span class="radio"></span>
-                                <label for="other-info-no">No</label>
-                            </div>
-                        </div>
                     </div>
                     <div class="navigation-buttons">
                         <button type="button" onclick="showPreviousSection()">← Previous</button>
                         <button type="button" onclick="handleOtherInfoNext()">Next →</button>
                     </div>
-                    <div id="other-info-warning" class="warning hidden">Please select an option.</div>
                 </section>
                 <section id="student-delegation" class="hidden fade-in">
                     <h2>Delegation-specific Dialogue for Students and Team-members</h2>
@@ -552,6 +537,7 @@
                     </div>
                     <div class="card">
                         <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
+                        <p class="question-description"><em>This will be used to identify the student members of your delegation and issue separate requests. Usually, representatives opt for a school name or a country. Please make sure spelling is consistent between yourself and other delegation members.</em></p>
                         <input type="text" id="student-delegation-name" name="student-delegation-name">
                     </div>
                     <div class="card">
