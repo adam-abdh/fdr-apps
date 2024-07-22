@@ -7,7 +7,7 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://script.google.com/macros/s/AKfycbx56rJfZNwXvFOUOka1Vpa3mrJNNMgFiwpkQP-9EYXR8MRO4wlUB-PI3WF67yG7mZBo5A/exec', {
+        fetch('https://hooks.zapier.com/hooks/catch/19550566/220bdkn/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -16,7 +16,7 @@ function handleSubmit(event) {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.result === 'success') {
+            if (data.status === 'success') {
                 alert('Form submitted successfully!');
             } else {
                 alert('Form submission failed.');
