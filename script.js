@@ -314,11 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
     specialArrangementsNo.addEventListener('change', function() {
         toggleRequiredAttribute(specialArrangementsFields, false);
     });
-
-    otherInfoYes.addEventListener('change', function() {
-        toggleRequiredAttribute(otherInfoFields, true);
-    });
-
+    
     otherInfoNo.addEventListener('change', function() {
         toggleRequiredAttribute(otherInfoFields, false);
     });
@@ -467,29 +463,6 @@ function toggleOtherOption(element, otherText) {
         otherText.classList.remove('blur-in-top');
     }
 }
-
-function toggleStudentFieldsRequirement(isRequired) {
-    const studentFields = document.querySelectorAll('.student-field');
-    studentFields.forEach(field => {
-        if (isRequired) {
-            field.setAttribute('required', 'required');
-        } else {
-            field.removeAttribute('required');
-        }
-    });
-}
-
-document.getElementById('chaperone-selector').addEventListener('change', function() {
-    const userTypeField = document.getElementById('user-type');
-    userTypeField.value = 'chaperone';
-    toggleStudentFieldsRequirement(false);
-});
-
-document.getElementById('student-selector').addEventListener('change', function() {
-    const userTypeField = document.getElementById('user-type');
-    userTypeField.value = 'student';
-    toggleStudentFieldsRequirement(true);
-});
 
 function handleSubmit(event) {
     event.preventDefault();
