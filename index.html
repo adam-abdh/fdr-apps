@@ -22,762 +22,777 @@
         <img src="https://i.ibb.co/vw87Lbd/logo-variation-dept-recdgsvs.png" alt="FDRMUN Logo" style="width: 350px; height: auto;">
     </div>
     <div class="separator"></div>
-    <form id="registration-form" onsubmit="handleSubmit(event)">
-        <input type="hidden" id="user-type" name="user-type" value="">
+        <form id="registration-form" onsubmit="handleSubmit(event)">
+            <section id="welcome" class="fade-in">
+                <div class="card">
+                    <h2>Portico Registration form for Delegates and Delegations</h2>
+                    <hr>
+                    <p>If you are unsure as to how to go about answering certain prompts, it may be helpful to access the following. Each section will notify you if you should access any resources</p>
+                    <ul>
+                        <li><a href="guide-to-applying-link">Guide to applying</a></li>
+                        <li><a href="committee-overview-link">Committee Overview</a></li>
+                        <li><a href="standard-procedure-link">Standard Procedure</a></li>
+                        <li><a href="anti-harassment-policy-link">Anti-harassment policy</a></li>
+                        <li><a href="privacy-link">Privacy</a></li>
+                    </ul>
+                    <p>Before accessing external resources, please make sure that you are completing this form on a browser that supports opening links in different tabs. If you close this tab, you risk losing your progress. In order to save your progress, we recommend completing this form on a word processor such as Google Docs, and then pasting responses in.</p>
+                </div>
+                <button type="button" onclick="showNextSection('personal-data')">Let's Go →</button>
+            </section>
+            <section id="personal-data" class="hidden fade-in">
+                <h2>Getting to know you.</h2>
+              <div class="card">
+    <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
+    <select id="preferred-title" name="preferred-title" required>
+        <option value="">Select an option</option>
+        <option value="Mrs.">Mrs.</option>
+        <option value="Ms.">Ms.</option>
+        <option value="Mr.">Mr.</option>
+        <option value="Mx.">Mx.</option>
+        <option value="Dr.">Dr.</option>
+        <option value="Prof.">Prof.</option>
+        <option value="other">Other</option>
+    </select>
+    <input type="text" id="preferred-title-other" name="preferred-title-other" placeholder="Please specify" style="display: none;">
+</div>
+                <div class="card">
+                    <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="they-them" name="pronouns" value="they/them">
+                        <span class="checkmark"></span>
+                        <label>they/them/theirs</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="he-him" name="pronouns" value="he/him">
+                        <span class="checkmark"></span>
+                        <label>he/him/his</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="she-her" name="pronouns" value="she/her">
+                        <span class="checkmark"></span>
+                        <label>she/her/hers</label>
+                    </div>
+                    <div class="checkbox-container">
+    <input type="checkbox" id="other-pronouns" name="pronouns" value="other">
+    <span class="checkmark"></span>
+    <label>Other</label>
+</div>
+<input type="text" id="pronouns-other" name="pronouns-other" placeholder="Please specify" style="display: none;">
+</div>
+                </div>
+                <div class="card">
+                    <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
+                    <p class="question-description"><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="card">
+                    <label class="question" for="last-name">Your <strong>last name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
+                    <p class="question-description"><em>Winston Leonard Churchill's last name would be "Churchill." Please include all applicable diacritics and accents.</em></p>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+                <div class="card">
+                    <label class="question" for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below.</label>
+                    <p class="question-description"><em>Note that diplomas will be issued to the recorded legal name. This name will, however, be used for communications from us to you, badges, and documents that are not legally binding.</em></p>
+                    <input type="text" id="preferred-name" name="preferred-name">
+                </div>
+                <div class="card">
+                    <label class="question" for="dob">Your <strong>date of birth.</strong></label><span class="required-star">*</span>
+                    <input type="date" id="dob" name="dob">
+                    <div id="dob-error" class="error hidden"></div>
+                </div> 
+                <div class="card">
+                    <label class="question" for="institution">The <strong>educational institution</strong> (school or university) you are affiliated with.</label><span class="required-star">*</span>
+                    <input type="text" id="institution" name="institution" required>
+                </div>
+                <div class="card">
+                    <label class="question" for="phone">Your <strong>telephone number.</strong></label>
+                    <span class="required-star">*</span>
+                    <p class="question-description"><em>If <u>not</u> located in Romania, please include a country code (beginning with +).</em></p>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="card">
+                    <label class="question" for="email">Your <strong>e-mail address.</strong></label><span class="required-star">*</span>
+                    <p class="question-description"><em>Please make sure that spelling is accurate.</em></p>
+                    <input type="email" id="email" name="email" required oninput="validateEmail()">
+                    <div class="error" id="email-error"></div>
+                </div>
+                <div class="card">
+                    <label class="question" for="residence">Your <strong>city, state, province or region</strong> of residence.</label><span class="required-star">*</span>
+                    <input type="text" id="residence" name="residence" required>
+                </div>
+                <div class="card">
+                    <label class="question" for="country">Your <strong>country of residence.</strong></label><span class="required-star">*</span>
+                    <select id="country" name="country" required>
+                        <option value="">Select a country</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Aruba">Aruba</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Azerbaijan">Azerbaijan</option>
+                        <option value="Bahamas">Bahamas</option>
+                        <option value="Bahrain">Bahrain</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Barbados">Barbados</option>
+                        <option value="Belarus">Belarus</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Belize">Belize</option>
+                        <option value="Benin">Benin</option>
+                        <option value="Bermuda">Bermuda</option>
+                        <option value="Bhutan">Bhutan</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Brunei Darussalam">Brunei Darussalam</option>
+                        <option value="Bulgaria">Bulgaria</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Cambodia">Cambodia</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Central African Republic">Central African Republic</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Chile">Chile</option>
+                        <option value="China">China</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Congo">Congo</option>
+                        <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="Cote D'ivoire">Cote D'ivoire</option>
+                        <option value="Croatia">Croatia</option>
+                        <option value="Cyprus">Cyprus</option>
+                        <option value="Czech Republic">Czech Republic</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Dominica">Dominica</option>
+                        <option value="Dominican Republic">Dominican Republic</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="El Salvador">El Salvador</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Estonia">Estonia</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Fiji">Fiji</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="French Guiana">French Guiana</option>
+                        <option value="French Polynesia">French Polynesia</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Gambia">Gambia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Gibraltar">Gibraltar</option>
+                        <option value="Greece">Greece</option>
+                        <option value="Greenland">Greenland</option>
+                        <option value="Grenada">Grenada</option>
+                        <option value="Guadeloupe">Guadeloupe</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Guinea">Guinea</option>
+                        <option value="Guinea-bissau">Guinea-bissau</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Haiti">Haiti</option>
+                        <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+                        <option value="Honduras">Honduras</option>
+                        <option value="Hong Kong">Hong Kong</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="Iceland">Iceland</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Isle of Man">Isle of Man</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Jamaica">Jamaica</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Jersey">Jersey</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Kazakhstan">Kazakhstan</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Kiribati">Kiribati</option>
+                        <option value="Korea, Republic of">Korea, Republic of</option>
+                        <option value="Kuwait">Kuwait</option>
+                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                        <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                        <option value="Latvia">Latvia</option>
+                        <option value="Lebanon">Lebanon</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Liberia">Liberia</option>
+                        <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                        <option value="Liechtenstein">Liechtenstein</option>
+                        <option value="Lithuania">Lithuania</option>
+                        <option value="Luxembourg">Luxembourg</option>
+                        <option value="Macao">Macao</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Maldives">Maldives</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Malta">Malta</option>
+                        <option value="Martinique">Martinique</option>
+                        <option value="Mauritania">Mauritania</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Moldova, Republic of">Moldova, Republic of</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Mongolia">Mongolia</option>
+                        <option value="Montenegro">Montenegro</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Myanmar">Myanmar</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Nauru">Nauru</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="New Caledonia">New Caledonia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="Nicaragua">Nicaragua</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="North Macedonia">North Macedonia</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Oman">Oman</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                        <option value="Panama">Panama</option>
+                        <option value="Papua New Guinea">Papua New Guinea</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Puerto Rico">Puerto Rico</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Russian Federation">Russian Federation</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Saint Helena">Saint Helena</option>
+                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                        <option value="Saint Lucia">Saint Lucia</option>
+                        <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
+                        <option value="Samoa">Samoa</option>
+                        <option value="San Marino">San Marino</option>
+                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Serbia">Serbia</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Sierra Leone">Sierra Leone</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Slovakia">Slovakia</option>
+                        <option value="Slovenia">Slovenia</option>
+                        <option value="Solomon Islands">Solomon Islands</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Swaziland">Swaziland</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Tajikistan">Tajikistan</option>
+                        <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Timor-leste">Timor-leste</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Tonga">Tonga</option>
+                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Turkmenistan">Turkmenistan</option>
+                        <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                        <option value="Tuvalu">Tuvalu</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                        <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Uzbekistan">Uzbekistan</option>
+                        <option value="Vanuatu">Vanuatu</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Virgin Islands, British">Virgin Islands, British</option>
+                        <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+                        <option value="Yemen">Yemen</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                    </select>
+                </div>
+                            <div class="card">
+     <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
+    <select id="dietary-requirements" name="dietary-requirements" required>
+        <option value="">Select an option</option>
+        <option value="None">None</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Kosher">Kosher</option>
+        <option value="Halal">Halal</option>
+        <option value="Gluten-free">Gluten-free</option>
+        <option value="other">Other...</option>
+    </select>
+    <input type="text" id="dietary-requirements-other" name="dietary-requirements-other" placeholder="Please specify" style="display: none;">
+</div>
+              <div class="card">
+   <label class="question">How did you <strong>find out</strong> about us?</label
+                    ><p class="question-description"><em>Check all that may apply.</em></p>
+    <span class="required-star">*</span>
 
-        <section id="welcome" class="fade-in">
-            <div class="card">
-                <h2>Portico Registration form for Delegates and Delegations</h2>
-                <hr>
-                <p>If you are unsure as to how to go about answering certain prompts, it may be helpful to access the following. Each section will notify you if you should access any resources</p>
-                <ul>
-                    <li><a href="guide-to-applying-link">Guide to applying</a></li>
-                    <li><a href="committee-overview-link">Committee Overview</a></li>
-                    <li><a href="standard-procedure-link">Standard Procedure</a></li>
-                    <li><a href="anti-harassment-policy-link">Anti-harassment policy</a></li>
-                    <li><a href="privacy-link">Privacy</a></li>
-                </ul>
-                <p>Before accessing external resources, please make sure that you are completing this form on a browser that supports opening links in different tabs. If you close this tab, you risk losing your progress. In order to save your progress, we recommend completing this form on a word processor such as Google Docs, and then pasting responses in.</p>
-            </div>
-            <button type="button" onclick="showNextSection('personal-data')">Let's Go →</button>
-        </section>
-        <section id="personal-data" class="hidden fade-in">
-            <h2>Getting to know you.</h2>
-            <div class="card">
-                <label class="question">Your <strong>preferred title.</strong></label><span class="required-star">*</span>
-                <select id="preferred-title" name="preferred-title" required>
-                    <option value="">Select an option</option>
-                    <option value="Mrs.">Mrs.</option>
-                    <option value="Ms.">Ms.</option>
-                    <option value="Mr.">Mr.</option>
-                    <option value="Mx.">Mx.</option>
-                    <option value="Dr.">Dr.</option>
-                    <option value="Prof.">Prof.</option>
-                    <option value="other">Other</option>
-                </select>
-                <input type="text" id="preferred-title-other" name="preferred-title-other" placeholder="Please specify" style="display: none;">
-            </div>
-            <div class="card">
-                <label class="question">Your <strong>preferred pronouns.</strong></label><span class="required-star">*</span>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="they-them" name="pronouns" value="they/them">
-                    <span class="checkmark"></span>
-                    <label>they/them/theirs</label>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-google" name="find-out" value="Google/FDRMUN website">
+           <span class="checkmark"></span>
+        <label for="find-out-google">Google/FDRMUN website</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-instagram" name="find-out" value="FDRMUN Instagram">
+           <span class="checkmark"></span>
+        <label for="find-out-instagram">FDRMUN Instagram</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-email" name="find-out" value="FDRMUN E-mail">
+           <span class="checkmark"></span>
+        <label for="find-out-email">FDRMUN E-mail</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-social" name="find-out" value="Other FDRMUN social network(s)">
+           <span class="checkmark"></span>
+        <label for="find-out-social">Other FDRMUN social network(s)</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-isb" name="find-out" value="International School of Bucharest">
+           <span class="checkmark"></span>
+        <label for="find-out-isb">International School of Bucharest</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-mun" name="find-out" value="MUN-related sources">
+           <span class="checkmark"></span>
+        <label for="find-out-mun">MUN-related sources (such as myMUN or mun.news.ro)</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-friend" name="find-out" value="Friend or family member">
+           <span class="checkmark"></span>
+        <label for="find-out-friend">Friend or family member</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-brochure" name="find-out" value="Brochure, poster or flyer">
+           <span class="checkmark"></span>
+        <label for="find-out-brochure">Brochure, poster or flyer</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-tv" name="find-out" value="Television">
+           <span class="checkmark"></span>
+        <label for="find-out-tv">Television</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-media" name="find-out" value="Media outlet or article">
+           <span class="checkmark"></span>
+        <label for="find-out-media">Media outlet or article</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-consulting" name="find-out" value="Consulting services">
+           <span class="checkmark"></span>
+        <label for="find-out-consulting">Consulting services</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="find-out-other" name="find-out" value="Other">
+           <span class="checkmark"></span>
+        <label for="find-out-other">Other</label>
+    </div>
+    <input type="text" id="find-out-other-text" name="find-out-other-text" placeholder="Please specify" style="display: none;">
+</div>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="showPreviousSection()">← Previous</button>
+
+                    <button type="button" onclick="showNextSection('student-group-delegation')">Next →</button>
                 </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="he-him" name="pronouns" value="he/him">
-                    <span class="checkmark"></span>
-                    <label>he/him/his</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="she-her" name="pronouns" value="she/her">
-                    <span class="checkmark"></span>
-                    <label>she/her/hers</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="other-pronouns" name="pronouns" value="other">
-                    <span class="checkmark"></span>
-                    <label>other</label>
-                </div>
-                <input type="text" id="pronouns-other" name="pronouns-other" placeholder="Please specify" style="display: none;">
-            </div>
-            <div class="card">
-                <label class="question" for="first-name">Your <strong>first name</strong> and <strong>middle name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
-                <p class="question-description"><em>Winston Leonard Churchill's first and middle names would be "Winston Leonard." Please include all applicable diacritics and accents. Middle name if applicable.</em></p>
-                <input type="text" id="first-name" name="first-name" required>
-            </div>
-            <div class="card">
-                <label class="question" for="last-name">Your <strong>last name(s)</strong> as shown on legal identification.</label><span class="required-star">*</span>
-                <p class="question-description"><em>Winston Leonard Churchill's last name would be "Churchill." Please include all applicable diacritics and accents.</em></p>
-                <input type="text" id="last-name" name="last-name" required>
-            </div>
-            <div class="card">
-                <label class="question" for="preferred-name">Would you rather us call you by another <strong>first name</strong>? If so, please specify below.</label>
-                <p class="question-description"><em>Note that diplomas will be issued to the recorded legal name. This name will, however, be used for communications from us to you, badges, and documents that are not legally binding.</em></p>
-                <input type="text" id="preferred-name" name="preferred-name">
-            </div>
-            <div class="card">
-                <label class="question" for="dob">Your <strong>date of birth.</strong></label><span class="required-star">*</span>
-                <input type="date" id="dob" name="dob">
-                <div id="dob-error" class="error hidden"></div>
-            </div> 
-            <div class="card">
-                <label class="question" for="institution">The <strong>educational institution</strong> (school or university) you are affiliated with.</label><span class="required-star">*</span>
-                <input type="text" id="institution" name="institution" required>
-            </div>
-            <div class="card">
-                <label class="question" for="phone">Your <strong>telephone number.</strong></label>
-                <span class="required-star">*</span>
-                <p class="question-description"><em>If <u>not</u> located in Romania, please include a country code (beginning with +).</em></p>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="card">
-                <label class="question" for="email">Your <strong>e-mail address.</strong></label><span class="required-star">*</span>
-                <p class="question-description"><em>Please make sure that spelling is accurate.</em></p>
-                <input type="email" id="email" name="email" required oninput="validateEmail()">
-                <div class="error" id="email-error"></div>
-            </div>
-            <div class="card">
-                <label class="question" for="residence">Your <strong>city, state, province or region</strong> of residence.</label><span class="required-star">*</span>
-                <input type="text" id="residence" name="residence" required>
-            </div>
-            <div class="card">
-                <label class="question" for="country">Your <strong>country of residence.</strong></label><span class="required-star">*</span>
-                <select id="country" name="country" required>
-                    <option value="">Select a country</option>
-                    <option value="Romania">Romania</option>
-                    <option value="Albania">Albania</option>
-                    <option value="Algeria">Algeria</option>
-                    <option value="Andorra">Andorra</option>
-                    <option value="Angola">Angola</option>
-                    <option value="Argentina">Argentina</option>
-                    <option value="Armenia">Armenia</option>
-                    <option value="Aruba">Aruba</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Austria">Austria</option>
-                    <option value="Azerbaijan">Azerbaijan</option>
-                    <option value="Bahamas">Bahamas</option>
-                    <option value="Bahrain">Bahrain</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="Barbados">Barbados</option>
-                    <option value="Belarus">Belarus</option>
-                    <option value="Belgium">Belgium</option>
-                    <option value="Belize">Belize</option>
-                    <option value="Benin">Benin</option>
-                    <option value="Bermuda">Bermuda</option>
-                    <option value="Bhutan">Bhutan</option>
-                    <option value="Bolivia">Bolivia</option>
-                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                    <option value="Botswana">Botswana</option>
-                    <option value="Brazil">Brazil</option>
-                    <option value="Brunei Darussalam">Brunei Darussalam</option>
-                    <option value="Bulgaria">Bulgaria</option>
-                    <option value="Burkina Faso">Burkina Faso</option>
-                    <option value="Cambodia">Cambodia</option>
-                    <option value="Cameroon">Cameroon</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Central African Republic">Central African Republic</option>
-                    <option value="Chad">Chad</option>
-                    <option value="Chile">Chile</option>
-                    <option value="China">China</option>
-                    <option value="Colombia">Colombia</option>
-                    <option value="Comoros">Comoros</option>
-                    <option value="Congo">Congo</option>
-                    <option value="Congo, The Democratic Republic of The">Congo, The Democratic Republic of The</option>
-                    <option value="Costa Rica">Costa Rica</option>
-                    <option value="Cote D'ivoire">Cote D'ivoire</option>
-                    <option value="Croatia">Croatia</option>
-                    <option value="Cyprus">Cyprus</option>
-                    <option value="Czech Republic">Czech Republic</option>
-                    <option value="Denmark">Denmark</option>
-                    <option value="Djibouti">Djibouti</option>
-                    <option value="Dominica">Dominica</option>
-                    <option value="Dominican Republic">Dominican Republic</option>
-                    <option value="Ecuador">Ecuador</option>
-                    <option value="Egypt">Egypt</option>
-                    <option value="El Salvador">El Salvador</option>
-                    <option value="Equatorial Guinea">Equatorial Guinea</option>
-                    <option value="Eritrea">Eritrea</option>
-                    <option value="Estonia">Estonia</option>
-                    <option value="Ethiopia">Ethiopia</option>
-                    <option value="Fiji">Fiji</option>
-                    <option value="Finland">Finland</option>
-                    <option value="France">France</option>
-                    <option value="French Guiana">French Guiana</option>
-                    <option value="French Polynesia">French Polynesia</option>
-                    <option value="Gabon">Gabon</option>
-                    <option value="Gambia">Gambia</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Ghana">Ghana</option>
-                    <option value="Gibraltar">Gibraltar</option>
-                    <option value="Greece">Greece</option>
-                    <option value="Greenland">Greenland</option>
-                    <option value="Grenada">Grenada</option>
-                    <option value="Guadeloupe">Guadeloupe</option>
-                    <option value="Guatemala">Guatemala</option>
-                    <option value="Guinea">Guinea</option>
-                    <option value="Guinea-bissau">Guinea-bissau</option>
-                    <option value="Guyana">Guyana</option>
-                    <option value="Haiti">Haiti</option>
-                    <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
-                    <option value="Honduras">Honduras</option>
-                    <option value="Hong Kong">Hong Kong</option>
-                    <option value="Hungary">Hungary</option>
-                    <option value="Iceland">Iceland</option>
-                    <option value="India">India</option>
-                    <option value="Indonesia">Indonesia</option>
-                    <option value="Iraq">Iraq</option>
-                    <option value="Ireland">Ireland</option>
-                    <option value="Isle of Man">Isle of Man</option>
-                    <option value="Israel">Israel</option>
-                    <option value="Italy">Italy</option>
-                    <option value="Jamaica">Jamaica</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Jersey">Jersey</option>
-                    <option value="Jordan">Jordan</option>
-                    <option value="Kazakhstan">Kazakhstan</option>
-                    <option value="Kenya">Kenya</option>
-                    <option value="Kiribati">Kiribati</option>
-                    <option value="Korea, Republic of">Korea, Republic of</option>
-                    <option value="Kuwait">Kuwait</option>
-                    <option value="Kyrgyzstan">Kyrgyzstan</option>
-                    <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-                    <option value="Latvia">Latvia</option>
-                    <option value="Lebanon">Lebanon</option>
-                    <option value="Lesotho">Lesotho</option>
-                    <option value="Liberia">Liberia</option>
-                    <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-                    <option value="Liechtenstein">Liechtenstein</option>
-                    <option value="Lithuania">Lithuania</option>
-                    <option value="Luxembourg">Luxembourg</option>
-                    <option value="Macao">Macao</option>
-                    <option value="Madagascar">Madagascar</option>
-                    <option value="Malawi">Malawi</option>
-                    <option value="Malaysia">Malaysia</option>
-                    <option value="Maldives">Maldives</option>
-                    <option value="Mali">Mali</option>
-                    <option value="Malta">Malta</option>
-                    <option value="Martinique">Martinique</option>
-                    <option value="Mauritania">Mauritania</option>
-                    <option value="Mauritius">Mauritius</option>
-                    <option value="Mexico">Mexico</option>
-                    <option value="Moldova, Republic of">Moldova, Republic of</option>
-                    <option value="Monaco">Monaco</option>
-                    <option value="Mongolia">Mongolia</option>
-                    <option value="Montenegro">Montenegro</option>
-                    <option value="Montserrat">Montserrat</option>
-                    <option value="Morocco">Morocco</option>
-                    <option value="Mozambique">Mozambique</option>
-                    <option value="Myanmar">Myanmar</option>
-                    <option value="Namibia">Namibia</option>
-                    <option value="Nauru">Nauru</option>
-                    <option value="Nepal">Nepal</option>
-                    <option value="Netherlands">Netherlands</option>
-                    <option value="New Caledonia">New Caledonia</option>
-                    <option value="New Zealand">New Zealand</option>
-                    <option value="Nicaragua">Nicaragua</option>
-                    <option value="Niger">Niger</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="North Macedonia">North Macedonia</option>
-                    <option value="Norway">Norway</option>
-                    <option value="Oman">Oman</option>
-                    <option value="Pakistan">Pakistan</option>
-                    <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
-                    <option value="Panama">Panama</option>
-                    <option value="Papua New Guinea">Papua New Guinea</option>
-                    <option value="Paraguay">Paraguay</option>
-                    <option value="Peru">Peru</option>
-                    <option value="Philippines">Philippines</option>
-                    <option value="Poland">Poland</option>
-                    <option value="Portugal">Portugal</option>
-                    <option value="Puerto Rico">Puerto Rico</option>
-                    <option value="Qatar">Qatar</option>
-                    <option value="Romania">Romania</option>
-                    <option value="Russian Federation">Russian Federation</option>
-                    <option value="Rwanda">Rwanda</option>
-                    <option value="Saint Helena">Saint Helena</option>
-                    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-                    <option value="Saint Lucia">Saint Lucia</option>
-                    <option value="Saint Vincent and The Grenadines">Saint Vincent and The Grenadines</option>
-                    <option value="Samoa">Samoa</option>
-                    <option value="San Marino">San Marino</option>
-                    <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-                    <option value="Saudi Arabia">Saudi Arabia</option>
-                    <option value="Senegal">Senegal</option>
-                    <option value="Serbia">Serbia</option>
-                    <option value="Seychelles">Seychelles</option>
-                    <option value="Sierra Leone">Sierra Leone</option>
-                    <option value="Singapore">Singapore</option>
-                    <option value="Slovakia">Slovakia</option>
-                    <option value="Slovenia">Slovenia</option>
-                    <option value="Solomon Islands">Solomon Islands</option>
-                    <option value="Somalia">Somalia</option>
-                    <option value="South Africa">South Africa</option>
-                    <option value="Spain">Spain</option>
-                    <option value="Sri Lanka">Sri Lanka</option>
-                    <option value="Sudan">Sudan</option>
-                    <option value="Suriname">Suriname</option>
-                    <option value="Swaziland">Swaziland</option>
-                    <option value="Sweden">Sweden</option>
-                    <option value="Switzerland">Switzerland</option>
-                    <option value="Syrian Arab Republic">Syrian Arab Republic</option>
-                    <option value="Taiwan">Taiwan</option>
-                    <option value="Tajikistan">Tajikistan</option>
-                    <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
-                    <option value="Thailand">Thailand</option>
-                    <option value="Timor-leste">Timor-leste</option>
-                    <option value="Togo">Togo</option>
-                    <option value="Tonga">Tonga</option>
-                    <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                    <option value="Tunisia">Tunisia</option>
-                    <option value="Turkey">Turkey</option>
-                    <option value="Turkmenistan">Turkmenistan</option>
-                    <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
-                    <option value="Tuvalu">Tuvalu</option>
-                    <option value="Uganda">Uganda</option>
-                    <option value="Ukraine">Ukraine</option>
-                    <option value="United Arab Emirates">United Arab Emirates</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="United States">United States</option>
-                    <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
-                    <option value="Uruguay">Uruguay</option>
-                    <option value="Uzbekistan">Uzbekistan</option>
-                    <option value="Vanuatu">Vanuatu</option>
-                    <option value="Venezuela">Venezuela</option>
-                    <option value="Vietnam">Vietnam</option>
-                    <option value="Virgin Islands, British">Virgin Islands, British</option>
-                    <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
-                    <option value="Yemen">Yemen</option>
-                    <option value="Zambia">Zambia</option>
-                    <option value="Zimbabwe">Zimbabwe</option>
-                </select>
-            </div>
-            <div class="card">
-                <label class="question" for="diet">Your <strong>dietary requirements.</strong></label><span class="required-star">*</span>
-                <select id="dietary-requirements" name="dietary-requirements" required>
-                    <option value="">Select an option</option>
-                    <option value="None">None</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Vegan">Vegan</option>
-                    <option value="Kosher">Kosher</option>
-                    <option value="Halal">Halal</option>
-                    <option value="Gluten-free">Gluten-free</option>
-                    <option value="other">Other</option>
-                </select>
-                <input type="text" id="dietary-requirements-other" name="dietary-requirements-other" placeholder="Please specify" style="display: none;">
-            </div>
-            <div class="card">
-                <label class="question">How did you <strong>find out</strong> about us?</label>
-                <p class="question-description"><em>Check all that may apply.</em></p>
-                <span class="required-star">*</span>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-google" name="find-out" value="Google/FDRMUN website">
-                    <span class="checkmark"></span>
-                    <label for="find-out-google">Google/FDRMUN website</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-instagram" name="find-out" value="FDRMUN Instagram">
-                    <span class="checkmark"></span>
-                    <label for="find-out-instagram">FDRMUN Instagram</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-email" name="find-out" value="FDRMUN E-mail">
-                    <span class="checkmark"></span>
-                    <label for="find-out-email">FDRMUN E-mail</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-social" name="find-out" value="Other FDRMUN social network(s)">
-                    <span class="checkmark"></span>
-                    <label for="find-out-social">Other FDRMUN social network(s)</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-isb" name="find-out" value="International School of Bucharest">
-                    <span class="checkmark"></span>
-                    <label for="find-out-isb">International School of Bucharest</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-mun" name="find-out" value="MUN-related sources">
-                    <span class="checkmark"></span>
-                    <label for="find-out-mun">MUN-related sources (such as myMUN or mun.news.ro)</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-friend" name="find-out" value="Friend or family member">
-                    <span class="checkmark"></span>
-                    <label for="find-out-friend">Friend or family member</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-brochure" name="find-out" value="Brochure, poster or flyer">
-                    <span class="checkmark"></span>
-                    <label for="find-out-brochure">Brochure, poster or flyer</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-tv" name="find-out" value="Television">
-                    <span class="checkmark"></span>
-                    <label for="find-out-tv">Television</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-media" name="find-out" value="Media outlet or article">
-                    <span class="checkmark"></span>
-                    <label for="find-out-media">Media outlet or article</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-consulting" name="find-out" value="Consulting services">
-                    <span class="checkmark"></span>
-                    <label for="find-out-consulting">Consulting services</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="find-out-other" name="find-out" value="Other">
-                    <span class="checkmark"></span>
-                    <label for="find-out-other">Other</label>
-                </div>
-                <input type="text" id="find-out-other-text" name="find-out-other-text" placeholder="Please specify" style="display: none;">
-            </div>
-            <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection()">← Previous</button>
-                <button type="button" onclick="showNextSection('student-group-delegation')">Next →</button>
-            </div>
-            <div id="personal-data-warning" class="warning hidden">Please select an option.</div>
-        </section>
-        <section id="student-group-delegation" class="hidden fade-in">
-            <div class="card">
-                <label class="question" for="student-group">Are you a <strong>student</strong> applying with a group/delegation?ㅤㅤ  </label><span class="required-star">*</span>
-                <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
-                <div class="radio-container">
-                    <div class="radio-button">
-                        <input type="radio" id="student-group-yes" name="student-group" value="yes">
-                        <span class="radio"></span>
-                        <label for="student-group-yes">Yes</label>
-                    </div>
-                    <div class="radio-button">
-                        <input type="radio" id="student-group-no" name="student-group" value="no">
-                        <span class="radio"></span>
-                        <label for="student-group-no">No</label>
+                <div id="personal-data-warning" class="warning hidden">Please select an option.</div>
+            </section>
+            <section id="student-group-delegation" class="hidden fade-in">
+                <div class="card">
+                    <label class="question" for="student-group">Are you a <strong>student</strong> applying with a group/delegation?ㅤㅤ  </label><span class="required-star">*</span>
+                    <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
+                    <div class="radio-container">
+                        <div class="radio-button">
+                            <input type="radio" id="student-group-yes" name="student-group" value="yes" required>
+                            <span class="radio"></span>
+                            <label for="student-group-yes">Yes</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="student-group-no" name="student-group" value="no" required>
+                            <span class="radio"></span>
+                            <label for="student-group-no">No</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="navigation-buttons">
-                <button type="button" onclick="showPreviousSection()">← Previous</button>
-                <button type="button" onclick="handleStudentGroupNext()">Next →</button>
+                <div class="navigation-buttons">
+<button type="button" onclick="showPreviousSection()">← Previous</button>  
+                    <button type="button" onclick="handleStudentGroupNext()">Next →</button>
                 </div>
                 <div id="student-group-warning" class="warning hidden">Please select an option.</div>
-                </section>
-                <section id="school-group-delegation" class="hidden fade-in">
-                    <div class="card">
-                        <label class="question" for="school-rep">Are you a <strong>chaperone, school representative or guardian</strong> applying with a group/delegation? </label><span class="required-star">*</span>
-                        <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
-                        <div class="radio-container">
-                            <div class="radio-button">
-                                <input type="radio" id="school-rep-yes" name="school-rep" value="yes">
-                                <span class="radio"></span>
-                                <label for="school-rep-yes">Yes</label>
-                            </div>
-                            <div class="radio-button">
-                                <input type="radio" id="school-rep-no" name="school-rep" value="no">
-                                <span class="radio"></span>
-                                <label for="school-rep-no">No</label>
-                            </div>
+            </section>
+            <section id="school-group-delegation" class="hidden fade-in">
+                <div class="card">
+                    <label class="question" for="school-rep">Are you a <strong>chaperone, school representative or guardian</strong> applying with a group/delegation? </label><span class="required-star">*</span>
+                    <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
+                    <div class="radio-container">
+                        <div class="radio-button">
+                            <input type="radio" id="school-rep-yes" name="school-rep" value="yes" required>
+                            <span class="radio"></span>
+                            <label for="school-rep-yes">Yes</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="school-rep-no" name="school-rep" value="no" required>
+                            <span class="radio"></span>
+                            <label for="school-rep-no">No</label>
                         </div>
                     </div>
+                </div>
+                <div class="navigation-buttons">
+<button type="button" onclick="showPreviousSection()">← Previous</button>      
+                    <button type="button" onclick="handleSchoolRepNext()">Next →</button>
+                </div>
+                <div id="school-rep-warning" class="warning hidden">Please select an option.</div>
+            </section>
+            <section id="special-arrangements" class="hidden fade-in">
+                <div class="card">
+                    <label class="question" for="special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your odds of admission. </label><span class="required-star">*</span>
+                    <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
+                    <div class="radio-container">
+                        <div class="radio-button">
+                            <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes" required>
+                            <span class="radio"></span>
+                            <label for="special-arrangements-yes">Yes</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no" required>
+                            <span class="radio"></span>
+                            <label for="special-arrangements-no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-buttons">
+<button type="button" onclick="showPreviousSection()">← Previous</button>       
+                    <button type="button" onclick="handleSpecialArrangementsNext()">Next →</button>
+                </div>
+                <div id="special-arrangements-warning" class="warning hidden">Please select an option.</div>
+            </section>
+            <section id="chaperone-delegation" class="hidden fade-in">
+                <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
+                <div class="card">
+                    <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. Due to EU data protection laws, it's mandatory for each delegate to fill out their own application form. You will receive an fdrID via mail upon submission of the form. The fdrID received by the chaperone becomes a crucial piece in this process. You must provide this fdrID to your students, who will then include it in their individual applications. This step is necessary to authenticate their membership in the specific delegation and link their applications to your registration.</em></p>
+                    <p class="question-description"><em>For further guidance, consult the following:</em></p>
+                    <ul>
+                        <li><a href="logistical-aid-link">Logistical aid</a></li>
+                        <li><a href="guide-to-applying-link">Guide to applying</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself.</label><span class="required-star">*</span>
+                    <input type="number" id="delegation-number" name="delegation-number" min="1" max="20">
+                </div>
+                <div class="card">
+                    <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
+                    <input type="text" id="delegation-name" name="delegation-name">
+                </div>
+                <div class="card">
+                    <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees.</label><span class="required-star">*</span>
+                    <textarea id="delegation-experience" name="delegation-experience"></textarea>
+                </div>
+                <div class="card">
+                    <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label><span class="required-star">*</span>
+                    <textarea id="logistical-requests" name="logistical-requests"></textarea>
+                </div>
+                <div class="card">
+                    <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
+                    <div class="radio-container">
+                        <div class="radio-button">
+                            <input type="radio" id="other-info-yes" name="other-info" value="yes">
+                            <span class="radio"></span>
+                            <label for="other-info-yes">Yes</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="other-info-no" name="other-info" value="no">
+                            <span class="radio"></span>
+                            <label for="other-info-no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-buttons">
+<button type="button" onclick="showPreviousSection()">← Previous</button>                 
+                    <button type="button" onclick="handleOtherInfoNext()">Next →</button>
+                </div>
+                <div id="other-info-warning" class="warning hidden">Please select an option.</div>
+            </section>
+            <section id="student-delegation" class="hidden fade-in">
+                <h2>Delegation-specific Dialogue for Students and Team-members</h2>
+                <div class="card">
+                    <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself</em></p>
+                    <p class="question-description"><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation.</em></p>
+                    <p class="question-description"><em>For further guidance, consult the following:</em></p>
+                    <ul>
+                        <li><a href="logistical-aid-link">Logistical aid</a></li>
+                        <li><a href="guide-to-applying-link">Guide to applying</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable.</label><span class="required-star">*</span>
+                    <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="20">
+                </div>
+                <div class="card">
+                    <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
+                    <input type="text" id="student-delegation-name" name="student-delegation-name">
+                </div>
+                <div class="card">
+                    <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are NOT visible to your referee.</label><span class="required-star">*</span>
+                    <div class="radio-container">
+                        <div class="radio-button">
+                            <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes">
+                            <span class="radio"></span>
+                            <label for="student-special-arrangements-yes">Yes</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="student-special-arrangements-no" name="student-special-arrangements" value="no">
+                            <span class="radio"></span>
+                            <label for="student-special-arrangements-no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-buttons">
+<button type="button" onclick="showPreviousSection()">← Previous</button>
+                    <button type="button" onclick="handleStudentSpecialArrangementsNext()">Next →</button>
+                </div>
+                <div id="student-special-arrangements-warning" class="warning hidden">Please select an option.</div>
+            </section>
+            <section id="special-guidance" class="hidden fade-in">
+                <h2>Special arrangements and further guidance.</h2>
+                <div class="card">
+                    <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process.</em></p>
+                </div>
+                <div class="card">
+                    <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="transportation-guidance">I need transportation guidance</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="travel-guidance">I need travel guidance</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="accommodation-guidance">I need accommodation guidance</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="visa-invitation">I need a visa invitation</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="financial-aid">I intend to apply for financial aid</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="prayer-room">I need a prayer room</label>
+                    </div>
+                </div>
+                <div class="card">
+                    <label class="question" for="additional-circumstances">If any, please specify additional, relevant circumstances impacting your attendance at FDR.</label>
+                    <textarea id="additional-circumstances" name="additional-circumstances"></textarea>
+                </div>
+                <div class="navigation-buttons">
+<button type="button" onclick="showPreviousSection()">← Previous</button>       
+                    <button type="button" onclick="showNextSection('mun-experience')">Next →</button>
+                </div>
+            </section>
+            <section id="mun-experience" class="hidden fade-in">
+                <h2>Your journey with MUN conferences.</h2>
+                <div class="card">
+                    <p class="subheading">We strongly recommend you use a word-processor such as Google Docs for character-limited stimulus questions to ensure you meet all requirements. Your answers should be clear and concise.</p>  
+                    <p class="subheading">For this section, you may find it useful to access the following resource(s):</p>
+                    <ul>
+                        <li><a href="guide-to-applying-link">Guide to applying</a></li>
+                        <li><a href="academic-honesty-link">Academic honesty</a></li>
+                        <li><a href="committee-overview-link">Committee overview</a></li>
+                        <li><a href="country-matrices-link">Country matrices</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <label class="question" for="mun-experience">Detail your previous <strong>experience</strong> with MUN conferences.</label><span class="required-star">*</span>
+                    <p class="question-description">We encourage you to outline your relevant experience in the following format, as a list:</p>
+                    <p class="question-description"><em>Conference (edition), Committee, Country represented, Award (if applicable).</em></p>
+                    <p class="question-description"><em>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</em></p>
+                    <p class="question-description">There is no character limit for this question. We do, however, encourage some brevity. If your experience with MUN conferences is extensive, please limit your list to your proudest, most defining achievements. If you do not have experience limited to MUN conferences, but concerning other relevent co-curricular activities, you may detail these below.</p>
+                    <textarea id="mun-experience" name="mun-experience" class="auto-resize" required></textarea>
+                </div>
+    <div class="card">
+        <label class="question" for="transformative-experience">How do you plan to contribute to FDRMUN as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference as a whole?</label><span class="required-star">*</span>
+        <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150 words.</em></p>
+<textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" class="auto-resize" required></textarea>
+        <div id="char-count-transformative-experience" class="char-count"></div>
+    </div>
+<div class="card">
+    <label class="question" for="first-committee-choice">What is your <strong>first committee choice?</strong></label><span class="required-star">*</span>
+    <select id="first-committee-choice" name="first-committee-choice">
+        <option value="">Select a committee</option>
+        <option value="DISEC">General Assembly 1—DISEC</option>
+        <option value="SPECPOL">General Assembly 4—SPECPOL</option>
+        <option value="UNHRC">United Nations Human Rights Council—UNHRC</option>
+        <option value="EC">European Council—EC</option>
+        <option value="Continuous Crisis">Ad-Hoc Committee of the Secretary General—Continuous Crisis</option>
+        <option value="SC">Security Council—SC</option>
+    </select>
+</div>
+<div class="card" id="first-country-choice-container" style="display: none;">
+    <label class="question" for="first-country-choice">What is your <strong>first country choice?</strong></label><span class="required-star">*</span>
+    <select id="first-country-choice" name="first-country-choice" required>
+        <option value="">Select an option</option>
+    </select>
+</div>
+<div class="card card-below">
+    <label class="question" for="second-committee-choice">What is your <strong>second committee choice?</strong></label><span class="required-star">*</span>
+    <select id="second-committee-choice" name="second-committee-choice">
+        <option value="">Select a committee</option>
+        <option value="DISEC">General Assembly 1—DISEC</option>
+        <option value="SPECPOL">General Assembly 4—SPECPOL</option>
+        <option value="UNHRC">United Nations Human Rights Council—UNHRC</option>
+        <option value="EC">European Council—EC</option>
+        <option value="Continuous Crisis">Ad-Hoc Committee of the Secretary General—Continuous Crisis</option>
+        <option value="SC">Security Council—SC</option>
+    </select>
+</div>
+<div class="card" id="second-country-choice-container" style="display: none;">
+    <label class="question" for="second-country-choice">What is your <strong>second country choice?</strong></label><span class="required-star">*</span>
+    <select id="second-country-choice" name="second-country-choice" required>
+        <option value="">Select an option</option>
+    </select>
+</div>
+<div class="card card-below">
+    <label class="question" for="third-committee-choice">What is your <strong>third committee choice?</strong></label><span class="required-star">*</span>
+    <select id="third-committee-choice" name="third-committee-choice">
+        <option value="">Select a committee</option>
+        <option value="DISEC">General Assembly 1—DISEC</option>
+        <option value="SPECPOL">General Assembly 4—SPECPOL</option>
+        <option value="UNHRC">United Nations Human Rights Council—UNHRC</option>
+        <option value="EC">European Council—EC</option>
+        <option value="Continuous Crisis">Ad-Hoc Committee of the Secretary General—Continuous Crisis</option>
+        <option value="SC">Security Council—SC</option>
+    </select>
+</div>
+<div class="card" id="third-country-choice-container" style="display: none;">
+    <label class="question" for="third-country-choice">What is your <strong>third country choice?</strong></label><span class="required-star">*</span>
+    <select id="third-country-choice" name="third-country-choice" required>
+        <option value="">Select an option</option>
+    </select>
+</div>
+                <div class="card">
+        <label class="question" for="personal-choice">Why do the specific country and committee combinations above speak to you?</label><span class="required-star">*</span>
+        <p class="question-description"><em>Maximum 1000 characters excluding spaces. This is around 200 words.</em></p>
+<textarea id="personal-choice" name="transformative-experience" data-maxlength="1000" class="auto-resize" required></textarea>
+        <div id="char-count-personal-choice" class="char-count"></div>
+            </div>
+                <div class="card">
+                    <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label></span>
+            <p class="question-description"><em>This question is entirely <strong>optional</strong> and gives you the opportunity to share anything you believe would strengthen your application. Choosing not to answer will not disadvantage you or negatively impact your application in any way.</em></p>
+            <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150 words.</em></p>
+<textarea id="favorite-period" name="favorite-period" data-maxlength="700" class="auto-resize"></textarea>
+        <div id="char-count-favorite-period" class="char-count"></div>
+                </div>
                     <div class="navigation-buttons">
-                        <button type="button" onclick="showPreviousSection()">← Previous</button>
-                        <button type="button" onclick="handleSchoolRepNext()">Next →</button>
-                    </div>
-                    <div id="school-rep-warning" class="warning hidden">Please select an option.</div>
-                </section>
-                <section id="special-arrangements" class="hidden fade-in">
-                    <div class="card">
-                        <label class="question" for="special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your odds of admission. </label><span class="required-star">*</span>
-                        <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
-                        <div class="radio-container">
-                            <div class="radio-button">
-                                <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes">
-                                <span class="radio"></span>
-                                <label for="special-arrangements-yes">Yes</label>
-                            </div>
-                            <div class="radio-button">
-                                <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no">
-                                <span class="radio"></span>
-                                <label for="special-arrangements-no">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navigation-buttons">
-                        <button type="button" onclick="showPreviousSection()">← Previous</button>
-                        <button type="button" onclick="handleSpecialArrangementsNext()">Next →</button>
-                    </div>
-                    <div id="special-arrangements-warning" class="warning hidden">Please select an option.</div>
-                </section>
-                <section id="chaperone-delegation" class="hidden fade-in">
-                    <h2>Delegation-specific Dialogue for Chaperones, Guardians and School Reps</h2>
-                    <div class="card">
-                        <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. Due to EU data protection laws, it's mandatory for each delegate to fill out their own application form. You will receive an fdrID via mail upon submission of the form. The fdrID received by the chaperone becomes a crucial piece in this process. You must provide this fdrID to your students, who will then include it in their individual applications. This step is necessary to authenticate their membership in the specific delegation and link their applications to your registration.</em></p>
-                        <p class="question-description"><em>For further guidance, consult the following:</em></p>
-                        <ul>
-                            <li><a href="logistical-aid-link">Logistical aid</a></li>
-                            <li><a href="guide-to-applying-link">Guide to applying</a></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself.</label><span class="required-star">*</span>
-                        <input type="number" id="delegation-number" name="delegation-number" min="1" max="20">
-                    </div>
-                    <div class="card">
-                        <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
-                        <p class="question-description"><em>This will be used to identify the student members of your delegation and issue separate requests. Usually, representatives opt for a school name or a country. Please make sure spelling is consistent between yourself and other delegation members.</em></p>
-                        <input type="text" id="delegation-name" name="delegation-name">
-                    </div>
-                    <div class="card">
-                        <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees.</label><span class="required-star">*</span>
-                        <textarea id="delegation-experience" name="delegation-experience"></textarea>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="logistical-requests">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
-                        <textarea id="logistical-requests" name="logistical-requests"></textarea>
-                    </div>
-                    <div class="navigation-buttons">
-                        <button type="button" onclick="showPreviousSection()">← Previous</button>
-                        <button type="button" onclick="handleOtherInfoNext()">Next →</button>
-                    </div>
-                </section>
-                <section id="student-delegation" class="hidden fade-in">
-                    <h2>Delegation-specific Dialogue for Students and Team-members</h2>
-                    <div class="card">
-                        <p class="question-description"><em>In this section, you will be asked to provide details about the members of your delegation. All members of a delegation, INCLUDING chaperones (if applicable), must separately complete this dialogue, for security purposes. This is the ONLY portion of the application where you are to answer for other delegation members. In all other sections, you must fill the form in for yourself</em></p>
-                        <p class="question-description"><em>To ensure adequate processing of your application, please make sure that answers are consistent between yourself and the other members of your delegation.</em></p>
-                        <p class="question-description"><em>For further guidance, consult the following:</em></p>
-                        <ul>
-                            <li><a href="logistical-aid-link">Logistical aid</a></li>
-                            <li><a href="guide-to-applying-link">Guide to applying</a></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable.</label><span class="required-star">*</span>
-                        <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="20">
-                    </div>
-                    <div class="card">
-                        <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
-                        <p class="question-description"><em>This will be used to identify the student members of your delegation and issue separate requests. Usually, representatives opt for a school name or a country. Please make sure spelling is consistent between yourself and other delegation members.</em></p>
-                        <input type="text" id="student-delegation-name" name="student-delegation-name">
-                    </div>
-                    <div class="card">
-                        <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are NOT visible to your referee.</label><span class="required-star">*</span>
-                        <div class="radio-container">
-                            <div class="radio-button">
-                                <input type="radio" id="student-special-arrangements-yes" name="student-special-arrangements" value="yes">
-                                <span class="radio"></span>
-                                <label for="student-special-arrangements-yes">Yes</label>
-                            </div>
-                            <div class="radio-button">
-                                <input type="radio" id="student-special-arrangements-no" name="student-special-arrangements" value="no">
-                                <span class="radio"></span>
-                                <label for="student-special-arrangements-no">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navigation-buttons">
-                        <button type="button" onclick="showPreviousSection()">← Previous</button>
-                        <button type="button" onclick="handleStudentSpecialArrangementsNext()">Next →</button>
-                    </div>
-                    <div id="student-special-arrangements-warning" class="warning hidden">Please select an option.</div>
-                </section>
-                <section id="special-guidance" class="hidden fade-in">
-                    <h2>Special arrangements and further guidance.</h2>
-                    <div class="card">
-                        <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process.</em></p>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="transportation-guidance">I need help finding or paying for transportation to and from venues.</label>
-                        </div>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="travel-guidance">I have general travel concerns and I need help solving them.</label>
-                        </div>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="accommodation-guidance">I need help finding accommodation.</label>
-                        </div>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="visa-invitation">I need a visa invitation.</label>
-                        </div>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="financial-aid">I have concerns regarding the participation fee and I need aid.</label>
-                        </div>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="prayer-room">I need a prayer room.</label>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="additional-circumstances">If any, please specify additional, relevant circumstances impacting your attendance at FDR.</label>
-                        <textarea id="additional-circumstances" name="additional-circumstances"></textarea>
-                    </div>
-                    <div class="navigation-buttons">
-                        <button type="button" onclick="showPreviousSection()">← Previous</button>
-                        <button type="button" onclick="showNextSection('mun-experience')">Next →</button>
-                    </div>
-                </section>
-                <section id="mun-experience" class="hidden fade-in">
-                    <h2>Your journey with MUN conferences.</h2>
-                    <div class="card">
-                        <p class="subheading">We strongly recommend you use a word-processor such as Google Docs for character-limited stimulus questions to ensure you meet all requirements. Your answers should be clear and concise.</p>
-                        <p class="subheading">For this section, you may find it useful to access the following resource(s):</p>
-                        <ul>
-                            <li><a href="guide-to-applying-link">Guide to applying</a></li>
-                            <li><a href="academic-honesty-link">Academic honesty</a></li>
-                            <li><a href="committee-overview-link">Committee overview</a></li>
-                            <li><a href="country-matrices-link">Country matrices</a></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="mun-experience">Detail your previous <strong>experience</strong> with MUN conferences.</label><span class="required-star">*</span>
-                        <p class="question-description">We encourage you to outline your relevant experience in the following format, as a list:</p>
-                        <p class="question-description"><em>Conference (edition), Committee, Country represented, Award (if applicable).</em></p>
-                        <p class="question-description"><em>e.g. FDRMUN 24, Historical Security Council, French Republic, Golden Gavel Award.</em></p>
-                        <p class="question-description">There is no character limit for this question. We do, however, encourage some brevity. If your experience with MUN conferences is extensive, please limit your list to your proudest, most defining achievements. If you do not have experience limited to MUN conferences, but concerning other relevent co-curricular activities, you may detail these below.</p>
-                        <textarea id="mun-experience" name="mun-experience" class="auto-resize" required></textarea>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="transformative-experience">How do you plan to contribute to FDRMUN as a delegate, and what unique perspectives, opinions and insights will you bring to your committee and the conference as a whole?</label><span class="required-star">*</span>
-                        <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150 words.</em></p>
-                        <textarea id="transformative-experience" name="transformative-experience" data-maxlength="700" class="auto-resize" required></textarea>
-                        <div id="char-count-transformative-experience" class="char-count"></div>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="first-committee-choice">What is your <strong>first committee choice?</strong></label><span class="required-star">*</span>
-                        <select id="first-committee-choice" name="first-committee-choice">
-                            <option value="">Select a committee</option>
-                            <option value="DISEC">General Assembly 1—DISEC</option>
-                            <option value="SPECPOL">General Assembly 4—SPECPOL</option>
-                            <option value="UNHRC">United Nations Human Rights Council—UNHRC</option>
-                            <option value="EC">European Council—EC</option>
-                            <option value="Continuous Crisis">Ad-Hoc Committee of the Secretary General—Continuous Crisis</option>
-                            <option value="SC">Security Council—SC</option>
-                        </select>
-                    </div>
-                    <div class="card" id="first-country-choice-container" style="display: none;">
-                        <label class="question" for="first-country-choice">What is your <strong>first country choice?</strong></label><span class="required-star">*</span>
-                        <select id="first-country-choice" name="first-country-choice" required>
-                            <option value="">Select an option</option>
-                        </select>
-                    </div>
-                    <div class="card card-below">
-                        <label class="question" for="second-committee-choice">What is your <strong>second committee choice?</strong></label><span class="required-star">*</span>
-                        <select id="second-committee-choice" name="second-committee-choice">
-                            <option value="">Select a committee</option>
-                            <option value="DISEC">General Assembly 1—DISEC</option>
-                            <option value="SPECPOL">General Assembly 4—SPECPOL</option>
-                            <option value="UNHRC">United Nations Human Rights Council—UNHRC</option>
-                            <option value="EC">European Council—EC</option>
-                            <option value="Continuous Crisis">Ad-Hoc Committee of the Secretary General—Continuous Crisis</option>
-                            <option value="SC">Security Council—SC</option>
-                        </select>
-                    </div>
-                    <div class="card" id="second-country-choice-container" style="display: none;">
-                        <label class="question" for="second-country-choice">What is your <strong>second country choice?</strong></label><span class="required-star">*</span>
-                        <select id="second-country-choice" name="second-country-choice" required>
-                            <option value="">Select an option</option>
-                        </select>
-                    </div>
-                    <div class="card card-below">
-                        <label class="question" for="third-committee-choice">What is your <strong>third committee choice?</strong></label><span class="required-star">*</span>
-                        <select id="third-committee-choice" name="third-committee-choice">
-                            <option value="">Select a committee</option>
-                            <option value="DISEC">General Assembly 1—DISEC</option>
-                            <option value="SPECPOL">General Assembly 4—SPECPOL</option>
-                            <option value="UNHRC">United Nations Human Rights Council—UNHRC</option>
-                            <option value="EC">European Council—EC</option>
-                            <option value="Continuous Crisis">Ad-Hoc Committee of the Secretary General—Continuous Crisis</option>
-                            <option value="SC">Security Council—SC</option>
-                        </select>
-                    </div>
-                    <div class="card" id="third-country-choice-container" style="display: none;">
-                        <label class="question" for="third-country-choice">What is your <strong>third country choice?</strong></label><span class="required-star">*</span>
-                        <select id="third-country-choice" name="third-country-choice" required>
-                            <option value="">Select an option</option>
-                        </select>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="personal-choice">Why do the specific country and committee combinations above speak to you?</label><span class="required-star">*</span>
-                        <p class="question-description"><em>Maximum 1000 characters excluding spaces. This is around 200 words.</em></p>
-                        <textarea id="personal-choice" name="transformative-experience" data-maxlength="1000" class="auto-resize" required></textarea>
-                        <div id="char-count-personal-choice" class="char-count"></div>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="favorite-period">What would you say is your <strong>favourite period of time</strong> in terms of politics and why?</label></span>
-                        <p class="question-description"><em>This question is entirely <strong>optional</strong> and gives you the opportunity to share information you believe would strengthen your application. Choosing not to answer will not disadvantage or negatively impact your application in any way.</em></p>
-                        <p class="question-description"><em>Maximum 700 characters excluding spaces. This is around 150 words.</em></p>
-                        <textarea id="favorite-period" name="favorite-period" data-maxlength="700" class="auto-resize"></textarea>
-                        <div id="char-count-favorite-period" class="char-count"></div>
-                    </div>
-                    <div class="navigation-buttons">
-                        <button type="button" onclick="showPreviousSection()">← Previous</button>
+<button type="button" onclick="showPreviousSection()">← Previous</button>  
                         <button type="button" onclick="showNextSection('terms-conditions')">Next →</button>
+                </div>
+            </section>
+            <section id="terms-conditions" class="hidden fade-in">
+                <h2>The Ts and Cs of your application.</h2>
+                <div class="card">
+                    <p class="subheading">For this section, you may need to access the following resource(s):</p>
+                    <ul>
+                        <li><a href="privacy-link">Privacy</a></li>
+                        <li><a href="code-of-conduct-link">Code of Conduct and Academic Honesty</a></li>
+                        <li><a href="anti-harassment-policy-link">Anti-harassment Policy</a></li>
+                        <li><a href="general-terms-link">General Terms and Conditions</a></li>
+                        <li><a href="training-modules-link">Training Modules</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate.</strong></label><span class="required-star">*</span>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="accuracy-certification"></label>
                     </div>
-                </section>
-                <section id="terms-conditions" class="hidden fade-in">
-                    <h2>The Ts and Cs of your application.</h2>
-                    <div class="card">
-                        <p class="subheading">For this section, you may need to access the following resource(s):</p>
-                        <ul>
-                            <li><a href="privacy-link">Privacy</a></li>
-                            <li><a href="code-of-conduct-link">Code of Conduct and Academic Honesty</a></li>
-                            <li><a href="anti-harassment-policy-link">Anti-harassment Policy</a></li>
-                            <li><a href="general-terms-link">General Terms and Conditions</a></li>
-                            <li><a href="training-modules-link">Training Modules</a></li>
-                        </ul>
+                </div>
+                <div class="card">
+                    <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent.</label><span class="required-star">*</span>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="suspension-agreement"></label>
                     </div>
-                    <div class="card">
-                        <label class="question" for="accuracy-certification">I certify that the <strong>information I have provided is accurate.</strong></label><span class="required-star">*</span>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="accuracy-certification" name="accuracy-certification" required class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="accuracy-certification"></label>
+                </div>
+                <div class="card">
+                    <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned.</label><span class="required-star">*</span>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
+                        <span class="checkmark"></span>
+                        <label for="code-of-conduct-agreement"></label>
+                    </div>
+                </div>
+                <div class="card">
+                    <label class="question" for="training-modules">I would like to <strong>sign up for online Training Modules.</strong></label><span class="required-star">*</span>
+                    <p class="subheading"><em>Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</em></p>
+                    <div class="radio-container">
+                        <div class="radio-button">
+                            <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required>
+                            <span class="radio"></span>
+                            <label for="training-modules-yes">Yes</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="training-modules-no" name="training-modules" value="no" required>
+                            <span class="radio"></span>
+                            <label for="training-modules-no">No</label>
                         </div>
                     </div>
-                    <div class="card">
-                        <label class="question" for="suspension-agreement">I agree to the <strong>suspension</strong> of my application for FDRMUN if it is discovered that the information I have provided is inaccurate, misleading or fraudulent.</label><span class="required-star">*</span>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="suspension-agreement" name="suspension-agreement" required class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="suspension-agreement"></label>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="code-of-conduct-agreement">I agree to the stipulations of the <strong>Code of Conduct</strong> and <strong>Academic Honesty</strong> and <strong>Anti-harassment policies</strong>, and understand the penalties associated with breaches of the aforementioned.</label><span class="required-star">*</span>
-                        <div class="checkbox-container">
-                            <input type="checkbox" id="code-of-conduct-agreement" name="code-of-conduct-agreement" required class="custom-checkbox">
-                            <span class="checkmark"></span>
-                            <label for="code-of-conduct-agreement"></label>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="training-modules">I would like to <strong>sign up for online Training Modules.</strong></label><span class="required-star">*</span>
-                        <p class="subheading"><em>Note that if you are part of a school-affiliated delegation and your chaperone has signed up, you are automatically signed up, too. You should contact your faculty advisor/chaperone for more information or opt out. Training Modules are offered free of additional charge and take place between the 6th and 13th of January, 2025. You will be contacted in December with more information. There is no penalty for non-attendance or any additional requirement for RSVP-ing.</em></p>
-                        <div class="radio-container">
-                            <div class="radio-button">
-                                <input type="radio" id="training-modules-yes" name="training-modules" value="yes" required>
-                                <span class="radio"></span>
-                                <label for="training-modules-yes">Yes</label>
-                            </div>
-                            <div class="radio-button">
-                                <input type="radio" id="training-modules-no" name="training-modules" value="no" required>
-                                <span class="radio"></span>
-                                <label for="training-modules-no">No</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <label class="question" for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it below.</label>
-                        <input type="text" id="referral-code" name="referral-code" placeholder="Code starting with FDRxx...">
-                    </div>
-                    <div class="card">
-                        <label class="question" for="additional-info">Is there anything else that you'd like us to know?</label>
-                        <textarea id="additional-info" name="additional-info"></textarea>
-                    </div>
-                    <div class="navigation-buttons">
-                        <button type="button" onclick="showPreviousSection()">← Previous</button>
-                        <button type="submit">Submit →</button>
-                    </div>
-                </section>
-                </form>
-                <footer>
-                    <hr>
-                    <div class="image-section">
-                        <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD Logo" style="width: 190px; height: auto;">
-                    </div>
-                </footer>
-                <script src="script.js"></script>
-                </body>
-                </html>
+                </div>
+                <div class="card">
+                    <label class="question" for="referral-code">If you have a <strong>referral</strong> (sometimes known as an IncA code), insert it below.</label>
+                    <input type="text" id="referral-code" name="referral-code" placeholder="Code starting with FDRxx...">
+                </div>
+                <div class="card">
+                    <label class="question" for="additional-info">Is there anything else that you'd like us to know?</label>
+                    <textarea id="additional-info" name="additional-info"></textarea>
+                </div>
+                <div class="navigation-buttons">
+<button type="button" onclick="showPreviousSection()">← Previous</button>   
+                    <button type="submit">Submit →</button>
+                </div>
+            </section>
+        </form>
+    <footer>
+        <hr>
+        <div class="image-section">
+            <img src="https://i.ibb.co/WWptqnC/PfF.png" alt="PfD Logo" style="width: 190px; height: auto;">
+        </div>  
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
