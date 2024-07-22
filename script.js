@@ -396,75 +396,54 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-   function handleSchoolRepNext() {
-    const currentSection = document.getElementById('school-group-delegation');
-    if (!validateSection(currentSection.id)) {
-        return; // Stop execution if validation fails
-    }
+    function handleSchoolRepNext() {
+        const currentSection = document.getElementById('school-group-delegation');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
 
-    const schoolRep = document.querySelector('input[name="school-rep"]:checked');
-    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-
-    if (schoolRep) {
-        if (schoolRep.value === 'yes') {
-            if (specialArrangements && specialArrangements.value === 'yes') {
-                showNextSection('special-guidance'); // Direct to special arrangements if needed
+        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
+        if (schoolRep) {
+            if (schoolRep.value === 'yes') {
+                showNextSection('chaperone-delegation');
             } else {
-                showNextSection('chaperone-delegation'); // Otherwise, go to chaperone delegation details
+                showNextSection('special-arrangements');
             }
         } else {
-            if (specialArrangements && specialArrangements.value === 'yes') {
-                showNextSection('special-guidance'); // Direct to special arrangements if needed
-            } else {
-                showNextSection('mun-experience'); // Otherwise, go to MUN experience section
-            }
+            document.getElementById('school-rep-warning').classList.remove('hidden');
         }
-    } else {
-        document.getElementById('school-rep-warning').classList.remove('hidden');
     }
-}
+
     function handleSpecialArrangementsNext() {
-    const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-    const userType = document.getElementById('user-type').value;
-
-    if (specialArrangements) {
-        if (specialArrangements.value === 'yes') {
-            showNextSection('special-guidance'); // Direct to special guidance if needed
-        } else {
-            if (userType === 'chaperone') {
-                showNextSection('terms-conditions'); // Direct chaperones to terms and conditions
+        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+        if (specialArrangements) {
+            if (specialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
             } else {
-                showNextSection('mun-experience'); // Otherwise, go to MUN experience section
+                showNextSection('mun-experience');
             }
-        }
-    } else {
-        document.getElementById('special-arrangements-warning').classList.remove('hidden');
-    }
-}
-
-   function handleOtherInfoNext() {
-    const currentSection = document.getElementById('chaperone-delegation');
-    if (!validateSection(currentSection.id)) {
-        return; // Stop execution if validation fails
-    }
-
-    const otherInfo = document.querySelector('input[name="other-info"]:checked');
-    const userType = document.getElementById('user-type').value;
-
-    if (otherInfo) {
-        if (otherInfo.value === 'yes') {
-            showNextSection('special-guidance'); // Direct to special guidance if needed
         } else {
-            if (userType === 'chaperone') {
-                showNextSection('terms-conditions'); // Direct chaperones to terms and conditions
-            } else {
-                showNextSection('mun-experience'); // Otherwise, go to MUN experience section
-            }
+            document.getElementById('special-arrangements-warning').classList.remove('hidden');
         }
-    } else {
-        document.getElementById('other-info-warning').classList.remove('hidden');
     }
-}
+
+    function handleOtherInfoNext() {
+        const currentSection = document.getElementById('chaperone-delegation');
+        if (!validateSection(currentSection.id)) {
+            return; // Stop execution if validation fails
+        }
+
+        const otherInfo = document.querySelector('input[name="other-info"]:checked');
+        if (otherInfo) {
+            if (otherInfo.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('terms-conditions');
+            }
+        } else {
+            document.getElementById('other-info-warning').classList.remove('hidden');
+        }
+    }
 
     function handleStudentSpecialArrangementsNext() {
         const currentSection = document.getElementById('student-delegation');
