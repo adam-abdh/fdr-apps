@@ -14,15 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCountryOptions(prefix) {
         console.log(`updateCountryOptions called with prefix: ${prefix}`);
 
-        const userTypeField = document.getElementById('user-type');
-        const studentFields = document.querySelectorAll('.student-field');
         const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
         const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
         const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
         console.log(`Selected committee: ${selectedCommittee}`);
-        const formElement = document.getElementById('registration-form');
-        const formData = new FormData(formElement);
         const currentlySelectedCountry = countrySelector.value;
 
         countrySelector.innerHTML = '<option value="">Select an option</option>';
@@ -80,12 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
             countrySelector.appendChild(option);
         }
 
-        // If no country is selected, don't auto-select
         if (!countrySelector.value) {
             countrySelector.value = "";
         }
 
-        // Update the selectedCountries object
         if (selectedCountries[prefix].selectedCountry && selectedCountries[prefix].selectedCountry !== currentlySelectedCountry) {
             delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
         }
@@ -106,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 delete selectedCountries[prefix][selectedCountries[prefix].selectedCountry];
                 selectedCountries[prefix].selectedCountry = null;
             }
-            updateCountryOptions(prefix); // Re-populate the dropdown to reflect the change
+            updateCountryOptions(prefix);
         });
 
         animateCardsBelow(countryContainer);
@@ -381,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleStudentGroupNext() {
         const currentSection = document.getElementById('student-group-delegation');
         if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
+            return;
         }
 
         const studentGroup = document.querySelector('input[name="student-group"]:checked');
@@ -399,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleSchoolRepNext() {
         const currentSection = document.getElementById('school-group-delegation');
         if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
+            return;
         }
 
         const schoolRep = document.querySelector('input[name="school-rep"]:checked');
@@ -430,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleOtherInfoNext() {
         const currentSection = document.getElementById('chaperone-delegation');
         if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
+            return;
         }
 
         const otherInfo = document.querySelector('input[name="other-info"]:checked');
@@ -448,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleStudentSpecialArrangementsNext() {
         const currentSection = document.getElementById('student-delegation');
         if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
+            return;
         }
 
         const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
@@ -473,7 +467,9 @@ function toggleOtherOption(element, otherText) {
         otherText.classList.remove('blur-in-top');
     }
 }
+
 function toggleStudentFieldsRequirement(isRequired) {
+    const studentFields = document.querySelectorAll('.student-field');
     studentFields.forEach(field => {
         if (isRequired) {
             field.setAttribute('required', 'required');
@@ -484,11 +480,13 @@ function toggleStudentFieldsRequirement(isRequired) {
 }
 
 document.getElementById('chaperone-selector').addEventListener('change', function() {
+    const userTypeField = document.getElementById('user-type');
     userTypeField.value = 'chaperone';
     toggleStudentFieldsRequirement(false);
 });
 
 document.getElementById('student-selector').addEventListener('change', function() {
+    const userTypeField = document.getElementById('user-type');
     userTypeField.value = 'student';
     toggleStudentFieldsRequirement(true);
 });
@@ -512,14 +510,14 @@ function handleSubmit(event) {
             Email: formData.get('email'),
             "Date of Birth": formData.get('dob'),
             Age: calculateAge(formData.get('dob')),
-            fdrID: generateFdrID(), // You'll need to implement this function
+            fdrID: generateFdrID(),
             Institution: formData.get('institution'),
             "Phone Number": formData.get('phone'),
             "Group Name": formData.get('delegation-name'),
             Region: formData.get('region'),
             Country: formData.get('country'),
             Source: formData.get('find-out'),
-            File: '', // If you're not handling file uploads
+            File: '',
             Timestamp: new Date().toISOString()
         };
 
