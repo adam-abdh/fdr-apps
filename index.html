@@ -426,12 +426,12 @@
                     <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
                     <div class="radio-container">
                         <div class="radio-button">
-                            <input type="radio" id="student-group-yes" name="student-group" value="yes" required>
+                            <input type="radio" id="student-group-yes" name="student-group" value="yes">
                             <span class="radio"></span>
                             <label for="student-group-yes">Yes</label>
                         </div>
                         <div class="radio-button">
-                            <input type="radio" id="student-group-no" name="student-group" value="no" required>
+                            <input type="radio" id="student-group-no" name="student-group" value="no">
                             <span class="radio"></span>
                             <label for="student-group-no">No</label>
                         </div>
@@ -449,12 +449,12 @@
                     <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
                     <div class="radio-container">
                         <div class="radio-button">
-                            <input type="radio" id="school-rep-yes" name="school-rep" value="yes" required>
+                            <input type="radio" id="school-rep-yes" name="school-rep" value="yes">
                             <span class="radio"></span>
                             <label for="school-rep-yes">Yes</label>
                         </div>
                         <div class="radio-button">
-                            <input type="radio" id="school-rep-no" name="school-rep" value="no" required>
+                            <input type="radio" id="school-rep-no" name="school-rep" value="no">
                             <span class="radio"></span>
                             <label for="school-rep-no">No</label>
                         </div>
@@ -472,12 +472,12 @@
                     <p class="question-description"><em>Your answer will determine the questions in the next section.</em></p>
                     <div class="radio-container">
                         <div class="radio-button">
-                            <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes" required>
+                            <input type="radio" id="special-arrangements-yes" name="special-arrangements" value="yes">
                             <span class="radio"></span>
                             <label for="special-arrangements-yes">Yes</label>
                         </div>
                         <div class="radio-button">
-                            <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no" required>
+                            <input type="radio" id="special-arrangements-no" name="special-arrangements" value="no">
                             <span class="radio"></span>
                             <label for="special-arrangements-no">No</label>
                         </div>
@@ -505,6 +505,7 @@
                 </div>
                 <div class="card">
                     <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
+                  <p class="question-description"><em>This will be used to identify the student members of your delegation and issue separate requests. Usually, representatives opt for a school name or a country. Please make sure spelling is consistent between yourself and other delegation members.</em></p>
                     <input type="text" id="delegation-name" name="delegation-name">
                 </div>
                 <div class="card">
@@ -517,24 +518,12 @@
                 </div>
                 <div class="card">
                     <label class="question" for="other-info">Is there anything else you'd like us to know about either yourself, or the delegation members? This INCLUDES fee waivers, visa accommodations, prayer rooms or learning differences. This does not negatively impact your delegation’s odds of admission.</label><span class="required-star">*</span>
-                    <div class="radio-container">
-                        <div class="radio-button">
-                            <input type="radio" id="other-info-yes" name="other-info" value="yes">
-                            <span class="radio"></span>
-                            <label for="other-info-yes">Yes</label>
-                        </div>
-                        <div class="radio-button">
-                            <input type="radio" id="other-info-no" name="other-info" value="no">
-                            <span class="radio"></span>
-                            <label for="other-info-no">No</label>
-                        </div>
-                    </div>
+                    <textarea id="other-info" name="other-info" class="auto-resize"></textarea>
                 </div>
                 <div class="navigation-buttons">
-<button type="button" onclick="showPreviousSection()">← Previous</button>                 
+                    <button type="button" onclick="showPreviousSection()">← Previous</button>                 
                     <button type="button" onclick="handleOtherInfoNext()">Next →</button>
                 </div>
-                <div id="other-info-warning" class="warning hidden">Please select an option.</div>
             </section>
             <section id="student-delegation" class="hidden fade-in">
                 <h2>Delegation-specific Dialogue for Students and Team-members</h2>
@@ -579,39 +568,39 @@
             <section id="special-guidance" class="hidden fade-in">
                 <h2>Special arrangements and further guidance.</h2>
                 <div class="card">
-                    <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process.</em></p>
+                    <p class="question-description"><em>Please note that the information you provide in this section is used to ensure proper accommodation for special circumstances at FDR. This information is only accessed by our designated safeguarding team, and will not disadvantage you in the selection and assignment process. To gain more details about your special requirements, we will reach out within 24 hours of form submission.</em></p>
                 </div>
                 <div class="card">
                     <label class="question" for="special-circumstances">Circumstances to be considered. Check all that may apply.</label><span class="required-star">*</span>
                     <div class="checkbox-container">
                         <input type="checkbox" id="transportation-guidance" name="special-circumstances" value="transportation-guidance" class="custom-checkbox">
                         <span class="checkmark"></span>
-                        <label for="transportation-guidance">I need transportation guidance</label>
+                        <label for="transportation-guidance">I need help securing or paying for transportation to-and-from venues.</label>
                     </div>
                     <div class="checkbox-container">
                         <input type="checkbox" id="travel-guidance" name="special-circumstances" value="travel-guidance" class="custom-checkbox">
                         <span class="checkmark"></span>
-                        <label for="travel-guidance">I need travel guidance</label>
+                        <label for="travel-guidance">I need help finding flights or train tickets or I have a general concern regarding travelling to Romania.</label>
                     </div>
                     <div class="checkbox-container">
                         <input type="checkbox" id="accommodation-guidance" name="special-circumstances" value="accommodation-guidance" class="custom-checkbox">
                         <span class="checkmark"></span>
-                        <label for="accommodation-guidance">I need accommodation guidance</label>
+                        <label for="accommodation-guidance">I need help finding accommodation.</label>
                     </div>
                     <div class="checkbox-container">
                         <input type="checkbox" id="visa-invitation" name="special-circumstances" value="visa-invitation" class="custom-checkbox">
                         <span class="checkmark"></span>
-                        <label for="visa-invitation">I need a visa invitation</label>
+                        <label for="visa-invitation">I need a visa invitation to travel to Romania.</label>
                     </div>
                     <div class="checkbox-container">
                         <input type="checkbox" id="financial-aid" name="special-circumstances" value="financial-aid" class="custom-checkbox">
                         <span class="checkmark"></span>
-                        <label for="financial-aid">I intend to apply for financial aid</label>
+                        <label for="financial-aid">I have concerns about my ability to pay for the conference/I need financial aid.</label>
                     </div>
                     <div class="checkbox-container">
                         <input type="checkbox" id="prayer-room" name="special-circumstances" value="prayer-room" class="custom-checkbox">
                         <span class="checkmark"></span>
-                        <label for="prayer-room">I need a prayer room</label>
+                        <label for="prayer-room">I need a prayer room.</label>
                     </div>
                 </div>
                 <div class="card">
