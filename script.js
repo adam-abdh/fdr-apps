@@ -21,8 +21,6 @@
     function handleSubmit(event) {
         event.preventDefault();
         if (validateAge() && validateEmail()) {
-            const formData = new FormData(event.target);
-            const data = {};
             formData.forEach((value, key) => {
                 data[key] = value;
             });
@@ -55,6 +53,8 @@
         const age = today.getFullYear() - dobDate.getFullYear();
         const monthDifference = today.getMonth() - dobDate.getMonth();
         const dayDifference = today.getDate() - dobDate.getDate();
+        const formData = new FormData(event.target);
+        const data = {};
 
         if (dobDate > today) {
             dobError.textContent = 'Your date of birth cannot be in the future, silly!';
@@ -586,4 +586,3 @@ pronounsOtherCheckbox.addEventListener('change', function() {
             document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
         }
     }
-});
