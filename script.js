@@ -388,11 +388,7 @@ pronounsOtherCheckbox.addEventListener('change', function() {
     const specialArrangementsYes = document.getElementById('special-arrangements-yes');
     const specialArrangementsNo = document.getElementById('special-arrangements-no');
     const specialArrangementsFields = document.querySelectorAll('#special-arrangements input, #special-arrangements select, #special-arrangements textarea');
-
-    const otherInfoYes = document.getElementById('other-info-yes');
-    const otherInfoNo = document.getElementById('other-info-no');
-    const otherInfoFields = document.querySelectorAll('#chaperone-delegation input, #chaperone-delegation select, #chaperone-delegation textarea');
-
+    
     const studentSpecialArrangementsYes = document.getElementById('student-special-arrangements-yes');
     const studentSpecialArrangementsNo = document.getElementById('student-special-arrangements-no');
     const studentSpecialArrangementsFields = document.querySelectorAll('#student-delegation input, #student-delegation select, #student-delegation textarea');
@@ -524,24 +520,6 @@ pronounsOtherCheckbox.addEventListener('change', function() {
             }
         } else {
             document.getElementById('special-arrangements-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleOtherInfoNext() {
-        const currentSection = document.getElementById('chaperone-delegation');
-        if (!validateSection(currentSection.id)) {
-            return; // Stop execution if validation fails
-        }
-
-        const otherInfo = document.querySelector('input[name="other-info"]:checked');
-        if (otherInfo) {
-            if (otherInfo.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('terms-conditions');
-            }
-        } else {
-            document.getElementById('other-info-warning').classList.remove('hidden');
         }
     }
 
