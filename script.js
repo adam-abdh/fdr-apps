@@ -7,20 +7,17 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://script.google.com/macros/s/AKfycbx56rJfZNwXvFOUOka1Vpa3mrJNNMgFiwpkQP-9EYXR8MRO4wlUB-PI3WF67yG7mZBo5A/exec', {
+        fetch('https://api.sheety.co/612e75515da8c92781a85563b25c30f7/regform/rows', {
             method: 'POST',
-            body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ row: data })
         })
         .then(response => response.json())
-        .then(data => {
-            if (data.result === 'success') {
-                alert('Form submitted successfully!');
-            } else {
-                alert('Form submission failed.');
-            }
+        .then(json => {
+            console.log(json);
+            alert('Form submitted successfully!');
         })
         .catch(error => {
             console.error('Error:', error);
