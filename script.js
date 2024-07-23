@@ -24,12 +24,6 @@ function updateCountryOptions(prefix) {
         countryContainer.style.display = 'block';
         countryContainer.classList.add('slide-in-blurred-top');
 
-           const currentlySelectedCountry = countrySelector.value;
-        countrySelector.innerHTML = '<option value="">Select an option</option>';
-
-        countryContainer.style.display = 'block';
-        countryContainer.classList.add('slide-in-blurred-top');
-
         let countries = [];
         switch (selectedCommittee) {
             case 'DISEC':
