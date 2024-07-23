@@ -257,6 +257,27 @@ function updateCountryOptions(prefix) {
         }
     }
 
+    function handleOtherInfoNext() {
+    const currentSection = document.getElementById('chaperone-delegation');
+    if (!validateSection(currentSection.id)) {
+        return;
+    }
+
+    // Example additional logic: Check if delegation number is within a valid range
+    const delegationNumberInput = document.getElementById('delegation-number');
+    const delegationNumber = parseInt(delegationNumberInput.value, 10);
+    if (isNaN(delegationNumber) || delegationNumber < 1 || delegationNumber > 20) {
+        alert('Please enter a valid delegation number between 1 and 20.');
+        delegationNumberInput.classList.add('input-error');
+        return;
+    } else {
+        delegationNumberInput.classList.remove('input-error');
+    }
+
+
+    showNextSection('terms-conditions'); 
+}
+
     function toggleRequiredAttribute(fields, isRequired) {
         fields.forEach(field => {
             if (isRequired) {
