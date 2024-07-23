@@ -301,74 +301,7 @@ function updateCountryOptions(prefix) {
         });
         autoResizeTextarea(textarea);
     });
-
-    function handleStudentGroupNext() {
-        const currentSection = document.getElementById('student-group-delegation');
-        if (!validateSection(currentSection.id)) {
-            return;
-        }
-
-        const studentGroup = document.querySelector('input[name="student-group"]:checked');
-        if (studentGroup) {
-            if (studentGroup.value === 'yes') {
-                showNextSection('student-delegation');
-            } else {
-                showNextSection('school-group-delegation');
-            }
-        } else {
-            document.getElementById('student-group-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleSchoolRepNext() {
-        const currentSection = document.getElementById('school-group-delegation');
-        if (!validateSection(currentSection.id)) {
-            return;
-        }
-
-        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
-        if (schoolRep) {
-            if (schoolRep.value === 'yes') {
-                showNextSection('chaperone-delegation');
-            } else {
-                showNextSection('special-arrangements');
-            }
-        } else {
-            document.getElementById('school-rep-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleSpecialArrangementsNext() {
-        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
-        if (specialArrangements) {
-            if (specialArrangements.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('mun-experience');
-            }
-        } else {
-            document.getElementById('special-arrangements-warning').classList.remove('hidden');
-        }
-    }
-
-    function handleStudentSpecialArrangementsNext() {
-        const currentSection = document.getElementById('student-delegation');
-        if (!validateSection(currentSection.id)) {
-            return;
-        }
-
-        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
-        if (studentSpecialArrangements) {
-            if (studentSpecialArrangements.value === 'yes') {
-                showNextSection('special-guidance');
-            } else {
-                showNextSection('mun-experience');
-            }
-        } else {
-            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
-        }
-    }
-
+    
     document.getElementById('registration-form').addEventListener('submit', handleSubmit);
 
     const preferredTitleSelect = document.getElementById('preferred-title');
@@ -485,4 +418,71 @@ function updateCountryOptions(prefix) {
             }
         });
     });
+
+        function handleStudentGroupNext() {
+        const currentSection = document.getElementById('student-group-delegation');
+        if (!validateSection(currentSection.id)) {
+            return;
+        }
+
+        const studentGroup = document.querySelector('input[name="student-group"]:checked');
+        if (studentGroup) {
+            if (studentGroup.value === 'yes') {
+                showNextSection('student-delegation');
+            } else {
+                showNextSection('school-group-delegation');
+            }
+        } else {
+            document.getElementById('student-group-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleSchoolRepNext() {
+        const currentSection = document.getElementById('school-group-delegation');
+        if (!validateSection(currentSection.id)) {
+            return;
+        }
+
+        const schoolRep = document.querySelector('input[name="school-rep"]:checked');
+        if (schoolRep) {
+            if (schoolRep.value === 'yes') {
+                showNextSection('chaperone-delegation');
+            } else {
+                showNextSection('special-arrangements');
+            }
+        } else {
+            document.getElementById('school-rep-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleSpecialArrangementsNext() {
+        const specialArrangements = document.querySelector('input[name="special-arrangements"]:checked');
+        if (specialArrangements) {
+            if (specialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('special-arrangements-warning').classList.remove('hidden');
+        }
+    }
+
+    function handleStudentSpecialArrangementsNext() {
+        const currentSection = document.getElementById('student-delegation');
+        if (!validateSection(currentSection.id)) {
+            return;
+        }
+
+        const studentSpecialArrangements = document.querySelector('input[name="student-special-arrangements"]:checked');
+        if (studentSpecialArrangements) {
+            if (studentSpecialArrangements.value === 'yes') {
+                showNextSection('special-guidance');
+            } else {
+                showNextSection('mun-experience');
+            }
+        } else {
+            document.getElementById('student-special-arrangements-warning').classList.remove('hidden');
+        }
+    }
 });
