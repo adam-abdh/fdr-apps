@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCountryOptions(prefix) {
-        const committeeSelector = document.getElementById(${prefix}-committee-choice);
-        const countryContainer = document.getElementById(${prefix}-country-choice-container);
-        const countrySelector = document.getElementById(${prefix}-country-choice);
+      const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
+        const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
+        const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
 
         const currentlySelectedCountry = countrySelector.value;
