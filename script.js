@@ -114,14 +114,14 @@ function updateCountryOptions(prefix) {
         });
     }
 
-    function updateCharCount(textareaId, charCountId) {
-    const textarea = document.getElementById(textareaId);
-    const charCount = document.getElementById(charCountId);
-    const currentLength = textarea.value.replace(/\s/g, '').length;
-    const maxLength = parseInt(textarea.getAttribute('Ftdata-maxlength'));
-    const remainingChars = maxLength - currentLength;
-    charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} available`;
-}
+        function updateCharCount(textareaId, charCountId) {
+        const textarea = document.getElementById(textareaId);
+        const charCount = document.getElementById(charCountId);
+        const currentLength = textarea.value.replace(/\s/g, '').length;
+        const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
+        const remainingChars = maxLength - currentLength;
+        charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} available.`;
+    }
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
@@ -144,12 +144,12 @@ function updateCountryOptions(prefix) {
 
         textarea.addEventListener('paste', function(e) {
             e.preventDefault();
-            const pastedText = (e.clipboardData || window.clipboardData).getData('text/plain');
+            const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
             const maxLength = parseInt(this.getAttribute('data-maxlength'));
             const currentTextWithoutSpaces = this.value.replace(/\s/g, '');
             const pastedTextWithoutSpaces = pastedText.replace(/\s/g, '');
             const remainingChars = maxLength - currentTextWithoutSpaces.length;
-
+            
             let allowedText = '';
             let charCount = 0;
             for (let i = 0; i < pastedText.length; i++) {
@@ -159,13 +159,14 @@ function updateCountryOptions(prefix) {
                 }
                 allowedText += pastedText[i];
             }
-
+            
             document.execCommand('insertText', false, allowedText);
-           updateCharCount(this.id, `char-count-${this.id}`);
+            updateCharCount(this.id, `char-count-${this.id}`);
         });
 
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
+
     function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
