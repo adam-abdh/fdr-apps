@@ -12,10 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.style.height = textarea.scrollHeight + 'px';
     }
 
-    function updateCountryOptions(prefix) {
-      const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
-const countrySelector = document.getElementById(`${prefix}-country-choice`);
-        const selectedCommittee = committeeSelector.value;
+function updateCountryOptions(prefix) {
+    const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
+    const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
+    const countrySelector = document.getElementById(`${prefix}-country-choice`);
+    const selectedCommittee = committeeSelector.value;
 
         const currentlySelectedCountry = countrySelector.value;
         countrySelector.innerHTML = '<option value="">Select an option</option>';
