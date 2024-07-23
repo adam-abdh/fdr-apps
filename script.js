@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateCountryOptions(prefix) {
       const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
-        const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
         const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
 
