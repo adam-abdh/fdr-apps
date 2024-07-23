@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let formPath = ['welcome'];
 
     function autoResizeTextarea(textarea) {
-        textarea.style.height = 'auto';
+        textarea.style.height = 'auto';c
         textarea.style.height = textarea.scrollHeight + 'px';
     }
 
     function updateCountryOptions(prefix) {
       const countryContainer = document.getElementById(`${prefix}-country-choice-container`);
-        const countrySelector = document.getElementById(`${prefix}-country-choice`);
+const countrySelector = document.getElementById(`${prefix}-country-choice`);
         const selectedCommittee = committeeSelector.value;
 
         const currentlySelectedCountry = countrySelector.value;
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const textarea = document.getElementById(textareaId);
     const charCount = document.getElementById(charCountId);
     const currentLength = textarea.value.replace(/\s/g, '').length;
-    const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
+    const maxLength = parseInt(textarea.getAttribute('Ftdata-maxlength'));
     const remainingChars = maxLength - currentLength;
     charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} available`;
 }
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 this.value = truncatedText;
             }
-            updateCharCount(this.id, char-count-${this.id});
+            updateCharCount(this.id, `char-count-${this.id}`);
         });
 
         textarea.addEventListener('paste', function(e) {
@@ -140,10 +140,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             document.execCommand('insertText', false, allowedText);
-            updateCharCount(this.id, char-count-${this.id});
+           updateCharCount(this.id, `char-count-${this.id}`);
         });
 
-        updateCharCount(textarea.id, char-count-${textarea.id});
+        updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
     function validateAge() {
         const dobInput = document.getElementById('dob');
