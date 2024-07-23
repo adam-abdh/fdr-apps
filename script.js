@@ -94,13 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCharCount(textareaId, charCountId) {
-        const textarea = document.getElementById(textareaId);
-        const charCount = document.getElementById(charCountId);
-        const currentLength = textarea.value.replace(/\s/g, '').length;
-        const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
-        const remainingChars = maxLength - currentLength;
-        charCount.textContent = ${remainingChars} character${remainingChars !== 1 ? 's' : ''} available;
-    }
+    const textarea = document.getElementById(textareaId);
+    const charCount = document.getElementById(charCountId);
+    const currentLength = textarea.value.replace(/\s/g, '').length;
+    const maxLength = parseInt(textarea.getAttribute('data-maxlength'));
+    const remainingChars = maxLength - currentLength;
+    charCount.textContent = `${remainingChars} character${remainingChars !== 1 ? 's' : ''} available`;
+}
 
     document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
         textarea.addEventListener('input', function() {
