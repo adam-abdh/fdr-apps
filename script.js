@@ -53,7 +53,7 @@ function updateCountryOptions(prefix) {
             default:
                 countries = [];
         }
-        }
+    
 
         let availableCountries = countries.filter(country =>
             !Object.entries(selectedCountries).some(([key, value]) =>
