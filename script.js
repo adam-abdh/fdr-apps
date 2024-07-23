@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 data[key] = value;
             });
 
-            fetch('https://hooks.zapier.com/hooks/catch/19550566/220bdkn/', {
+            fetch('https://hooks.zapier.com/hooks/catch/19558908/22pf6be/', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
