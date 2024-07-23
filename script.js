@@ -477,7 +477,7 @@ function updateCountryOptions(prefix) {
         toggleRequiredAttribute(studentSpecialArrangementsFields, false);
     }
 
-    document.querySelectorAll('button[type="button"]').forEach(button => {
+     document.querySelectorAll('button[type="button"]').forEach(button => {
         button.addEventListener('click', function() {
             const action = this.getAttribute('onclick');
             if (action) {
@@ -485,5 +485,4 @@ function updateCountryOptions(prefix) {
             }
         });
     });
-
- 
+});
