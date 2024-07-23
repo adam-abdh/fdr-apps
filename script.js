@@ -215,35 +215,35 @@ function updateCountryOptions(prefix) {
     }
 
     function handleSubmit(event) {
-        event.preventDefault();
-        if (validateAge() && validateEmail()) {
-            const formData = new FormData(event.target);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
+  event.preventDefault();
+  if (validateAge() && validateEmail()) {
+    const formData = new FormData(event.target);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
-            fetch('https://hooks.zapier.com/hooks/catch/19558908/22pf6be/', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    alert('Form submitted successfully!');
-                } else {
-                    alert('Form submission failed.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Form submission failed.');
-            });
-        }
-    }
+    fetch('https://cors-anywhere.herokuapp.com/https://hooks.zapier.com/hooks/catch/19558908/22pf6be/', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert('Form submitted successfully!');
+      } else {
+        alert('Form submission failed.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Form submission failed.');
+    });
+  }
+}
 
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
