@@ -223,7 +223,7 @@ function updateCountryOptions(prefix) {
       data[key] = value;
     });
 
-    fetch('https://cors-anywhere.herokuapp.com/https://hooks.zapier.com/hooks/catch/19558908/22pf6be/', {
+    fetch('https://hook.eu2.make.com/63u996qfu28p2eejs70mklp6wscuqmxy', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
