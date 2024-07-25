@@ -54,7 +54,7 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://1wmfdaa8ik.execute-api.eu-north-1.amazonaws.com/Test/HandleFormSubmit/', {
+        fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
