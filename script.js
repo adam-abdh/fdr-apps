@@ -54,21 +54,37 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3/', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    mode: 'no-cors'  // This sets the request mode to no-cors
-})
-.then(response => {
-    console.log('Request was made, but response cannot be accessed.');
-})
-.catch(error => {
-    console.error('Error:', error);
-    alert('Form submission failed.');
-});
+function handleSubmit(event) {
+    event.preventDefault();
+    if (validateAge() && validateEmail()) {
+        const formData = new FormData(event.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        fetch('https://1wmfdaa8ik.execute-api.eu-north-1.amazonaws.com/Test/HandleFormSubmit/', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'no-cors'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Form submitted successfully!');
+            } else {
+                alert('Form submission failed.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Form submission failed.');
+        });
+    }
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
