@@ -223,7 +223,7 @@ function updateCountryOptions(prefix) {
       data[key] = value;
     });
 
-    fetch('https://hook.eu2.make.com/63u996qfu28p2eejs70mklp6wscuqmxy', {
+    fetch('https://ajaeny2x52iqyi5wpob4fkxwgi0lwjsn.lambda-url.eu-north-1.on.aws/', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
