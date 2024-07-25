@@ -54,22 +54,13 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-function handleSubmit(event) {
-    event.preventDefault();
-    if (validateAge() && validateEmail()) {
-        const formData = new FormData(event.target);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-
-        fetch('https://1wmfdaa8ik.execute-api.eu-north-1.amazonaws.com/Test/HandleFormSubmit/', {
+        fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3/', {
+            mode: 'no-cors',
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
-            },
-            mode: 'no-cors'
+            }
         })
         .then(response => response.json())
         .then(data => {
@@ -85,7 +76,6 @@ function handleSubmit(event) {
         });
     }
 }
-
 
 document.addEventListener('DOMContentLoaded', function() {
 
