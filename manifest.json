@@ -1,0 +1,31 @@
+{
+  "name": "Portico for Delegates, FDRMUN Registration Form",
+  "short_name": "FDRMUN Reg",
+  "description": "Registration form for delegates and delegations of FDRMUN.",
+  "start_url": "delegate.fdrmun.org",
+  "display": "standalone",
+  "background_color": "#4B2355",
+  "theme_color": "#4B2355",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "scope": "/",
+  "orientation": "portrait",
+  "related_applications": [],
+  "prefer_related_applications": false
+}
