@@ -1,3 +1,50 @@
+ function validateAge() {
+        const dobInput = document.getElementById('dob');
+        const dobError = document.getElementById('dob-error');
+        const dobValue = dobInput.value;
+        const dobDate = new Date(dobValue);
+        const today = new Date();
+        const age = today.getFullYear() - dobDate.getFullYear();
+        const monthDifference = today.getMonth() - dobDate.getMonth();
+        const dayDifference = today.getDate() - dobDate.getDate();
+
+        if (dobDate > today) {
+            dobError.textContent = 'Your date of birth cannot be in the future, silly!';
+            dobError.classList.remove('hidden');
+            dobInput.classList.add('input-error');
+            return false;
+        }
+
+        if (age < 13 || (age === 13 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
+            dobError.textContent = 'To ensure compliance with the EU General Data Protection Regulation (GDPR), you should be at least 13 years old to complete this form.';
+            dobError.classList.remove('hidden');
+            dobInput.classList.add('input-error');
+            return false;
+        }
+
+        dobError.textContent = '';
+        dobError.classList.add('hidden');
+        dobInput.classList.remove('input-error');
+        return true;
+    }
+
+    function validateEmail() {
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailError.classList.remove('hidden');
+            emailInput.classList.add('input-error');
+            return false;
+        } else {
+            emailError.textContent = '';
+            emailError.classList.add('hidden');
+            emailInput.classList.remove('input-error');
+            return true;
+        }
+    }
+
 function handleSubmit(event) {
     event.preventDefault();
     if (validateAge() && validateEmail()) {
@@ -30,6 +77,7 @@ function handleSubmit(event) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
     const selectedCountries = {
         'first': {},
         'second': {},
@@ -203,52 +251,6 @@ function updateCountryOptions(prefix) {
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
-    function validateAge() {
-        const dobInput = document.getElementById('dob');
-        const dobError = document.getElementById('dob-error');
-        const dobValue = dobInput.value;
-        const dobDate = new Date(dobValue);
-        const today = new Date();
-        const age = today.getFullYear() - dobDate.getFullYear();
-        const monthDifference = today.getMonth() - dobDate.getMonth();
-        const dayDifference = today.getDate() - dobDate.getDate();
-
-        if (dobDate > today) {
-            dobError.textContent = 'Your date of birth cannot be in the future, silly!';
-            dobError.classList.remove('hidden');
-            dobInput.classList.add('input-error');
-            return false;
-        }
-
-        if (age < 13 || (age === 13 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
-            dobError.textContent = 'To ensure compliance with the EU General Data Protection Regulation (GDPR), you should be at least 13 years old to complete this form.';
-            dobError.classList.remove('hidden');
-            dobInput.classList.add('input-error');
-            return false;
-        }
-
-        dobError.textContent = '';
-        dobError.classList.add('hidden');
-        dobInput.classList.remove('input-error');
-        return true;
-    }
-
-    function validateEmail() {
-        const emailInput = document.getElementById('email');
-        const emailError = document.getElementById('email-error');
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        if (!emailPattern.test(emailInput.value)) {
-            emailError.textContent = 'Please enter a valid email address.';
-            emailError.classList.remove('hidden');
-            emailInput.classList.add('input-error');
-            return false;
-        } else {
-            emailError.textContent = '';
-            emailError.classList.add('hidden');
-            emailInput.classList.remove('input-error');
-            return true;
-        }
-    }
     
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
