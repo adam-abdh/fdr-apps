@@ -54,7 +54,7 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://zek8nx8vlj.execute-api.eu-north-1.amazonaws.com/', {
+        fetch('google.com', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
