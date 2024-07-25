@@ -1,6 +1,6 @@
 {
   "name": "Portico for Delegates, FDRMUN Registration Form",
-  "short_name": "FDRMUN Reg",
+  "short_name": "FDRMUN Portico PfD",
   "description": "Registration form for delegates and delegations of FDRMUN.",
   "start_url": "delegate.fdrmun.org",
   "display": "standalone",
