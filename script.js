@@ -1,9 +1,43 @@
+function handleSubmit(event) {
+    event.preventDefault();
+    if (validateAge() && validateEmail()) {
+        const formData = new FormData(event.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        fetch('https://ajaeny2x52iqyi5wpob4fkxwgi0lwjsn.lambda-url.eu-north-1.on.aws/', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Form submitted successfully!');
+            } else {
+                alert('Form submission failed.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Form submission failed.');
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const selectedCountries = {
         'first': {},
         'second': {},
         'third': {}
     };
+
+      const form = document.getElementById('registration-form');
+    form.addEventListener('submit', handleSubmit);
 
     let formPath = ['welcome'];
 
@@ -114,6 +148,8 @@ function updateCountryOptions(prefix) {
         });
     }
 
+    
+
         function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
         const charCount = document.getElementById(charCountId);
@@ -213,38 +249,7 @@ function updateCountryOptions(prefix) {
             return true;
         }
     }
-
-    function handleSubmit(event) {
-  event.preventDefault();
-  if (validateAge() && validateEmail()) {
-    const formData = new FormData(event.target);
-    const data = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
-
-    fetch('https://ajaeny2x52iqyi5wpob4fkxwgi0lwjsn.lambda-url.eu-north-1.on.aws/', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 'success') {
-        alert('Form submitted successfully!');
-      } else {
-        alert('Form submission failed.');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('Form submission failed.');
-    });
-  }
-}
-
+    
     function showNextSection(nextSection) {
         const currentSection = document.querySelector('section:not(.hidden)');
         const nextSectionElement = document.getElementById(nextSection);
@@ -344,8 +349,6 @@ function updateCountryOptions(prefix) {
         autoResizeTextarea(textarea);
     });
     
-    document.getElementById('registration-form').addEventListener('submit', handleSubmit);
-
     const preferredTitleSelect = document.getElementById('preferred-title');
     const preferredTitleOther = document.getElementById('preferred-title-other');
     preferredTitleSelect.addEventListener('change', function() {
