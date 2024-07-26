@@ -54,8 +54,8 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3/', {
-            mode: 'no-cors',
+        fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
+            mode: 'cors',
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
