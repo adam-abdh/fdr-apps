@@ -64,6 +64,11 @@ function handleSubmit(event) {
             applicantType = 'delegate';
         }
 
+        // Validate form based on applicant type
+        if (!validateFormByApplicantType(applicantType)) {
+            return; // Stop submission if validation fails
+        }
+
         // Generate fdrID
         const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
         data.fdrID = fdrID; // Add fdrID to the data object
@@ -88,6 +93,21 @@ function handleSubmit(event) {
             console.error('Error:', error);
             alert('Form submission failed.');
         });
+    }
+}
+
+function validateFormByApplicantType(applicantType) {
+    if (applicantType === 'chaperone') {
+        // Validate only chaperone-specific fields
+        return validateSection('chaperone-delegation');
+    } else if (applicantType === 'delegation') {
+        // Validate delegation-specific fields
+        return validateSection('student-delegation');
+    } else {
+        // Validate all required fields for individual delegates
+        return validateSection('personal-data') &&
+               validateSection('mun-experience') &&
+               validateSection('terms-conditions');
     }
 }
 
@@ -363,27 +383,28 @@ function updateCountryOptions(prefix) {
         });
     }
 
-    function validateSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
-        let isValid = true;
+   Copyfunction validateSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return true; // If section doesn't exist, consider it valid
 
-        requiredFields.forEach(field => {
-            if (!field.value) {
-                isValid = false;
-                field.classList.add('input-error');
-            } else {
-                field.classList.remove('input-error');
-            }
-        });
+    const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
 
-        if (!isValid) {
-            alert('Please fill out all required fields before proceeding.');
+    requiredFields.forEach(field => {
+        if (!field.value) {
+            isValid = false;
+            field.classList.add('input-error');
+        } else {
+            field.classList.remove('input-error');
         }
+    });
 
-        return isValid;
+    if (!isValid) {
+        alert('Please fill out all required fields before proceeding.');
     }
 
+    return isValid;
+}
     document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
     document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
