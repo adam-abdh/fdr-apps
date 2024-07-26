@@ -443,12 +443,6 @@ function updateCountryOptions(prefix) {
         toggleOtherOption(this, findOutOtherText);
     });
 
-    const pronounsOtherCheckbox = document.getElementById('other-pronouns');
-    const pronounsOtherText = document.getElementById('pronouns-other');
-    pronounsOtherCheckbox.addEventListener('change', function() {
-        toggleOtherOption(this, pronounsOtherText);
-    });
-
     function toggleOtherOption(element, otherText) {
         if (element.value === 'other' || element.checked) {
             otherText.style.display = 'block';
