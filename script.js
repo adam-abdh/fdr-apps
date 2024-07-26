@@ -51,10 +51,7 @@ function handleSubmit(event) {
         const formData = new FormData(event.target);
         const data = {};
         formData.forEach((value, key) => {
-            // Include all filled fields, even if not required
-            if (value) {
-                data[key] = value;
-            }
+            data[key] = value;
         });
 
         // Determine applicant type
@@ -85,8 +82,8 @@ function handleSubmit(event) {
             }
         })
         .then(response => response.json())
-        .then(responseData => {
-            if (responseData.status === 'success') {
+        .then(data => {
+            if (data.status === 'success') {
                 alert(`Form submitted successfully! Your fdrID is: ${fdrID}`);
             } else {
                 alert('Form submission failed.');
@@ -101,14 +98,11 @@ function handleSubmit(event) {
 
 function validateFormByApplicantType(applicantType) {
     if (applicantType === 'chaperone') {
-        // Validate only chaperone-specific fields and terms-conditions
-        return validateSection('chaperone-delegation') && 
-               validateSection('terms-conditions', true);
+        // Validate only chaperone-specific fields
+        return validateSection('chaperone-delegation');
     } else if (applicantType === 'delegation') {
-        // Validate delegation-specific fields and other required sections
-        return validateSection('student-delegation') &&
-               validateSection('mun-experience') &&
-               validateSection('terms-conditions');
+        // Validate delegation-specific fields
+        return validateSection('student-delegation');
     } else {
         // Validate all required fields for individual delegates
         return validateSection('personal-data') &&
@@ -166,14 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
     }
-
-  const schoolRepRadios = document.querySelectorAll('input[name="school-rep"]');
-    schoolRepRadios.forEach(radio => {
-        radio.addEventListener('change', updateMUNExperienceRequirements);
-    });
-
-    updateMUNExperienceRequirements(); // Call on initial load
-});
 
 function updateCountryOptions(prefix) {
     const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
@@ -277,20 +263,7 @@ function updateCountryOptions(prefix) {
         });
     }
 
-    function updateMUNExperienceRequirements() {
-    const isChaperone = document.querySelector('input[name="school-rep"]:checked')?.value === 'yes';
-    const munExperienceSection = document.getElementById('mun-experience');
-    if (munExperienceSection) {
-        const requiredFields = munExperienceSection.querySelectorAll('input[required], select[required], textarea[required]');
-        requiredFields.forEach(field => {
-            if (isChaperone) {
-                field.removeAttribute('required');
-            } else {
-                field.setAttribute('required', 'required');
-            }
-        });
-    }
-}
+    
 
         function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
@@ -409,31 +382,30 @@ function updateCountryOptions(prefix) {
             }
         });
     }
- 
-function validateSection(sectionId, skipRequired = false) {
+
+   function validateSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (!section) return true; // If section doesn't exist, consider it valid
 
+    const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
     let isValid = true;
 
-    if (!skipRequired) {
-        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
-        requiredFields.forEach(field => {
-            if (!field.value) {
-                isValid = false;
-                field.classList.add('input-error');
-            } else {
-                field.classList.remove('input-error');
-            }
-        });
-
-        if (!isValid) {
-            alert('Please fill out all required fields before proceeding.');
+    requiredFields.forEach(field => {
+        if (!field.value) {
+            isValid = false;
+            field.classList.add('input-error');
+        } else {
+            field.classList.remove('input-error');
         }
+    });
+
+    if (!isValid) {
+        alert('Please fill out all required fields before proceeding.');
     }
 
     return isValid;
-}    document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
+}
+    document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
     document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
 
