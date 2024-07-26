@@ -425,33 +425,38 @@ function updateCountryOptions(prefix) {
         autoResizeTextarea(textarea);
     });
     
-    const preferredTitleSelect = document.getElementById('preferred-title');
-    const preferredTitleOther = document.getElementById('preferred-title-other');
-    preferredTitleSelect.addEventListener('change', function() {
-        toggleOtherOption(this, preferredTitleOther);
-    });
-
-    const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
-    const dietaryRequirementsOther = document.getElementById('dietary-requirements-other');
-    dietaryRequirementsSelect.addEventListener('change', function() {
-        toggleOtherOption(this, dietaryRequirementsOther);
-    });
-
-    const findOutOtherCheckbox = document.getElementById('find-out-other');
-    const findOutOtherText = document.getElementById('find-out-other-text');
-    findOutOtherCheckbox.addEventListener('change', function() {
-        toggleOtherOption(this, findOutOtherText);
-    });
-
-    function toggleOtherOption(element, otherText) {
-        if (element.value === 'other' || element.checked) {
-            otherText.style.display = 'block';
-            otherText.classList.add('blur-in-top');
+ function toggleOtherOption(element) {
+    const otherInputId = element.getAttribute('data-other-input');
+    const otherInput = document.querySelector(`input[name="${otherInputId}"]`);
+    
+    if (element.tagName === 'SELECT') {
+        if (element.value === 'other') {
+            otherInput.style.display = 'block';
         } else {
-            otherText.style.display = 'none';
-            otherText.classList.remove('blur-in-top');
+            otherInput.style.display = 'none';
+            otherInput.value = '';
+        }
+    } else if (element.type === 'checkbox') {
+        if (element.checked && element.value === 'other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+            otherInput.value = '';
         }
     }
+}
+
+document.getElementById('preferred-title').addEventListener('change', function() {
+    toggleOtherOption(this);
+});
+
+document.getElementById('dietary-requirements').addEventListener('change', function() {
+    toggleOtherOption(this);
+});
+
+document.getElementById('find-out').addEventListener('change', function() {
+    toggleOtherOption(this);
+});
 
     const studentGroupYes = document.getElementById('student-group-yes');
     const studentGroupNo = document.getElementById('student-group-no');
