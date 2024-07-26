@@ -383,7 +383,7 @@ function updateCountryOptions(prefix) {
         });
     }
 
-   Copyfunction validateSection(sectionId) {
+   function validateSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (!section) return true; // If section doesn't exist, consider it valid
 
