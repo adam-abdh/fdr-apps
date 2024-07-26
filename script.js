@@ -54,6 +54,20 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
+        // Determine applicant type
+        let applicantType;
+        if (data['school-rep'] === 'yes') {
+            applicantType = 'chaperone';
+        } else if (data['student-group'] === 'yes') {
+            applicantType = 'delegation';
+        } else {
+            applicantType = 'delegate';
+        }
+
+        // Generate fdrID
+        const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
+        data.fdrID = fdrID; // Add fdrID to the data object
+
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
             mode: 'cors',
             method: 'POST',
@@ -65,7 +79,7 @@ function handleSubmit(event) {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                alert('Form submitted successfully!');
+                alert(`Form submitted successfully! Your fdrID is: ${fdrID}`);
             } else {
                 alert('Form submission failed.');
             }
@@ -75,6 +89,40 @@ function handleSubmit(event) {
             alert('Form submission failed.');
         });
     }
+}
+
+function generateFdrID(firstName, lastName, applicantType) {
+    // Get first and last initials
+    const firstInitial = firstName.charAt(0).toUpperCase();
+    const lastInitial = lastName.charAt(0).toUpperCase();
+
+    // Determine applicant type indicator
+    let typeIndicator;
+    switch (applicantType) {
+        case 'chaperone':
+            typeIndicator = 'C';
+            break;
+        case 'delegation':
+            typeIndicator = 'D';
+            break;
+        case 'delegate':
+            typeIndicator = 'I';
+            break;
+        default:
+            typeIndicator = 'U'; // Unknown
+    }
+
+    // Generate random 4-digit number starting with 0
+    const randomNum = Math.floor(Math.random() * 9000) + 1000; // 1000 to 9999
+    const paddedNum = randomNum.toString().padStart(4, '0');
+
+    // Construct the fdrID
+    const fdrID = `5f${firstInitial}${lastInitial}${typeIndicator}${paddedNum}`;
+
+    // Log the fdrID to the console
+    console.log('Generated fdrID:', fdrID);
+
+    return fdrID;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
