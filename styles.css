@@ -95,7 +95,7 @@ input, select, textarea {
     display: block;
     margin: 15px auto;
     width: 100%;
-    color: var(--main-color);
+    color: var(0, 122, 255);
     padding: 12px;
     box-sizing: border-box;
     border-radius: 10px;
@@ -106,7 +106,7 @@ input, select, textarea {
 }
 
 input:hover, select:hover, textarea:hover {
-    border: 2px solid var(--main-color); /* Thicker border on hover */
+    border: 2px solid var(0, 122, 255); /* Thicker border on hover */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
