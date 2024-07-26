@@ -95,23 +95,24 @@ input, select, textarea {
     display: block;
     margin: 15px auto;
     width: 100%;
-    color: var(0, 122, 255);
+    color: var(--dark-grey);
     padding: 12px;
     box-sizing: border-box;
     border-radius: 10px;
     border: 1px solid var(--border-color);
     outline: none;
-    transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1), border-width 0.3s ease;
+    transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
     background-color: #fff; /* Ensure background is white */
 }
 
 input:hover, select:hover, textarea:hover {
-    border: 2px solid var(0, 122, 255); /* Thicker border on hover */
+    border: 1px solid var(0, 122, 255); /* Maintain original border width */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 input:focus, select:focus, textarea:focus {
-    border: 2px solid var(--main-color); /* Thicker border on focus */
+    border: 1px solid var(--main-color); /* Maintain original border width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 button {
