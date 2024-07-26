@@ -98,11 +98,14 @@ function handleSubmit(event) {
 
 function validateFormByApplicantType(applicantType) {
     if (applicantType === 'chaperone') {
-        // Validate only chaperone-specific fields
-        return validateSection('chaperone-delegation');
+        // Validate only chaperone-specific fields and terms-conditions
+        return validateSection('chaperone-delegation') && 
+               validateSection('terms-conditions', true);
     } else if (applicantType === 'delegation') {
-        // Validate delegation-specific fields
-        return validateSection('student-delegation');
+        // Validate delegation-specific fields and other required sections
+        return validateSection('student-delegation') &&
+               validateSection('mun-experience') &&
+               validateSection('terms-conditions');
     } else {
         // Validate all required fields for individual delegates
         return validateSection('personal-data') &&
