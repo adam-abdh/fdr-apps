@@ -100,16 +100,14 @@ function generateFdrID(firstName, lastName, applicantType) {
     let typeIndicator;
     switch (applicantType) {
         case 'chaperone':
-            typeIndicator = 'C';
+            typeIndicator = 'c';
             break;
         case 'delegation':
-            typeIndicator = 'D';
+            typeIndicator = 'g';
             break;
         case 'delegate':
-            typeIndicator = 'I';
+            typeIndicator = 'd';
             break;
-        default:
-            typeIndicator = 'U'; // Unknown
     }
 
     // Generate random 4-digit number starting with 0
