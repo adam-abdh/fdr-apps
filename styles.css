@@ -101,16 +101,17 @@ input, select, textarea {
     border-radius: 10px;
     border: 1px solid var(--border-color);
     outline: none;
-    transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: border-color 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1), border-width 0.3s ease;
+    background-color: #fff; /* Ensure background is white */
 }
 
 input:hover, select:hover, textarea:hover {
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--main-color); /* Thicker border on hover */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 input:focus, select:focus, textarea:focus {
-    border: 1px solid grey;
+    border: 2px solid var(--main-color); /* Thicker border on focus */
 }
 
 button {
