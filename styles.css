@@ -106,12 +106,12 @@ input, select, textarea {
 }
 
 input:hover, select:hover, textarea:hover {
-    border: 1px solid var(0, 122, 255); /* Maintain original border width */
+    border: 1.25px solid var(0, 122, 255); /* Maintain original border width */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 input:focus, select:focus, textarea:focus {
-    border: 1px solid var(--main-color); /* Maintain original border width */
+    border: 1.25px solid var(--main-color); /* Maintain original border width */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
