@@ -386,28 +386,31 @@ function updateCountryOptions(prefix) {
         });
     }
 
-   function validateSection(sectionId) {
+  function validateSection(sectionId, skipRequired = false) {
     const section = document.getElementById(sectionId);
     if (!section) return true; // If section doesn't exist, consider it valid
 
-    const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
     let isValid = true;
 
-    requiredFields.forEach(field => {
-        if (!field.value) {
-            isValid = false;
-            field.classList.add('input-error');
-        } else {
-            field.classList.remove('input-error');
-        }
-    });
+    if (!skipRequired) {
+        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
+        requiredFields.forEach(field => {
+            if (!field.value) {
+                isValid = false;
+                field.classList.add('input-error');
+            } else {
+                field.classList.remove('input-error');
+            }
+        });
 
-    if (!isValid) {
-        alert('Please fill out all required fields before proceeding.');
+        if (!isValid) {
+            alert('Please fill out all required fields before proceeding.');
+        }
     }
 
     return isValid;
 }
+ 
     document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
     document.getElementById('third-committee-choice').addEventListener('change', function() { updateCountryOptions('third'); });
