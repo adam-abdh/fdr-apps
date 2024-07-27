@@ -212,11 +212,11 @@ function generateFdrID(firstName, lastName, applicantType) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const nextButtons = document.querySelectorAll('.next');
-    
+        const nextButtons = document.querySelectorAll('.next');
+
     nextButtons.forEach(button => {
         button.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default to handle navigation manually
+            event.preventDefault(); 
 
             const card = button.closest('.card');
             const inputs = card.querySelectorAll('input, select, textarea');
@@ -226,9 +226,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (input.required || (input.previousElementSibling && input.previousElementSibling.textContent.includes('*'))) {
                     if (!input.value.trim()) {
                         isValid = false;
-                        input.classList.add('error');
+                        input.classList.add('input-error');
                     } else {
-                        input.classList.remove('error');
+                        input.classList.remove('input-error');
                     }
                 }
             });
@@ -250,6 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
 
     const selectedCountries = {
         'first': {},
