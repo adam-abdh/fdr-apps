@@ -366,6 +366,7 @@ button:focus {
     font-size: 0.9em;
     margin-top: 5px;
     text-align: left; 
+    border: 2px solid var(--error-color);
 }
 
 .error-message {
@@ -381,6 +382,14 @@ button:focus {
 .error-icon {
     font-size: 1.2em;
 }
+
+.warning {
+    color: var(--error-color);
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: left;
+}
+
 
 footer .footer-image {
     text-align: left;
@@ -495,12 +504,7 @@ hr {
     }
 }
 
-.warning {
-    color: var(--error-color);
-    font-size: 0.9em;
-    margin-top: 10px;
-    text-align: left; 
-}
+
 .slide-in-blurred-top {
     animation: slide-in-blurred-top 0.45s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
