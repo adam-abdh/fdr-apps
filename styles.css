@@ -9,8 +9,21 @@
 }
 
 #registration-form {
-    background-color: #ebebeb;
+    position: relative;
+    padding-bottom: 50px; /* Adjust this value based on the height of the gradient */
 }
+
+#main-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to top, #ffffff, transparent);
+    pointer-events: none;
+}
+
 
 body {
     font-family: 'Inter', sans-serif;
