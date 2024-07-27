@@ -232,14 +232,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
-            });
         
 
             if (!isValid) {
                 event.preventDefault();
             }
         });
-    
+                });
+
     const selectedCountries = {
         'first': {},
         'second': {},
