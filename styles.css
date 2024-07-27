@@ -335,6 +335,10 @@ button:focus {
     font-size: 1.2em;
 }
 
+footer .footer-image {
+    text-align: left;
+}
+
 .card {
     width: 100%;
     max-width: var(--card-max-width);
