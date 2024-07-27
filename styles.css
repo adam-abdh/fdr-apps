@@ -13,7 +13,7 @@
     padding-bottom: 50px; /* Adjust this value based on the height of the gradient */
 }
 
-#main-content::after {
+#registration-form::after {
     content: '';
     position: absolute;
     bottom: 0;
