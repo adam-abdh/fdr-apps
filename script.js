@@ -109,10 +109,13 @@ function handleSubmit(event) {
     event.preventDefault();
     if (validateAge() && validateEmail()) {
         const formData = new FormData(event.target);
-        const data = {};
+        let data = {};
         formData.forEach((value, key) => {
             data[key] = value;
         });
+
+        // Add this line to process the delegation number
+        data = processDelegationNumber(data);
 
         // Determine applicant type
         let applicantType;
@@ -133,6 +136,7 @@ function handleSubmit(event) {
         const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
         data.fdrID = fdrID; // Add fdrID to the data object
 
+        // Rest of your existing code...
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
             mode: 'cors',
             method: 'POST',
@@ -154,6 +158,24 @@ function handleSubmit(event) {
             alert('Form submission failed.');
         });
     }
+}
+
+function processDelegationNumber(data) {
+    const delegationNumber = document.getElementById('delegation-number').value;
+    const delegationStudentsNumber = document.getElementById('delegation-students-number').value;
+
+    if (data['school-rep'] === 'yes') {
+        // For chaperones, use 'delegation-number'
+        data['delegation-number'] = delegationNumber;
+    } else {
+        // For students, use 'delegation-students-number'
+        data['delegation-number'] = delegationStudentsNumber;
+    }
+
+    // Remove the unused field to avoid duplication
+    delete data['delegation-students-number'];
+
+    return data;
 }
 
 
@@ -408,17 +430,7 @@ function updateCountryOptions(prefix) {
     const currentSection = document.getElementById('chaperone-delegation');
     if (!validateSection(currentSection.id)) {
         return;
-    }
 
-    // Example additional logic: Check if delegation number is within a valid range
-    const delegationNumberInput = document.getElementById('delegation-number');
-    const delegationNumber = parseInt(delegationNumberInput.value, 10);
-    if (isNaN(delegationNumber) || delegationNumber < 1 || delegationNumber > 20) {
-        alert('Please enter a valid delegation number between 1 and 20.');
-        delegationNumberInput.classList.add('input-error');
-        return;
-    } else {
-        delegationNumberInput.classList.remove('input-error');
     }
 
 
