@@ -625,13 +625,7 @@ findOutOtherCheckbox.addEventListener('change', function() {
     }
 }
  
-  const schoolRepRadios = document.querySelectorAll('input[name="school-rep"]');
-    schoolRepRadios.forEach(radio => {
-        radio.addEventListener('change', updateMUNExperienceRequirements);
-    });
 
-    updateMUNExperienceRequirements(); 
- 
     function handleStudentSpecialArrangementsNext() {
         const currentSection = document.getElementById('student-delegation');
         if (!validateSection(currentSection.id)) {
