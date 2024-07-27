@@ -174,28 +174,24 @@ button:focus {
     background: -webkit-linear-gradient(left, #EA7BB3, #EC7FB0, #FAB29B, #F8A064, #A54A56, #344F78, #5A63B2, #4661A4, #164765);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: flowGradient 10s linear forwards, fadeToOriginal 2s 10s forwards;
+    animation: flowAndFade 3s linear forwards;
 }
 
-@keyframes flowGradient {
+@keyframes flowAndFade {
     0% {
         background-position: 0% 50%;
+        -webkit-text-fill-color: transparent;
     }
-    100% {
+    66% {
         background-position: 100% 50%;
-    }
-}
-
-@keyframes fadeToOriginal {
-    0% {
         -webkit-text-fill-color: transparent;
     }
     100% {
+        background-position: 100% 50%;
         -webkit-text-fill-color: var(--main-color);
     }
-}
-
-.checkbox-container {
+    
+}.checkbox-container {
     display: flex;
     align-items: center;
     margin: 12px 0;
