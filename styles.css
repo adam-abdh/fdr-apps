@@ -8,6 +8,10 @@
     --dark-grey: #292929;
 }
 
+#registration-form {
+    background-color: #ebebeb;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
