@@ -43,6 +43,21 @@ function validateFormByApplicantType(applicantType) {
     }
 }
 
+function updateMUNExperienceRequirements() {
+    const isChaperone = document.querySelector('input[name="school-rep"]:checked')?.value === 'yes';
+    const munExperienceSection = document.getElementById('mun-experience');
+    if (munExperienceSection) {
+        const requiredFields = munExperienceSection.querySelectorAll('input[required], select[required], textarea[required]');
+        requiredFields.forEach(field => {
+            if (isChaperone) {
+                field.removeAttribute('required');
+            } else {
+                field.setAttribute('required', 'required');
+            }
+        });
+    }
+}
+
 function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
@@ -142,7 +157,6 @@ function handleSubmit(event) {
 }
 
 
-
 function generateFdrID(firstName, lastName, applicantType) {
     // Get first and last initials
     const firstInitial = firstName.charAt(0).toUpperCase();
@@ -192,6 +206,12 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
     }
+     const schoolRepRadios = document.querySelectorAll('input[name="school-rep"]');
+    schoolRepRadios.forEach(radio => {
+        radio.addEventListener('change', updateMUNExperienceRequirements);
+    });
+
+    updateMUNExperienceRequirements();
 
 function updateCountryOptions(prefix) {
     const committeeSelector = document.getElementById(`${prefix}-committee-choice`);
