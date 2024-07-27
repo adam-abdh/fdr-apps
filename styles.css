@@ -171,26 +171,33 @@ button:focus {
     margin-bottom: 20px;
     margin-top: 5px;
     text-align: left;
-    background: -webkit-linear-gradient(left, #EA7BB3, #EC7FB0, #FAB29B, #F8A064, #A54A56, #344F78, #5A63B2, #4661A4, #164765);
+    background: linear-gradient(
+        to right,
+        #EA7BB3, #EC7FB0, #FAB29B, #F8A064, #A54A56, #344F78, #5A63B2, #4661A4, #164765
+    );
+    background-size: 200% 100%;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: flowAndFade 3s linear forwards;
+    background-clip: text;
+    color: transparent;
+    animation: flowAndFade 2s linear forwards;
 }
 
 @keyframes flowAndFade {
     0% {
-        background-position: 0% 50%;
-        -webkit-text-fill-color: transparent;
-    }
-    66% {
         background-position: 100% 50%;
-        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+    50% {
+        background-position: 0% 50%;
+        color: transparent;
     }
     100% {
-        background-position: 100% 50%;
-        -webkit-text-fill-color: var(--main-color);
+        background-position: 0% 50%;
+        color: var(--main-color);
     }
-    
+}
+
+
 }.checkbox-container {
     display: flex;
     align-items: center;
