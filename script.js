@@ -1,4 +1,49 @@
- function validateAge() {
+function validateSection(sectionId, skipRequired = false) {
+    const section = document.getElementById(sectionId);
+    if (!section) return true; // If section doesn't exist, consider it valid
+
+    let isValid = true;
+
+    if (!skipRequired) {
+        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
+        requiredFields.forEach(field => {
+            if (!field.value) {
+                isValid = false;
+                field.classList.add('input-error');
+            } else {
+                field.classList.remove('input-error');
+            }
+        });
+
+        if (!isValid) {
+            alert('Please fill out all required fields before proceeding.');
+        }
+    }
+
+    // Add any additional validation logic here
+
+    return isValid;
+}
+
+function validateFormByApplicantType(applicantType) {
+    if (applicantType === 'chaperone') {
+        // Validate only chaperone-specific fields and terms-conditions
+        return validateSection('chaperone-delegation') && 
+               validateSection('terms-conditions', true);
+    } else if (applicantType === 'delegation') {
+        // Validate delegation-specific fields and other required sections
+        return validateSection('student-delegation') &&
+               validateSection('mun-experience') &&
+               validateSection('terms-conditions');
+    } else {
+        // Validate all required fields for individual delegates
+        return validateSection('personal-data') &&
+               validateSection('mun-experience') &&
+               validateSection('terms-conditions');
+    }
+}
+
+function validateAge() {
         const dobInput = document.getElementById('dob');
         const dobError = document.getElementById('dob-error');
         const dobValue = dobInput.value;
@@ -96,23 +141,7 @@ function handleSubmit(event) {
     }
 }
 
-function validateFormByApplicantType(applicantType) {
-    if (applicantType === 'chaperone') {
-        // Validate only chaperone-specific fields and terms-conditions
-        return validateSection('chaperone-delegation') && 
-               validateSection('terms-conditions', true);
-    } else if (applicantType === 'delegation') {
-        // Validate delegation-specific fields and other required sections
-        return validateSection('student-delegation') &&
-               validateSection('mun-experience') &&
-               validateSection('terms-conditions');
-    } else {
-        // Validate all required fields for individual delegates
-        return validateSection('personal-data') &&
-               validateSection('mun-experience') &&
-               validateSection('terms-conditions');
-    }
-}
+
 
 function generateFdrID(firstName, lastName, applicantType) {
     // Get first and last initials
@@ -386,30 +415,7 @@ function updateCountryOptions(prefix) {
         });
     }
 
-  function validateSection(sectionId, skipRequired = false) {
-    const section = document.getElementById(sectionId);
-    if (!section) return true; // If section doesn't exist, consider it valid
-
-    let isValid = true;
-
-    if (!skipRequired) {
-        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
-        requiredFields.forEach(field => {
-            if (!field.value) {
-                isValid = false;
-                field.classList.add('input-error');
-            } else {
-                field.classList.remove('input-error');
-            }
-        });
-
-        if (!isValid) {
-            alert('Please fill out all required fields before proceeding.');
-        }
-    }
-
-    return isValid;
-}
+  
  
     document.getElementById('first-committee-choice').addEventListener('change', function() { updateCountryOptions('first'); });
     document.getElementById('second-committee-choice').addEventListener('change', function() { updateCountryOptions('second'); });
