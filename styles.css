@@ -198,7 +198,7 @@ button:focus {
 }
 
 
-}.checkbox-container {
+.checkbox-container {
     display: flex;
     align-items: center;
     margin: 12px 0;
