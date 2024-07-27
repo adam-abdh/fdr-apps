@@ -213,6 +213,33 @@ function generateFdrID(firstName, lastName, applicantType) {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    const nextButtons = document.querySelectorAll('.next');
+    
+    nextButtons.forEach(button => {
+        button.addEventListener('click', function (event) {
+            const card = button.closest('.card');
+            const inputs = card.querySelectorAll('input, select, textarea');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (input.required || (input.previousElementSibling && input.previousElementSibling.textContent.includes('*'))) {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('error');
+                        card.querySelector('.warning').classList.remove('hidden');
+                    } else {
+                        input.classList.remove('error');
+                    }
+                }
+            });
+            });
+        
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    
     const selectedCountries = {
         'first': {},
         'second': {},
