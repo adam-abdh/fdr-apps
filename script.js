@@ -426,33 +426,34 @@ function updateCountryOptions(prefix) {
     });
     
     const preferredTitleSelect = document.getElementById('preferred-title');
-    const preferredTitleOther = document.getElementById('preferred-title-other');
-    preferredTitleSelect.addEventListener('change', function() {
-        toggleOtherOption(this, preferredTitleOther);
-    });
+const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
+preferredTitleSelect.addEventListener('change', function() {
+    toggleOtherOption(this, preferredTitleOther);
+});
 
-    const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
-    const dietaryRequirementsOther = document.getElementById('dietary-requirements-other');
-    dietaryRequirementsSelect.addEventListener('change', function() {
-        toggleOtherOption(this, dietaryRequirementsOther);
-    });
+const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
+const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
+dietaryRequirementsSelect.addEventListener('change', function() {
+    toggleOtherOption(this, dietaryRequirementsOther);
+});
 
-    const findOutOtherCheckbox = document.getElementById('find-out-other');
-    const findOutOtherText = document.getElementById('find-out-other-text');
-    findOutOtherCheckbox.addEventListener('change', function() {
-        toggleOtherOption(this, findOutOtherText);
-    });
+const findOutOtherCheckbox = document.querySelector('input[name="find-out"][value="Other"]');
+const findOutOtherText = document.querySelector('input[name="find-out"][type="text"]');
+findOutOtherCheckbox.addEventListener('change', function() {
+    toggleOtherOption(this, findOutOtherText);
+});
 
-    function toggleOtherOption(element, otherText) {
-        if (element.value === 'other' || element.checked) {
-            otherText.style.display = 'block';
-            otherText.classList.add('blur-in-top');
-        } else {
-            otherText.style.display = 'none';
-            otherText.classList.remove('blur-in-top');
-        }
+ function toggleOtherOption(element, otherInput) {
+    if ((element.tagName === 'SELECT' && element.value === 'other') || 
+        (element.type === 'checkbox' && element.checked && element.value === 'Other')) {
+        otherInput.style.display = 'block';
+        otherInput.classList.add('blur-in-top');
+    } else {
+        otherInput.style.display = 'none';
+        otherInput.classList.remove('blur-in-top');
+        otherInput.value = ''; // Clear the input when hidden
     }
-
+}
     const studentGroupYes = document.getElementById('student-group-yes');
     const studentGroupNo = document.getElementById('student-group-no');
     const delegationFields = document.querySelectorAll('#student-delegation input, #student-delegation select, #student-delegation textarea');
