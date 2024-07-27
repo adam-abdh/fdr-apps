@@ -212,11 +212,12 @@ function generateFdrID(firstName, lastName, applicantType) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-
     const nextButtons = document.querySelectorAll('.next');
     
     nextButtons.forEach(button => {
         button.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default to handle navigation manually
+
             const card = button.closest('.card');
             const inputs = card.querySelectorAll('input, select, textarea');
             let isValid = true;
@@ -226,19 +227,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (!input.value.trim()) {
                         isValid = false;
                         input.classList.add('error');
-                        card.querySelector('.warning').classList.remove('hidden');
                     } else {
                         input.classList.remove('error');
                     }
                 }
             });
-        
 
+            const warningElement = card.querySelector('.warning');
             if (!isValid) {
-                event.preventDefault();
+                warningElement.classList.remove('hidden');
+                warningElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                alert('Please fill out all required fields before proceeding.');
+            } else {
+                warningElement.classList.add('hidden');
+                // If valid, execute the button's onclick function
+                const onclickFunction = button.getAttribute('onclick');
+                if (onclickFunction) {
+                    // Remove 'return' if present and execute the function
+                    const functionBody = onclickFunction.replace(/^return\s+/, '');
+                    new Function(functionBody)();
+                }
             }
         });
-                });
+    });
 
     const selectedCountries = {
         'first': {},
