@@ -1,6 +1,6 @@
 function validateSection(sectionId, skipRequired = false) {
     const section = document.getElementById(sectionId);
-    if (!section) return true; // If section doesn't exist, consider it valid
+    if (!section) return true; 
 
     let isValid = true;
 
