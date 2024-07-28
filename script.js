@@ -105,14 +105,27 @@ function validateAge() {
 
 function handleSubmit(event) {
     event.preventDefault();
-
     if (validateAge() && validateEmail()) {
         const formData = new FormData(event.target);
         let data = {};
+        
+        // List of fields to be sent as strings
+        const stringFields = [
+            "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "fdrID",
+            "institution", "phone", "preferred-name", "residence", "country", "dietary-requirements",
+            "find-out", "delegation-number", "delegation-name",
+            "delegation-experience", "logistical-requests", "other-info", "delegation-students-number",
+            "student-delegation-name", "special-circumstances", "additional-circumstances", "mun-experience",
+            "transformative-experience", "first-committee-choice", "first-country-choice", "second-committee-choice",
+            "second-country-choice", "third-committee-choice", "third-country-choice", "favorite-period", "training-modules",
+            "referral-code", "additional-info"
+        ];
 
-        // Collect all form data
+        // Collect form data
         formData.forEach((value, key) => {
-            if (data[key]) {
+            if (stringFields.includes(key)) {
+                data[key] = value.toString();
+            } else if (data[key]) {
                 if (!Array.isArray(data[key])) {
                     data[key] = [data[key]];
                 }
@@ -122,17 +135,17 @@ function handleSubmit(event) {
             }
         });
 
-        // Explicitly handle select elements
+        // Handle select elements
         ['preferred-title', 'dietary-requirements'].forEach(id => {
             const select = document.getElementById(id);
             if (select) {
-                data[id] = select.value;
+                data[id] = select.value.toString();
             }
         });
 
         // Handle checkboxes
         const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
-        data['find-out'] = Array.from(findOutCheckboxes).map(cb => cb.value);
+        data['find-out'] = Array.from(findOutCheckboxes).map(cb => cb.value).join(', ');
 
         data = processDelegationNumber(data);
 
@@ -154,6 +167,15 @@ function handleSubmit(event) {
 
         const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
         data.fdrID = fdrID;
+
+        // Ensure all specified fields are strings
+        stringFields.forEach(field => {
+            if (data[field] === undefined) {
+                data[field] = '';
+            } else {
+                data[field] = data[field].toString();
+            }
+        });
 
         // Log the data before sending
         console.log('Form data to be sent:', data);
