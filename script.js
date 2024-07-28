@@ -150,6 +150,25 @@ function handleSubmit(event) {
     }
 }
 
+function processDelegationNumber(data) {
+    const delegationNumber = document.getElementById('delegation-number').value;
+    const delegationStudentsNumber = document.getElementById('delegation-students-number').value;
+
+    if (data['school-rep'] === 'yes') {
+        // For chaperones, use 'delegation-number'
+        data['delegation-number'] = delegationNumber;
+    } else {
+        // For students, use 'delegation-students-number'
+        data['delegation-number'] = delegationStudentsNumber;
+    }
+
+    // Remove the unused field to avoid duplication
+    delete data['delegation-students-number'];
+
+    return data;
+}
+
+
 
 function generateFdrID(firstName, lastName, applicantType) {
     // Get first and last initials
