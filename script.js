@@ -144,7 +144,11 @@ function handleSubmit(event) {
         })
         .then(response => response.json())
         .then(data => {
-            alert('Form submitted successfully!');
+             if (data.status === 'success') {
+                alert(`Form submitted successfully! Your fdrID is: ${fdrID}`);
+            } else {
+                alert('Form submission failed.');
+            }
         })
         .catch(error => {
             console.error('Error:', error);
