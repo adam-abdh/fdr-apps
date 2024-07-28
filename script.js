@@ -131,6 +131,9 @@ function handleSubmit(event) {
         const submitButton = event.target.querySelector('button[type="submit"]');
         submitButton.disabled = true;
 
+          const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
+        data.fdrID = fdrID; // Add fdrID to the data object
+
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
             mode: 'cors',
             method: 'POST',
