@@ -110,20 +110,29 @@ function handleSubmit(event) {
         const formData = new FormData(event.target);
         let data = {};
 
-        // Explicitly collect values from problematic fields
-        data['preferred-title'] = document.getElementById('preferred-title').value;
-        data['dietary-requirements'] = document.getElementById('dietary-requirements').value;
-        
-        // For "find out" checkboxes, collect all selected values
-        const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
-        data['find-out'] = Array.from(findOutCheckboxes).map(cb => cb.value).join(', ');
-
-        // Then collect the rest of the form data
+        // Collect all form data
         formData.forEach((value, key) => {
-            if (!data[key]) {  // Don't overwrite explicitly set values
+            if (data[key]) {
+                if (!Array.isArray(data[key])) {
+                    data[key] = [data[key]];
+                }
+                data[key].push(value);
+            } else {
                 data[key] = value;
             }
         });
+
+        // Explicitly handle select elements
+        ['preferred-title', 'dietary-requirements'].forEach(id => {
+            const select = document.getElementById(id);
+            if (select) {
+                data[id] = select.value;
+            }
+        });
+
+        // Handle checkboxes
+        const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
+        data['find-out'] = Array.from(findOutCheckboxes).map(cb => cb.value);
 
         data = processDelegationNumber(data);
 
@@ -144,7 +153,10 @@ function handleSubmit(event) {
         submitButton.disabled = true;
 
         const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
-        data.fdrID = fdrID; // Add fdrID to the data object
+        data.fdrID = fdrID;
+
+        // Log the data before sending
+        console.log('Form data to be sent:', data);
 
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
             mode: 'cors',
@@ -155,8 +167,9 @@ function handleSubmit(event) {
             }
         })
         .then(response => response.json())
-        .then(data => {
-             if (data.status === 'success') {
+        .then(responseData => {
+            console.log('Response from server:', responseData);
+            if (responseData.status === 'success') {
                 alert(`Form submitted successfully! Your fdrID is: ${fdrID}`);
             } else {
                 alert('Form submission failed.');
