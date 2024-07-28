@@ -103,13 +103,42 @@ function validateAge() {
         }
     }
 
+let isSubmitting = false;
+
+function showLightbox(message, isLoading = false) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            ${isLoading ? '<div class="loading-spinner"></div>' : ''}
+            <p>${message}</p>
+            ${!isLoading ? '<button onclick="closeLightbox()">Close</button>' : ''}
+        </div>
+    `;
+    document.body.appendChild(lightbox);
+}
+
+function closeLightbox() {
+    const lightbox = document.querySelector('.lightbox');
+    if (lightbox) {
+        lightbox.remove();
+    }
+}
+
 function handleSubmit(event) {
     event.preventDefault();
+    if (isSubmitting) return;
+
     if (validateAge() && validateEmail()) {
+        isSubmitting = true;
+        const submitButton = event.target.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+
+        showLightbox('Submitting your application...', true);
+
         const formData = new FormData(event.target);
         let data = {};
-        
-        // List of fields to be sent as strings
+
         const stringFields = [
             "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "fdrID",
             "institution", "phone", "preferred-name", "residence", "country", "dietary-requirements",
@@ -177,7 +206,6 @@ function handleSubmit(event) {
             }
         });
 
-        // Log the data before sending
         console.log('Form data to be sent:', data);
 
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
@@ -191,14 +219,22 @@ function handleSubmit(event) {
         .then(response => response.json())
         .then(responseData => {
             console.log('Response from server:', responseData);
+            closeLightbox();
             if (responseData.status === 'success') {
-                alert(`Form submitted successfully! Your fdrID is: ${fdrID}`);
+                showLightbox(`Form submitted successfully! Your fdrID is: ${responseData.fdrID}`);
+            } else if (responseData.status === 'error' && responseData.message === 'Email already exists') {
+                showLightbox('This email has already been used for a submission. Please use a different email.');
             } else {
-                alert('Form submission failed.');
+                showLightbox('Form submission failed. Please try again later.');
             }
         })
         .catch(error => {
             console.error('Error:', error);
+            closeLightbox();
+            showLightbox('An error occurred. Please try again later.');
+        })
+        .finally(() => {
+            isSubmitting = false;
             submitButton.disabled = false;
         });
     }
