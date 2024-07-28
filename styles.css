@@ -185,7 +185,7 @@ button:focus {
     text-align: left;
     background: linear-gradient(
         to right,
-        #EA7BB3, #EC7FB0, #FAB29B, #6b4a8c, #A54A56, #344F78, #5A63B2, #4661A4, #2A89BE, #F6CD52
+        #EA7BB3, #EC7FB0, #FAB29B, #6b4a8c, #344F78, #5A63B2, #4661A4, #2A89BE, #F6CD52
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;
