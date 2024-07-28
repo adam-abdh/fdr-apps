@@ -19,9 +19,7 @@ function validateSection(sectionId, skipRequired = false) {
             alert('Please fill out all required fields before proceeding.');
         }
     }
-
-    // Add any additional validation logic here
-
+    
     return isValid;
 }
 
