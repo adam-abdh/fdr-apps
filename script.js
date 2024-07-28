@@ -7,22 +7,29 @@ function validateSection(sectionId, skipRequired = false) {
     if (!skipRequired) {
         const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
         requiredFields.forEach(field => {
-            if (!field.value) {
+            if (!field.value.trim()) {
                 isValid = false;
-                field.classList.add('input-error');
+                field.classList.add('error');
             } else {
-                field.classList.remove('input-error');
+                field.classList.remove('error');
             }
         });
-
-        if (!isValid) {
-            alert('Please fill out all required fields before proceeding.');
-        }
     }
 
-    // Add any additional validation logic here
-
     return isValid;
+}
+
+function showNextSection(sectionId) {
+    const card = document.getElementById(sectionId);
+    const isValid = validateSection(sectionId);
+
+    const warningElement = card.querySelector('.warning');
+    if (!isValid) {
+        warningElement.classList.remove('hidden');
+        warningElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        warningElement.classList.add('hidden');
+    }
 }
 
 function validateFormByApplicantType(applicantType) {
@@ -212,45 +219,6 @@ function generateFdrID(firstName, lastName, applicantType) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-        const nextButtons = document.querySelectorAll('.next');
-
-    nextButtons.forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault(); 
-
-            const card = button.closest('.card');
-            const inputs = card.querySelectorAll('input, select, textarea');
-            let isValid = true;
-
-            inputs.forEach(input => {
-                if (input.required || (input.previousElementSibling && input.previousElementSibling.textContent.includes('*'))) {
-                    if (!input.value.trim()) {
-                        isValid = false;
-                        input.classList.add('input-error');
-                    } else {
-                        input.classList.remove('input-error');
-                    }
-                }
-            });
-
-            const warningElement = card.querySelector('.warning');
-            if (!isValid) {
-                warningElement.classList.remove('hidden');
-                warningElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                alert('Please fill out all required fields before proceeding.');
-            } else {
-                warningElement.classList.add('hidden');
-                // If valid, execute the button's onclick function
-                const onclickFunction = button.getAttribute('onclick');
-                if (onclickFunction) {
-                    // Remove 'return' if present and execute the function
-                    const functionBody = onclickFunction.replace(/^return\s+/, '');
-                    new Function(functionBody)();
-                }
-            }
-        });
-    });
-
 
     const selectedCountries = {
         'first': {},
