@@ -7,29 +7,22 @@ function validateSection(sectionId, skipRequired = false) {
     if (!skipRequired) {
         const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
         requiredFields.forEach(field => {
-            if (!field.value.trim()) {
+            if (!field.value) {
                 isValid = false;
-                field.classList.add('error');
+                field.classList.add('input-error');
             } else {
-                field.classList.remove('error');
+                field.classList.remove('input-error');
             }
         });
+
+        if (!isValid) {
+            alert('Please fill out all required fields before proceeding.');
+        }
     }
+
+    // Add any additional validation logic here
 
     return isValid;
-}
-
-function showNextSection(sectionId) {
-    const card = document.getElementById(sectionId);
-    const isValid = validateSection(sectionId);
-
-    const warningElement = card.querySelector('.warning');
-    if (!isValid) {
-        warningElement.classList.remove('hidden');
-        warningElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-        warningElement.classList.add('hidden');
-    }
 }
 
 function validateFormByApplicantType(applicantType) {
@@ -114,6 +107,7 @@ function validateAge() {
 
 function handleSubmit(event) {
     event.preventDefault();
+
     if (validateAge() && validateEmail()) {
         const formData = new FormData(event.target);
         let data = {};
@@ -121,10 +115,8 @@ function handleSubmit(event) {
             data[key] = value;
         });
 
-        // Add this line to process the delegation number
         data = processDelegationNumber(data);
 
-        // Determine applicant type
         let applicantType;
         if (data['school-rep'] === 'yes') {
             applicantType = 'chaperone';
@@ -134,16 +126,13 @@ function handleSubmit(event) {
             applicantType = 'delegate';
         }
 
-        // Validate form based on applicant type
         if (!validateFormByApplicantType(applicantType)) {
-            return; // Stop submission if validation fails
+            return; 
         }
 
-        // Generate fdrID
-        const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
-        data.fdrID = fdrID; // Add fdrID to the data object
+        const submitButton = event.target.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
 
-        // Rest of your existing code...
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
             mode: 'cors',
             method: 'POST',
@@ -154,35 +143,13 @@ function handleSubmit(event) {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.status === 'success') {
-                alert(`Form submitted successfully! Your fdrID is: ${fdrID}`);
-            } else {
-                alert('Form submission failed.');
-            }
+            alert('Form submitted successfully!');
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Form submission failed.');
+            submitButton.disabled = false;
         });
     }
-}
-
-function processDelegationNumber(data) {
-    const delegationNumber = document.getElementById('delegation-number').value;
-    const delegationStudentsNumber = document.getElementById('delegation-students-number').value;
-
-    if (data['school-rep'] === 'yes') {
-        // For chaperones, use 'delegation-number'
-        data['delegation-number'] = delegationNumber;
-    } else {
-        // For students, use 'delegation-students-number'
-        data['delegation-number'] = delegationStudentsNumber;
-    }
-
-    // Remove the unused field to avoid duplication
-    delete data['delegation-students-number'];
-
-    return data;
 }
 
 
