@@ -109,8 +109,20 @@ function handleSubmit(event) {
     if (validateAge() && validateEmail()) {
         const formData = new FormData(event.target);
         let data = {};
+
+        // Explicitly collect values from problematic fields
+        data['preferred-title'] = document.getElementById('preferred-title').value;
+        data['dietary-requirements'] = document.getElementById('dietary-requirements').value;
+        
+        // For "find out" checkboxes, collect all selected values
+        const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
+        data['find-out'] = Array.from(findOutCheckboxes).map(cb => cb.value).join(', ');
+
+        // Then collect the rest of the form data
         formData.forEach((value, key) => {
-            data[key] = value;
+            if (!data[key]) {  // Don't overwrite explicitly set values
+                data[key] = value;
+            }
         });
 
         data = processDelegationNumber(data);
@@ -131,7 +143,7 @@ function handleSubmit(event) {
         const submitButton = event.target.querySelector('button[type="submit"]');
         submitButton.disabled = true;
 
-          const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
+        const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
         data.fdrID = fdrID; // Add fdrID to the data object
 
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
