@@ -521,55 +521,30 @@ function updateCountryOptions(prefix) {
         });
     }
 
-        let formStarted = false;
+let formStarted = false;
 
-    function showCustomLightbox(message) {
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
-            <div class="lightbox-content">
-                <p>${message}</p>
-                <button onclick="closeCustomLightbox()">Stay on Page</button>
-            </div>
-        `;
-        document.body.appendChild(lightbox);
-    }
-
-    // Add this function to close the custom lightbox
-    window.closeCustomLightbox = function() {
-        const lightbox = document.querySelector('.lightbox');
-        if (lightbox) {
-            lightbox.remove();
-        }
-    };
-
-    // Add event listeners to detect when the form has been started
-    document.querySelectorAll('input, select, textarea').forEach(element => {
-        element.addEventListener('input', function() {
-            if (!formStarted) {
-                formStarted = true;
-                setupBeforeUnloadWarning();
-            }
-        });
-    });
-
-    function setupBeforeUnloadWarning() {
-        window.addEventListener('beforeunload', function(e) {
-            if (formStarted) {
-                e.preventDefault(); // Cancel the event
-                e.returnValue = ''; // Display browser's default message
-                showCustomLightbox("Are you sure you'd like to leave? If you do, your form progress will be lost.");
-                return ''; 
-            }
-        });
-    }
-
-    // Prevent the form from being submitted on Enter key press
-    document.getElementById('registration-form').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
+function setupBeforeUnloadWarning() {
+    window.addEventListener('beforeunload', function(e) {
+        if (formStarted) {
             e.preventDefault();
+            e.returnValue = '';
         }
     });
+}
+
+setupBeforeUnloadWarning();
+
+document.getElementById('registration-form').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+    }
+});
+
+document.querySelectorAll('#registration-form input, #registration-form textarea').forEach(function(input) {
+    input.addEventListener('input', function() {
+        formStarted = true;
+    });
+});
 
 
         function updateCharCount(textareaId, charCountId) {
