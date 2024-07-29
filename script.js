@@ -242,28 +242,42 @@ function handleSubmit(event) {
 }
 
 function triggerConfetti() {
+    console.log('Triggering confetti...');
+    const confettiContainer = document.createElement('div');
+    confettiContainer.id = 'confetti-container';
+    confettiContainer.style.position = 'fixed';
+    confettiContainer.style.top = '0';
+    confettiContainer.style.left = '0';
+    confettiContainer.style.width = '100%';
+    confettiContainer.style.height = '100%';
+    confettiContainer.style.pointerEvents = 'none';
+    confettiContainer.style.zIndex = '9999';
+    document.body.appendChild(confettiContainer);
+
     if (typeof confetti === 'function') {
-        const confettiContainer = document.createElement('div');
-        confettiContainer.id = 'confetti-container';
-        document.body.appendChild(confettiContainer);
-
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 },
-            zIndex: 1001,
-            disableForReducedMotion: true,
-            useWorker: true,
-            target: confettiContainer
-        });
-
-        // Remove the container after the animation is complete
-        setTimeout(() => {
-            confettiContainer.remove();
-        }, 5000);
+        console.log('Confetti function found, launching confetti');
+        try {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                zIndex: 1001,
+                disableForReducedMotion: true,
+                useWorker: false,
+                target: confettiContainer
+            });
+            console.log('Confetti launched successfully');
+        } catch (error) {
+            console.error('Error launching confetti:', error);
+        }
     } else {
         console.error('Confetti function not found. Make sure the script is loaded correctly.');
     }
+
+    // Remove the container after the animation is complete
+    setTimeout(() => {
+        confettiContainer.remove();
+    }, 5000);
 }
 
 function processDelegationNumber(data) {
