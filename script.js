@@ -188,11 +188,10 @@ function handleSubmit(event) {
         }
 
         if (!validateFormByApplicantType(applicantType)) {
+            isSubmitting = false;
+            submitButton.disabled = false;
             return; 
         }
-
-        const submitButton = event.target.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
 
         const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
         data.fdrID = fdrID;
