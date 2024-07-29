@@ -106,21 +106,23 @@ function validateAge() {
 let isSubmitting = false;
 
 function showLightbox(message, isLoading = false) {
-    const lightbox = document.getElementById('lightbox');
-    const loader = lightbox.querySelector('.loader');
-    const messageElement = lightbox.querySelector('#lightbox-message');
-
-    messageElement.textContent = message;
-    loader.style.display = isLoading ? 'block' : 'none';
-    lightbox.style.display = 'flex';
-
-    if (!isLoading) {
-        lightbox.querySelector('.lightbox-content').style.animation = 'slideInFromBottom 0.3s ease-out';
-    }
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            ${isLoading ? '<div class="loading-spinner"></div>' : ''}
+            <p>${message}</p>
+            ${!isLoading ? '<button onclick="closeLightbox()">Close</button>' : ''}
+        </div>
+    `;
+    document.body.appendChild(lightbox);
 }
 
 function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
+    const lightbox = document.querySelector('.lightbox');
+    if (lightbox) {
+        lightbox.remove();
+    }
 }
 
 function handleSubmit(event) {
@@ -217,7 +219,7 @@ function handleSubmit(event) {
         .then(responseData => {
             console.log('Response from server:', responseData);
             closeLightbox();
-                        if (responseData.status === 'success') {
+            if (responseData.status === 'success') {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
             } else if (responseData.status === 'error' && responseData.message === 'Email already exists') {
                 showLightbox('This email has already been used for a submission. Please check your inbox for an email from noreply@fdrmun.org to see if you have already completed an application.');
@@ -232,19 +234,9 @@ function handleSubmit(event) {
         })
         .finally(() => {
             isSubmitting = false;
-            if (!submitButton.classList.contains('submitted')) {
-                submitButton.disabled = false;
-            }
+            submitButton.disabled = false;
         });
     }
-}
-
-function triggerConfetti() {
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
 }
 
 function processDelegationNumber(data) {
