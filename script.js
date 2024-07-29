@@ -241,13 +241,19 @@ function handleSubmit(event) {
     }
 }
 
-function triggerConfetti() {
-    confetti({
+confetti({
         particleCount: 100,
         spread: 70,
-        origin: { y: 0.6 }
+        origin: { y: 0.6 },
+        zIndex: 1001,
+        disableForReducedMotion: true,
+        useWorker: true,
+        target: confettiContainer
     });
-}
+
+    setTimeout(() => {
+        confettiContainer.remove();
+    }, 5000);
 
 function processDelegationNumber(data) {
     const delegationNumber = document.getElementById('delegation-number').value;
