@@ -110,7 +110,7 @@ function showLightbox(message, isLoading = false) {
     lightbox.className = 'lightbox';
     lightbox.innerHTML = `
         <div class="lightbox-content">
-            ${isLoading ? '<div class="loading-spinner"></div>' : ''}
+            ${isLoading ? '<div class="loader"></div>' : ''}
             <p>${message}</p>
             ${!isLoading ? '<button onclick="closeLightbox()">Close</button>' : ''}
         </div>
@@ -221,10 +221,12 @@ function handleSubmit(event) {
             closeLightbox();
             if (responseData.status === 'success') {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
+                           triggerConfetti();
             } else if (responseData.status === 'error' && responseData.message === 'Email already exists') {
                 showLightbox('This email has already been used for a submission. Please check your inbox for an email from noreply@fdrmun.org to see if you have already completed an application.');
             } else {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
+                           triggerConfetti();
             }
         })
         .catch(error => {
@@ -237,6 +239,14 @@ function handleSubmit(event) {
             submitButton.disabled = false;
         });
     }
+}
+
+function triggerConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 }
 
 function processDelegationNumber(data) {
