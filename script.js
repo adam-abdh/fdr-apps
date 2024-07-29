@@ -56,35 +56,56 @@ function updateMUNExperienceRequirements() {
     }
 }
 
-function validateAge() {
-        const dobInput = document.getElementById('dob');
-        const dobError = document.getElementById('dob-error');
-        const dobValue = dobInput.value;
-        const dobDate = new Date(dobValue);
-        const today = new Date();
-        const age = today.getFullYear() - dobDate.getFullYear();
-        const monthDifference = today.getMonth() - dobDate.getMonth();
-        const dayDifference = today.getDate() - dobDate.getDate();
+function calculateAge(birthday) {
+    const birthDate = new Date(birthday);
+    const today = new Date();
 
-        if (dobDate > today) {
-            dobError.textContent = 'Your date of birth cannot be in the future, silly!';
-            dobError.classList.remove('hidden');
-            dobInput.classList.add('input-error');
-            return false;
-        }
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
 
-        if (age < 13 || (age === 13 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
-            dobError.textContent = 'To ensure compliance with the EU General Data Protection Regulation (GDPR), you should be at least 13 years old to complete this form.';
-            dobError.classList.remove('hidden');
-            dobInput.classList.add('input-error');
-            return false;
-        }
-
-        dobError.textContent = '';
-        dobError.classList.add('hidden');
-        dobInput.classList.remove('input-error');
-        return true;
+    // If the birthday hasn't occurred this year yet, subtract one year
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
     }
+
+    return age;
+}
+
+function validateAge() {
+    const dobInput = document.getElementById('dob');
+    const dobError = document.getElementById('dob-error');
+    const dobValue = dobInput.value;
+
+    if (!dobValue) {
+        dobError.textContent = 'Please enter your date of birth.';
+        dobError.classList.remove('hidden');
+        dobInput.classList.add('input-error');
+        return false;
+    }
+
+    const age = calculateAge(dobValue);
+
+    if (age < 0) {
+        dobError.textContent = 'Your date of birth cannot be in the future, silly!';
+        dobError.classList.remove('hidden');
+        dobInput.classList.add('input-error');
+        return false;
+    }
+
+    if (age < 13) {
+        dobError.textContent = 'To ensure compliance with the EU General Data Protection Regulation (GDPR), you should be at least 13 years old to complete this form.';
+        dobError.classList.remove('hidden');
+        dobInput.classList.add('input-error');
+        return false;
+    }
+
+    dobError.textContent = '';
+    dobError.classList.add('hidden');
+    dobInput.classList.remove('input-error');
+    return true;
+}
+
+
 
     function validateEmail() {
         const emailInput = document.getElementById('email');
