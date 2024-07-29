@@ -161,7 +161,7 @@ function handleSubmit(event) {
         let data = {};
 
         const stringFields = [
-            "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "fdrID",
+            "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "age", "fdrID",
             "institution", "phone", "preferred-name", "residence", "country", "dietary-requirements",
             "find-out", "delegation-number", "delegation-name",
             "delegation-experience", "logistical-requests", "other-info", "delegation-students-number",
