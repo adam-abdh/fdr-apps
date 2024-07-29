@@ -74,16 +74,21 @@ function calculateAge(birthday) {
 function validateAge() {
     const dobInput = document.getElementById('dob');
     const dobError = document.getElementById('dob-error');
+    const ageDisplay = document.getElementById('age'); // Add this line
     const dobValue = dobInput.value;
 
     if (!dobValue) {
         dobError.textContent = 'Please enter your date of birth.';
         dobError.classList.remove('hidden');
         dobInput.classList.add('input-error');
+        ageDisplay.textContent = ''; // Clear age display
         return false;
     }
 
     const age = calculateAge(dobValue);
+
+    // Update the age display
+    ageDisplay.textContent = `Age: ${age}`; // Add this line
 
     if (age < 0) {
         dobError.textContent = 'Your date of birth cannot be in the future, silly!';
@@ -104,7 +109,6 @@ function validateAge() {
     dobInput.classList.remove('input-error');
     return true;
 }
-
 
 
     function validateEmail() {
