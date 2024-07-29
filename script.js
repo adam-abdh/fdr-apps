@@ -221,12 +221,12 @@ function handleSubmit(event) {
             closeLightbox();
             if (responseData.status === 'success') {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
-                triggerConfetti();
+                           triggerConfetti();
             } else if (responseData.status === 'error' && responseData.message === 'Email already exists') {
                 showLightbox('This email has already been used for a submission. Please check your inbox for an email from noreply@fdrmun.org to see if you have already completed an application.');
             } else {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
-                triggerConfetti();
+                           triggerConfetti();
             }
         })
         .catch(error => {
@@ -242,42 +242,11 @@ function handleSubmit(event) {
 }
 
 function triggerConfetti() {
-    console.log('Triggering confetti...');
-    const confettiContainer = document.createElement('div');
-    confettiContainer.id = 'confetti-container';
-    confettiContainer.style.position = 'fixed';
-    confettiContainer.style.top = '0';
-    confettiContainer.style.left = '0';
-    confettiContainer.style.width = '100%';
-    confettiContainer.style.height = '100%';
-    confettiContainer.style.pointerEvents = 'none';
-    confettiContainer.style.zIndex = '9999';
-    document.body.appendChild(confettiContainer);
-
-    if (typeof confetti === 'function') {
-        console.log('Confetti function found, launching confetti');
-        try {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 },
-                zIndex: 1001,
-                disableForReducedMotion: true,
-                useWorker: false,
-                target: confettiContainer
-            });
-            console.log('Confetti launched successfully');
-        } catch (error) {
-            console.error('Error launching confetti:', error);
-        }
-    } else {
-        console.error('Confetti function not found. Make sure the script is loaded correctly.');
-    }
-
-    // Remove the container after the animation is complete
-    setTimeout(() => {
-        confettiContainer.remove();
-    }, 5000);
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 }
 
 function processDelegationNumber(data) {
