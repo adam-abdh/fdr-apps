@@ -164,14 +164,14 @@ function handleSubmit(event) {
         let data = {};
 
         const stringFields = [
-            "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "age", "fdrID",
-            "institution", "phone", "preferred-name", "residence", "country", "dietary-requirements",
-            "find-out", "delegation-number", "delegation-name",
-            "delegation-experience", "logistical-requests", "other-info", "delegation-students-number",
-            "student-delegation-name", "special-circumstances", "additional-circumstances", "mun-experience",
-            "transformative-experience", "first-committee-choice", "first-country-choice", "second-committee-choice",
-            "second-country-choice", "third-committee-choice", "third-country-choice", "favorite-period", "training-modules",
-            "referral-code", "additional-info"
+      "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "age", "fdrID",
+      "institution", "phone", "preferred-name", "residence", "country", "dietary-requirements",
+      "find-out", "delegation-number", "delegation-name",
+      "delegation-experience", "billing", "logistical-requests", "other-info", "delegation-students-number",
+      "student-delegation-name", "special-circumstances", "additional-circumstances", "mun-experience",
+      "transformative-experience", "first-committee-choice", "first-country-choice", "second-committee-choice",
+      "second-country-choice", "third-committee-choice", "third-country-choice", "favorite-period", "training-modules",
+      "referral-code", "additional-info"
         ];
 
         // Collect form data
