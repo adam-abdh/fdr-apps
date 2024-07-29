@@ -774,3 +774,4 @@ findOutOtherCheckbox.addEventListener('change', function() {
         }
     }
 });
+}
