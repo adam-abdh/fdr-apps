@@ -590,8 +590,8 @@ hr {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 8em;
-    height: 8em;
+    width: 18em;
+    height: 18em;
     background-image: 
         radial-gradient(circle 10px, var(--main-color) 100%, transparent 0),
         radial-gradient(circle 10px, var(--main-color) 100%, transparent 0),
