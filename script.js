@@ -242,24 +242,28 @@ function handleSubmit(event) {
 }
 
 function triggerConfetti() {
-    const confettiContainer = document.createElement('div');
-    confettiContainer.id = 'confetti-container';
-    document.body.appendChild(confettiContainer);
+    if (typeof confetti === 'function') {
+        const confettiContainer = document.createElement('div');
+        confettiContainer.id = 'confetti-container';
+        document.body.appendChild(confettiContainer);
 
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        zIndex: 1001, // Ensure this matches the CSS z-index
-        disableForReducedMotion: true,
-        useWorker: true,
-        target: confettiContainer // Set the target to our new container
-    });
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            zIndex: 1001,
+            disableForReducedMotion: true,
+            useWorker: true,
+            target: confettiContainer
+        });
 
-    // Remove the container after the animation is complete
-    setTimeout(() => {
-        confettiContainer.remove();
-    }, 5000); // Adjust time as needed
+        // Remove the container after the animation is complete
+        setTimeout(() => {
+            confettiContainer.remove();
+        }, 5000);
+    } else {
+        console.error('Confetti function not found. Make sure the script is loaded correctly.');
+    }
 }
 
 function processDelegationNumber(data) {
