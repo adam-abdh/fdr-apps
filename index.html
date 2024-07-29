@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=PT+Serif:wght@700&display=swap" rel="stylesheet">
 </head>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <body>
     <div class="image-section">
         <img src="Untitled_Artwork (1).png" alt="FDRMUN Logo" style="width: 300px; height: auto;">
@@ -796,20 +797,6 @@
                     <label class="question" for="additional-info">Is there anything else that you'd like us to know?</label>
                     <textarea id="additional-info" name="additional-info"></textarea>
                 </div>
-                <div id="lightbox" class="lightbox">
-  <div class="lightbox-content">
-    <div class="lightbox-header">
-      <h2>Submission</h2>
-      <button class="close-btn" onclick="closeLightbox()">
-        <span class="close-icon">×</span>
-      </button>
-    </div>
-    <div class="lightbox-body">
-      <div class="loader" style="display: none;"></div>
-      <p id="lightbox-message"></p>
-    </div>
-  </div>
-</div>
                 <div class="navigation-buttons">
 <button type="button" onclick="showPreviousSection()">← Previous</button>   
                     <button type="submit">Submit →</button>
@@ -823,7 +810,6 @@
     </div>  
 </footer>
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <div class="bottom-gradient"></div>
 </body>
 </html>
