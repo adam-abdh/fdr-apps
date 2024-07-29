@@ -74,36 +74,42 @@ function calculateAge(birthday) {
 function validateAge() {
     const dobInput = document.getElementById('dob');
     const dobError = document.getElementById('dob-error');
+    const ageDisplay = document.getElementById('age'); // Add this line
     const dobValue = dobInput.value;
 
     if (!dobValue) {
         dobError.textContent = 'Please enter your date of birth.';
         dobError.classList.remove('hidden');
         dobInput.classList.add('input-error');
-        return null;
+        ageDisplay.textContent = ''; // Clear age display
+        return false;
     }
 
     const age = calculateAge(dobValue);
+
+    // Update the age display
+    ageDisplay.textContent = `Age: ${age}`; // Add this line
 
     if (age < 0) {
         dobError.textContent = 'Your date of birth cannot be in the future, silly!';
         dobError.classList.remove('hidden');
         dobInput.classList.add('input-error');
-        return null;
+        return false;
     }
 
     if (age < 13) {
         dobError.textContent = 'To ensure compliance with the EU General Data Protection Regulation (GDPR), you should be at least 13 years old to complete this form.';
         dobError.classList.remove('hidden');
         dobInput.classList.add('input-error');
-        return null;
+        return false;
     }
 
     dobError.textContent = '';
     dobError.classList.add('hidden');
     dobInput.classList.remove('input-error');
-    return age;
+    return true;
 }
+
 
     function validateEmail() {
         const emailInput = document.getElementById('email');
@@ -146,12 +152,6 @@ function closeLightbox() {
 function handleSubmit(event) {
     event.preventDefault();
     if (isSubmitting) return;
-
-    const age = validateAge();
-    if (age === null) {
-        // Age validation failed
-        return;
-    }
 
     if (validateAge() && validateEmail()) {
         isSubmitting = true;
@@ -214,14 +214,11 @@ function handleSubmit(event) {
         if (!validateFormByApplicantType(applicantType)) {
             isSubmitting = false;
             submitButton.disabled = false;
-            return;
+            return; 
         }
 
         const fdrID = generateFdrID(data['first-name'], data['last-name'], applicantType);
         data.fdrID = fdrID;
-
-        // Add the calculated age to the data object
-        data.age = age.toString();
 
         // Ensure all specified fields are strings
         stringFields.forEach(field => {
@@ -248,12 +245,12 @@ function handleSubmit(event) {
             closeLightbox();
             if (responseData.status === 'success') {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
-                triggerConfetti();
+                           triggerConfetti();
             } else if (responseData.status === 'error' && responseData.message === 'Email already exists') {
                 showLightbox('This email has already been used for a submission. Please check your inbox for an email from noreply@fdrmun.org to see if you have already completed an application.');
             } else {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
-                triggerConfetti();
+                           triggerConfetti();
             }
         })
         .catch(error => {
@@ -266,8 +263,7 @@ function handleSubmit(event) {
             submitButton.disabled = false;
         });
     }
-
-    
+}
 
 function triggerConfetti() {
     confetti({
@@ -774,4 +770,3 @@ findOutOtherCheckbox.addEventListener('change', function() {
         }
     }
 });
-}
