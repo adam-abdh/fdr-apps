@@ -524,8 +524,26 @@
                     <textarea id="delegation-experience" name="delegation-experience"></textarea>
                                       <div class="warning hidden">This field is required.</div>
                 </div>
+                                <div class="card">
+                    <label class="question" for="billing">Would you like us to issue the participation invoice as <ul>separate</ul> (where we collect payments from delegates directly) or <ul>together</ul> (where your educational institution collects payments from the delegates and then fulfills a unified invoice)?</label><span class="required-star">*</span>
+                    <p class="subheading"><em>While we do urge chaperones, faculty advisors and representatives to provide this information here for ease of processing, if you are not aware of your school's billing policy at this time, you can skip this question. If you do not answer this question, we will contact you when issuing invoices as to settle this concern</em></p>
+                    <div class="radio-container">
+                        <div class="radio-button">
+                            <input type="radio" id="billing-yes" name="billing" value="together" required>
+                            <span class="radio"></span>
+                            <label for="billing-yes">Together</label>
+                        </div>
+                        <div class="radio-button">
+                            <input type="radio" id="billing-no" name="billing" value="separate" required>
+                            <span class="radio"></span>
+                            <label for="billing-no">Separate</label>
+                        </div>
+                    </div>
+                 <div class="warning hidden">This field is required.</div>
+                </div>
+
                 <div class="card">
-                    <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label>
+                    <label class="question" for="logistical-requests">Do you have any specific <strong>logistical requests?</strong> This EXCLUDES fee waivers, visa accommodations, prayer rooms or other learning differences.</label>
                     <textarea id="logistical-requests" name="logistical-requests"></textarea>
                 </div>
                 <div class="card">
