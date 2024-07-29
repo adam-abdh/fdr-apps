@@ -567,8 +567,8 @@ hr {
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
+    width: 8px;
+    height: 8px;
     position: relative;
     margin: 0 auto 20px;
 }
@@ -579,8 +579,8 @@ hr {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 48em;
-    height: 48em;
+    width: 8em;
+    height: 8em;
     background-image: 
         radial-gradient(circle 10px, var(--main-color) 100%, transparent 0),
         radial-gradient(circle 10px, var(--main-color) 100%, transparent 0),
