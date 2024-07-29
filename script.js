@@ -241,19 +241,26 @@ function handleSubmit(event) {
     }
 }
 
-confetti({
+function triggerConfetti() {
+    const confettiContainer = document.createElement('div');
+    confettiContainer.id = 'confetti-container';
+    document.body.appendChild(confettiContainer);
+
+    confetti({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
-        zIndex: 1001,
+        zIndex: 1001, // Ensure this matches the CSS z-index
         disableForReducedMotion: true,
         useWorker: true,
-        target: confettiContainer
+        target: confettiContainer // Set the target to our new container
     });
 
+    // Remove the container after the animation is complete
     setTimeout(() => {
         confettiContainer.remove();
-    }, 5000);
+    }, 5000); // Adjust time as needed
+}
 
 function processDelegationNumber(data) {
     const delegationNumber = document.getElementById('delegation-number').value;
