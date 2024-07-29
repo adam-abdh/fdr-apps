@@ -131,7 +131,6 @@ function showLightbox(message, isLoading = false) {
     lightbox.className = 'lightbox';
     lightbox.innerHTML = `
         <div class="lightbox-content">
-            ${isLoading ? '<div class="loader"></div>' : ''}
             <p>${message}</p>
             ${!isLoading ? '<button onclick="closeLightbox()">Close</button>' : ''}
         </div>
