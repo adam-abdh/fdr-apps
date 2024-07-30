@@ -558,7 +558,7 @@ hr {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: left;
     z-index: 1000;
     backdrop-filter: blur(5px);
