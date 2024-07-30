@@ -749,7 +749,7 @@ hr {
 }
 
 a {
-  color: var(--maincolor); /* Correctly use the variable */
+  color: rgb(2,77,153); /* Correctly use the variable */
 }
 
 #confetti-container {
