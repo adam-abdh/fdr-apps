@@ -1,9 +1,12 @@
 function validateSection(sectionId, skipRequired = false) {
+    console.log(`Validating section: ${sectionId}`);
     const section = document.getElementById(sectionId);
-    if (!section) return true; 
+    if (!section) {
+        console.error(`Section with ID '${sectionId}' not found`);
+        return false; // Return false if section is not found
+    }
 
     let isValid = true;
-    const cardElement = section.closest('.card');
 
     if (!skipRequired) {
         const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
@@ -11,7 +14,6 @@ function validateSection(sectionId, skipRequired = false) {
             if (!field.value) {
                 isValid = false;
                 field.classList.add('input-error');
-                cardElement.classList.add('has-error');
             } else {
                 field.classList.remove('input-error');
             }
@@ -22,12 +24,9 @@ function validateSection(sectionId, skipRequired = false) {
         }
     }
     
-    if (isValid) {
-        cardElement.classList.remove('has-error');
-    }
-
     return isValid;
 }
+
 
 function validateFormByApplicantType(applicantType) 
 
@@ -601,19 +600,22 @@ document.querySelectorAll('#registration-form input, #registration-form textarea
     });
 
     
-    function showNextSection(nextSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        const nextSectionElement = document.getElementById(nextSection);
-        if (currentSection) {
-            currentSection.classList.add('hidden');
-        }
-        if (nextSectionElement) {
-            nextSectionElement.classList.remove('hidden');
-            nextSectionElement.classList.add('fade-in');
-            formPath.push(nextSection);
-        }
-        window.scrollTo(0, 0);
+    function showNextSection(nextSectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.add('hidden');
+        section.classList.remove('fade-in');
+    });
+
+    // Show the next section
+    const nextSection = document.getElementById(nextSectionId);
+    if (nextSection) {
+        nextSection.classList.remove('hidden');
+        nextSection.classList.add('fade-in');
+    } else {
+        console.error(`Section with ID '${nextSectionId}' not found`);
     }
+}
 
     function showPreviousSection() {
         if (formPath.length > 1) {
@@ -782,22 +784,25 @@ findOutOtherCheckbox.addEventListener('change', function() {
     });
 
         function handleStudentGroupNext() {
-        const currentSection = document.getElementById('student-group-delegation');
-        if (!validateSection(currentSection.id)) {
-            return;
-        }
-
-        const studentGroup = document.querySelector('input[name="student-group"]:checked');
-        if (studentGroup) {
-            if (studentGroup.value === 'yes') {
-                showNextSection('student-delegation');
-            } else {
-                showNextSection('school-group-delegation');
-            }
-        } else {
-            document.getElementById('student-group-warning').classList.remove('hidden');
-        }
+    console.log('handleStudentGroupNext called');
+    const currentSection = document.getElementById('student-group-delegation');
+    if (!currentSection) {
+        console.error("Section 'student-group-delegation' not found");
+        return;
     }
+    
+    const studentGroup = document.querySelector('input[name="student-group"]:checked');
+    if (studentGroup) {
+        if (studentGroup.value === 'yes') {
+            showNextSection('student-delegation');
+        } else {
+            showNextSection('school-group-delegation');
+        }
+    } else {
+        document.getElementById('student-group-warning').classList.remove('hidden');
+    }
+}
+
 
     function handleSchoolRepNext() {
         const currentSection = document.getElementById('school-group-delegation');
