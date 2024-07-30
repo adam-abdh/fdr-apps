@@ -5,7 +5,7 @@
     --border-color: lightgrey;
     --card-max-width: 600px;
     --card-margin: 0 auto 20px;
-    --dark-grey: #292929;
+    --dark-grey: #383838;
 }
 
 /* Extra Light (Extraleicht) */
@@ -128,6 +128,82 @@
   src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-DreiviertelfettKursiv.otf") format("opentype");
 }
 
+/* Black */
+@font-face {
+  font-family: 'MartinaPlantijn Black';
+  font-weight: 900;
+  font-style: normal;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-Black.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MartinaPlantijn Black';
+  font-weight: 900;
+  font-style: italic;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-BlackItalic.otf') format('opentype');
+}
+
+/* Bold */
+@font-face {
+  font-family: 'MartinaPlantijn Bold';
+  font-weight: 700;
+  font-style: normal;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MartinaPlantijn Bold';
+  font-weight: 700;
+  font-style: italic;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-BoldItalic.otf') format('opentype');
+}
+
+/* Medium */
+@font-face {
+  font-family: 'MartinaPlantijn Medium';
+  font-weight: 500;
+  font-style: normal;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MartinaPlantijn Medium';
+  font-weight: 500;
+  font-style: italic;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-MediumItalic.otf') format('opentype');
+}
+
+/* Light */
+@font-face {
+  font-family: 'MartinaPlantijn Light';
+  font-weight: 300;
+  font-style: normal;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MartinaPlantijn Light';
+  font-weight: 300;
+  font-style: italic;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-LightItalic.otf') format('opentype');
+}
+
+/* Regular */
+@font-face {
+  font-family: 'MartinaPlantijn Regular';
+  font-weight: 400;
+  font-style: normal;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'MartinaPlantijn Regular';
+  font-weight: 400;
+  font-style: italic;
+  src: url('https://brandfonts.s3.eu-north-1.amazonaws.com/martina/MartinaPlantijn-Italic.otf') format('opentype');
+}
+
+
 /* Set default font family */
 html {
   font-family: 'Sohne Buch', sans-serif;
@@ -165,7 +241,7 @@ hr {
 }
 
 h2 {
-    font-family: 'PT Serif', sans-serif;
+    font-family: 'MartinaPlantijn Medium', sans-serif;
     font-weight: 700;
     color: var(--main-color);
     line-height: 1.18em;
@@ -303,7 +379,7 @@ button:focus {
 }
 
 #gradient-title {
-    font-family: 'PT Serif', sans-serif;
+    font-family: 'MartinaPlantijn Medium', sans-serif;
     font-weight: 700;
     letter-spacing: -0.05em;
     font-size: 2.17em;
