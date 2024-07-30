@@ -613,6 +613,13 @@ footer .footer-image {
     text-align: left; 
 }
 
+select {
+  background-color: var(--maincolor);
+  color: white; /* Assuming the text color should be white for contrast */
+  border: none;
+  padding: 8px; /* Adjust as needed */
+}
+
 textarea {
     resize: none;
 }
