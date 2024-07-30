@@ -5,7 +5,7 @@
     --border-color: lightgrey;
     --card-max-width: 600px;
     --card-margin: 0 auto 20px;
-    --dark-grey: #383838;
+    --dark-grey: #474747;
 }
 
 /* Extra Light (Extraleicht) */
@@ -223,8 +223,8 @@ html {
 body {
     font-family: 'Sohne Buch', sans-serif;
     font-weight: 400;
-    letter-spacing: -0.031em;
-    line-height: normal;
+    letter-spacing: -0.02em;
+    line-height: 1.25em;
     font-size: 1em;
     margin-bottom: 15px;
     padding: 20px;
@@ -245,7 +245,7 @@ h2 {
     font-weight: 700;
     color: var(--main-color);
     line-height: 1.18em;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.01em;
     font-size: 2.17em;
     margin-bottom: 20px;
     margin-top: 5px;
