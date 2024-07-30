@@ -186,38 +186,31 @@ function handleSubmit(event) {
             }
         });
 
-        // Handle select elements
-        ['preferred-title', 'dietary-requirements'].forEach(id => {
-            const select = document.getElementById(id);
-            if (select) {
-                data[id] = select.value.toString();
-            }
-        });
-
-        // Handle checkboxes
-        const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
-        data['find-out'] = Array.from(findOutCheckboxes).map(cb => cb.value).join(', ');
-
         // Handle "other" options
-       
-    const preferredTitleSelect = document.getElementById('preferred-title');
-    const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
-    preferredTitleSelect.addEventListener('change', function() {
-        toggleOtherOption(this, preferredTitleOther);
-    });
+        const preferredTitleSelect = document.getElementById('preferred-title');
+        const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
+        if (preferredTitleSelect.value === 'other') {
+            data['preferred-title'] = JSON.stringify(preferredTitleOther.value);
+        }
 
-    const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
-    const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
-    dietaryRequirementsSelect.addEventListener('change', function() {
-        toggleOtherOption(this, dietaryRequirementsOther);
-    });
+        const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
+        const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
+        if (dietaryRequirementsSelect.value === 'other') {
+            data['dietary-requirements'] = JSON.stringify(dietaryRequirementsOther.value);
+        }
 
-    const findOutOtherCheckbox = document.querySelector('input[name="find-out"][value="Other"]');
-    const findOutOtherText = document.querySelector('input[name="find-out"][type="text"]');
-    findOutOtherCheckbox.addEventListener('change', function() {
-        toggleOtherOption(this, findOutOtherText);
-    });
+        // Handle checkboxes for find-out
+        const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
+        let findOutValues = Array.from(findOutCheckboxes).map(cb => cb.value);
         
+        const findOutOtherCheckbox = document.querySelector('input[name="find-out"][value="Other"]');
+        const findOutOtherText = document.querySelector('input[name="find-out"][type="text"]');
+        if (findOutOtherCheckbox.checked && findOutOtherText.value) {
+            findOutValues = findOutValues.filter(value => value !== 'Other');
+            findOutValues.push(JSON.stringify(findOutOtherText.value));
+        }
+        data['find-out'] = findOutValues.join(', ');
+
         data = processDelegationNumber(data);
 
         let applicantType;
