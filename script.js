@@ -88,9 +88,6 @@ function validateAge() {
 
     const age = calculateAge(dobValue);
 
-    // Update the age display
-    ageDisplay.textContent = `Age: ${age}`; // Add this line
-
     if (age < 0) {
         dobError.textContent = 'Your date of birth cannot be in the future, silly!';
         dobError.classList.remove('hidden');
