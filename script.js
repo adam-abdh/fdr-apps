@@ -3,7 +3,6 @@ function validateSection(sectionId, skipRequired = false) {
     if (!section) return true; 
 
     let isValid = true;
-    const cardElement = section.closest('.card');
 
     if (!skipRequired) {
         const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
@@ -11,7 +10,6 @@ function validateSection(sectionId, skipRequired = false) {
             if (!field.value) {
                 isValid = false;
                 field.classList.add('input-error');
-                cardElement.classList.add('has-error');
             } else {
                 field.classList.remove('input-error');
             }
@@ -22,78 +20,10 @@ function validateSection(sectionId, skipRequired = false) {
         }
     }
     
-    if (isValid) {
-        cardElement.classList.remove('has-error');
-    }
-
     return isValid;
 }
 
-function validateFormByApplicantType(applicantType) 
-
-{function validateAge() {
-    const dobInput = document.getElementById('dob');
-    const dobError = document.getElementById('dob-error');
-    const ageDisplay = document.getElementById('age');
-    const dobValue = dobInput.value;
-    const cardElement = dobInput.closest('.card');
-
-    if (!dobValue) {
-        dobError.textContent = 'Please enter your date of birth.';
-        dobError.classList.remove('hidden');
-        dobInput.classList.add('input-error');
-        cardElement.classList.add('has-error');
-        ageDisplay.textContent = '';
-        return false;
-    }
-
-    const age = calculateAge(dobValue);
-
-    ageDisplay.textContent = `Age: ${age}`;
-
-    if (age < 0) {
-        dobError.textContent = 'Your date of birth cannot be in the future, silly!';
-        dobError.classList.remove('hidden');
-        dobInput.classList.add('input-error');
-        cardElement.classList.add('has-error');
-        return false;
-    }
-
-    if (age < 13) {
-        dobError.textContent = 'To ensure compliance with the EU General Data Protection Regulation (GDPR), you should be at least 13 years old to complete this form.';
-        dobError.classList.remove('hidden');
-        dobInput.classList.add('input-error');
-        cardElement.classList.add('has-error');
-        return false;
-    }
-
-    dobError.textContent = '';
-    dobError.classList.add('hidden');
-    dobInput.classList.remove('input-error');
-    cardElement.classList.remove('has-error');
-    return true;
-}
- 
-function validateEmail() {
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    const cardElement = emailInput.closest('.card');
-
-    if (!emailPattern.test(emailInput.value)) {
-        emailError.textContent = 'Please enter a valid email address.';
-        emailError.classList.remove('hidden');
-        emailInput.classList.add('input-error');
-        cardElement.classList.add('has-error');
-        return false;
-    } else {
-        emailError.textContent = '';
-        emailError.classList.add('hidden');
-        emailInput.classList.remove('input-error');
-        cardElement.classList.remove('has-error');
-        return true;
-    }
-}
+function validateFormByApplicantType(applicantType) {
     if (applicantType === 'chaperone') {
         // Validate only chaperone-specific fields and terms-conditions
         return validateSection('chaperone-delegation') && 
@@ -510,17 +440,6 @@ function updateCountryOptions(prefix) {
         animateCardsBelow(countryContainer);
     }
 
-    function animateCardsBelow(countryContainer) {
-        const cardsBelow = Array.from(document.querySelectorAll('.card-below')).filter(card => card.compareDocumentPosition(countryContainer) & Node.DOCUMENT_POSITION_FOLLOWING);
-        cardsBelow.forEach((card, index) => {
-            card.classList.add('stagger-down');
-            setTimeout(() => {
-                card.classList.remove('stagger-down');
-                card.classList.add('fade-in');
-            }, index * 100);
-        });
-    }
-
 let formStarted = false;
 
 function setupBeforeUnloadWarning() {
@@ -545,7 +464,19 @@ document.querySelectorAll('#registration-form input, #registration-form textarea
         formStarted = true;
     });
 });
+    
+    function animateCardsBelow(countryContainer) {
+        const cardsBelow = Array.from(document.querySelectorAll('.card-below')).filter(card => card.compareDocumentPosition(countryContainer) & Node.DOCUMENT_POSITION_FOLLOWING);
+        cardsBelow.forEach((card, index) => {
+            card.classList.add('stagger-down');
+            setTimeout(() => {
+                card.classList.remove('stagger-down');
+                card.classList.add('fade-in');
+            }, index * 100);
+        });
+    }
 
+    
 
         function updateCharCount(textareaId, charCountId) {
         const textarea = document.getElementById(textareaId);
