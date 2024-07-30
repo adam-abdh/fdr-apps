@@ -600,7 +600,7 @@ document.querySelectorAll('#registration-form input, #registration-form textarea
     });
 
     
-    function showNextSection(nextSectionId) {
+    function showNextSection(nextSection) {
     // Hide all sections
     document.querySelectorAll('.section').forEach(section => {
         section.classList.add('hidden');
