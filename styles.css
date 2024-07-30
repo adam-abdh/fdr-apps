@@ -743,9 +743,6 @@ hr {
 
 a {
   color: var(--maincolor); /* Correctly use the variable */
-  text-decoration: none; /* Remove the default underline */
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='5'><path d='M0 1 Q5 3 10 1 T20 1 T30 1 T40 1 T50 1 T60 1 T70 1 T80 1 T90 1 T100 1' stroke='%23000' stroke-width='2' fill='none'/></svg>") repeat-x bottom;
-  padding-bottom: 5px; /* Adjust as needed */
 }
 
 #confetti-container {
