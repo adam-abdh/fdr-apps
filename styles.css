@@ -8,6 +8,132 @@
     --dark-grey: #292929;
 }
 
+/* Extra Light (Extraleicht) */
+@font-face {
+  font-family: 'Sohne Extraleicht';
+  font-weight: 200;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Extraleicht.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Extraleicht';
+  font-weight: 200;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-ExtraleichtKursiv.otf");
+}
+
+/* Light (Leicht) */
+@font-face {
+  font-family: 'Sohne Leicht';
+  font-weight: 300;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Leicht.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Leicht';
+  font-weight: 300;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-LeichtKursiv.otf");
+}
+
+/* Regular (Buch) */
+@font-face {
+  font-family: 'Sohne Buch';
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Buch.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Buch';
+  font-weight: 400;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-BuchKursiv.otf");
+}
+
+/* Semi-Bold (Kraftig) */
+@font-face {
+  font-family: 'Sohne Kraftig';
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Kraftig.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Kraftig';
+  font-weight: 500;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-KraftigKursiv.otf");
+}
+
+/* Bold (Halbfett) */
+@font-face {
+  font-family: 'Sohne Halbfett';
+  font-weight: 600;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Halbfett.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Halbfett';
+  font-weight: 600;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-HalbfettKursiv.otf");
+}
+
+/* Extra Bold (Fett) */
+@font-face {
+  font-family: 'Sohne Fett';
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Fett.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Fett';
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-FettKursiv.otf");
+}
+
+/* Black (Extrafett) */
+@font-face {
+  font-family: 'Sohne Extrafett';
+  font-weight: 800;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Extrafett.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Extrafett';
+  font-weight: 800;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-ExtrafettKursiv.otf");
+}
+
+/* Ultra Black (Dreiviertelfett) */
+@font-face {
+  font-family: 'Sohne Dreiviertelfett';
+  font-weight: 900;
+  font-style: normal;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Dreiviertelfett.otf");
+}
+
+@font-face {
+  font-family: 'Sohne Dreiviertelfett';
+  font-weight: 900;
+  font-style: italic;
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-DreiviertelfettKursiv.otf");
+}
+
+/* Set default font family */
+html {
+  font-family: 'Sohne Buch', sans-serif;
+}
+
+
 .bottom-gradient {
     position: fixed;
     left: 0;
@@ -20,7 +146,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sohne Buch', sans-serif;
     font-weight: 400;
     letter-spacing: -0.031em;
     line-height: normal;
@@ -52,7 +178,7 @@ h2 {
 }
 
 .question {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sohne Buch', sans-serif;
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: normal;
@@ -63,7 +189,7 @@ h2 {
 }
 
 .subheading, .question-description {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sohne Buch', sans-serif;
     font-weight: 400;
     letter-spacing: -0.031em;
     line-height: normal;
@@ -74,7 +200,7 @@ h2 {
 }
 
 label, input, select, textarea, button {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sohne Buch', sans-serif;
     font-weight: 400;
     letter-spacing: -0.02em;
     font-size: 1em;
@@ -647,7 +773,7 @@ hr {
 
 .lightbox-content p {
     color: var(--dark-grey);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Sohne Buch', sans-serif;
     font-weight: 400;
     letter-spacing: -0.031em;
     line-height: normal;
