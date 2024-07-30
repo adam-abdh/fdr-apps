@@ -13,14 +13,14 @@
   font-family: 'Sohne Extraleicht';
   font-weight: 200;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Extraleicht.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Extraleicht.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Extraleicht';
   font-weight: 200;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-ExtraleichtKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-ExtraleichtKursiv.otf") format("opentype");
 }
 
 /* Light (Leicht) */
@@ -28,14 +28,14 @@
   font-family: 'Sohne Leicht';
   font-weight: 300;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Leicht.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Leicht.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Leicht';
   font-weight: 300;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-LeichtKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-LeichtKursiv.otf") format("opentype");
 }
 
 /* Regular (Buch) */
@@ -43,14 +43,14 @@
   font-family: 'Sohne Buch';
   font-weight: 400;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Buch.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Buch.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Buch';
   font-weight: 400;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-BuchKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-BuchKursiv.otf") format("opentype");
 }
 
 /* Semi-Bold (Kraftig) */
@@ -58,14 +58,14 @@
   font-family: 'Sohne Kraftig';
   font-weight: 500;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Kraftig.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Kraftig.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Kraftig';
   font-weight: 500;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-KraftigKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-KraftigKursiv.otf") format("opentype");
 }
 
 /* Bold (Halbfett) */
@@ -73,14 +73,14 @@
   font-family: 'Sohne Halbfett';
   font-weight: 600;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Halbfett.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Halbfett.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Halbfett';
   font-weight: 600;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-HalbfettKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-HalbfettKursiv.otf") format("opentype");
 }
 
 /* Extra Bold (Fett) */
@@ -88,14 +88,14 @@
   font-family: 'Sohne Fett';
   font-weight: 700;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Fett.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Fett.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Fett';
   font-weight: 700;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-FettKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-FettKursiv.otf") format("opentype");
 }
 
 /* Black (Extrafett) */
@@ -103,14 +103,14 @@
   font-family: 'Sohne Extrafett';
   font-weight: 800;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Extrafett.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Extrafett.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Extrafett';
   font-weight: 800;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-ExtrafettKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-ExtrafettKursiv.otf") format("opentype");
 }
 
 /* Ultra Black (Dreiviertelfett) */
@@ -118,21 +118,20 @@
   font-family: 'Sohne Dreiviertelfett';
   font-weight: 900;
   font-style: normal;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Dreiviertelfett.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-Dreiviertelfett.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Sohne Dreiviertelfett';
   font-weight: 900;
   font-style: italic;
-  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-DreiviertelfettKursiv.otf");
+  src: url("https://brandfonts.s3.eu-north-1.amazonaws.com/sohne/Sohne-DreiviertelfettKursiv.otf") format("opentype");
 }
 
 /* Set default font family */
 html {
   font-family: 'Sohne Buch', sans-serif;
 }
-
 
 .bottom-gradient {
     position: fixed;
