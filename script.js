@@ -302,7 +302,8 @@ function handleSubmit(event) {
             isSubmitting = false;
             submitButton.disabled = false;
         });
-    
+    }
+}
 
 function triggerConfetti() {
     confetti({
