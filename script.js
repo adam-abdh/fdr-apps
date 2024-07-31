@@ -1,4 +1,5 @@
 
+
 function validateSection(sectionId, skipRequired = false) {
     const section = document.getElementById(sectionId);
     if (!section) return true; 
@@ -187,14 +188,12 @@ function handleSubmit(event) {
         });
 
         // Handle "other" options
-     // Handle preferred titles
-const preferredTitleSelect = document.getElementById('preferred-title');
-const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
-if (preferredTitleSelect.value === 'other') {
-    data['preferred-title'] = preferredTitleOther.value;
-} else {
-    data['preferred-title'] = preferredTitleSelect.value;
-}
+        const preferredTitleSelect = document.getElementById('preferred-title');
+        const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
+        if (preferredTitleSelect.value === 'other') {
+            data['preferred-title'] = JSON.stringify(preferredTitleOther.value);
+        }
+
      // Handle dietary requirements
 const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
 const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
