@@ -276,6 +276,42 @@ function handleSubmit(event) {
     }
 }
 
+        console.log('Form data to be sent:', data);
+
+        fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
+            mode: 'cors',
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(responseData => {
+            console.log('Response from server:', responseData);
+            closeLightbox();
+            if (responseData.status === 'success') {
+                showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
+                triggerConfetti();
+            } else if (responseData.status === 'error' && responseData.message === 'Email already exists') {
+                showLightbox('This email has already been used for a submission. Please check your inbox for an email from noreply@fdrmun.org to see if you have already completed an application.');
+            } else {
+                showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
+                triggerConfetti();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            closeLightbox();
+            showLightbox('An error occurred. Please try again later.');
+        })
+        .finally(() => {
+            isSubmitting = false;
+            submitButton.disabled = false;
+        });
+    }
+}
+
 function triggerConfetti() {
     confetti({
         particleCount: 100,
