@@ -1,3 +1,4 @@
+
 function validateSection(sectionId, skipRequired = false) {
     const section = document.getElementById(sectionId);
     if (!section) return true; 
@@ -87,9 +88,6 @@ function validateAge() {
 
     const age = calculateAge(dobValue);
 
-    // Update the age display
-    ageDisplay.textContent = `Age: ${age}`; // Add this line
-
     if (age < 0) {
         dobError.textContent = 'Your date of birth cannot be in the future, silly!';
         dobError.classList.remove('hidden');
@@ -164,14 +162,14 @@ function handleSubmit(event) {
         let data = {};
 
         const stringFields = [
-      "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "age", "fdrID",
-      "institution", "phone", "preferred-name", "residence", "country", "dietary-requirements",
-      "find-out", "delegation-number", "delegation-name",
-      "delegation-experience", "billing", "logistical-requests", "other-info", "delegation-students-number",
-      "student-delegation-name", "special-circumstances", "additional-circumstances", "mun-experience",
-      "transformative-experience", "first-committee-choice", "first-country-choice", "second-committee-choice",
-      "second-country-choice", "third-committee-choice", "third-country-choice", "favorite-period", "training-modules",
-      "referral-code", "additional-info"
+            "preferred-title", "pronouns", "first-name", "last-name", "email", "dob", "age", "fdrID",
+            "institution", "phone", "preferred-name", "residence", "country", "dietary-requirements",
+            "find-out", "delegation-number", "delegation-name",
+            "delegation-experience", "billing", "logistical-requests", "other-info", "delegation-students-number",
+            "student-delegation-name", "special-circumstances", "additional-circumstances", "mun-experience",
+            "transformative-experience", "first-committee-choice", "first-country-choice", "second-committee-choice",
+            "second-country-choice", "third-committee-choice", "third-country-choice", "favorite-period", "training-modules",
+            "referral-code", "additional-info"
         ];
 
         // Collect form data
@@ -188,17 +186,30 @@ function handleSubmit(event) {
             }
         });
 
-        // Handle select elements
-        ['preferred-title', 'dietary-requirements'].forEach(id => {
-            const select = document.getElementById(id);
-            if (select) {
-                data[id] = select.value.toString();
-            }
-        });
+        // Handle "other" options
+        const preferredTitleSelect = document.getElementById('preferred-title');
+        const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
+        if (preferredTitleSelect.value === 'other') {
+            data['preferred-title'] = JSON.stringify(preferredTitleOther.value);
+        }
 
-        // Handle checkboxes
+        const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
+        const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
+        if (dietaryRequirementsSelect.value === 'other') {
+            data['dietary-requirements'] = JSON.stringify(dietaryRequirementsOther.value);
+        }
+
+        // Handle checkboxes for find-out
         const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
-        data['find-out'] = Array.from(findOutCheckboxes).map(cb => cb.value).join(', ');
+        let findOutValues = Array.from(findOutCheckboxes).map(cb => cb.value);
+        
+        const findOutOtherCheckbox = document.querySelector('input[name="find-out"][value="Other"]');
+        const findOutOtherText = document.querySelector('input[name="find-out"][type="text"]');
+        if (findOutOtherCheckbox.checked && findOutOtherText.value) {
+            findOutValues = findOutValues.filter(value => value !== 'Other');
+            findOutValues.push(JSON.stringify(findOutOtherText.value));
+        }
+        data['find-out'] = findOutValues.join(', ');
 
         data = processDelegationNumber(data);
 
@@ -245,12 +256,12 @@ function handleSubmit(event) {
             closeLightbox();
             if (responseData.status === 'success') {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
-                           triggerConfetti();
+                triggerConfetti();
             } else if (responseData.status === 'error' && responseData.message === 'Email already exists') {
                 showLightbox('This email has already been used for a submission. Please check your inbox for an email from noreply@fdrmun.org to see if you have already completed an application.');
             } else {
                 showLightbox('Thanks for applying to FDRMUN 25. You will soon receive an email with an fdrID identifier required to track your application, for correspondence, diploma authentication, and for entry on the 22nd.');
-                           triggerConfetti();
+                triggerConfetti();
             }
         })
         .catch(error => {
@@ -620,17 +631,20 @@ findOutOtherCheckbox.addEventListener('change', function() {
     toggleOtherOption(this, findOutOtherText);
 });
 
- function toggleOtherOption(element, otherInput) {
+function toggleOtherOption(element, otherInput) {
     if ((element.tagName === 'SELECT' && element.value === 'other') || 
         (element.type === 'checkbox' && element.checked && element.value === 'Other')) {
         otherInput.style.display = 'block';
         otherInput.classList.add('blur-in-top');
+        otherInput.required = true; // Make the field required when visible
     } else {
         otherInput.style.display = 'none';
         otherInput.classList.remove('blur-in-top');
         otherInput.value = ''; // Clear the input when hidden
+        otherInput.required = false; // Remove the required attribute when hidden
     }
 }
+    
     const studentGroupYes = document.getElementById('student-group-yes');
     const studentGroupNo = document.getElementById('student-group-no');
     const delegationFields = document.querySelectorAll('#student-delegation input, #student-delegation select, #student-delegation textarea');
