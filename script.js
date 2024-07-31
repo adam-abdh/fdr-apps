@@ -172,7 +172,7 @@ function handleSubmit(event) {
             "referral-code", "additional-info"
         ];
 
-        // Collect form data
+        // Collect all form data
         formData.forEach((value, key) => {
             if (stringFields.includes(key)) {
                 data[key] = value.toString();
@@ -190,13 +190,13 @@ function handleSubmit(event) {
         const preferredTitleSelect = document.getElementById('preferred-title');
         const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
         if (preferredTitleSelect.value === 'other') {
-            data['preferred-title'] = JSON.stringify(preferredTitleOther.value);
+            data['preferred-title'] = preferredTitleOther.value;
         }
 
         const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
         const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
         if (dietaryRequirementsSelect.value === 'other') {
-            data['dietary-requirements'] = JSON.stringify(dietaryRequirementsOther.value);
+            data['dietary-requirements'] = dietaryRequirementsOther.value;
         }
 
         // Handle checkboxes for find-out
@@ -207,7 +207,7 @@ function handleSubmit(event) {
         const findOutOtherText = document.querySelector('input[name="find-out"][type="text"]');
         if (findOutOtherCheckbox.checked && findOutOtherText.value) {
             findOutValues = findOutValues.filter(value => value !== 'Other');
-            findOutValues.push(JSON.stringify(findOutOtherText.value));
+            findOutValues.push(findOutOtherText.value);
         }
         data['find-out'] = findOutValues.join(', ');
 
