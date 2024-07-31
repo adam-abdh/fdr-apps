@@ -1,5 +1,4 @@
 
-
 function validateSection(sectionId, skipRequired = false) {
     const section = document.getElementById(sectionId);
     if (!section) return true; 
