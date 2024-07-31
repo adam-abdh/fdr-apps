@@ -193,11 +193,14 @@ function handleSubmit(event) {
             data['preferred-title'] = JSON.stringify(preferredTitleOther.value);
         }
 
-        const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
-        const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
-        if (dietaryRequirementsSelect.value === 'other') {
-            data['dietary-requirements'] = JSON.stringify(dietaryRequirementsOther.value);
-        }
+     // Handle dietary requirements
+const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
+const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
+if (dietaryRequirementsSelect.value === 'other') {
+    data['dietary-requirements'] = dietaryRequirementsOther.value;
+} else {
+    data['dietary-requirements'] = dietaryRequirementsSelect.value;
+}
 
         // Handle checkboxes for find-out
         const findOutCheckboxes = document.querySelectorAll('input[name="find-out"]:checked');
