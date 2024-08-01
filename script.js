@@ -1,4 +1,3 @@
-
 function validateSection(sectionId, skipRequired = false) {
     const section = document.getElementById(sectionId);
     if (!section) return true; 
@@ -171,7 +170,7 @@ function handleSubmit(event) {
             "student-delegation-name", "special-circumstances", "additional-circumstances", "mun-experience",
             "transformative-experience", "first-committee-choice", "first-country-choice", "second-committee-choice",
             "second-country-choice", "third-committee-choice", "third-country-choice", "favorite-period", "training-modules",
-            "referral-code", "additional-info"
+            "referral-code", "additional-info", "submissionTime"
         ];
 
         // Collect all form data
