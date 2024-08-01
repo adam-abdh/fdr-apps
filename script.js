@@ -151,6 +151,8 @@ function handleSubmit(event) {
     event.preventDefault();
     if (isSubmitting) return;
 
+    const submissionTime = new Date().toISOString();
+
     if (validateAge() && validateEmail()) {
         isSubmitting = true;
         const submitButton = event.target.querySelector('button[type="submit"]');
@@ -241,6 +243,8 @@ function handleSubmit(event) {
         });
 
         console.log('Form data to be sent:', data);
+
+        data.submissionTime = submissionTime;
 
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
             mode: 'cors',
