@@ -267,15 +267,6 @@ function handleSubmit(event) {
                 triggerConfetti();
             }
         })
-        .catch(error => {
-            console.error('Error:', error);
-            closeLightbox();
-            showLightbox('An error occurred. Please try again later.');
-        })
-        .finally(() => {
-            isSubmitting = false;
-            submitButton.disabled = false;
-        });
     }
 }
 
