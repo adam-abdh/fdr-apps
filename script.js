@@ -252,7 +252,7 @@ function handleSubmit(event) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        })
         
         .then(response => response.json())
         .then(responseData => {
