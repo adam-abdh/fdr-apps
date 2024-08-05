@@ -246,13 +246,14 @@ function handleSubmit(event) {
         data.submissionTime = submissionTime;
 
         fetch('https://r18b43myb8.execute-api.eu-north-1.amazonaws.com/default/myFormHandleSubmitter3', {
-            mode: 'cors',
+            mode: 'no-cors',
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        });
+        
         .then(response => response.json())
         .then(responseData => {
             console.log('Response from server:', responseData);
