@@ -1,29 +1,42 @@
 
 function validateSection(sectionId) {
     const section = document.getElementById(sectionId);
-    const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
     let isValid = true;
 
-    requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-            isValid = false;
-            field.classList.add('input-error');
-        } else {
-            field.classList.remove('input-error');
-        }
-    });
+    // Check if this is a conditional section
+    const isConditionalSection = ['student-delegation', 'chaperone-delegation', 'special-guidance'].includes(sectionId);
 
-    // Handle radio button groups
-    const radioGroups = section.querySelectorAll('input[type="radio"][required]');
-    const checkedGroups = new Set();
-    radioGroups.forEach(radio => {
-        if (radio.checked) {
-            checkedGroups.add(radio.name);
+    // If it's a conditional section, check if it should be validated
+    if (isConditionalSection) {
+        const shouldValidate = checkIfSectionShouldBeValidated(sectionId);
+        if (!shouldValidate) {
+            return true; // Skip validation for this section
+        }
+    }
+
+    const fields = section.querySelectorAll('input, select, textarea');
+    fields.forEach(field => {
+        if (field.type === 'radio') {
+            // Handle radio button groups
+            const groupName = field.name;
+            const radioGroup = section.querySelectorAll(`input[name="${groupName}"]`);
+            const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+            if (!isChecked) {
+                isValid = false;
+                radioGroup.forEach(radio => radio.classList.add('input-error'));
+            } else {
+                radioGroup.forEach(radio => radio.classList.remove('input-error'));
+            }
+        } else if (field.type !== 'submit' && field.type !== 'button') {
+            // For all other input types
+            if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('input-error');
+            } else {
+                field.classList.remove('input-error');
+            }
         }
     });
-    if (checkedGroups.size !== new Set(Array.from(radioGroups).map(r => r.name)).size) {
-        isValid = false;
-    }
 
     // Show/hide warning message
     const warningElement = section.querySelector('.warning');
@@ -38,6 +51,19 @@ function validateSection(sectionId) {
     return isValid;
 }
 
+function checkIfSectionShouldBeValidated(sectionId) {
+    switch (sectionId) {
+        case 'student-delegation':
+            return document.querySelector('input[name="student-group"]:checked')?.value === 'yes';
+        case 'chaperone-delegation':
+            return document.querySelector('input[name="school-rep"]:checked')?.value === 'yes';
+        case 'special-guidance':
+            return document.querySelector('input[name="special-arrangements"]:checked')?.value === 'yes' ||
+                   document.querySelector('input[name="student-special-arrangements"]:checked')?.value === 'yes';
+        default:
+            return true;
+    }
+}
 function validatePersonalData() {
     const personalDataSection = document.getElementById('personal-data');
     const requiredFields = personalDataSection.querySelectorAll('input[required], select[required], textarea[required]');
@@ -596,16 +622,13 @@ document.querySelectorAll('#registration-form input, #registration-form textarea
         updateCharCount(textarea.id, `char-count-${textarea.id}`);
     });
 
-    
-    function showNextSection(nextSection) {
+   function showNextSection(nextSection) {
     const currentSection = document.querySelector('section:not(.hidden)');
     
-    // If we're on the personal data section, validate before proceeding
-    if (currentSection.id === 'personal-data') {
-        if (!validatePersonalData()) {
-            window.scrollTo(0, 0);
-            return; // Don't proceed if validation fails
-        }
+    // Validate the current section before proceeding
+    if (!validateSection(currentSection.id)) {
+        window.scrollTo(0, 0);
+        return; // Don't proceed if validation fails
     }
 
     const nextSectionElement = document.getElementById(nextSection);
