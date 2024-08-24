@@ -584,18 +584,27 @@ document.querySelectorAll('#registration-form input, #registration-form textarea
 
     
     function showNextSection(nextSection) {
-        const currentSection = document.querySelector('section:not(.hidden)');
-        const nextSectionElement = document.getElementById(nextSection);
-        if (currentSection) {
-            currentSection.classList.add('hidden');
+    const currentSection = document.querySelector('section:not(.hidden)');
+    
+    // If we're on the personal data section, validate before proceeding
+    if (currentSection.id === 'personal-data') {
+        if (!validatePersonalData()) {
+            window.scrollTo(0, 0);
+            return; // Don't proceed if validation fails
         }
-        if (nextSectionElement) {
-            nextSectionElement.classList.remove('hidden');
-            nextSectionElement.classList.add('fade-in');
-            formPath.push(nextSection);
-        }
-        window.scrollTo(0, 0);
     }
+
+    const nextSectionElement = document.getElementById(nextSection);
+    if (currentSection) {
+        currentSection.classList.add('hidden');
+    }
+    if (nextSectionElement) {
+        nextSectionElement.classList.remove('hidden');
+        nextSectionElement.classList.add('fade-in');
+        formPath.push(nextSection);
+    }
+    window.scrollTo(0, 0);
+}
 
     function showPreviousSection() {
         if (formPath.length > 1) {
