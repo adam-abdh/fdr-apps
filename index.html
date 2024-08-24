@@ -472,18 +472,18 @@
                 </div>
                 <div class="card">
                     <label class="question" for="delegation-number">Please specify the <strong>expected number</strong> of participants in your delegation. This excludes yourself.</label><span class="required-star">*</span>
-                    <input type="number" id="delegation-number" name="delegation-number" min="1" max="20">
+                    <input type="number" id="delegation-number" name="delegation-number" min="1" max="20" required>
                                       <div class="warning hidden">This field is required.</div>
                 </div>
                 <div class="card">
                     <label class="question" for="delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
                   <p class="question-description"><em>This will be used to identify the student members of your delegation and issue separate requests. Usually, representatives opt for a school name or a country. Please make sure spelling is consistent between yourself and other delegation members.</em></p>
-                    <input type="text" id="delegation-name" name="delegation-name">
+                    <input type="text" id="delegation-name" name="delegation-name" required>
                                       <div class="warning hidden">This field is required.</div>
                 </div>
                 <div class="card">
                     <label class="question" for="delegation-experience">Tell us more about the <strong>experience</strong> of the institution/team you're representing. This allows us to be experience-aware when assigning countries and committees.</label><span class="required-star">*</span>
-                    <textarea id="delegation-experience" name="delegation-experience"></textarea>
+                    <textarea id="delegation-experience" name="delegation-experience" required></textarea>
                                       <div class="warning hidden">This field is required.</div>
                 </div>
                                 <div class="card">
@@ -530,13 +530,13 @@
                 <div class="card">
                     <label class="question" for="delegation-students-number">Please specify the <strong>expected number</strong> of participants in your delegation. This includes yourself, but excludes a chaperone, if applicable.</label><span class="required-star">*</span>
                                                           <p class="question-description"><em>If you are not sure, please provide an estimate. This is for us to be able to gain a picture of what our final roster will look like.</em></p>
-                    <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="20">
+                    <input type="number" id="delegation-students-number" name="delegation-students-number" min="1" max="20" required>
                     <div class="warning hidden">This field is required.</div>
                 </div>
                 <div class="card">
                     <label class="question" for="student-delegation-name">What is the <strong>name</strong> of your delegation?</label><span class="required-star">*</span>
                                       <p class="question-description"><em>This will be used to identify the student members of your delegation and issue separate requests. Usually, representatives opt for a school name or a country. Please make sure spelling is consistent between yourself and other delegation members.</em></p>
-                    <input type="text" id="student-delegation-name" name="student-delegation-name">
+                    <input type="text" id="student-delegation-name" name="student-delegation-name" required>
                 </div>
                 <div class="card">
                     <label class="question" for="student-special-arrangements">Is there anything else you'd like us to know? This includes <strong>special arrangements</strong>, <strong>fee waivers</strong>, <strong>prayer rooms</strong>, <strong>visa accommodations</strong> or <strong>learning differences</strong>. This does not negatively impact your delegation's odds of admission. These are NOT visible to your referee/delegation lead.</label><span class="required-star">*</span>
@@ -638,7 +638,7 @@
     </div>
 <div class="card">
     <label class="question" for="first-committee-choice">What is your <strong>first committee choice?</strong></label><span class="required-star">*</span>
-    <select id="first-committee-choice" name="first-committee-choice">
+    <select id="first-committee-choice" name="first-committee-choice" required>
         <option value="">Select a committee</option>
         <option value="DISEC">General Assembly 1—DISEC</option>
         <option value="SPECPOL">General Assembly 4—SPECPOL</option>
@@ -658,7 +658,7 @@
 </div>
 <div class="card card-below">
     <label class="question" for="second-committee-choice">What is your <strong>second committee choice?</strong></label><span class="required-star">*</span>
-    <select id="second-committee-choice" name="second-committee-choice">
+    <select id="second-committee-choice" name="second-committee-choice" required>
         <option value="">Select a committee</option>
         <option value="DISEC">General Assembly 1—DISEC</option>
         <option value="SPECPOL">General Assembly 4—SPECPOL</option>
@@ -678,7 +678,7 @@
 </div>
 <div class="card card-below">
     <label class="question" for="third-committee-choice">What is your <strong>third committee choice?</strong></label><span class="required-star">*</span>
-    <select id="third-committee-choice" name="third-committee-choice">
+    <select id="third-committee-choice" name="third-committee-choice" required>
         <option value="">Select a committee</option>
         <option value="DISEC">General Assembly 1—DISEC</option>
         <option value="SPECPOL">General Assembly 4—SPECPOL</option>
