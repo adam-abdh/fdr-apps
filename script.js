@@ -24,6 +24,37 @@ function validateSection(sectionId, skipRequired = false) {
     return isValid;
 }
 
+function validatePersonalData() {
+    const personalDataSection = document.getElementById('personal-data');
+    const requiredFields = personalDataSection.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
+
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.classList.add('input-error');
+        } else {
+            field.classList.remove('input-error');
+        }
+    });
+
+    if (!isValid) {
+        document.getElementById('personal-data-warning').classList.remove('hidden');
+    } else {
+        document.getElementById('personal-data-warning').classList.add('hidden');
+    }
+
+    return isValid;
+}
+
+function handlePersonalDataNext() {
+    if (validatePersonalData()) {
+        showNextSection('student-group-delegation');
+    } else {
+        window.scrollTo(0, 0);
+    }
+}
+
 function validateFormByApplicantType(applicantType) {
     if (applicantType === 'chaperone') {
         // Validate only chaperone-specific fields and terms-conditions
