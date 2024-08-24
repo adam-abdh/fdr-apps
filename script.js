@@ -188,17 +188,22 @@ function handleSubmit(event) {
             }
         });
 
-        // Handle "other" options
+        // Handle preferred title
         const preferredTitleSelect = document.getElementById('preferred-title');
         const preferredTitleOther = document.querySelector('input[name="preferred-title"][type="text"]');
         if (preferredTitleSelect.value === 'other') {
             data['preferred-title'] = preferredTitleOther.value;
+        } else {
+            data['preferred-title'] = preferredTitleSelect.value;
         }
 
+        // Handle dietary requirements
         const dietaryRequirementsSelect = document.getElementById('dietary-requirements');
         const dietaryRequirementsOther = document.querySelector('input[name="dietary-requirements"][type="text"]');
         if (dietaryRequirementsSelect.value === 'other') {
             data['dietary-requirements'] = dietaryRequirementsOther.value;
+        } else {
+            data['dietary-requirements'] = dietaryRequirementsSelect.value;
         }
 
         // Handle checkboxes for find-out
