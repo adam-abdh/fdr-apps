@@ -903,3 +903,7 @@ button[type="submit"].submitted {
     background-color: var(--secondary-color);
     cursor: not-allowed;
 }
+
+.input-error {
+    border: 2px solid red;
+}
