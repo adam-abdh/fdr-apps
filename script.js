@@ -1,26 +1,40 @@
 
-function validateSection(sectionId, skipRequired = false) {
+function validateSection(sectionId) {
     const section = document.getElementById(sectionId);
-    if (!section) return true; 
-
+    const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
     let isValid = true;
 
-    if (!skipRequired) {
-        const requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
-        requiredFields.forEach(field => {
-            if (!field.value) {
-                isValid = false;
-                field.classList.add('input-error');
-            } else {
-                field.classList.remove('input-error');
-            }
-        });
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.classList.add('input-error');
+        } else {
+            field.classList.remove('input-error');
+        }
+    });
 
+    // Handle radio button groups
+    const radioGroups = section.querySelectorAll('input[type="radio"][required]');
+    const checkedGroups = new Set();
+    radioGroups.forEach(radio => {
+        if (radio.checked) {
+            checkedGroups.add(radio.name);
+        }
+    });
+    if (checkedGroups.size !== new Set(Array.from(radioGroups).map(r => r.name)).size) {
+        isValid = false;
+    }
+
+    // Show/hide warning message
+    const warningElement = section.querySelector('.warning');
+    if (warningElement) {
         if (!isValid) {
-            alert('Please fill out all required fields before proceeding.');
+            warningElement.classList.remove('hidden');
+        } else {
+            warningElement.classList.add('hidden');
         }
     }
-    
+
     return isValid;
 }
 
